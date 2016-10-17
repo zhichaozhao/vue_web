@@ -1,0 +1,106 @@
+
+.recommend li{
+    float: left;
+    width: 392px;
+    height: 495px;
+    background: #fff;
+    margin-right: 12px;
+    border: 1px solid #ccc;
+    position: relative;
+    box-sizing: border-box;
+}
+.recommend li:last-child{
+    margin-right: 0;
+}
+
+.recommend li .img{
+    width: 100%;
+    height: 264px;
+    background: #ddd;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.recommend li .img img{
+    width: 100%;
+    height: 100%;
+}
+.recommend li .img>a{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.recommend li .tags{
+    display: block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 10px;
+    background: rgba(0,0,0,.6);
+    color: #fff;
+    text-align: center;
+}
+.recommend .text{
+    padding:15px 20px 10px;
+}
+.recommend .title{
+    display: block;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 24px;
+    line-height: 24px;
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+.recommend .price{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    color: #fff;
+    background: #000;
+}
+.recommend .textinfo p{
+    line-height: 30px;
+}
+.recommend .textinfo>p{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommend .textinfo p span{
+    color: #666;
+}
+.recommend .numb p{
+    float: left;
+    margin-right: 20px;
+}
+
+.recommend-sub li{
+    width: 291px;
+    height: 340px;
+    margin-right: 11px;
+}
+.recommend-sub li .img{
+    height: 195px;
+}
+.recommend-sub .price{
+    position: absolute;
+    top:154px;
+}
+.recommend-sub .text{padding:10px;}
+.recommend-sub .title{
+    height: 18px;
+    line-height: 18px;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+.recommend-sub li .city{
+    height: 14px;
+    line-height: 14px;
+    margin-bottom: 10px;
+}
+.recommend-sub .textinfo p{line-height: 24px;}

@@ -1,0 +1,804 @@
+
+/*********办活动首页*********/
+.event-banner{
+    width: 550px;
+    float: left;
+    margin: 0 18px;
+}
+.owl-wrapper-outer,.owl-wrapper,.owl-item,.item {
+    width: 100%;
+    height: 100%;
+}
+.event-banner .owl-carousel{
+    width: 590px;
+    height: 320px;
+    position: relative;
+}
+.owlitem-title{
+    width: 100%;
+    height: 44px;
+    padding: 8px 0;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.2);
+}
+.owlitem-title h5{
+    font-size: 20px;
+    padding: 0 15px;
+}
+.owlitem-title p{
+    padding: 0 15px;
+}
+.lphone{
+    float: left;
+    width: 240px;
+    height: 320px;
+    overflow: hidden;
+}
+.owl-theme .owl-controls{
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+}
+.owl-theme .owl-controls .owl-page span{
+    background: #e92332;
+}
+.owl-buttons{display: none;}
+
+/*我要办活动顶部表单*/
+.form-holdenent{
+    float: right;
+    width: 324px;
+    height: 318px;
+    border: 1px solid #000;
+}
+.form-holdenent .title{
+    background: #fff;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px dashed #666;
+}
+.form-holdenent .inputbox{
+    padding: 0 28px;
+}
+.selectwrap{
+    width: 266px;
+    height: 44px;
+    line-height: 44px;
+    border: 1px solid #000;
+    margin-top: 20px;
+    position: relative;
+}
+.selectwrap .select{
+    width: 100%;
+    height: 100%;
+    background: none;
+    text-indent: 20px;
+    cursor: pointer;
+    background: #fff;
+}
+.selectwrap .select p{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    line-height: 44px;
+}
+.selectwrap .selectlist{
+    width: 268px;
+    position: absolute;
+    left: -1px;
+    top:46px;
+    z-index: 2;
+}
+.selectwrap .selectlist li{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dashed #ccc;
+    background: #fff;
+    text-indent: 15px;
+    cursor: pointer;
+}
+.selectwrap .selectlist li:last-child{
+    border: 0;
+}
+.selectwrap .icon{
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 15px;
+    top:  12px;
+    z-index: 1;
+    border-color: #e92332;
+}
+.inputbox .text{
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    font-size: 18px;
+    text-align: center;
+    color: #666;
+}
+.inputbox .holdeventbtn{
+    display: block;
+    background: #fff;
+    border: 1px solid #000;
+    font-size: 18px;
+    width: 266px;
+    height: 44px;
+    line-height: 44px;
+    cursor: pointer;
+}
+.inputbox .holdeventbtn:hover{
+    background: #000;
+    color: #fff;
+}
+
+/*搜索部分*/
+.section-search{
+    height: 300px;
+    overflow: hidden;
+    background: url("/static/images/holdEvent/searchbg.png") no-repeat center #ddd;
+}
+.section-search .search{
+    width: 680px;
+    margin: 160px auto 0;
+}
+.section-search .search .mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+}
+.section-search .inputbox{width: 100%;}
+.section-search .inputbox input{
+    float: left;
+    display: block;
+    width: 470px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #000;
+    background: #fff;
+}
+.section-search .searchbtn{
+    float: right;
+    display: block;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #fff;
+    background:#272335;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+}
+.section-search .hot{
+    margin-top: 10px;
+}
+.section-search .hot p{
+    float: left;
+    color: #fff;
+}
+.section-search .hotlist{
+    float: left;
+}
+.section-search .hotlist a{
+    color: #fff;
+    margin-right: 5px;
+}
+
+/*主题内容部分*/
+.evtitle{
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.evtitle h3{
+    float: left;
+    margin-bottom: 20px;
+}
+.evtitle .more{
+    float: right;
+    height: 24px;
+    line-height: 24px;
+    font-size: 18px;
+    color: #000;
+    padding-right: 20px;
+    position: relative;
+}
+.evtitle .more:hover{
+    color:#e92332;
+    border-color: #e92332;
+}
+.evtitle .more:hover .icon{
+    color:#e92332;
+    border-color: #e92332;
+}
+.evtitle .more .icon{
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 13px;
+    height: 13px;
+}
+.eventsbox .left{
+    width: 852px;
+    overflow: hidden;
+}
+.eventsbox .right{
+    width: 330px;
+    overflow: hidden;
+}
+/*专题*/
+.subject li{
+    float: left;
+    width: 277px;
+    height: 300px;
+    background: #fff;
+    margin-right: 10px;
+}
+.subject li:last-child{
+    margin: 0;
+}
+.subject li>a{color: #000;}
+.subject li .img{
+    width: 100%;
+    height: 200px;overflow: hidden;
+    background: #ddd;
+}
+.subject li .text{
+    padding: 15px 10px;
+}
+.subject li .text h5{
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+/*分类*/
+.classfiylist li{
+    float: left;
+    width: 162px;
+    height: 100px;
+    background: #fff;
+    text-align: center;
+    margin-right: 10px;
+    overflow: hidden;
+}
+.classfiylist li:last-child{
+    margin-right:0;
+}
+.classfiylist li .icons{
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+.classfiylist li p{
+    font-size: 18px;
+}
+.classfiy .art{
+    background-position: -60px 0;
+}
+.classfiy .art{
+    background-position: -60px -60;
+}
+.classfiy .art{
+    background-position: -60px -120;
+}
+.classfiy .art{
+    background-position: -60px -180;
+}
+.classfiy .art{
+    background-position: -60px -210;
+}
+
+/*场馆推荐*/
+.venues-recommend li{
+    width: 421px;
+    height: 490px;
+    border: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.venues-recommend li:nth-child(2n+2){
+    margin-right: 0;
+}
+.venues-recommend li .img{
+    width: 100%;
+    height: 300px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+}
+.venues-recommend .title{
+    height: 18px;
+    line-height: 18px;
+    font-size: 18px;
+    margin: 10px 0 12px;
+    text-align: center;
+}
+.venues-recommend .price{
+    display: block;
+    font-size:18px;
+    color:#e92332;
+    text-align:center;
+    background: none;
+}
+.collect-mask{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.collect-mask .collect{
+    width: 60px;
+    height: 60px;
+    background-position: -60px -120px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    z-index: 2;
+}
+.collect-mask .mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.8);
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+/*限时优惠*/
+.timediscount li{
+    width: 277px;
+    height: 327px;
+    border: none;
+    margin-right: 10px;
+}
+.timediscount li:nth-child(3n+3){
+    margin-right: 0;
+}
+.timediscount li .img{
+    height: 220px;
+    position: relative;
+}
+.timediscount .title{
+    height: 18px;
+    line-height: 18px;
+    font-size: 18px;
+    margin: 0 0 10px;
+    text-align: center;
+}
+.timediscount .price{
+    display: block;
+    font-size:18px;
+    color:#e92332;
+    text-align:center;
+    background: none;
+}
+.timediscount .disprice{
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: line-through;
+}
+.timediscount .disrate{
+    padding: 2px 12px;
+    background:#e92332;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top:10px;
+}
+
+/*活动案例*/
+.evcases li{
+    width: 420px;
+    height: 415px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 0;
+}
+.evcases li:nth-child(2n+2){
+    margin-right: 0;
+}
+.evcases li .img{
+    height: 300px;
+}
+.evcases .title{
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+.evcases p{
+
+}
+
+/*TOP榜*/
+.toplist li{
+    width: 100%;
+    height: 400px;
+    margin-bottom: 10px;
+    position: relative;
+    background: #ddd;
+}
+.toplist li>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.toplist li>a .title{
+    width: 94%;
+    padding: 0 3%;
+    height: 80px;
+    line-height: 80px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: rgba(0,0,0,.4);
+    position: absolute;
+    left: 0;
+    top:50%;
+    margin-top:-40px;
+}
+/*您可能会喜欢*/
+.maylike li{
+    width: 100%;
+    height: 275px;
+    margin-bottom: 10px;
+}
+.maylike li .img{
+    width: 100%;
+    height: 200px;
+}
+.maylike li .img img{
+    width: 100%;
+    height: 100%;
+}
+.maylike li .title{
+    font-size: 18px;
+    color: #000;
+    margin: 10px 0 8px;
+}
+.maylike li .price{
+    font-size: 18px;
+    color: #e92332;
+}
+
+/*********我要办活动表单页面*********/
+/*placeholder样式*/
+input::-webkit-input-placeholder { color:#999;font-size: 12px; }
+input ::-moz-placeholder { color:#999;font-size: 12px; } /* firefox 19+ */
+input:-ms-input-placeholder { color:#999;font-size: 12px; } /* ie */
+input:-moz-placeholder { color:#999;font-size: 12px; }
+
+.evformbox{
+    width: 640px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.evformbox h2{
+    font-size: 24px;
+    padding: 15px 0;
+}
+.evformbox .inputbox>li{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    position: relative;
+}
+.evformbox .inputwrap .text{
+    float: left;
+    line-height: 50px;
+
+}
+.fminput{
+    width: 318px;
+    height: 22px;
+    line-height: 22px;
+    padding: 13px 20px;
+    font-size: 18px;
+    background: none;
+}
+.inputwrap .icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.evform-btn{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+    background:#00adff;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.evform-btn:hover{
+    background: #018acb;
+}
+
+.evformbox .fminput{
+    width: 230px;
+    margin-left: 70px;
+}
+.sendcode{
+    display: block;
+    width: 110px;
+    height: 50px;
+    line-height: 48px;
+    text-align: center;
+    background:#00adff;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: -1px;
+}
+.logregwrap .warning{
+    width: 360px;
+    height: 24px;
+    line-height: 24px;
+    background: #ff0000;
+    font-size: 12px;
+    color: #fff;
+    text-indent: 36px;
+    position: relative;
+    top: -2px;
+    left: -1px;
+}
+.logregwrap.war{
+    border-color: #ff0000;
+}
+.logregwrap .warning .icon-warining{
+    width: 12px;
+    height: 12px;
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*********空间详情页面*********/
+/*空间详情*/
+.condition-sp{
+  float: left;
+  background-color: #fff;
+  width: 215px;
+  margin-right: 3px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+}
+.condition-sp p{
+  margin-left: 23px;
+  margin-top: 4px;
+}
+.condition-sp .icon-text:before{
+  content: " ";
+  width: 14px;
+  height: 16px;
+  display: inline-block;
+  background: url("/static/images/yun.png");
+  margin-right: 8px;
+  vertical-align: -3px;
+}
+.condition-wrap div.condition-sp:nth-child(1) .icon-text:before{
+  background-position: -683px -22px;
+}
+.condition-wrap div.condition-sp:nth-child(2) .icon-text:before{
+  background-position: -683px -82px;
+}
+.condition-wrap div.condition-sp:nth-child(3) .icon-text:before{
+  background-position: -683px -142px;
+}
+.condition-wrap div.condition-sp:nth-child(4) .icon-text:before{
+  background-position: -683px -202px;
+}
+.condition-wrap div.condition-sp:nth-child(5) .icon-text:before{
+  background-position: -683px -262px;
+}
+.condition-search{
+  width: 104px;
+  height: 50px;
+  margin-top: 5px;
+  background-color: #272335;
+  color: #fff;
+  font-size: 20px;
+  float: left;
+}
+.search-content{
+  background-color: #f5f5f5;
+}
+.condition-sp{
+  position: relative;
+}
+.condition-sp .select-text{
+  position: relative;
+}
+.condition-sp .select-text:after{
+  content: " ";
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url("/static/images/yun.png");
+  background-position: -800px -80px;
+  position: absolute;
+  right: 0;
+  top:0;
+}
+.sub-condition{
+  position: absolute;
+  top:30px;
+  width:300px;
+  box-shadow: 0 0 1px 1px #ddd;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
+.sub-condition .condition-left{
+  float: left;
+  width: 150px;
+  padding: 6px 0;
+  background-color: #fff;
+}
+.sub-condition li{
+  height: 38px;
+  font-size: 16px;
+  line-height: 38px;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+.sub-condition .condition-left li{
+  background-color: #fff;
+}
+
+.sub-condition .condition-right li{
+  background-color: #f4f4f4;
+}
+.sub-condition .condition-right{
+  float: left;
+  width: 150px;
+  padding: 6px 0;
+  background-color: #f4f4f4;
+}
+/*搜索框*/
+.space-list{
+  width: 900px;
+  float: left;
+  margin-bottom: 100px;
+}
+.search-content .inputbox{width: 100%;}
+.search-content .inputbox input{
+  float: left;
+  display: block;
+  width: 620px;
+  height: 48px;
+  line-height: 40px;
+  padding: 0 15px;
+  border: 1px solid #000;
+  background: #fff;
+  box-sizing: border-box;
+}
+.search-content .searchbtn{
+  float: right;
+  display: block;
+  width: 150px;
+  height: 48px;
+  line-height: 40px;
+  padding: 0 15px;
+  border: 1px solid #fff;
+  background:#272335;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+}
+.search-input-wrap{
+  /*width: ;*/
+}
+.change-city{
+  width: 110px;
+}
+.change-city span{
+  font-size: 24px;
+  line-height: 48px;
+  height: 48px;
+  width: 90px;
+  position: relative;
+  display: block;
+}
+.change-city span:after{
+  content: " ";
+  width: 20px;
+  height: 12px;
+  background: url("/static/images/yun.png");
+  background-position: -800px -24px;
+  position: absolute;
+  right: 0;
+  top:17px;
+}
+.search-left{
+  width: 280px;
+  float: right;
+}
+.search-left-map{
+  height: 280px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+.enquiry-tip{
+  color: #000;
+  font-size: 20px;
+  background-color: #fff;
+  text-align: center;
+  height: 72px;
+  line-height: 72px;
+  border: 1px solid #979797;
+}
+.key-enquiry-btn{
+  background-color: #e92332;
+  height: 60px;
+  font-size: 24px;
+  display: block;
+  width: 100%;
+  color: #fff;
+}
+.enquiry-num{
+  position: relative;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  top:-18px;
+  background-color: #fff;
+  color: #000;
+  line-height: 24px;
+  font-size: 14px;
+  border-radius: 12px;
+}
+.recommend{
+  margin-top: 20px;
+  margin-right: -20px;
+}
+.list-piece li{
+  width: 288px;
+  margin-bottom: 20px;
+  margin-right: 18px;
+}
+

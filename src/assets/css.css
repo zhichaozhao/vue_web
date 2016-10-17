@@ -1,0 +1,89 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,label,p,blockquote,table,th,td { margin:0; padding:0;}
+
+html,body { background:#f4f4f4; color:#000; font-size:14px;position: relative;width: 100%;height: 100%; font-family: "PingFangHK-Thin", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;}
+table { border-collapse:collapse; }
+td,th,caption { font-size:14px; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#666; text-decoration:none;display: inline-block;}
+img { border:none; }
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font-size:14px; outline: none;border: none;display: inline-block;font-family: "PingFangHK-Thin", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif!important;}
+a,button{
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+}
+.fl{float: left;}
+.fr{float: right;}
+
+.hide{display: none;}
+.clearfix:after {content: " "; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix { *zoom:1; }
+.w1200{width: 1200px;margin: auto}
+.mt20{margin-top: 20px}
+.mb20{margin-bottom: 20px}
+.mt30{margin-top: 30px}
+.ml15{margin-left: 15px}
+.ml20{margin-left: 20px}
+.icons{background: url("/static/images/yun.png") no-repeat;}
+/*满屏黑色遮罩*/
+.mask-bg{
+    background: rgba(0,0,0,.75);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 1;
+}
+
+.icon-arrowleft{/*箭头向左*/
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    /*需要自定义width、height、border-color*/
+}
+.icon-arrowright{/*箭头向右*/
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    transform-origin: 25% 50%;
+    -ms-transform-origin: 25% 50%;
+    -webkit-transform-origin: 25% 50%;
+    -moz-transform-origin: 25% 50%;
+}
+.icon-arrowtop{/*箭头向上*/
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+}
+.icon-arrowbottom{/*箭头向下*/
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+}

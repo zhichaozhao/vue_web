@@ -1,0 +1,46 @@
+body .el-pagination{
+  background:none;
+}
+body .el-pager li.active{
+  border: 1px solid #000;
+  background-color: #000!important;
+  color: #fff!important;
+}
+body .el-pager li,body .el-pager li.active+li,body .el-pager li:last-child,body .el-pagination .btn-next,body .el-pagination .btn-prev,body .el-pager li:hover{
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border: 1px solid #000;
+  background-color: #fff;
+  margin-right: 8px;
+  border: 1px solid #000;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  color: #000;
+}
+
+body .el-pagination .btn-next,{
+  color: #000;
+}
+body .el-pagination button,body .el-pagination span{
+  font-size: 14px;
+}
+body .el-pagination__jump{
+  float: right;
+}
+
+/*复选框*/
+body .el-checkbox__inner.is-checked{
+  background-color: #eb2332;
+  border-radius: 0;
+  border-color: #eb2332;
+
+}
+body .el-checkbox__inner{
+  border-radius: 0;
+  border-color:#000 ;
+}
+
+body .el-checkbox__inner:not(.is-disabled):hover,body .el-checkbox__inner.is-focus{
+  border-color: #eb2332;
+}
