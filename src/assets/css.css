@@ -1,6 +1,6 @@
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,label,p,blockquote,table,th,td { margin:0; padding:0;}
 
-html,body { background:#f4f4f4; color:#000; font-size:14px;position: relative;width: 100%;height: 100%; font-family: "PingFangHK-Thin", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;}
+body { background:#f4f4f4; color:#000; font-size:14px;position: relative;width: 100%;height: 100%; font-family: "PingFangHK-Thin", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;}
 table { border-collapse:collapse; }
 td,th,caption { font-size:14px; }
 h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
@@ -13,6 +13,7 @@ a,button{
     transition: all .5s;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
+    cursor: pointer;
 }
 .fl{float: left;}
 .fr{float: right;}
@@ -26,7 +27,11 @@ a,button{
 .mt30{margin-top: 30px}
 .ml15{margin-left: 15px}
 .ml20{margin-left: 20px}
-.icons{background: url("/static/images/yun.png") no-repeat;}
+.red{color:#e92332;}
+.icons{
+    display: inline-block;
+    background: url("/static/images/yun.png") no-repeat;
+}
 /*满屏黑色遮罩*/
 .mask-bg{
     background: rgba(0,0,0,.75);
@@ -87,3 +92,33 @@ a,button{
     -webkit-transform: rotate(225deg);
     -moz-transform: rotate(225deg);
 }
+/*实心三角*/
+.icon-triangedown{/*向下*/
+    display: block;
+    width: 0px;
+    height: 0px;
+    border: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #000;
+    position: absolute;
+    transition: all linear .2s;
+}
+.icon-triangeup{/*向上*/
+    display: block;
+    width: 0px;
+    height: 0px;
+    border: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 7px solid #000;
+    position: absolute;
+    transition: all linear .2s;
+}
+.triange-bg{
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+}
+

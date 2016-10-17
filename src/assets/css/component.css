@@ -1,4 +1,4 @@
-
+/*空间/场地列表模块*/
 .recommend li{
     float: left;
     width: 392px;
@@ -104,3 +104,49 @@
     margin-bottom: 10px;
 }
 .recommend-sub .textinfo p{line-height: 24px;}
+
+
+/*小图标*/
+.icon-close{/*关闭按钮小*/
+    width: 20px;
+    height: 20px;
+    background-position: -920px -20px;
+}
+.icon-bgclose{/*关闭按钮大*/
+    width: 30px;
+    height: 30px;
+    background-position: -380px -20px;
+}
+.icon-place{/*位置*/
+    background-position: -680px -20px;
+}
+.icon-zan{/*赞*/
+    background-position: -710px -260px;
+}
+.icon-place{/*空间个数*/
+    background-position: -710px -320px;
+}
+.icon-pnumbs{/*人数*/
+    background-position: -710px -20px;
+}
+.icon-assort{/*场地配套*/
+    background-position: -710px -80px;
+}
+.icon-busintype{/*行业类型*/
+     background-position: -710px -140px;
+}
+.icon-busintype{/*活动类型*/
+    background-position: -710px -200px;
+}
+.icon-collect{/*未收藏*/
+    background-position: -140px -20px;
+}
+.icon-collect-hv{/*已收藏*/
+    background-position: -140px -80px;
+}
+.icon-collectbg{/*大未收藏*/
+    background-position: -120px -160px;
+}
+.icon-collectbg-hv{/*大已收藏*/
+    background-position: -120px -120px;
+}

@@ -54,18 +54,47 @@ html,body{
 .per-right{
   float: right;
   width: 845px;
+    padding-bottom: 50px;
 }
 .info-top{
+  border-bottom: 1px solid #eee;
+    position: relative;
+}
+.info-top h2{
+  float: left;
   font-size: 24px;
   color: #000;
-  border-bottom: 1px solid #eee;
-}
-.info-top span{
-  padding-bottom: 13px;
+  padding-bottom: 30px;
   display: inline-block;
   border-bottom: 2px solid #00adff;
-
 }
+.info-top .state{
+    float: left;
+    color: #00adff;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.info-top .inq-btnwrap{
+    width: 320px;
+    height: 48px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.info-top .inq-btnwrap>a{
+    width: 150px;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    color: #00adff;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.info-top .btn-goback{
+    border: 1px solid #00adff;
+}
+
 .head-img-big{
   margin-top: 30px;
 }
@@ -160,8 +189,9 @@ html,body{
   margin: auto;
   margin-top: 40px;
   display: block;
-
+  cursor: pointer;
 }
+.submit-btn-sm{width: 200px;}
 .getCode{
   width: 150px;
   height: 48px;
@@ -336,3 +366,141 @@ html,body{
 .process-piece.red .line{
   background-color: red;
 }
+
+
+/*我的收藏*/
+.collection{
+    margin-bottom: 30px;
+    height: 153px;
+    width: 850px;
+    background: #eee;
+    position: relative;
+}
+.collection:hover{
+     background:#eeeeee;
+}
+.collection .img{
+    height: 153px;
+    width: 230px;
+}
+.collection .img img{
+    width: 100%;
+    height: 100%;
+}
+.collection .divc{
+    padding: 15px 30px;
+    overflow: hidden;
+}
+.collection .divc h3 a{
+    font-size: 18px;
+    color: #000;
+}
+.collection .icons{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.collection .divc p{width: 540px; height: 50px; line-height: 45px; font-size:18px;color:#000000;text-align:left; float: left;}
+.collection .divc p.qy{font-size: 14px; color: #666}
+.collection .divc ul{ width: 500px;}
+.collection .divc ul li{
+    background:#fafafa;
+    width:auto;float:left; padding: 0 15px; line-height: 40px; margin-right: 10px;
+    height:40px;
+}
+
+/*意见反馈*/
+.feedback textarea{
+    width:650px;
+    background:#eee;
+    color: #666;
+    box-sizing: border-box;
+    padding: 18px 20px;
+}
+.feedbackfont{
+    font-size:18px;
+    color:#000000;
+    letter-spacing:0px;
+    text-align:left;
+    margin-top: 46px;
+}
+
+
+/*****弹窗*****/
+.btnclose{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.cancelcont{
+    width: 650px;
+    padding: 35px 65px 40px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    margin-left: -325px;
+    margin-top: -350px;
+    background: #fff;
+    z-index: 10;
+    box-sizing: border-box;
+}
+.cancelcont h2{
+    font-size: 24px;
+    text-align: center;
+    padding: 10px 0 40px;
+}
+.cancelcont .cont{
+    width: 100%;
+}
+.cancelcont .cont textarea{
+    width: 100%;
+    display: block;
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    resize:none;
+}
+/*填写理由*/
+.c-reason .title{
+    font-size: 18px;
+}
+.c-reason li{
+    width: 100%;
+    padding-left: 28px;
+    margin: 20px 0;
+    position: relative;
+    box-sizing: border-box;
+}
+.c-reason li .icons{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    box-sizing: border-box;
+}
+.c-reason li.active .icons{
+    background-position: -20px -80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

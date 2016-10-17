@@ -50,7 +50,7 @@
         <button class="condition-search">搜索</button>
       </div>
       <div class="search-content">
-        <div class="w1200 mt20">
+        <div class="w1200 mt20 clearfix">
           <div class="space-list">
             <div class="search-input-wrap clearfix">
               <div class="inputbox">
@@ -92,7 +92,6 @@
               :total="1000">
             </el-pagination>
           </div>
-          </div>
           <div class="search-left">
             <div class="search-left-map"></div>
             <div class="enquiry-tip">
@@ -103,8 +102,9 @@
               <span class="enquiry-num">0</span>
             </button>
           </div>
+          </div>
+
         </div>
-      </div>
     </div>
 </template>
 

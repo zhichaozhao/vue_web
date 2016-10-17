@@ -7,6 +7,8 @@ import { configRouter } from './config_router'
 import Home from './components/home/Home'
 import Event from './components/event/Event'
 import SpaceList from './components/event/SpaceList.vue'
+import Booking from './components/booking/app.vue'
+import SpaceDtl from './components/space/dtl.vue'
 
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -32,6 +34,18 @@ const router = new VueRouter({
     {
       path: '/spacelist',
       component: SpaceList
+    },
+    {
+      path: '/booking',
+      component: (resolve) => require(['./components/booking/app.vue'], resolve)
+    },
+    {
+      path: '/personal',
+      component: (resolve) => require(['./components/personal/app.vue'], resolve)
+    },
+    {
+      path: '/space/dtl',
+      component: SpaceDtl
     }
   ]
 })
