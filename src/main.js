@@ -3,12 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
-import { configRouter } from './config_router'
-import Home from './components/home/Home'
-import Event from './components/event/Event'
-import SpaceList from './components/event/SpaceList.vue'
-import Booking from './components/booking/app.vue'
-import SpaceDtl from './components/space/dtl.vue'
 
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -25,15 +19,15 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: Home
+      component: (resolve) => require(['./components/home/Home'], resolve)
     },
     {
       path: '/event',
-      component: Event
+      component: (resolve) => require(['./components/event/Event'], resolve)
     },
     {
       path: '/spacelist',
-      component: SpaceList
+      component: (resolve) => require(['./components/event/SpaceList.vue'], resolve)
     },
     {
       path: '/booking',
@@ -45,8 +39,21 @@ const router = new VueRouter({
     },
     {
       path: '/space/dtl',
-      component: SpaceDtl
-    }
+      component: (resolve) => require(['./components/space/dtl.vue'], resolve)
+    },
+    {
+      path: '/place/dtl',
+        component: (resolve) => require(['./components/place/app.vue'], resolve)
+    },
+    {
+      path: '/event/form',
+        component: (resolve) => require(['./components/event/Form'], resolve)
+    },
+    {
+      path: '/personal/form',
+        component: (resolve) => require(['./components/personal/Form'], resolve)
+    },
+
   ]
 })
 const app = new Vue({
