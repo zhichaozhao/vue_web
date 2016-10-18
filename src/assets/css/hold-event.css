@@ -647,7 +647,7 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     margin: 0 auto;
     padding: 50px 20px;
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top:50%;
     margin-top: -100px;
@@ -699,13 +699,10 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     left: -1px;
 }
 .warning .icon-warning{
-    width: 12px;
-    height: 12px;
     display: block;
     position: absolute;
     top: 6px;
     left: 20px;
-    background-position: -620px -20px;
 }
 
 
@@ -1022,15 +1019,33 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
 }
 .booking-right .evformbox .evform-btn{margin-bottom: 0;}
 
-
-
-
-
-
-
-
-
-
+/*************合作咨询弹窗**************/
+.formcooper-wp .evformbox{
+    width: 660px;
+    padding: 30px;
+    background: #fff;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    margin-top:-350px;
+    margin-left: -330px;
+    box-sizing: border-box;
+}
+.formcooper-wp .warning{width: 600px}
+.formcooper-wp .evform-btn{margin-bottom: 0;}
+.formcooper-wp .evformbox .inputwrap textarea{width: 443px;}
+.formcooper-wp .evformbox h2{text-align: center;}
+.formcooper-wp .evformbox .title{
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+.formcooper-wp .btnclose{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 
 
 

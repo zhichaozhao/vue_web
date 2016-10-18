@@ -115,13 +115,16 @@
 .icon-bgclose{/*关闭按钮大*/
     width: 30px;
     height: 30px;
-    background-position: -380px -20px;
+    background-position: -376px -16px;
 }
 .icon-place{/*位置*/
     background-position: -680px -20px;
 }
-.icon-zan{/*赞*/
+.icon-zan{/*赞-小*/
     background-position: -710px -260px;
+}
+.icon-skim{/*浏览-小*/
+    background-position: -330px -180px;
 }
 .icon-place{/*空间个数*/
     background-position: -710px -320px;
@@ -139,14 +142,19 @@
     background-position: -710px -200px;
 }
 .icon-collect{/*未收藏*/
-    background-position: -140px -20px;
+    background-position: -80px -20px;
 }
 .icon-collect-hv{/*已收藏*/
-    background-position: -140px -80px;
+    background-position: -80px -80px;
 }
 .icon-collectbg{/*大未收藏*/
-    background-position: -120px -160px;
+    background-position: -80px -180px;
 }
 .icon-collectbg-hv{/*大已收藏*/
-    background-position: -120px -120px;
+    background-position: -80px -140px;
+}
+.icon-warning{/*警告按钮*/
+    width: 12px;
+    height: 12px;
+    background-position: -624px -24px;
 }
