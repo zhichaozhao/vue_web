@@ -128,13 +128,13 @@
             <h3>城市精选专题</h3>
             <div class="cont">
                 <div class="btns">
-                    <a class="btn btnleft" href="javascript:;">
-                        <span class="icon-arrowleft"></span>
-                    </a>
-                    <a class="btn btnright" href="javascript:;">
-                        <span class="icon-arrowright"></span>
-                    </a>
-                </div>
+                <a class="btn btnleft" href="javascript:;">
+                    <span class="icon-arrowleft"></span>
+                </a>
+                <a class="btn btnright" href="javascript:;">
+                    <span class="icon-arrowright"></span>
+                </a>
+            </div>
                 <ul class="subject-list"></ul>
             </div>
             <a href="javascript:;" class="btnlookmore">查看更多专题</a>
@@ -529,45 +529,6 @@
     .section > h3 {
         font-size: 24px;
         margin-bottom: 30px;
-    }
-
-    .btns .btn {
-        width: 40px;
-        height: 80px;
-        background: rgba(0, 0, 0, .5);
-        position: absolute;
-        top: 50%;
-        margin-top: -40px;
-    }
-
-    .btns .btn:hover {
-        background: rgba(0, 0, 0, 1);
-    }
-
-    .btns .btn span {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -4px;
-        margin-top: -8px;
-    }
-
-    .btns .btnleft {
-        left: 50%;
-        margin-left: -600px;
-    }
-
-    .btns .btnright {
-        right: 50%;
-        margin-right: -600px;
-    }
-
-    .btns .icon-arrowleft,
-    .btns .icon-arrowright {
-        width: 13px;
-        height: 13px;
-        border-width: 2px;
-        border-color: #fff;
     }
 
     .banner-search {

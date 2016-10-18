@@ -110,6 +110,35 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="dtl-content" v-if="activeTab=='空间配套'">
+                                <ul class="cont classfiylist clearfix">
+                                    <li class="art">
+                                        <i class="icons"></i>
+                                        <p>艺术画廊</p>
+                                    </li>
+                                    <li class="show">
+                                        <i class="icons"></i>
+                                        <p>秀场展馆</p>
+                                    </li>
+                                    <li class="business">
+                                        <i class="icons"></i>
+                                        <p>商业广场</p>
+                                    </li>
+                                    <li class="starbusiness">
+                                        <i class="icons"></i>
+                                        <p>星级酒店</p>
+                                    </li>
+                                    <li class="more">
+                                        <i class="icons"></i>
+                                        <p>查看更多</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dtl-content" v-if="activeTab=='场地介绍'" style="padding: 20px">
+                                <p>位于F518时尚创意园中部，将园区分成高端办公和精品消费两个区域。创展中心为二三错层建筑，占地面积1300平方米，
+                                    总建筑面积达3400平方米。F518时尚创意园以创展中心为主体，每年例行策划执行文博会分会场、创意12月之创意文化节、独立音乐现场演出活动，同时对外承接设计展、艺术展、车展、订货会、服装秀、影视广告拍摄、动漫展会、音乐演出、企业年会、大小会议论坛等场地租赁和策划活动。
+                                    创展中心已服务过茵宝、宝马、保时捷、TCL、米其林等品牌企业，为商品展示、用户交互提供了良好平台。</p>
+                            </div>
                         </div>
 
                     </div>
@@ -159,7 +188,7 @@
                 <!--侧边栏-->
                 <div class="fr right">
                     <div class="evdtllist bgwhite">
-                        <div class="title clearfix">
+                        <div class="title  clearfix">
                             <img src="http://placehold.it/120x120" alt="">
                             <div class="title-dtl">
                                 <h2>上海蒲公英会议中心－北中环</h2>
@@ -198,9 +227,57 @@
                                     <span>培训演讲</span></dd>
                             </dl>
                             <button class="btn-dark understand-btn">了解场地</button>
+
+                        </div>
+                        <div class="cont bt1">
+                            <h6 class="tip">推荐理由</h6>
+                            <dl><i class="icons icon-evtype"></i>
+                                <dd>酒店｜特色类型</dd>
+                            </dl>
                         </div>
 
+
                     </div>
+                    <div class="map">
+
+                    </div>
+
+                    <div class="other-space">
+                        <h4>上海蒲公英会议中心－北中环的其他空间</h4>
+                        <ul>
+                            <li class="clearfix">
+                                <a href=""><img src="http://placehold.it/150x100" alt=""></a>
+                                <div class="dtl-s">
+                                    <a href="">04－中会议室</a>
+                                    <dl><dt>最大容纳 : </dt><dd>800人</dd></dl>
+                                    <dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>
+                                    <dl><dt>空间面积 : </dt><dd>220m</dd></dl>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <a href=""><img src="http://placehold.it/150x100" alt=""></a>
+                                <div class="dtl-s">
+                                    <a>04－中会议室</a>
+                                    <dl><dt>最大容纳 : </dt><dd>800人</dd></dl>
+                                    <dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>
+                                    <dl><dt>空间面积 : </dt><dd>220m</dd></dl>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <a href=""><img src="http://placehold.it/150x100" alt=""></a>
+                                <div class="dtl-s">
+                                    <a>04－中会议室</a>
+                                    <dl><dt>最大容纳 : </dt><dd>800人</dd></dl>
+                                    <dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>
+                                    <dl><dt>空间面积 : </dt><dd>220m</dd></dl>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="key-enquiry-btn">
+                        一键询价
+                        <span class="enquiry-num">0</span>
+                    </button>
                 </div>
             </div>
         </div>

@@ -1293,6 +1293,7 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
 .space-dtl{
     padding-top: 30px;
     margin-bottom: 30px;
+    border: 1px solid #ccc;
 }
 .space-dtl .price-dtl{
 
@@ -1330,13 +1331,13 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     padding: 20px;
 }
 .tap-content .p3{
-    width: 250px;
+    width: 249px;
     float: left;
 }
 .tap-content .p3 p{
     display: inline-block;
     float: left;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 .tap-content .p3 p:nth-child(1){
     width: 70px;
@@ -1432,13 +1433,14 @@ button .icon-arrowbottom{
 }
 .topic-same-kind ul li {
     width: 190px;
-    height: 320px;
+    height: 312px;
 }
 .topic-same-kind{
     margin-bottom: 68px;
 }
 .topic-same-kind ul li .title{
     font-size: 14px;
+    margin-bottom: 6px;
 }
 
 .events-container .right{
@@ -1494,5 +1496,69 @@ button .icon-arrowbottom{
 }
 .understand-btn{
     width: 100%;
-
+    margin: 10px 0 0px 0;
+}
+.cont.bt1{
+    border-top:1px solid #ccc;
+}
+.cont .tip{
+    font-size: 12px;
+    color: #000;
+    margin-bottom: 5px;
+}
+.events-container .right .map{
+    width: 380px;
+    height: 380px;
+    background-color: #666;
+    margin-top: 30px;
+}
+.other-space ul li a{
+    float: left;
+    display: block;
+}
+.other-space ul li a img{
+    display: block;
+}
+.other-space ul li{
+    border-top: 1px solid #ccc;
+    padding: 20px;
+}
+.other-space ul li .dtl-s{
+    float: right;
+}
+.other-space{
+    background-color: #fff;
+    margin-top: 30px;
+}
+.other-space h4{
+    font-size:18px;
+    color:#000000;
+    padding: 18px;
+}
+.other-space{
+    border: 1px solid #ccc;
+}
+.other-space .dtl-s{
+    width: 170px;
+}
+.other-space .dtl-s dl{
+    margin-bottom: 2px;
+}
+.other-space .dtl-s a{
+    font-size:18px;
+    color:#000000;
+    margin-bottom: 5px;
+    /*font-weight: bolder;*/
+}
+.events-container .right .key-enquiry-btn{
+    margin-top: 30px;
+}
+.events-container .classfiylist li{
+   width: 95px;
+}
+.events-container .classfiylist{
+    padding: 10px 20px;
+}
+.events-container .classfiylist li p{
+    font-size: 14px;
 }
