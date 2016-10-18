@@ -121,10 +121,14 @@
     background-position: -680px -20px;
 }
 .icon-zan{/*赞-小*/
-    background-position: -710px -260px;
+    width: 15px;
+    height: 15px;
+    background-position: -323px -203px;
 }
 .icon-skim{/*浏览-小*/
-    background-position: -330px -180px;
+    width: 15px;
+    height: 15px;
+    background-position: -323px -143px;
 }
 .icon-place{/*空间个数*/
     background-position: -710px -320px;

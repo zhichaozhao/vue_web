@@ -1,5 +1,6 @@
 
 /*新发现*/
+.newfound{padding-bottom: 50px;}
 .newfound .left{
     width: 700px;
 }
@@ -89,14 +90,18 @@
     margin-bottom: 20px;
     position: relative;
 }
-.article-wrap li .img{
+.article-wrap>ul>li .img{
     width: 300px;
     height: 200px;
     overflow: hidden;
     position: relative;
     background: #eee;
 }
-.article-wrap li .img .tag{
+.article-wrap>ul>li .img>a{
+    width: 100%;
+    height: 100%;
+}
+.article-wrap>ul>li .img .tag{
     width: 60px;
     height: 25px;
     background: #fff;
@@ -106,36 +111,77 @@
     left: 0;
     top: 15px;
 }
-.article-wrap li .text{
+.article-wrap>ul>li .text{
     width: 400px;
     height: 100%;
     padding: 18px 20px;
     box-sizing: border-box;
 }
-.article-wrap li .text>p{
+.article-wrap>ul>li .text>p{
     max-height: 100px;
     overflow: hidden;
     color: #666;
 }
-.article-wrap li .title{
+.article-wrap>ul>li .title{
     font-size: 18px;
     color: #000;
     margin-bottom: 15px;
 }
-.article-wrap li .numb-time{
+.article-wrap>ul>li .numb-time{
     width: 400px;
     padding: 0 20px;
-    margin-top: 10px;
     position: absolute;
     color: #666;
     right: 0;
-    bottom: 5px;
+    bottom: 15px;
     box-sizing: border-box;
 }
-.article-wrap li .numbs{
-    width: 145px;
+.article-wrap>ul>li .numbs{
+    width: 140px;
 }
-
+.article-wrap>ul>li .numbs li{
+    padding-left: 25px;
+    position: relative;
+}
+.article-wrap>ul>li .numbs li .icons{
+    position: absolute;
+    left: 0;
+    top:0;
+}
+.article-wrap .more{
+    display: block;
+    margin: 20px auto;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+}
+.article-wrap .more .icon-arrowbottom{
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 4px;
+    right: 0;
+}
+.newfound .right{
+    width: 470px;
+    margin-top: 80px;
+}
+.newfound .tags{
+    width: 470px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-top: 20px;
+    background: #fff;
+}
+.newfound .tags>a{
+    float: left;
+    padding: 10px 14px;
+    color: #000;
+    background: #f4f4f4;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 
 
 
