@@ -92,11 +92,50 @@
         </div>
 
         <!--状态弹窗-->
-        <div class="formstate-wp" v-show="showstate && !showmask">
+        <div class="formstate-wp" v-show="showstate">
             <div class="mask-bg" @click="showstate=!showstate"></div>
             <div class="formstate">
                 <h2>提交成功</h2>
                 <p>我们将在30分钟内为您提供多份精准场地报价</p>
+            </div>
+        </div>
+
+        <!--合作咨询-->
+        <button @click="showcooper=!showcooper" style="display: block;margin: 0 auto 100px">合作咨询弹窗暂时放这里，点击出现</button>
+
+        <div class="formcooper-wp" v-show="showcooper">
+            <div class="mask-bg" @click="showcooper=!showcooper"></div>
+            <div class="evformbox">
+                <a href="javascript:;" @click="showcooper=!showcooper" class="icons icon-close btnclose"></a>
+                <h2>合作咨询</h2>
+                <div class="title">合作项目：冰川时代主题快闪店</div>
+                <div class="mainbox">
+                    <ul class="inputbox">
+                        <li class="inputwrap">
+                            <div class="text"><span class="red">*</span>选择城市：</div>
+                            <input class="fminput" type="text" placeholder="请输入项目计划落地城市" />
+                        </li>
+                        <li class="inputwrap">
+                            <div class="text"><span class="red">*</span>您的称呼：</div>
+                            <input class="fminput" type="text" placeholder="请输入您的真实姓名" />
+                        </li>
+                        <li class="inputwrap war">
+                            <div class="text"><span class="red">*</span>您的联系方式：</div>
+                            <input class="fminput" type="text" placeholder="请输入11位手机号" />
+                            <div class="warning"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>
+                        </li>
+                        <li class="inputwrap">
+                            <div class="text"><span class="red">*</span>短信验证码：</div>
+                            <input class="fminput" type="text" placeholder="请输入6位数验证码" />
+                            <button class="sendcode">发送验证码</button>
+                        </li>
+                        <li class="inputwrap trea">
+                            <div class="text"><span class="red">*</span>您想咨询的内容：</div>
+                            <textarea rows="7" placeholder="您想咨询的内容，300字以内"></textarea>
+                        </li>
+                    </ul>
+                    <button class="evform-btn" type="button">提交</button>
+                </div><!--表单mainbox-end-->
             </div>
         </div>
     </div>
@@ -130,7 +169,8 @@
                 shownumbs: 0,
                 showtype: 0,
                 showcitys: 0,
-                showstate:0
+                showstate: 0,
+                showcooper:0
             }
         },
         components: {

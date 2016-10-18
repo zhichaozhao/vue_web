@@ -377,61 +377,65 @@
             <button class="fl submit-btn submit-btn-sm btn">提交</button>
         </div>
 
-        <!--取消资询-弹窗-->
-        <div class="cancel-wp" v-show="showstate && !showmask">
-            <div class="mask-bg" @click="showstate=!showstate"></div>
-            <div class="cancelcont">
-                <!--关闭按钮-->
-                <a class="icons icon-bgclose btnclose" @click="showstate=!showstate"></a>
-
-                <!--取消资询-->
-                <div class="c-consulting hide">
-                    <h2>取消资询</h2>
-                    <div class="cont">
-                        <textarea rows="15" placeholder="请输入取消理由（至少15字）"></textarea>
-                    </div>
-                </div>
-
-                <!--取消资询-->
-                <div class="c-reason hide">
-                    <h2>填写理由</h2>
-                    <div class="cont">
-                        <div class="title">不感兴趣（可多选）</div>
-                        <ul>
-                            <li class="active">
-                                <i class="icons icon-atv"></i>报价太高
-                            </li>
-                            <li>
-                                <i class="icons icon-atv"></i>
-                                 收到报价太高，已找到场地
-                            </li>
-                            <li>
-                                <i class="icons icon-atv"></i>
-                                场地本身条件不匹配
-                            </li>
-                            <li>
-                                <i class="icons icon-atv"></i>
-                                <textarea rows="5" placeholder="请输入其他理由"></textarea>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!--我要看场地-->
-                <div class="c-reason">
-                    <h2>我要看场地</h2>
-                    <div class="cont">
-                        <ul>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <button class="submit-btn submit-btn-sm btn">确定</button>
-            </div>
-        </div>
-
     </div><!--per-right-end-->
+      <!--取消资询-弹窗-->
+      <div class="cancel-wp" v-show="showstate && !showmask">
+          <div class="mask-bg" @click="showstate=!showstate"></div>
+          <div class="cancelcont">
+              <!--关闭按钮-->
+              <a class="icons icon-bgclose btnclose" @click="showstate=!showstate"></a>
+
+              <!--取消资询-->
+              <div class="c-consulting">
+                  <h2>取消资询</h2>
+                  <div class="cont">
+                      <textarea rows="15" placeholder="请输入取消理由（至少15字）"></textarea>
+                  </div>
+              </div>
+
+              <!--取消资询-->
+              <div class="c-reason hide">
+                  <h2>填写理由</h2>
+                  <div class="cont">
+                      <div class="title">不感兴趣（可多选）</div>
+                      <ul>
+                          <li class="active">
+                              <i class="icons icon-atv"></i>报价太高
+                          </li>
+                          <li>
+                              <i class="icons icon-atv"></i>
+                              收到报价太高，已找到场地
+                          </li>
+                          <li>
+                              <i class="icons icon-atv"></i>
+                              场地本身条件不匹配
+                          </li>
+                          <li>
+                              <i class="icons icon-atv"></i>
+                              <textarea rows="5" placeholder="请输入其他理由"></textarea>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!--我要看场地-->
+              <div class="c-lookplace hide">
+                  <h2>我要看场地</h2>
+                  <div class="cont">
+                      <div class="plantime">
+                          <div class="title">计划看场时间</div>
+                          <div class="schedule">
+                              <i class="icons icon-schdl"></i>
+                              <input type="text" value="2016-09-10 14:30">
+                          </div>
+                      </div>
+                      <textarea rows="10" placeholder="备注"></textarea>
+                  </div>
+              </div>
+
+              <button class="submit-btn submit-btn-sm btn">确定</button>
+          </div>
+      </div>
   </div>
 </template>
 <script>
