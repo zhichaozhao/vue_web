@@ -20,6 +20,9 @@
                     </template>
                 </div>
                 <ul class="fl navbar clearfix">
+                    <!--<router-link tag="li" to="/">-->
+                        <!--<a href="/" target="_blank">首页</a>-->
+                    <!--</router-link>-->
                     <li class="current">
                         <router-link to="/">首页</router-link>
                     </li>

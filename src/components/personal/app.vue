@@ -458,7 +458,6 @@
     ready(){
     },
     methods: {
-      //记住密码
       navClick(event){
         this.activeNav = event.target.innerHTML;
       },

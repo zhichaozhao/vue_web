@@ -3,12 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
-
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
 Vue.use(Element)
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({
