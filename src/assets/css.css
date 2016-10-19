@@ -66,10 +66,6 @@ a,button{
     -ms-transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
-    transform-origin: 25% 50%;
-    -ms-transform-origin: 25% 50%;
-    -webkit-transform-origin: 25% 50%;
-    -moz-transform-origin: 25% 50%;
 }
 .icon-arrowtop{/*箭头向上*/
     display: inline-block;
@@ -123,3 +119,62 @@ a,button{
     border-bottom-width: 10px;
 }
 
+/*用来覆盖el插件样式*/
+body .el-icon-caret-top:before{content: '';}
+body .el-select-dropdown{
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+body .el-input__icon{
+
+    color: #000;font-size: 0;line-height: 16px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #000;
+    position: absolute;
+    transition: all linear .2s;
+}
+body .el-select .el-input .el-input__icon{
+    color: #000;
+    font-size: 0;
+}
+body .el-input__inner{border: 0;}
+body .el-select-dropdown__list{padding: 0;}
+body .el-select-dropdown__item{color: #000;}
+body .el-select,
+body .el-input,
+body .el-input__inner{
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: none;
+}
+body  .el-select-dropdown__item.selected.hover,
+body  .el-select-dropdown__item.selected{background: #000;}
+body  .el-select-dropdown__item.hover{background: #eee;}
+body .el-select .el-input .el-input__icon{
+    -webkit-transform: translateY(-50%) rotateZ(0deg);
+    transform: translateY(-50%) rotateZ(0deg);
+}
+body .el-select .el-input .el-input__icon.is-reverse{
+    -webkit-transform: translateY(-50%) rotateZ(180deg);
+    transform: translateY(-50%) rotateZ(180deg);
+}
+.nav-location .el-select .el-input .el-input__icon{
+    color: #fff;
+    font-size: 12px;
+    right: 20px;
+    border-top-color: #fff;
+}
+.nav-location .el-input__inner{color: #fff;}
+
+
+.el-input input::-webkit-input-placeholder { color:#999;}
+.el-input input::-moz-placeholder { color:#999;} /* firefox 19+ */
+.el-input input:-ms-input-placeholder { color:#999;} /* ie */
+.el-input input:-moz-placeholder { color:#999;}

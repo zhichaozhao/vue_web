@@ -117,51 +117,78 @@
     height: 30px;
     background-position: -376px -16px;
 }
-.icon-place{/*位置*/
-    background-position: -680px -20px;
-}
 .icon-zan{/*赞-小*/
     width: 15px;
     height: 15px;
     background-position: -323px -203px;
 }
+.icon-zan-red{/*赞-小红色*/
+    width: 15px;
+    height: 15px;
+    background-position: -743px -267px;
+}
+.icon-zanbg{/*赞-大*/
+    width: 25px;
+    height: 25px;
+    background-position: -317px -79px;
+}
 .icon-skim{/*浏览-小*/
     width: 15px;
     height: 15px;
-    background-position: -323px -143px;
+    background-position: -323px -142px;
 }
-.icon-place{/*空间个数*/
-    background-position: -710px -320px;
+.icon-skimbg{/*浏览-大*/
+    width: 25px;
+    height: 25px;
+    background-position: -317px -19px;
+}
+.icon-place{/*位置*/
+    background-position: -684px -23px;
+}
+.icon-space{/*空间个数*/
+    background-position: -743px -323px;
 }
 .icon-pnumbs{/*人数*/
-    background-position: -710px -20px;
+    background-position: -743px -23px;
 }
 .icon-assort{/*场地配套*/
-    background-position: -710px -80px;
+    background-position: -743px -83px;
 }
 .icon-busintype{/*行业类型*/
-     background-position: -710px -140px;
+    background-position: -743px -143px;
 }
-.icon-busintype{/*活动类型*/
-    background-position: -710px -200px;
+.icon-evtype{/*活动类型*/
+    background-position: -743px -203px;
 }
-.icon-collect{/*未收藏*/
-    background-position: -80px -20px;
+.icon-collect{/*未收藏-小*/
+    background-position: -75px -16px;
 }
-.icon-collect-hv{/*已收藏*/
-    background-position: -80px -80px;
+.icon-collect-hv{/*已收藏-小*/
+    background-position: -75px -76px;
 }
-.icon-collectbg{/*大未收藏*/
-    background-position: -80px -180px;
+.icon-collectbg{/*未收藏-大*/
+    background-position: -60px -180px;
 }
-.icon-collectbg-hv{/*大已收藏*/
-    background-position: -80px -140px;
+.icon-collectbg-hv{/*已收藏-大*/
+    background-position: -60px -120px;
 }
-.icon-warning{/*警告按钮*/
+.icon-warning{/*警告-小*/
     width: 12px;
     height: 12px;
     background-position: -624px -24px;
 }
+.icon-warningbg{/*警告-大*/
+    width: 18px;
+    height: 18px;
+    background-position: -623px -200px;
+}
+.icon-time{
+    width: 20px;
+    height: 20px;
+    background-position: -440px -20px;
+}
+
+
 
 .btns .btn {
     width: 40px;
@@ -193,6 +220,7 @@
     right: 50%;
     margin-right: -600px;
 }
+.btns .btnright span{margin-left: -11px;}
 
 .btns .icon-arrowleft,
 .btns .icon-arrowright {
@@ -201,3 +229,28 @@
     border-width: 2px;
     border-color: #fff;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

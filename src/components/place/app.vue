@@ -11,11 +11,11 @@
                 <div class="title">
                     <h2>上海蒲公英会议中心－北中环</h2>
                     <div class="icons-text">
-                        <i class="icon-place"></i>
+                        <i class="icons icon-place"></i>
                         <p class="title">区域位置：上海市浦东新区世纪公园长柳路58号</p>
                     </div>
                     <a class="collect" href="javascript:;">
-                        <i class="icon-collect"></i>
+                        <i class="icons icon-collect-hv"></i>
                         <span>收藏</span>
                     </a>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="reason">
                     <h6>推荐理由</h6>
                     <div class="icons-text">
-                        <i class="icon-zan"></i>
+                        <i class="icons icon-zan-red"></i>
                         <p class="title">时尚汇聚地，潮流风向标</p>
                     </div>
                 </div>

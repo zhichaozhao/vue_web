@@ -11,7 +11,7 @@
                     <li class="inputwrap war">
                         <div class="text"><span class="red">*</span>您的联系方式：</div>
                         <input class="fminput" type="text" placeholder="请输入11位手机号" />
-                        <div class="warning"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>
+                        <div class="warning"><i class="icons icon-warningbg"></i>请输入正确的11位手机号码</div>
                     </li>
                     <li class="inputwrap">
                         <div class="text"><span class="red">*</span>短信验证码：</div>
@@ -122,7 +122,7 @@
                         <li class="inputwrap war">
                             <div class="text"><span class="red">*</span>您的联系方式：</div>
                             <input class="fminput" type="text" placeholder="请输入11位手机号" />
-                            <div class="warning"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>
+                            <div class="warning"><i class="icons icon-warningbg"></i>请输入正确的11位手机号码</div>
                         </li>
                         <li class="inputwrap">
                             <div class="text"><span class="red">*</span>短信验证码：</div>
