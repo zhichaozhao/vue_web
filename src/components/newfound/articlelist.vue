@@ -47,7 +47,7 @@
 
             <div class="article-wrap">
                 <ul>
-                    <li class="clearfix">
+                    <li class="clearfix" v-for="item in articles">
                         <div class="fl img">
                             <a href="javascript:;"><img src=""></a>
                             <span class="tag red">活动</span>
@@ -64,13 +64,40 @@
                             </div>
                         </div>
                     </li>
-
                 </ul>
-            </div>
+                <a class="more" href="javascript:;">加载更多<i class="icon-arrowbottom"></i></a>
+            </div><!--article-wrap-end-->
         </div>
         <!--左边文章列表-结束-->
 
-        <div class="fr right"></div>
+        <div class="fr right">
+            <div class="tags clearfix">
+                <a href="javascript:;">社区购物中心</a>
+                <a href="javascript:;">文体娱乐</a>
+                <a href="javascript:;">媒体新闻</a>
+                <a href="javascript:;">市集地摊</a>
+                <a href="javascript:;">文体娱乐</a>
+                <a href="javascript:;">媒体新闻</a>
+                <a href="javascript:;">市集地摊</a>
+                <a href="javascript:;">文体娱乐</a>
+                <a href="javascript:;">媒体新闻</a>
+            </div>
+
+            <div class="hot-recommend">
+                <h2>热门推荐</h2>
+                <ul>
+                    <li class="clearfix" v-for="item in recommends">
+                        <div class="fl img">
+                            <a href="javascript:;"><img src=""></a>
+                        </div>
+                        <div class="fr text">
+                            <a class="title" href="javascript:;">云SPACE护航《微微一笑很倾城》开启泛娱乐IP多维度营销先河</a>
+                            <p class="time">2016-08-28</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -128,7 +155,9 @@
                     {
                         value: '选项2',
                         label: '案例'
-                    }]
+                    }],
+                articles:[1,2,3,4,5,6],
+                recommends:[1,2,3,4,5,6]
             }
         },
         components: {
