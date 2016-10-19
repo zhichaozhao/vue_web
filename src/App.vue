@@ -17,7 +17,8 @@ export default {
   name: 'app',
   components: {
     Hello,ModuleFooter,ModuleHeader
-  }
+  },
+
 }
 </script>
 

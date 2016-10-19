@@ -1,0 +1,51 @@
+<template>
+    <div>
+        <div class="alink">
+            <a href="" class="active">全部</a>
+            <a href="">咨询中</a>
+            <a href="">收到报价</a>
+            <a href="">已过期</a>
+            <a href="">已关闭</a>
+        </div>
+        <table class="tblist" cellspacing="0" cellpadding="0">
+            <tr>
+                <th width="20%">提交时间</th>
+                <th width="10%">城市</th>
+                <th width="25%">活动时间</th>
+                <th width="10%">活动类型</th>
+                <th width="15%">意向场地</th>
+                <th width="10%">状态</th>
+                <th width="10%">操作</th>
+
+            </tr>
+            <tr>
+                <td>2016/8/26 15:00</td>
+                <td>上海</td>
+                <td>2016/8/26 15:00</td>
+                <td>亲子活动</td>
+                <td><a href="">奢居会派对会所</a></td>
+                <td>已收到2份报价</td>
+                <td><a href="javascript:void(0)">查看</a></td>
+            </tr>
+            <tr>
+                <td>2016/8/26 15:00</td>
+                <td>上海</td>
+                <td>2016/8/26 15:00</td>
+                <td>亲子活动</td>
+                <td><a href="">奢居会派对会所</a></td>
+                <td>已收到2份报价</td>
+                <td><a href="">查看</a></td>
+            </tr>
+            <tr>
+                <td>2016/8/26 15:00</td>
+                <td>上海</td>
+                <td>2016/8/26 15:00</td>
+                <td>亲子活动</td>
+                <td><a href="">奢居会派对会所</a></td>
+                <td>已收到2份报价</td>
+                <td><a href="">查看</a></td>
+            </tr>
+        </table>
+        <!--<paging :page.sync="page" :record-count="recordCount" :psize="20"></paging>-->
+    </div>
+</template>

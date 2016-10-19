@@ -1,5 +1,5 @@
 <template>
-    <div class="w1200 mt20">
+    <div class="w1200 mt20 pagination-fore-end">
         <div class="condition-wrap clearfix">
             <div class="condition-sp">
                 <span class="icon-text">区域范围</span>
@@ -113,8 +113,6 @@
 
     import 'assets/css/component.css';
     import 'assets/css/hold-event.css';
-
-
     export default {
         data() {
             return {

@@ -1,12 +1,17 @@
 body .el-pagination{
   background:none;
 }
-body .el-pager li.active{
+.pagination-fore-end .el-pager li.active{
   border: 1px solid #000;
   background-color: #000!important;
   color: #fff!important;
 }
-body .el-pager li,body .el-pager li.active+li,body .el-pager li:last-child,body .el-pagination .btn-next,body .el-pagination .btn-prev,body .el-pager li:hover{
+.pagination-fore-end .el-pager li,
+.pagination-fore-end .el-pager li.active+li,
+.pagination-fore-end .el-pager li:last-child,
+.pagination-fore-end .el-pagination .btn-next,
+.pagination-fore-end .el-pagination .btn-prev,
+.pagination-fore-end .el-pager li:hover{
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   border: 1px solid #000;
@@ -19,28 +24,53 @@ body .el-pager li,body .el-pager li.active+li,body .el-pager li:last-child,body 
   color: #000;
 }
 
-body .el-pagination .btn-next,{
+.pagination-fore-end .el-pagination .btn-next,{
   color: #000;
 }
-body .el-pagination button,body .el-pagination span{
+.pagination-fore-end .el-pagination button,.pagination-fore-end .el-pagination span{
   font-size: 14px;
 }
-body .el-pagination__jump{
+.pagination-fore-end .el-pagination__jump{
   float: right;
 }
 
 /*复选框*/
-body .el-checkbox__inner.is-checked{
+.pagination-fore-end .el-checkbox__inner.is-checked{
   background-color: #eb2332;
   border-radius: 0;
   border-color: #eb2332;
 
 }
-body .el-checkbox__inner{
+.pagination-fore-end .el-checkbox__inner{
   border-radius: 0;
   border-color:#000 ;
 }
 
-body .el-checkbox__inner:not(.is-disabled):hover,body .el-checkbox__inner.is-focus{
+.pagination-fore-end .el-checkbox__inner:not(.is-disabled):hover,.pagination-fore-end .el-checkbox__inner.is-focus{
   border-color: #eb2332;
 }
+
+/*个人中心分页*/
+.personal .el-pagination .btn-next,
+.personal .el-pagination .btn-prev,
+.personal .el-pager li:last-child,
+.personal .el-pager li{
+    width: 30px;
+    height: 30px;
+    background:#eeeeee;
+    border: 0;
+    margin-left: 10px;
+    line-height: 30px;
+}
+.personal .el-pager li.active{
+    border: none;
+    background:#00adff;
+    color: #fff!important;
+}
+.personal .el-pager li.btn-quicknext,.personal .el-pager li.btn-quickprev{
+    line-height: 30px;
+}
+/*.personal .el-pagination .btn-next,*/
+/*.personal .el-pagination .btn-prev{*/
+    /*border: 0;*/
+/*}*/
