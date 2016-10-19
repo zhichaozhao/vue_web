@@ -91,10 +91,8 @@
                             <a href="javascript:;"><img src=""></a>
                         </div>
                         <div class="fr text">
-                            <a class="title" href="javascript:;">2016年创意年会演出节目和晚会节目单</a>
-                            <div class="numb-time clearfix">
-                                <p class="fl">2016-08-28</p>
-                            </div>
+                            <a class="title" href="javascript:;">云SPACE护航《微微一笑很倾城》开启泛娱乐IP多维度营销先河</a>
+                            <p class="time">2016-08-28</p>
                         </div>
                     </li>
                 </ul>
@@ -158,7 +156,7 @@
                         value: '选项2',
                         label: '案例'
                     }],
-                articles:[1,2,3],
+                articles:[1,2,3,4,5,6],
                 recommends:[1,2,3,4,5,6]
             }
         },

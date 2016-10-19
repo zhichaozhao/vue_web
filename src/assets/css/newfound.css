@@ -172,6 +172,7 @@
     box-sizing: border-box;
     padding-left: 20px;
     padding-top: 20px;
+    margin-bottom: 20px;
     background: #fff;
 }
 .newfound .tags>a{
@@ -183,7 +184,49 @@
     margin-bottom: 20px;
 }
 
-
+.hot-recommend>h2{
+    font-size: 24px;
+    width: 100px;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e92332;
+}
+.hot-recommend li{
+    width: 100%;
+    height: 134px;
+    margin-bottom: 20px;
+}
+.hot-recommend li .img{
+    width: 201px;
+    height: 100%;
+    background: #eee;
+    overflow: hidden;
+}
+.hot-recommend li .img>a{
+    width: 100%;
+    height: 100%;
+}
+.hot-recommend li .img img{
+    width: 100%;
+    height: 100%;
+}
+.hot-recommend li .text{
+    width: 250px;
+    height: 100%;
+    position: relative;
+}
+.hot-recommend li .title{
+    font-size: 18px;
+    max-height: 115px;
+    color: #000;
+    overflow: hidden;
+}
+.hot-recommend li .time{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #666;
+}
 
 
 
