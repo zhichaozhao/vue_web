@@ -144,16 +144,23 @@
 .section-search{
     height: 300px;
     overflow: hidden;
+    position: relative;
     background: url("/static/images/holdEvent/searchbg.png") no-repeat center #ddd;
+}
+.section-search .mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 .section-search .search{
     width: 680px;
     margin: 160px auto 0;
-}
-.section-search .search .mask{
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.4);
+    position: relative;
+    z-index: 2;
 }
 .section-search .inputbox{width: 100%;}
 .section-search .inputbox input{
@@ -225,8 +232,8 @@
 }
 .evtitle .more .icon{
     position: absolute;
-    right: 0;
-    top: 2px;
+    right: 4px;
+    top: 4px;
     width: 13px;
     height: 13px;
 }
@@ -287,23 +294,23 @@
     height: 60px;
     margin: 0 auto;
 }
+.classfiylist li.art .icons{
+    background-position: -240px 0;
+}
+.classfiylist li.show .icons{
+    background-position: -240px -60px;
+}
+.classfiylist li.business .icons{
+    background-position: -240px -120px;
+}
+.classfiylist li.starbusiness .icons{
+    background-position: -240px -180px;
+}
+.classfiylist li.more .icons{
+    background-position: -240px -240px;
+}
 .classfiylist li p{
     font-size: 18px;
-}
-.classfiy .art{
-    background-position: -60px 0;
-}
-.classfiy .art{
-    background-position: -60px -60;
-}
-.classfiy .art{
-    background-position: -60px -120;
-}
-.classfiy .art{
-    background-position: -60px -180;
-}
-.classfiy .art{
-    background-position: -60px -210;
 }
 
 /*场馆推荐*/
@@ -348,7 +355,6 @@
 .collect-mask .collect{
     width: 60px;
     height: 60px;
-    background-position: -60px -120px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -499,9 +505,8 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
 }
 .evformbox .inputbox>li{
     width: 100%;
-    height: 50px;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: #fff;
     position: relative;
     box-sizing: border-box;
@@ -634,9 +639,6 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     line-height: 50px;
 }
 .inputwrap .icon-time{
-    width: 20px;
-    height: 20px;
-    background-position: -440px -40px;
     position: absolute;
     left: 20px;
     top:15px;
@@ -687,24 +689,22 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
 }
 /*错误提示*/
 .warning{
-    width: 640px;
-    height: 24px;
-    line-height: 24px;
+    width: 100%;
+    height: 30px;
+    line-height: 32px;
     background: #ff0000;
-    font-size: 12px;
     color: #fff;
-    text-indent: 36px;
-    position: absolute;
-    top: 48px;
-    left: -1px;
+    position: relative;
 }
-.warning .icon-warning{
+.warning .icons{
     display: block;
-    position: absolute;
-    top: 6px;
-    left: 20px;
+    float: left;
+    margin-left: 24px;
+    margin-right: 5px;
 }
-
+.warning .icon-warningbg{
+    margin-top: 6px;
+}
 
 /*********场地详情页面*********/
 .topback{
@@ -745,7 +745,8 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     color:#4a90e2;
     margin-bottom: 24px;
 }
-.evdtlcont .collect,.banner-cont .collect{
+.evdtlcont .collect,
+.banner-cont .collect{
     width: 60px;
     height: 60px;
     border: 1px solid #ccc;
@@ -755,13 +756,15 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     right: 20px;
     top:0;
     box-sizing: border-box;
+    overflow: hidden;
 }
-.evdtlcont .collect .icon-collect,.banner-cont .collect .icon-collect{
+.evdtlcont .collect .icons,
+.banner-cont .collect .icons{
     width: 30px;
     height: 30px;
     display: block;
-    margin-left: 15px;
-    margin-bottom: 2px;
+    margin-left: 14px;
+    margin-top: 2px;
 }
 .evdtlcont .intro h5{
     color: #666;
@@ -1032,7 +1035,6 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     margin-left: -330px;
     box-sizing: border-box;
 }
-.formcooper-wp .warning{width: 600px}
 .formcooper-wp .evform-btn{margin-bottom: 0;}
 .formcooper-wp .evformbox .inputwrap textarea{width: 443px;}
 .formcooper-wp .evformbox h2{text-align: center;}
@@ -1249,7 +1251,7 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
   font-size: 14px;
   border-radius: 12px;
 }
-.recommend{
+.search-content .recommend{
   margin-top: 20px;
   margin-right: -20px;
 }
@@ -1272,7 +1274,6 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
 .space-dtl-wrap .title h2{
   font-size: 24px;
   color: #000;
-  font-weight: bold;
   margin-bottom: 15px;
 }
 .space-dtl-wrap .banner-cont .title{
@@ -1358,7 +1359,6 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     font-size: 18px;
     color: #e92332;
     margin-bottom: 8px;
-    font-weight: bold;
 }
 .price-num p:nth-child(3){
     font-size: 14px;
@@ -1421,7 +1421,6 @@ button .icon-arrowbottom{
     font-size:18px;
     color:#000000;
     margin-bottom: 15px;
-    font-weight: bold;
 }
 .swiper-container2{
     overflow: hidden;
@@ -1431,17 +1430,28 @@ button .icon-arrowbottom{
     height: 260px;
     margin-right: 10px;
 }
-.topic-same-kind ul li {
-    width: 190px;
-    height: 312px;
-}
 .topic-same-kind{
     margin-bottom: 68px;
+}
+.topic-same-kind ul li {
+    width: 190px;
+    height: 237px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.topic-same-kind ul li:last-child{
+    margin-right: 0;
 }
 .topic-same-kind ul li .title{
     font-size: 14px;
     margin-bottom: 6px;
 }
+.topic-same-kind .textinfo p{
+    color: #666;
+    line-height: 22px;
+}
+
+.topic-list-piece li .img{height: 127px;}
 
 .events-container .right{
     width: 378px;
@@ -1453,6 +1463,7 @@ button .icon-arrowbottom{
     height: auto;
     padding: 18px;
     box-sizing: border-box;
+    color: #666;
     line-height: 20px;
 }
 .events-container .right .title img{
@@ -1475,6 +1486,7 @@ button .icon-arrowbottom{
 .events-container .right .title h2{
     font-size:18px;
     color:#4a90e2;
+    line-height: 1.3em;
     margin-bottom: 8px;
 }
 .events-container .right dl:after{content: " "; display: block; height:0; clear:both; visibility: hidden;}
@@ -1490,6 +1502,7 @@ button .icon-arrowbottom{
 }
 .events-container .right .cont dd{
     width: 243px;
+    color: #666;
 }
 .events-container .right dd span{
     display: inline-block;
@@ -1543,6 +1556,7 @@ button .icon-arrowbottom{
 }
 .other-space .dtl-s dl{
     margin-bottom: 2px;
+    color: #666;
 }
 .other-space .dtl-s a{
     font-size:18px;
@@ -1554,7 +1568,8 @@ button .icon-arrowbottom{
     margin-top: 30px;
 }
 .events-container .classfiylist li{
-   width: 95px;
+   width: 90px;
+    height: 90px;
 }
 .events-container .classfiylist{
     padding: 10px 20px;
@@ -1562,12 +1577,35 @@ button .icon-arrowbottom{
 .events-container .classfiylist li p{
     font-size: 14px;
 }
+.classfiylist li.wc .icons{
+    background-position: -840px 0;
+}
+.classfiylist li.rest .icons{
+    background-position: -840px -60px;
+}
+.classfiylist li.dressing .icons{
+    background-position: -840px -120px;
+}
+.classfiylist li.air-con .icons{
+    background-position: -840px -180px;
+}
+.classfiylist li.wifi .icons{
+    background-position: -840px -240px;
+}
+.classfiylist li.led .icons{
+    background-position: -840px -300px;
+}
+.classfiylist li.video .icons{
+    background-position: -840px -360px;
+}
+
 .yun-swiper-prev,.yun-swiper-next{
     position: absolute;
     top: 50%;
     width: 20px;
     height: 38px;
-    margin-top: -22px;
+    padding: 25px 12px;
+    margin-top: -44px;
     z-index: 10;
     cursor: pointer;
     -moz-background-size: 27px 44px;
@@ -1575,7 +1613,6 @@ button .icon-arrowbottom{
     background-size: 27px 44px;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 25px 12px;
     background-color: rgba(255,255,255,.5);
 }
 .yun-swiper-prev span,.yun-swiper-next span{
@@ -1583,7 +1620,11 @@ button .icon-arrowbottom{
     height: 24px;
     border-left: 2px solid #000;
     border-top: 2px solid #000;
+    position: absolute;
+    top: 30px;
 }
+.yun-swiper-prev span{left: 17px;}
+.yun-swiper-next span{right: 16px;}
 .yun-swiper-prev{
     left: 0;
     right: auto;

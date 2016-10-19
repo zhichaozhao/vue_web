@@ -11,7 +11,7 @@
                         <div class="title">
                             <h2>03 - 大会议室</h2>
                             <p class="addr">区域位置 : 上海市闸北区大场、大华沪太支路538号飞马旅5i</p>
-                            <a href="javascript:;" class="collect"><i class="icon-collect"></i> <span>收藏</span></a>
+                            <a href="javascript:;" class="collect"><i class="icons icon-collect"></i> <span>收藏</span></a>
                         </div>
                         <div class="banner">
                             <div class="swiper-container banner-swiper">
@@ -113,25 +113,33 @@
                             </div>
                             <div class="dtl-content" v-if="activeTab=='空间配套'">
                                 <ul class="cont classfiylist clearfix">
-                                    <li class="art">
+                                    <li class="wc">
                                         <i class="icons"></i>
-                                        <p>艺术画廊</p>
+                                        <p>洗手间</p>
                                     </li>
-                                    <li class="show">
+                                    <li class="rest">
                                         <i class="icons"></i>
-                                        <p>秀场展馆</p>
+                                        <p>休息室</p>
                                     </li>
-                                    <li class="business">
+                                    <li class="dressing">
                                         <i class="icons"></i>
-                                        <p>商业广场</p>
+                                        <p>化妆间</p>
                                     </li>
-                                    <li class="starbusiness">
+                                    <li class="air-con">
                                         <i class="icons"></i>
-                                        <p>星级酒店</p>
+                                        <p>空调暖气</p>
                                     </li>
-                                    <li class="more">
+                                    <li class="wifi">
                                         <i class="icons"></i>
-                                        <p>查看更多</p>
+                                        <p>网络WIFI</p>
+                                    </li>
+                                    <li class="led">
+                                        <i class="icons"></i>
+                                        <p>投影LED</p>
+                                    </li>
+                                    <li class="video">
+                                        <i class="icons"></i>
+                                        <p>灯光音响</p>
                                     </li>
                                 </ul>
                             </div>
@@ -175,11 +183,10 @@
                                 </div>
                                 <div class="text">
                                     <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                                    <div class="price">￥50000/元 天</div>
                                     <div class="textinfo">
-                                        <p><span>场地类型：</span>高端场所 | 主题派对</p>
-                                        <p><span>落地区域：</span>主题餐厅</p>
-                                        <p><span>地址：</span>上海市 黄浦区|南京东路789号</p>
+                                        <p>最大容纳：800人</p>
+                                        <p>空间面积：60㎡</p>
+                                        <p>地理位置：浦东新区陆家嘴</p>
                                     </div>
                                 </div>
                             </li>
@@ -232,7 +239,7 @@
                         </div>
                         <div class="cont bt1">
                             <h6 class="tip">推荐理由</h6>
-                            <dl><i class="icons icon-evtype"></i>
+                            <dl><i class="icons icon-zan-red"></i>
                                 <dd>酒店｜特色类型</dd>
                             </dl>
                         </div>

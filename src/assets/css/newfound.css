@@ -31,7 +31,10 @@
 .selectlist li:hover input{
     color: #fff;
 }
-.selectlist li:hover .el-select .el-input .el-input__icon{color: #fff;}
+.selectlist li:hover .el-select .el-input .el-input__icon{
+    color: #fff;
+    border-top-color: #fff;
+}
 .el-select-dropdown{
     box-shadow: none;
     border-radius: 0;
