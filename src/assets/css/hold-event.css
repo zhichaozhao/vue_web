@@ -745,7 +745,7 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     color:#4a90e2;
     margin-bottom: 24px;
 }
-.evdtlcont .collect{
+.evdtlcont .collect,.banner-cont .collect{
     width: 60px;
     height: 60px;
     border: 1px solid #ccc;
@@ -756,7 +756,7 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     top:0;
     box-sizing: border-box;
 }
-.evdtlcont .collect .icon-collect{
+.evdtlcont .collect .icon-collect,.banner-cont .collect .icon-collect{
     width: 30px;
     height: 30px;
     display: block;
@@ -1561,4 +1561,34 @@ button .icon-arrowbottom{
 }
 .events-container .classfiylist li p{
     font-size: 14px;
+}
+.yun-swiper-prev,.yun-swiper-next{
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 38px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    -moz-background-size: 27px 44px;
+    -webkit-background-size: 27px 44px;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 25px 12px;
+    background-color: rgba(255,255,255,.5);
+}
+.yun-swiper-prev span,.yun-swiper-next span{
+    width: 24px;
+    height: 24px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+}
+.yun-swiper-prev{
+    left: 0;
+    right: auto;
+}
+.yun-swiper-next{
+    right: 0;
+    left: auto;
 }

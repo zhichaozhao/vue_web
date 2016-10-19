@@ -11,10 +11,7 @@
                         <div class="title">
                             <h2>03 - 大会议室</h2>
                             <p class="addr">区域位置 : 上海市闸北区大场、大华沪太支路538号飞马旅5i</p>
-                            <a href="javascript:;" class="collect fr">
-                                <i class="icon-collect"></i>
-                                <span>收藏</span>
-                            </a>
+                            <a href="javascript:;" class="collect"><i class="icon-collect"></i> <span>收藏</span></a>
                         </div>
                         <div class="banner">
                             <div class="swiper-container banner-swiper">
@@ -34,8 +31,12 @@
                                 <div class="swiper-pagination"></div>
 
                                 <!-- 如果需要导航按钮 -->
-                                <div class="swiper-button-prev "></div>
-                                <div class="swiper-button-next"></div>
+                                <div class="yun-swiper-prev">
+                                    <span class="icon-arrowleft"></span>
+                                </div>
+                                <div class="yun-swiper-next">
+                                    <span class="icon-arrowright"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -309,8 +310,8 @@
         components: {},
         mounted () {
             var swiper = new Swiper('.banner-swiper', {
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
+                nextButton: '.yun-swiper-next',
+                prevButton: '.yun-swiper-prev',
                 pagination: '.swiper-pagination',
                 paginationType: 'fraction'
             });
