@@ -135,9 +135,41 @@
     width:224px;
     height:224px;
     background-color: #fff;
+    margin-right: 20px;
 }
-.platform-super ul li .super-icon{
+.platform-super ul,.team-super ul{
+    margin-right: -20px;
+}
+.platform-super ul li .super-icon,.team-super ul li .super-icon{
     width: 46px;
     height: 46px;
     margin: auto;
+    display: block;
+    margin-top: 46px;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+.platform-super ul li .super-icon img,.team-super ul li .super-icon img{
+    max-width: 46px;
+    max-height: 46px;
+}
+.platform-super p,.team-super p{
+    text-align: center;
+    font-size:18px;
+    color:#000000;
+    margin-bottom: 4px;
+}
+.team-super ul li{
+    float: left;
+    margin-right: 20px;
+    background-color: #fff;
+    width:386px;
+    height:200px;
+}
+.ip-page{
+    margin-bottom: 120px;
+}
+.brand-swiper img{
+    width: 100%;
 }

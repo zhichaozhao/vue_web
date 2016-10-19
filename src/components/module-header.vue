@@ -23,15 +23,23 @@
                     <!--<router-link tag="li" to="/">-->
                         <!--<a href="/" target="_blank">首页</a>-->
                     <!--</router-link>-->
-                    <li class="current">
-                        <router-link to="/">首页</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/event">办活动</router-link>
-                    </li>
-                    <li><a target="_blank" href="javascript:;">要开店</a></li>
-                    <li><a target="_blank" href="javascript:;">找IP</a></li>
-                    <li><a target="_blank" href="javascript:;">新发现</a></li>
+                    <!--<li :class="this.$router.path == '/' ? 'current' : '' ">-->
+                        <!--<router-link to="/">首页</router-link>-->
+                    <!--</li>-->
+                    <router-link tag="li" to="/" exact>
+                        <a>首页</a>
+                    </router-link>
+                    <router-link tag="li" to="/event">
+                        <a>办活动</a>
+                    </router-link>
+                    <router-link tag="li" to="/openshop">
+                        <a>要开店</a>
+                    </router-link>
+                    <router-link tag="li" to="/ip">
+                        <a>找IP</a>
+                    </router-link>
+
+                    <!--<li><a target="_blank" href="javascript:;">新发现</a></li>-->
                 </ul>
             </div>
 
@@ -97,7 +105,10 @@
                 type: String,
                 default: "标题"
             }
-        }
+        },
+        mounted(){
+            console.log(this.$route)
+        },
     }
 </script>
 
@@ -171,7 +182,7 @@
     }
 
     .navbar li a:hover,
-    .navbar li.current a {
+    .navbar li.current a,.navbar li.router-link-active a {
         background-color: #fff;
         color: #000;
     }

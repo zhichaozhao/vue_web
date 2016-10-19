@@ -2,7 +2,10 @@
   <div id="app2">
     <module-header></module-header>
 
-    <router-view></router-view>
+    <!--<router-view></router-view>-->
+
+      <router-view class="child-view"></router-view>
+
 
     <module-footer></module-footer>
   </div>

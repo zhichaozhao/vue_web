@@ -18,13 +18,15 @@
                                 <div class="swiper-wrapper">
 
                                     <div class="swiper-slide">
-                                        <img class="imgload" src="http://placehold.it/790x526" alt="首页banner图片01">
+                                        <img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="imgload" src="http://placehold.it/790x526" alt="首页banner图片02">
+                                        <img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
+
                                     </div>
                                     <div class="swiper-slide">
-                                        <img class="imgload" src="http://placehold.it/790x526" alt="首页banner图片02">
+                                        <img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
+
                                     </div>
                                 </div>
                                 <!-- 如果需要分页器 -->
@@ -152,7 +154,7 @@
 
                     </div>
                     <h5>相关专题</h5>
-                    <div class="relative-topic">
+                    <div class="relative-topic yun-swiper-wrap2">
                         <div class="swiper-container relative-topic-swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide topic-pic">
@@ -168,8 +170,12 @@
                             <!-- Add Pagination -->
                             <!--<div class="swiper-pagination"></div>-->
                             <!-- Add Arrows -->
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                            <div class="yun-swiper-prev">
+                                <span class="icon-arrowleft white"></span>
+                            </div>
+                            <div class="yun-swiper-next">
+                                <span class="icon-arrowright white"></span>
+                            </div>
                         </div>
                     </div>
                     <h5>同类空间推荐</h5>
@@ -246,10 +252,7 @@
 
 
                     </div>
-                    <div class="map">
-
-                    </div>
-
+                    <div class="map"></div>
                     <div class="other-space">
                         <h4>上海蒲公英会议中心－北中环的其他空间</h4>
                         <ul>
@@ -320,13 +323,14 @@
                 nextButton: '.yun-swiper-next',
                 prevButton: '.yun-swiper-prev',
                 pagination: '.swiper-pagination',
-                paginationType: 'fraction'
+                paginationType: 'fraction',
+                paginationHide:true
             });
 
             var swiper2 = new Swiper('.relative-topic-swiper', {
-//                pagination: '.swiper-pagination',
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
+                pagination: '.relative-topic-swiper .swiper-pagination',
+                nextButton: '.yun-swiper-next',
+                prevButton: '.yun-swiper-prev',
                 slidesPerView: 2,
                 centeredSlides: false,
                 spaceBetween: 10,

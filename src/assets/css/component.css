@@ -230,6 +230,50 @@
     border-color: #fff;
 }
 
+/*swiper左右箭头*/
+/*空间详情页 相关专题 左右箭头*/
+.yun-swiper-wrap2 .yun-swiper-prev span,.yun-swiper-wrap2 .yun-swiper-next span{
+    width: 12px;
+    height: 12px;
+    top: 34px;
+}
+.yun-swiper-wrap2 .yun-swiper-prev,.yun-swiper-wrap2 .yun-swiper-next{
+    margin-top: -40px;
+}
+
+.yun-swiper-prev,.yun-swiper-next{
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 80px;
+    margin-top: -40px;
+    z-index: 10;
+    cursor: pointer;
+    -moz-background-size: 27px 44px;
+    -webkit-background-size: 27px 44px;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,.5);
+}
+.yun-swiper-prev span,.yun-swiper-next span{
+    width: 24px;
+    height: 24px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    position: absolute;
+    top: 28px;
+}
+.yun-swiper-prev span{left: 13px;}
+.yun-swiper-next span{right: 13px;}
+.yun-swiper-prev{
+    left: 0;
+    right: auto;
+}
+.yun-swiper-next{
+    right: 0;
+    left: auto;
+}
 
 
 

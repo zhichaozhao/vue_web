@@ -2,10 +2,37 @@
 
     <div class="w1200 ip-page">
         <div class="top-banner">
-            <img src="http://placehold.it/1200x400" alt="">
+            <img src="http://www.atool.org/placeholder.png?size=1200x400&text=图片&&bg=836&fg=fff" alt="">
         </div>
         <div class="module-header">
             <span>品牌推荐</span>
+        </div>
+        <div class="yun-swiper-wrap2 brand-swiper">
+            <div class="swiper-container relative-topic-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide topic-pic">
+                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
+                    </div>
+                    <div class="swiper-slide topic-pic">
+                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
+                    </div>
+                    <div class="swiper-slide topic-pic">
+                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
+                    </div>
+                    <div class="swiper-slide topic-pic">
+                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <!--<div class="swiper-pagination"></div>-->
+                <!-- Add Arrows -->
+                <div class="yun-swiper-prev">
+                    <span class="icon-arrowleft black"></span>
+                </div>
+                <div class="yun-swiper-next ">
+                    <span class="icon-arrowright black"></span>
+                </div>
+            </div>
         </div>
         <div class="module-header">
             <span>IP类别</span>
@@ -61,7 +88,7 @@
             </a>
         </div>
         <div class="case-list">
-            <ul>
+            <ul class="clearfix">
                 <li v-for="i in s2">
                     <a href="">
                         <img src="http://placehold.it/386x300" alt="">
@@ -71,18 +98,53 @@
             </ul>
         </div>
         <div class="module-header">
-            <span>精选案例</span>
-            <a href="" class="more">
-                平台优势
-                <i class="icon icon-arrowright"></i>
-            </a>
+            <span>平台优势</span>
         </div>
         <div class="platform-super">
-            <ul>
+            <ul class="clearfix">
                 <li>
-                    <span class="super-icon"></span>
+                    <span class="super-icon"><img src="/static/images/ip/pt1.png" alt=""></span>
                     <p>全面整合文创资源</p>
                     <p>（已有合作版权近50家）</p>
+                </li>
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/pt2.png" alt=""></span>
+                    <p>全面整合文创资源</p>
+                    <p>（已有合作版权近50家）</p>
+                </li>
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/pt3.png" alt=""></span>
+                    <p>全面整合文创资源</p>
+                    <p>（已有合作版权近50家）</p>
+                </li>
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/pt4.png" alt=""></span>
+                    <p>全面整合文创资源</p>
+                    <p>（已有合作版权近50家）</p>
+                </li>
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/pt5.png" alt=""></span>
+                    <p>全面整合文创资源</p>
+                    <p>（已有合作版权近50家）</p>
+                </li>
+            </ul>
+        </div>
+        <div class="module-header">
+            <span>团队优势</span>
+        </div>
+        <div class="team-super">
+            <ul class="clearfix">
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/td1.png" alt=""></span>
+                    <p>全面整合文创资源</p>
+                </li>
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/td2.png" alt=""></span>
+                    <p>全面整合文创资源</p>
+                </li>
+                <li>
+                    <span class="super-icon"><img src="/static/images/ip/td3.png" alt=""></span>
+                    <p>全面整合文创资源</p>
                 </li>
             </ul>
         </div>
@@ -95,6 +157,7 @@
     import Lib from 'assets/Lib.js';
     require ('assets/css/component.css')
     require ('assets/css/ip.css')
+    import 'assets/libs/swiper/swiper.js'
     export default {
         data(){
             return {
@@ -102,6 +165,17 @@
                 s2:[1,2,3]
             }
 
+        },
+        mounted () {
+            var swiper2 = new Swiper('.relative-topic-swiper', {
+                pagination: '.swiper-pagination',
+                nextButton: '.yun-swiper-next',
+                prevButton: '.yun-swiper-prev',
+                slidesPerView: 3,
+                centeredSlides: false,
+                spaceBetween: 10,
+                paginationHide:true
+            });
         },
         components: {},
 
