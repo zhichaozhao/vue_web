@@ -25,7 +25,7 @@
                 <td>亲子活动</td>
                 <td><a href="">奢居会派对会所</a></td>
                 <td>已收到2份报价</td>
-                <td><a href="javascript:void(0)">查看</a></td>
+                <td><a href="/personal/enquiry/dtl">查看</a></td>
             </tr>
             <tr>
                 <td>2016/8/26 15:00</td>
@@ -46,6 +46,34 @@
                 <td><a href="">查看</a></td>
             </tr>
         </table>
-        <!--<paging :page.sync="page" :record-count="recordCount" :psize="20"></paging>-->
-    </div>
+        <div class="text-center">
+            <el-pagination
+                    @sizechange="handleSizeChange"
+                    @currentchange="handleCurrentChange"
+                    :current-page="5"
+                    :page-size="100"
+                    layout="prev, pager, next"
+                    :total="1000">
+            </el-pagination>
+        </div>
+    <!--</div>-->
 </template>
+<script>
+    export default {
+        data() {
+            return {
+                page: 1,
+                recordCount: 205
+            }
+        },
+        components: {},
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        }
+    }
+</script>

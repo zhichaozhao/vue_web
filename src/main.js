@@ -69,6 +69,10 @@ const router = new VueRouter({
                 path: '/newfound/articlelist',
                         component: (resolve) => require(['./components/newfound/articlelist'], resolve)
             },
+            {
+                path: '/ip',
+                        component: (resolve) => require(['./components/ip/ip'], resolve)
+            },
 
       ]
 })

@@ -28,6 +28,7 @@ a,button{
 .ml15{margin-left: 15px}
 .ml20{margin-left: 20px}
 .red{color:#e92332;}
+.text-center{text-align: center}
 .icons{
     display: inline-block;
     background: url("/static/images/yun.png") no-repeat;

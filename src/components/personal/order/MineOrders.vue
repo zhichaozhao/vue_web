@@ -47,14 +47,35 @@
                 <td><a href="">查看</a></td>
             </tr>
         </table>
-        <!--<paging :page.sync="page" :record-count="recordCount" :psize="20"></paging>-->
-        <el-pagination
-                @sizechange="handleSizeChange"
-                @currentchange="handleCurrentChange"
-                :current-page="5"
-                :page-size="100"
-                layout="prev, pager, next, jumper"
-                :total="1000">
-        </el-pagination>
+        <div class="text-center">
+            <el-pagination
+                    @sizechange="handleSizeChange"
+                    @currentchange="handleCurrentChange"
+                    :current-page="5"
+                    :page-size="100"
+                    layout="prev, pager, next"
+                    :total="1000">
+            </el-pagination>
+        </div>
+
     </div>
 </template>
+<script>
+    export default {
+        data() {
+            return {
+                page: 1,
+                recordCount: 205
+            }
+        },
+        components: {},
+        methods: {
+            handleSizeChange(val) {
+                console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                console.log(`当前页: ${val}`);
+            }
+        }
+    }
+</script>

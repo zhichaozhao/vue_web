@@ -51,6 +51,11 @@ body .el-pagination{
 }
 
 /*个人中心分页*/
+.personal .el-pagination{
+    display: inline-block;
+    margin: auto;
+
+}
 .personal .el-pagination .btn-next,
 .personal .el-pagination .btn-prev,
 .personal .el-pager li:last-child,
@@ -59,7 +64,7 @@ body .el-pagination{
     height: 30px;
     background:#eeeeee;
     border: 0;
-    margin-left: 10px;
+    margin-right: 10px;
     line-height: 30px;
 }
 .personal .el-pager li.active{
@@ -69,6 +74,9 @@ body .el-pagination{
 }
 .personal .el-pager li.btn-quicknext,.personal .el-pager li.btn-quickprev{
     line-height: 30px;
+}
+.personal .el-pagination__jump{
+    /*display: none;*/
 }
 /*.personal .el-pagination .btn-next,*/
 /*.personal .el-pagination .btn-prev{*/
