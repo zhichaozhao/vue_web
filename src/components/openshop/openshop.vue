@@ -56,7 +56,7 @@
             <h3>合作流程</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont process">
+        <ul class="cont process clearfix">
             <li>
                 <div class="ibox">
                     <span class="img"></span>
@@ -97,7 +97,6 @@
                     <span class="img"></span>
                     <p>平台战略推广与支持</p>
                 </div>
-                <span class="iconright"></span>
             </li>
         </ul>
     </div><!--合作流程-end-->
@@ -108,7 +107,7 @@
             <h3>专题</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont">
+        <ul class="cont subject clearfix">
             <li>
                 <a class="img" href="javascript:;"><img src=""></a>
                 <div class="text">
@@ -134,12 +133,28 @@
     </div><!--专题-end-->
 
     <!--空间分类-->
-    <div class="w1200 mt30">
+    <div class="w1200 mt30 clearfix">
         <div class="evtitle clearfix">
             <h3>空间分类</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <div class="cont classfiylist clearfix">
+        <div class="fl cont classfiylist clearfix">
+            <a class="art">
+                <i class="icons"></i>
+                <p>艺术画廊</p>
+            </a>
+            <a class="show">
+                <i class="icons"></i>
+                <p>秀场展馆</p>
+            </a>
+            <a class="business">
+                <i class="icons"></i>
+                <p>商业广场</p>
+            </a>
+            <a class="starbusiness">
+                <i class="icons"></i>
+                <p>星级酒店</p>
+            </a>
             <a class="art">
                 <i class="icons"></i>
                 <p>艺术画廊</p>
@@ -157,7 +172,7 @@
                 <p>星级酒店</p>
             </a>
         </div>
-        <a class="more">
+        <a class="fr classfiymore">
             <i class="icons"></i>
             <p>更多分类</p>
         </a>

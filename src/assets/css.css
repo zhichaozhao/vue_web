@@ -184,7 +184,7 @@ body .el-select .el-input .el-input__icon.is-reverse{
 .nav-location .el-select .el-input .el-input__icon{
     color: #fff;
     font-size: 12px;
-    right: 20px;
+    right: 15px;
     border-top-color: #fff;
 }
 .nav-location .el-input__inner{color: #fff;}
