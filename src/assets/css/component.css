@@ -204,6 +204,7 @@
     position: absolute;
     top: 50%;
     margin-top: -40px;
+    z-index: 10;
 }
 
 .btns .btn:hover {

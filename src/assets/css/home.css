@@ -91,6 +91,7 @@
     width: 100%;
     height: 50px;
     line-height: 50px;
+    cursor: pointer;
 }
 
 .search .result .icon-updown {
@@ -145,6 +146,7 @@ body .el-select-dropdown__item.selected{
 .dowhat .result{
     padding: 0 20px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 .dowhat-contlist {
     width: 800px;
@@ -327,6 +329,8 @@ li .imgtitle {
 .citysubject h3 {
     width: 1200px;
     margin: 0 auto;
+    font-size: 24px;
+    margin-bottom: 30px;
 }
 
 .citysubject .cont {
@@ -640,4 +644,9 @@ i.zan {
     width: 1200px;
     height: 157px;
     background: #fff;
+}
+
+/*swiper*/
+.citySelection .btns{
+    z-index: 99;
 }

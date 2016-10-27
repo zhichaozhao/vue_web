@@ -12,9 +12,9 @@
                     <template>
                         <el-select v-model="navValCity">
                             <el-option
-                                    v-for="item in options"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="item in this.$parent.$data.cities"
+                                    :label="item.name"
+                                    :value="item.name">
                             </el-option>
                         </el-select>
                     </template>
@@ -97,17 +97,23 @@
                     value: '选项5',
                     label: '深圳'
                 }],
-                navValCity: '选项1'
+                navValCity: '上海',
             }
         },
         props: {
             "title": {
                 type: String,
                 default: "标题"
+            },
+            "cities" : {
+                type : String,
+                default : []
             }
         },
-        mounted(){
-            console.log(this.$route)
+        mounted () {
+            var self = this;
+            console.log(this.$parent.$data.cities);
+//            console.log(this.$route)
         },
     }
 </script>

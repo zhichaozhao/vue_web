@@ -18,26 +18,22 @@
                         <!--<i class="icon-updown"></i>-->
                         <el-select v-model="value">
                             <el-option
-                                    v-for="item in options"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="item in this.$parent.$data.cities"
+                                    :label="item.name"
+                                    :value="item.name">
                             </el-option>
                         </el-select>
                     </div>
-                    <ul class="cont citylist hide">
-                        <li><a href="javasctipt;;">上海</a></li>
-                        <li><a href="javasctipt;;">北京</a></li>
-                    </ul>
                 </div>
                 <!--城市选择-结束-->
 
                 <!--做什么-->
-                <div class="fl select ml20 dowhat">
-                    <div class="result" @click="showdowhat=!showdowhat">
-                        <input type="text" value="" placeholder="做什么">
+                <div class="fl select ml20 dowhat"  id="whatToSearch">
+                    <div class="result" v-on:click="whatToSearchInputClick">
+                        <input type="text" disabled value="" placeholder="做什么">
                         <i class="el-input__icon el-icon-caret-bottom"></i>
                     </div>
-                    <div class="cont dowhat-contlist" v-show="showdowhat">
+                    <div class="cont dowhat-contlist" v-show="showdowhat" id="whatToSearchContent">
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
@@ -122,23 +118,35 @@
                 <p class="imgtitle">我要办活动</p>
             </li>
         </ul>
-        <!--快捷链接块-结束-->
 
         <!--城市精选专题-开始-->
         <div class="section citysubject clearfix">
-            <h3>城市精选专题</h3>
-            <div class="cont">
-                <div class="btns">
-                <a class="btn btnleft" href="javascript:;">
-                    <span class="icon-arrowleft"></span>
-                </a>
-                <a class="btn btnright" href="javascript:;">
-                    <span class="icon-arrowright"></span>
-                </a>
+            <div class="w1200">
+                <h3>城市精选专题</h3>
+                <div class="cont">
+                    <div class="btns">
+                        <a class="btn btnleft" href="javascript:;">
+                            <span class="icon-arrowleft"></span>
+                        </a>
+                        <a class="btn btnright" href="javascript:;">
+                            <span class="icon-arrowright"></span>
+                        </a>
+                    </div>
+                    <div class="citySelection" style="height: 100%;">
+                        <div class="swiper-wrapper swiper-container">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">Slide 4</div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <ul class="subject-list"></ul>
+                </div>
+                <a href="javascript:;" class="btnlookmore">查看更多专题</a>
             </div>
-                <ul class="subject-list"></ul>
-            </div>
-            <a href="javascript:;" class="btnlookmore">查看更多专题</a>
+
         </div>
         <!--城市精选专题-结束-->
 
@@ -253,7 +261,7 @@
         <div class="section ipwinchuang clearfix">
             <h3>IP文创项目</h3>
             <ul class="cont clearfix">
-                <li class="clearfix" v-for="ipinfo in ipinfos">
+                <li class="clearfix" v-for="item in ipProject">
                     <a class="maskbtn" href="javascript:;">
                         <p>合作咨询</p>
                     </a>
@@ -261,14 +269,14 @@
                         <img src="">
                     </div>
                     <div class="textinfo">
-                        <div class="title">冰川时代主题快闪店</div>
+                        <div class="title">{{item.name}}</div>
                         <p class="tags">
                             <span>ICE AGE</span>
                             <span>大电影</span>
                         </p>
                         <div class="group">
                             <p>类别：影视</p>
-                            <p>来源：国际</p>
+                            <p>来源：{{item.source}}</p>
                         </div>
                         <p>场地面积：100-500㎡</p>
                         <p>适用人群：冰川时代影迷</p>
@@ -455,7 +463,8 @@
 <script>
 
     import Lib from 'assets/Lib.js';
-    //import Jquery from 'assets/jquery-3.1.0.min.js'
+    import 'assets/libs/swiper/swiper.js'
+
     require ('assets/css/component.css');
     require ('assets/css/home.css');
     export default {
@@ -493,18 +502,51 @@
                     label: '北京烤鸭'
                 }],
                 value: '',
-                showdowhat: 0
+                showdowhat: 0,
+                ipProject : []
             }
 
         },
         components: {},
-        ready(){
+        mounted () {
+            var self = this;
+            var citySelectionSwiper = new Swiper('.citySelection', {
+                pagination: '.swiper-pagination',
+                nextButton: '.citysubject .btnright',
+                prevButton: '.citysubject .btnleft',
+                slidesPerView: 3,
+                centeredSlides: false,
+                paginationClickable: true,
+                spaceBetween: 1,
+            });
+
+            var self = this;
+            $.ajax({
+                url: "http://172.16.1.154:3000/api/projects/get_home_list", context: document.body, success: function (data) {
+                    console.log(data);
+                    self.ipProject = data.projects
+                }
+            });
 
         },
-        methods: {}
+        methods: {
+            whatToSearchInputClick : function () {
+                this.showdowhat = !this.showdowhat
+            }
+
+        }
     }
 </script>
-
+<style>
+    .citySelection .swiper-slide{
+        background-color: #fff;
+        height: 350px;
+        margin-right: 1px;
+    }
+    .citySelection{
+        width: 1200px;
+    }
+</style>
 
 
 
