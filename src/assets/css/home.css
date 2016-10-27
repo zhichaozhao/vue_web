@@ -32,7 +32,7 @@
 .banner-wrap{
     width: 100%;
     min-width: 1200px;
-    height: 533px;
+    height: 400px;
     margin: 0 auto;
     background: #ddd;
     overflow: hidden;
@@ -41,7 +41,7 @@
 
 .banner {
     width: 1920px;
-    height: 533px;
+    height: 400px;
     background: #ddd;
     position: absolute;
     left: 50%;
@@ -306,16 +306,17 @@ li .imgtitle {
     -o-transition: All 1s;
 }
 
-.classifyselected li:hover .numb {
-    transform-origin: -82px 85px;
-    -webkit-transform-origin: -82px 85px;
+/**小圆转一圈效果**/
+/*.classifyselected li:hover .numb {*/
+    /*transform-origin: -82px 85px;*/
+    /*-webkit-transform-origin: -82px 85px;*/
 
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-}
+    /*transform: rotate(360deg);*/
+    /*-webkit-transform: rotate(360deg);*/
+    /*-moz-transform: rotate(360deg);*/
+    /*-o-transform: rotate(360deg);*/
+    /*-ms-transform: rotate(360deg);*/
+/*}*/
 
 .citysubject.section {
     width: 100%;

@@ -65,6 +65,7 @@
       <div class="w1200 mt20 section-search">
         <div class="mask"></div>
         <div class="search">
+          <h2>找到适合你的活动空间</h2>
           <div class="inputbox clearfix">
             <input type="text" placeholder="商圈／地标／机场／火车站／场地名">
             <button class="searchbtn">搜&nbsp;索</button>
@@ -149,7 +150,7 @@
                 <div class="img">
                   <img src="/static/images/home/imgmain1.png">
                   <div class="collect-mask">
-                    <div class="collect icons icon-collectbg-hv"></div>
+                    <div class="collect icons icon-collectbgmore-hv"></div>
                     <div class="mask"></div>
                   </div>
                 </div>

@@ -1,0 +1,214 @@
+
+/*搜索*/
+.banner-search{
+    width: 100%;
+    min-width: 1200px;
+    height: 600px;
+    background: url("/static/images/openshopbanner.png") no-repeat center;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.banner-search>h1{
+    font-size:38px;
+    height: 38px;
+    line-height: 38px;
+    color:#fff;
+    letter-spacing:20px;
+    text-align:center;
+    text-indent: 20px;
+    margin-top: 115px;
+}
+.banner-search .btnopenshop{
+    border:1px solid #fff;
+    width:200px;
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+    display: block;
+    margin: 70px auto 80px;
+    font-size: 24px;
+    color: #fff;
+    box-sizing: border-box;
+}
+.banner-search .search{
+    width: 680px;
+    margin: 0 auto;
+    position: relative;
+}
+.banner-search .search>h2{
+    width: 710px;
+    font-size:38px;
+    height: 38px;
+    line-height: 38px;
+    color:#ffffff;
+    letter-spacing:20px;
+    text-align: left;
+    margin-bottom: 50px;
+}
+.banner-search .inputbox{width: 100%;}
+.banner-search .inputbox input{
+    float: left;
+    display: block;
+    width: 470px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #000;
+    background: #fff;
+}
+.banner-search .searchbtn{
+    float: right;
+    display: block;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #fff;
+    background:#272335;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+}
+.banner-search .hot{
+    margin-top: 10px;
+}
+.banner-search .hot p{
+    float: left;
+    color: #fff;
+}
+.banner-search .hotlist{
+    float: left;
+}
+.banner-search .hotlist a{
+    color: #fff;
+    margin-right: 5px;
+}
+
+/**主体部分开始**/
+.evtitle{
+    width: 100%;
+}
+.evtitle h3{
+    float: left;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+.evtitle .more{
+    float: right;
+    height: 24px;
+    line-height: 24px;
+    font-size: 18px;
+    color: #000;
+    padding-right: 20px;
+    position: relative;
+}
+.evtitle .more:hover{
+    color:#e92332;
+    border-color: #e92332;
+}
+.evtitle .more:hover .icon{
+    color:#e92332;
+    border-color: #e92332;
+}
+.evtitle .more .icon{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 13px;
+    height: 13px;
+}
+
+/*我要开店*/
+.openshop li{
+    float: left;
+    width: 216px;
+    height: 80px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background: #fff;
+    margin-right: 30px;
+}
+.openshop li:last-child{
+    margin-right: 0;
+}
+.openshop li>a{
+    width: 100%;
+    height: 100%;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    line-height: 80px;
+}
+.openshop li.dob>a{
+    line-height: 22px;
+
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    display: -o-box;
+    -o-box-orient: horizontal;
+    -o-box-pack: center;
+    -o-box-align: center;
+
+    display: -ms-box;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -ms-box-align: center;
+
+    display: box;
+    box-orient: horizontal;
+    box-pack: center;
+    box-align: center;
+}
+.openshop li>a span{
+    font-size: 12px;
+    line-height: 12px;
+}
+
+
+/*分类*/
+.classfiylist>a{
+    float: left;
+    width: 162px;
+    height: 100px;
+    background: #fff;
+    text-align: center;
+    margin-right: 10px;
+    overflow: hidden;
+}
+.classfiylist>a:last-child{
+    margin-right:0;
+}
+.classfiylist>a .icons{
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+.classfiylist>a.art .icons{
+    background-position: -240px 0;
+}
+.classfiylist>a.show .icons{
+    background-position: -240px -60px;
+}
+.classfiylist>a.business .icons{
+    background-position: -240px -120px;
+}
+.classfiylist>a.starbusiness .icons{
+    background-position: -240px -180px;
+}
+.classfiylist>a.more .icons{
+    background-position: -240px -240px;
+}
+.classfiylist>a p{
+    font-size: 18px;
+}

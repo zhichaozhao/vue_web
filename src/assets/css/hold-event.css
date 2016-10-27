@@ -158,9 +158,19 @@
 }
 .section-search .search{
     width: 680px;
-    margin: 160px auto 0;
+    margin: 75px auto 0;
     position: relative;
     z-index: 2;
+}
+.section-search .search>h2{
+    width: 710px;
+    font-size:38px;
+    height: 38px;
+    line-height: 38px;
+    color:#ffffff;
+    letter-spacing:33px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 .section-search .inputbox{width: 100%;}
 .section-search .inputbox input{

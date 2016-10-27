@@ -172,6 +172,13 @@
 .icon-collectbg-hv{/*已收藏-大*/
     background-position: -60px -120px;
 }
+.icon-collectbgmore{/*未收藏-最大*/
+    background-position: -120px -180px;
+}
+.icon-collectbgmore-hv{/*已收藏-最大*/
+    background-position: -120px -120px;
+}
+
 .icon-warning{/*警告-小*/
     width: 12px;
     height: 12px;
