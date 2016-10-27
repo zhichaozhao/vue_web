@@ -77,6 +77,10 @@ const router = new VueRouter({
                 path: '/ip',
                         component: (resolve) => require(['./components/ip/ip'], resolve)
             },
+            {
+                path: '/openshop',
+                    component: (resolve) => require(['./components/openshop/openshop'], resolve)
+            },
 
       ]
 })

@@ -456,8 +456,8 @@
 
     import Lib from 'assets/Lib.js';
     //import Jquery from 'assets/jquery-3.1.0.min.js'
-    import 'assets/css/component.css';
-    import 'assets/css/home.css';
+    require ('assets/css/component.css');
+    require ('assets/css/home.css');
     export default {
         data(){
             return {
