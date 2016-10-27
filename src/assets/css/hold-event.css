@@ -355,12 +355,14 @@
     text-align:center;
     background: none;
 }
+.venues-recommend li .img:hover .collect-mask{display: block;}
 .collect-mask{
     width: 100%;
     height: 100%;
     position: absolute;
     left: 0;
     top: 0;
+    display: none;
 }
 .collect-mask .collect{
     width: 60px;

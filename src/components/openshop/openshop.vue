@@ -56,7 +56,7 @@
             <h3>合作流程</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont">
+        <ul class="cont process">
             <li>
                 <div class="ibox">
                     <span class="img"></span>
@@ -174,11 +174,84 @@
         </ul>
     </div><!--TOP榜单-end-->
 
-    <!--推荐空间-->
-    <div class=""></div>
+    <!--推荐空间-开始-->
+    <div class="w1200 mt30">
+        <div class="evtitle clearfix">
+            <h3>推荐空间</h3>
+            <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
+        </div>
+        <ul class="cont recommend venues-recommend clearfix">
+            <li v-for="venue in venues">
+                <div class="img">
+                    <img src="/static/images/home/imgmain1.png">
+                    <div class="collect-mask">
+                        <div class="collect icons icon-collectbgmore-hv"></div>
+                        <div class="mask"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <a class="title" href="javascript:;">UNDEF/NE</a>
+                    <div class="price">￥50000/元 天</div>
+                    <p>UNDEF/NE是位于上海著名的创意园区M50里的一个创意空间。在这里，你可以接触到很多文化类活动、演出、创意工作坊和展览等等。</p>
+                    <p>中国 上海市普陀区<br>莫干山路50号6号楼105室</p>
+                </div>
+            </li>
+        </ul>
+    </div><!--推荐空间-结束-->
 
+    <!--精选案例-开始-->
+    <div class="w1200">
+        <div class="evtitle clearfix">
+            <h3>精选案例</h3>
+            <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
+        </div>
+        <ul class="cont clearfix">
+            <li>
+                <div class="textinfo">
+                    <a class="title" href="">Zen & Tea Chamber</a>
+                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
+                    <a class="btnlook" href="">查看</a>
+                </div>
+                <a class="img" href=""><img src=""></a>
+            </li>
+            <li>
+                <div class="textinfo">
+                    <a class="title" href="">Zen & Tea Chamber</a>
+                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
+                    <a class="btnlook" href="">查看</a>
+                </div>
+                <a class="img" href=""><img src=""></a>
+            </li>
+            <li>
+                <div class="textinfo">
+                    <a class="title" href="">Zen & Tea Chamber</a>
+                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
+                    <a class="btnlook" href="">查看</a>
+                </div>
+                <a class="img" href=""><img src=""></a>
+            </li>
+            <li>
+                <div class="textinfo">
+                    <a class="title" href="">Zen & Tea Chamber</a>
+                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
+                    <a class="btnlook" href="">查看</a>
+                </div>
+                <a class="img" href=""><img src=""></a>
+            </li>
+        </ul>
+    </div><!--精选案例-结束-->
 
-    <!--主题部分-结束-->
+    <!--合作伙伴-开始-->
+    <div class="w1200 mt30">
+        <div class="evtitle clearfix">
+            <h3>合作伙伴</h3>
+            <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
+        </div>
+        <ul class="cont clearfix">
+
+        </ul>
+    </div><!--合作伙伴-结束-->
+
 </div>
 </template>
 
@@ -191,7 +264,9 @@
     export default {
         data(){
             return {
-
+                venues:[
+                    1,2,3,4
+                ],
             }
 
         },
