@@ -252,6 +252,10 @@ li .mask {
     left: 0;
     top: 0;
     z-index: 1;
+
+}
+.classifyselected li .mask{
+    border-radius: 50%;
 }
 
 li .imgtitle {

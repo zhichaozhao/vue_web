@@ -4,10 +4,10 @@
 
         <!--<router-view></router-view>-->
 
-        <router-view class="child-view"></router-view>
+        <router-view  class="child-view"></router-view>
 
 
-        <module-footer></module-footer>
+        <module-footer ref="test"></module-footer>
     </div>
 </template>
 
@@ -15,12 +15,18 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
+    const host = "http://172.16.1.154:3000/";
+    window.YUNAPI = {
+        cities : host + 'api/cities',
+        homeIpProject : host + 'api/projects/get_home_list'
+    };
 
     export default {
         name: 'app',
         data(){
             return {
-                cities:[]
+                cities:[],
+                isShowHomeSearchCondition : false
             }
 
         },
@@ -29,9 +35,10 @@
         },
         mounted () {
             var self = this;
+//            console.log(window.YUNAPI);
             $.ajax({
-                url: "http://172.16.1.154:3000/api/cities", context: document.body, success: function (data) {
-                    console.log(data.cities);
+                url: window.YUNAPI.cities, context: document.body, success: function (data) {
+//                    console.log(data.cities);
                     self.cities = data.cities;
                 }
             });
@@ -49,22 +56,9 @@
                     }
                     elem = elem.parentNode;
                 }
-                $('#whatToSearchContent').hide();
-
-
+                this.isShowHomeSearchCondition = false
             }
         }
 
     }
 </script>
-
-<style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-</style>

@@ -33,7 +33,7 @@
                         <input type="text" disabled value="" placeholder="做什么">
                         <i class="el-input__icon el-icon-caret-bottom"></i>
                     </div>
-                    <div class="cont dowhat-contlist" v-show="showdowhat" id="whatToSearchContent">
+                    <div class="cont dowhat-contlist" v-show="this.$parent.$data.isShowHomeSearchCondition" id="whatToSearchContent">
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
@@ -522,7 +522,7 @@
 
             var self = this;
             $.ajax({
-                url: "http://172.16.1.154:3000/api/projects/get_home_list", context: document.body, success: function (data) {
+                url: window.YUNAPI.homeIpProject, context: document.body, success: function (data) {
                     console.log(data);
                     self.ipProject = data.projects
                 }
@@ -531,7 +531,7 @@
         },
         methods: {
             whatToSearchInputClick : function () {
-                this.showdowhat = !this.showdowhat
+                this.$parent.$data.isShowHomeSearchCondition = !this.$parent.$data.isShowHomeSearchCondition
             }
 
         }

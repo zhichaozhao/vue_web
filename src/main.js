@@ -81,6 +81,10 @@ const router = new VueRouter({
                 path: '/openshop',
                     component: (resolve) => require(['./components/openshop/openshop'], resolve)
             },
+            {
+                path: '/test',
+                        component: (resolve) => require(['./components/test2'], resolve)
+            },
 
       ]
 })
@@ -89,7 +93,8 @@ window.app = new Vue({
     render: h => h(App),
     router:router
 
-}).$mount('#app')
+}).$mount('#app');
+
 
 // new Vue({
 //     el: '#app',
@@ -97,4 +102,3 @@ window.app = new Vue({
 // })
 
 
-// 现在，应用已经启动了！
