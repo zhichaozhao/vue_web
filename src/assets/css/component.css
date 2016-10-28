@@ -156,6 +156,26 @@
 .icon-evtype{/*活动类型*/
     background-position: -743px -203px;
 }
+.icon-zansm{/*赞-小（文章详情页）*/
+    width: 20px;
+    height: 20px;
+    background-position: -320px -260px;
+}
+.icon-zansm-hv{/*赞-小（文章详情页）*/
+    width: 20px;
+    height: 20px;
+    background-position: -320px -380px;
+}
+.icon-collectsm{/*未收藏-小（文章详情页）*/
+    width: 20px;
+    height: 20px;
+    background-position: -320px -320px;
+}
+.icon-collectsm-hv{/*已收藏-小（文章详情页）*/
+    width: 20px;
+    height: 20px;
+    background-position: -320px -440px;
+}
 .icon-collect{/*未收藏-小*/
     background-position: -75px -16px;
 }
@@ -174,6 +194,7 @@
 .icon-collectbgmore-hv{/*已收藏-最大*/
     background-position: -120px -120px;
 }
+
 
 .icon-warning{/*警告-小*/
     width: 12px;

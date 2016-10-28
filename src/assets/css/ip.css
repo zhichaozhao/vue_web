@@ -23,6 +23,7 @@
     display: block;
     float: left;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .module-header .more{
     float: right;
@@ -70,12 +71,12 @@
 .concentration ul li p.tag{
     color: #666;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 .concentration ul li dl{
     display: inline-block;
     margin-right: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 .concentration ul li dl dt{
     color: #666;

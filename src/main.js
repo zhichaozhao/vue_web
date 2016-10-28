@@ -74,8 +74,16 @@ const router = new VueRouter({
                         component: (resolve) => require(['./components/newfound/article'], resolve)
             },
             {
+                path: '/articledtl',
+                        component: (resolve) => require(['./components/newfound/article-dtl'], resolve)
+            },
+            {
                 path: '/ip',
                         component: (resolve) => require(['./components/ip/ip'], resolve)
+            },
+            {
+                path: '/iplist',
+                        component: (resolve) => require(['./components/ip/iplist'], resolve)
             },
             {
                 path: '/openshop',
