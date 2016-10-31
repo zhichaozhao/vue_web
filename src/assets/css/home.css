@@ -476,6 +476,8 @@ li .imgtitle {
 .newfound .info-big .text {
     font-size: 18px;
     padding: 7px 15px;
+    display: block;
+    height: 50px;
 }
 
 .newfound .infolist {
@@ -498,7 +500,7 @@ li .imgtitle {
 .newfound .info-normal .text {
     float: left;
     padding: 7px 10px;
-    max-height: 57px;
+    height: 57px;
     overflow: hidden;
 }
 
@@ -539,6 +541,7 @@ li .imgtitle {
 
 .textinfolist li p {
     padding-left: 15px;
+    line-height: 1.4;
 }
 
 /*精选案例*/
@@ -567,6 +570,9 @@ li .imgtitle {
     color: #000;
     font-size: 18px;
     padding-bottom: 5px;
+    height: 55px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .caseselected .textinfo {
@@ -617,7 +623,7 @@ i.zan {
 
 /*媒体报道*/
 .mediacoverage .textinfolist li {
-    height: 69px;
+    height: 70px;
     padding-top: 7px;
     overflow: hidden;
 }

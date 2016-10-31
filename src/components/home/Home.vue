@@ -134,7 +134,7 @@
         <div class="section classifyselected clearfix">
             <h3>分类精选</h3>
             <ul class="cont clearfix">
-                <li>
+                <li v-for="item in typeSelected">
                     <a class="imgnumb" href="javascript:;">
                         <img src="/static/images/home/links1.png">
                         <div class="mask"></div>
@@ -142,46 +142,14 @@
                     <p class="numb">255</p>
                     <p class="imgtitle">高端会所</p>
                 </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">场馆</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">会务中心</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">餐厅酒吧</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">艺术馆画廊</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">星级酒店</p>
-                </li>
+                <!--<li>-->
+                    <!--<a class="imgnumb" href="javascript:;">-->
+                        <!--<img src="/static/images/home/links1.png">-->
+                        <!--<div class="mask"></div>-->
+                    <!--</a>-->
+                    <!--<p class="numb">255</p>-->
+                    <!--<p class="imgtitle">场馆</p>-->
+                <!--</li>-->
             </ul>
         </div>
         <!--分类精选-结束-->
@@ -246,21 +214,21 @@
                         <p>合作咨询</p>
                     </a>
                     <div class="img">
-                        <img src="">
+                        <img v-bind:src="item.img_paths.url">
                     </div>
                     <div class="textinfo">
-                        <div class="title">{{item.name}}</div>
+                        <div class="title">{{item.title}}</div>
                         <p class="tags">
-                            <span>ICE AGE</span>
-                            <span>大电影</span>
+                            <span v-for="i in item.keywords">{{i}}</span>
                         </p>
-                        <div class="group">
-                            <p>类别：影视</p>
+                        <div class="group clearfix">
+                            <p>类别：{{item.p_type}}</p>
                             <p>来源：{{item.source}}</p>
                         </div>
-                        <p>场地面积：100-500㎡</p>
+                        <p>场地面积：{{item.area}}</p>
+                        <!--MARK无对应字段-->
                         <p>适用人群：冰川时代影迷</p>
-                        <p>预算范围：面议</p>
+                        <p>预算范围：{{item.budget_amount}}</p>
                     </div>
                 </li>
             </ul>
@@ -295,7 +263,7 @@
                     <a class="img" href="javascript:;">
                         <img src="">
                     </a>
-                    <a class="text" href="javascript:;">
+                    <a class="text display-center" href="javascript:;">
                         {{newFindFirst.title}}
                     </a>
                 </div>
@@ -305,7 +273,7 @@
                         <a class="img" href="javascript:;">
                             <img src="">
                         </a>
-                        <a class="text" href="javascript:;">
+                        <a class="text display-center" href="javascript:;">
                             {{item.title}}
                         </a>
                     </li>
@@ -361,42 +329,25 @@
                     <img src="/static/images/home/imglogo-media.png">
                 </div>
                 <ul class="fr textinfolist clearfix">
-                    <li>
+                    <li v-for="item in mediaReport">
                         <a href="javascript:;">
                             <div class="title">
                                 <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
+                                <p>{{item.abstract}}</p>
                             </div>
-                            <div class="time">2016-08-15</div>
+                            <div class="time">{{item.i_time}}</div>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
-                            </div>
-                            <div class="time">2016-08-15</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
-                            </div>
-                            <div class="time">2016-08-15</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
-                            </div>
-                            <div class="time">2016-08-15</div>
-                        </a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="javascript:;">-->
+                            <!--<div class="title">-->
+                                <!--<i class="point"></i>-->
+                                <!--<p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>-->
+                            <!--</div>-->
+                            <!--<div class="time">2016-08-15</div>-->
+                        <!--</a>-->
+                    <!--</li>-->
+
                 </ul>
             </div>
         </div>
@@ -482,18 +433,28 @@
                     self.newFindTop = data.home_new_find_top;
                     self.newFindRandom = data.home_new_find_random;
                     self.spaceRecommend = data.home_recommend_space;
-                    self.ipProject = data.home_project;
+
 //                    self.caseSelected = data.home_case_selected;
 
-                    for (var i = 0; i <  data.home_case_selected.length - 1; i++){ // 关键词 需要按,分割
+                    // 关键词 需要按,分割
+                    for (var i = 0; i <  data.home_case_selected.length - 1; i++){
                         data.home_case_selected[i].keywords = data.home_case_selected[i].keyword.split(',')
-                        console.log(data.home_case_selected[i].keywords)
                     }
-
                     self.caseSelected = data.home_case_selected;
+
+                    //ip项目 关键词
+                    for(var i = 0; i <  data.home_project.length - 1; i++){
+                        data.home_project[i].keywords = data.home_project[i].keyword.split(',')
+                    }
+                    self.ipProject = data.home_project;
+
+                    self.typeSelected = data.home_type_selected_by_retail.concat(data.home_type_selected_by_space);
+
 
                     self.newFindTopFour = data.home_new_find_top; // 新发现4个
                     self.newFindFirst = self.newFindTopFour.shift(); //新发现第一个
+
+                    self.mediaReport = data.home_media;
 
 //                    console.log(self.spaceRecommend);
 //                    console.log(self.newFindRandom);
