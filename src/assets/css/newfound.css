@@ -209,10 +209,6 @@
     width: 100%;
     height: 100%;
 }
-.hot-recommend li .img img{
-    width: 100%;
-    height: 100%;
-}
 .hot-recommend li .text{
     width: 250px;
     height: 100%;
@@ -231,11 +227,136 @@
     color: #666;
 }
 
+/*文章详情页*/
+.article-location{margin-top: 28px;}
+.article-location li{
+    float: left;
+    margin-right: 15px;
+}
+.article-location li>a{
+    display: block;
+    width: 100%;
+    padding-right: 15px;
+    color: #000;
+    position: relative;
+}
+.article-location li>a .icon-arrowright{
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    right: 15px;
+    top:5px;
+}
+.article-dtl{
+    margin-top: 60px;
+}
+.article-dtl>h2{
+    font-size:24px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+.article-dtl .describe{
+    color: #666;
+}
+.describe li{
+    float: left;
+    margin-right: 20px;
+}
+.describe li:last-child{margin-right: 0;}
+.describe{
+    padding-bottom: 30px;
+    border-bottom: 2px solid #666;
+}
+.article-dtl .textinfo{
+    padding: 24px 0;
+}
+.article-dtl .textinfo p{
+    margin-bottom: 20px;
+}
+.article-dtl .textinfo img{
+    max-width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.zan-collect{
+    width: 190px;
+    margin: 0 auto;
+}
+.zan-collect li{
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #000;
+    background: #fff;
+    position: relative;
+}
+.zan-collect li>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 50px;
+}
+.zan-collect li .icons{
+    position: absolute;
+    top: 16px;
+    left: 30px;
+}
+.zan-collect li.current>a{color:#e92332;}
+.zan-collect li.zan.current>a .icons{
+    background-position: -320px -380px;
+}
+.zan-collect li.collect.current>a .icons{
+    background-position: -320px -440px;
+}
 
-
-
-
-
+.article-right{padding-top: 20px;}
+.article-right>h2{
+    font-size: 24px;
+    width: 100px;
+    padding-bottom: 6px;
+    margin-bottom: 60px;
+    border-bottom: 2px solid #e92332;
+}
+.article-right li{
+    width:440px;
+    height:295px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.article-right li>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+.article-right li>a .img{
+    width: 100%;
+    height: 100%;
+}
+.article-right li>a .text{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,.7);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.article-right li>a .text h5{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.article-right li>a .text .price{
+    color:#e92332;
+    margin-bottom: 3px;
+}
+.article-right li>a .text p{line-height: 1.6em;}
+.article-right li>a .numb p{
+    float: left;
+    margin-right: 20px;
+}
 
 
 

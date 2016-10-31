@@ -74,8 +74,16 @@ const router = new VueRouter({
                         component: (resolve) => require(['./components/newfound/article'], resolve)
             },
             {
+                path: '/articledtl',
+                        component: (resolve) => require(['./components/newfound/article-dtl'], resolve)
+            },
+            {
                 path: '/ip',
                         component: (resolve) => require(['./components/ip/ip'], resolve)
+            },
+            {
+                path: '/iplist',
+                        component: (resolve) => require(['./components/ip/iplist'], resolve)
             },
             {
                 path: '/openshop',
@@ -85,6 +93,10 @@ const router = new VueRouter({
                 path: '/test',
                         component: (resolve) => require(['./components/test2'], resolve)
             },
+            {
+                path: '/calender',
+                        component: (resolve) => require(['./components/openshop/calender'], resolve)
+            },
 
       ]
 })
@@ -93,8 +105,7 @@ window.app = new Vue({
     render: h => h(App),
     router:router
 
-}).$mount('#app');
-
+}).$mount('#app')
 
 // new Vue({
 //     el: '#app',
@@ -102,3 +113,4 @@ window.app = new Vue({
 // })
 
 
+// 现在，应用已经启动了！

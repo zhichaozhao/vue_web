@@ -55,7 +55,7 @@
                 <i class="icon icon-arrowright"></i>
             </a>
         </div>
-        <div class="concentration">
+        <div class="concentration clearfix">
             <ul>
                 <li v-for="i in s">
                     <a href=""><img src="http://placehold.it/590x400" alt=""></a>
