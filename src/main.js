@@ -46,6 +46,21 @@ const router = new VueRouter({
                     ]
             },
             {
+                path: '/about',
+                    component: (resolve) => require(['./components/about/app.vue'], resolve),
+                        children: [
+                        { path: 'aboutus', component: (resolve) => require(['./components/about/about_us.vue'], resolve) ,name:'云SPACE简介'},
+                        { path: 'news', component: (resolve) => require(['./components/about/news.vue'], resolve) ,name:'云SPACE新闻'},
+                        { path: 'recruitment', component: (resolve) => require(['./components/about/about_recruitment.vue'], resolve) ,name:'云SPACE招聘'},
+                        { path: 'agreement', component: (resolve) => require(['./components/about/about_agreement.vue'], resolve),name:'云SPACE协议' },
+                        { path: 'business', component: (resolve) => require(['./components/about/about_business.vue'], resolve),name:'业务合作'},
+                        { path: 'contact', component: (resolve) => require(['./components/about/about_contact_us.vue'], resolve),name:'联系我们'},
+                        { path: 'drawback', component: (resolve) => require(['./components/about/about_drawback.vue'], resolve),name:'退款说明'},
+                        { path: 'feedback', component: (resolve) => require(['./components/about/about_feedback.vue'], resolve),name:'意见反馈'}
+
+                    ]
+            },
+            {
               path: '/space/dtl',
               component: (resolve) => require(['./components/space/dtl.vue'], resolve)
             },
