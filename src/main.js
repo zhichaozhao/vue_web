@@ -89,6 +89,10 @@ const router = new VueRouter({
                 path: '/openshop',
                     component: (resolve) => require(['./components/openshop/openshop'], resolve)
             },
+            {
+                path: '/calender',
+                        component: (resolve) => require(['./components/openshop/calender'], resolve)
+            },
 
       ]
 })
