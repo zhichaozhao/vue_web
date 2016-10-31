@@ -18,7 +18,9 @@
     const host = "http://172.16.1.154:3000/";
     window.YUNAPI = {
         cities : host + 'api/cities',
-        homeIpProject : host + 'api/projects/get_home_list'
+        homeIpProject : host + 'api/projects/get_home_list',
+        home : host + 'api/indexs',
+        homeSearch : host + 'api/tags/get_home_search'
     };
 
     export default {
@@ -38,7 +40,6 @@
 //            console.log(window.YUNAPI);
             $.ajax({
                 url: window.YUNAPI.cities, context: document.body, success: function (data) {
-//                    console.log(data.cities);
                     self.cities = data.cities;
                 }
             });

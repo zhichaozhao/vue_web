@@ -37,46 +37,22 @@
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
+                                <a href="javascript:;" v-for="(key,value) in searchCondition.space_type">{{key}}</a>
+                                <!--<a href="javascript:;">商业发布</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">要开店</dt>
                             <dd class="fl">
-                                <a href="javascript:;">Pop Up Store</a>
-                                <a href="javascript:;">店中店</a>
-                                <a href="javascript:;">市集/展</a>
+                                <a href="javascript:;" v-for="(key,value) in searchCondition.retail">{{key}}</a>
+                                <!--<a href="javascript:;">店中店</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">IP项目</dt>
                             <dd class="fl">
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
+                                <a href="javascript:;" v-for="(key,value) in searchCondition.project_type">{{key}}</a>
+                                <!--<a href="javascript:;">卡通</a>-->
                             </dd>
                         </dl>
                     </div>
@@ -134,10 +110,14 @@
                     </div>
                     <div class="citySelection" style="height: 100%;">
                         <div class="swiper-wrapper swiper-container">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                            <div class="swiper-slide">Slide 4</div>
+                            <div class="swiper-slide" v-for="item in topicOfCity">
+                                <img src="" alt="">
+                                <p>{{item.title}}</p>
+                            </div>
+                            <!--<div class="swiper-slide">Slide 2</div>-->
+                            <!--<div class="swiper-slide">Slide 3</div>-->
+                            <!--<div class="swiper-slide">Slide 4</div>-->
+
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
@@ -207,54 +187,54 @@
         <!--分类精选-结束-->
 
         <!--空间推荐-开始-->
-        <div class="section spacerecommend clearfix">
-            <h3>空间推荐</h3>
-            <ul class="recommend recommend-main clearfix">
-                <li v-for="spacemain in spacemains">
-                    <div class="img">
-                        <a href="javascript:;">
-                            <img src="/static/images/home/imgmain1.png">
-                        </a>
-                        <span class="tags">上海</span>
-                    </div>
-                    <div class="text">
-                        <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                        <div class="price">￥50000/元 天</div>
-                        <div class="textinfo">
-                            <p><span>场地类型：</span>高端场所 | 主题派对 | 年会晚会 | 颁奖晚会</p>
-                            <p><span>落地区域：</span>主题餐厅</p>
-                            <div class="numb clearfix">
-                                <p><span>面积：</span>450㎡</p>
-                                <p><span>层高：</span>4m</p>
-                                <p><span>人数：</span>200人</p>
-                            </div>
-                            <p><span>地址：</span>上海市 黄浦区 | 南京东路789号</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="recommend recommend-sub clearfix">
-                <li v-for="spacesub in spacesubs">
-                    <div class="img">
-                        <a href="javascript:;">
-                            <img src="/static/images/home/imgmain1.png">
-                        </a>
-                    </div>
-                    <div class="text">
-                        <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                        <div class="price">￥50000/元 天</div>
-                        <div class="city">杭州</div>
-                        <div class="textinfo">
-                            <p><span>场地类型：</span>高端场所 | 主题派对</p>
-                            <p><span>落地区域：</span>主题餐厅</p>
-                            <p><span>地址：</span>上海市 黄浦区|南京东路789号</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="recommend-other"></ul>
-            <a class="btnlookmore" href="javascript:;">查看更多空间</a>
-        </div>
+        <!--<div class="section spacerecommend clearfix">-->
+            <!--<h3>空间推荐</h3>-->
+            <!--<ul class="recommend recommend-main clearfix">-->
+                <!--<li v-for="n in 3">-->
+                    <!--<div class="img">-->
+                        <!--<a href="javascript:;">-->
+                            <!--<img src="/static/images/home/imgmain1.png">-->
+                        <!--</a>-->
+                        <!--<span class="tags">上海</span>-->
+                    <!--</div>-->
+                    <!--<div class="text">-->
+                        <!--<a class="title" href="javascript:;">{{spaceRecommend[n-1].name}}</a>-->
+                        <!--<div class="price">￥{{spaceRecommend[n-1].market_price}}/元 天</div>-->
+                        <!--<div class="textinfo">-->
+                            <!--<p><span>场地类型：</span>{{spaceRecommend[n-1].space_type}}</p>-->
+                            <!--<p><span>落地区域：</span>{{spaceRecommend[n-1].through_three_areas}}</p>-->
+                            <!--<div class="numb clearfix">-->
+                                <!--<p><span>面积：</span>{{spaceRecommend[n-1].area}}</p>-->
+                                <!--<p><span>层高：</span>{{spaceRecommend[n-1].height}}</p>-->
+                                <!--<p><span>人数：</span>{{spaceRecommend[n-1].Max_seating_capacity}}</p>-->
+                            <!--</div>-->
+                            <!--<p><span>地址：</span>{{spaceRecommend[n-1].areas}} | {{spaceRecommend[n-1].address}}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<ul class="recommend recommend-sub clearfix">-->
+                <!--<li v-for="n in (spaceRecommend.length - 3)">-->
+                    <!--<div class="img">-->
+                        <!--<a href="javascript:;">-->
+                            <!--<img src="/static/images/home/imgmain1.png">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="text">-->
+                        <!--<a class="title" href="javascript:;">{{spaceRecommend[n+2].name}}</a>-->
+                        <!--<div class="price">￥{{spaceRecommend[n+2].market_price}}/元 天</div>-->
+                        <!--<div class="city">杭州</div>-->
+                        <!--<div class="textinfo">-->
+                            <!--<p><span>场地类型：</span>{{spaceRecommend[n+2].space_type}}</p>-->
+                            <!--<p><span>落地区域：</span>{{spaceRecommend[n+2].through_three_areas}}</p>-->
+                            <!--<p><span>地址：</span>{{spaceRecommend[n+2].areas}}|{{spaceRecommend[n+2].address}}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<ul class="recommend-other"></ul>-->
+            <!--<a class="btnlookmore" href="javascript:;">查看更多空间</a>-->
+        <!--</div>-->
         <!--空间推荐-结束-->
 
         <!--ip文创项目-开始-->
@@ -288,83 +268,61 @@
         <!--ip文创项目-结束-->
 
         <!--场地配套服务-开始-->
-        <div class="section ipwinchuang clearfix">
-            <h3>场地配套服务</h3>
-            <div class="cont">
-                <div class="btns">
-                    <a class="btn btnleft" href="javascript:;">
-                        <span class="icon-arrowleft"></span>
-                    </a>
-                    <a class="btn btnright" href="javascript:;">
-                        <span class="icon-arrowright"></span>
-                    </a>
-                </div>
+        <!--<div class="section ipwinchuang clearfix">-->
+            <!--<h3>场地配套服务</h3>-->
+            <!--<div class="cont">-->
+                <!--<div class="btns">-->
+                    <!--<a class="btn btnleft" href="javascript:;">-->
+                        <!--<span class="icon-arrowleft"></span>-->
+                    <!--</a>-->
+                    <!--<a class="btn btnright" href="javascript:;">-->
+                        <!--<span class="icon-arrowright"></span>-->
+                    <!--</a>-->
+                <!--</div>-->
 
-                <ul class="iplist"></ul>
-            </div>
+                <!--<ul class="iplist"></ul>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
         <!--场地配套服务-结束-->
 
         <!--新发现-开始-->
         <div class="section newfound clearfix">
             <h3>新发现</h3>
             <div class="cont clearfix">
+                <!--大图那个-->
                 <div class="fl info info-big">
                     <a class="img" href="javascript:;">
                         <img src="">
                     </a>
                     <a class="text" href="javascript:;">
-                        内地音乐节产业链风头正劲 云SPACE布局文艺非标“地主”
+                        {{newFindFirst.title}}
                     </a>
                 </div>
+                <!--中间4个-->
                 <ul class="infolist fl clearfix">
-                    <li class="info info-normal" v-for="newfoundinfo in newfoundinfos">
+                    <li class="info info-normal" v-for="item in newFindTopFour">
                         <a class="img" href="javascript:;">
                             <img src="">
                         </a>
                         <a class="text" href="javascript:;">
-                            云SPACE护航《微微一笑很倾城》开启泛娱乐IP多维度营销先河
+                            {{item.title}}
                         </a>
                     </li>
                 </ul>
+                <!--右边列表-->
                 <ul class="fr textinfolist clearfix">
-                    <li>
+
+                    <li v-for="item in newFindRandom">
                         <a href="javascript:;">
                             <div class="title">
                                 <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
+                                <p>{{item.title}}</p>
                             </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
+                            <p>{{item.abstract}}</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
-                            </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
-                            </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
-                            </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
             <a class="btnlookmore" href="javascript:;">发现更多精彩</a>
@@ -375,19 +333,17 @@
         <div class="section caseselected clearfix">
             <h3>精选案例</h3>
             <ul class="cont clearfix">
-                <li v-for="i in cases">
+                <li v-for="item in caseSelected">
                     <a href="javascript:;" class="img">
                         <img src="">
                     </a>
                     <div class="textinfo">
-                        <a class="title" href="javascript:;">《国家地理》跑进国家会展中心 实体商业空间添加内容场景</a>
+                        <a class="title" href="javascript:;">{{item.title}}</a>
                         <div class="tags">
-                            <span>发布会</span>
-                            <span>展览</span>
-                            <span>路演</span>
+                            <span v-for="i in item.keywords">{{i}}</span>
                         </div>
                         <ul class="numbs clearfix">
-                            <li class="fl"><i class="icons icon-skimbg"></i>233</li>
+                            <li class="fl"><i class="icons icon-skimbg"></i>{{item.viewed}}</li>
                             <li class="fr"><i class="icons icon-zanbg"></i>54</li>
                         </ul>
                     </div>
@@ -479,9 +435,6 @@
                 ipinfos: [
                     1, 2, 3, 4
                 ],
-                newfoundinfos: [
-                    1, 2, 3, 4
-                ],
                 cases: [
                     1, 2, 3, 4, 5, 6
                 ],
@@ -503,28 +456,57 @@
                 }],
                 value: '',
                 showdowhat: 0,
-                ipProject : []
-            }
 
+                searchCondition : {}, //搜索条件
+
+                ipProject : [],
+                topicOfCity : [], // 城市精选专题
+                newFindTopFour : [], // 新发现左边
+                newFindRandom : [], // 新发现右边
+                newFindFirst : {},
+                typeSelected : [], //分类精选
+                spaceRecommend : [], //空间推荐
+                caseSelected : [], //精选案例
+                mediaReport : [] //媒体
+            }
         },
+
         components: {},
         mounted () {
             var self = this;
-            var citySelectionSwiper = new Swiper('.citySelection', {
-                pagination: '.swiper-pagination',
-                nextButton: '.citysubject .btnright',
-                prevButton: '.citysubject .btnleft',
-                slidesPerView: 3,
-                centeredSlides: false,
-                paginationClickable: true,
-                spaceBetween: 1,
+            $.ajax({
+                url: window.YUNAPI.home, context: document.body, success: function (data) {
+                    console.log(data);
+
+                    self.topicOfCity = data.home_city_special;
+                    self.newFindTop = data.home_new_find_top;
+                    self.newFindRandom = data.home_new_find_random;
+                    self.spaceRecommend = data.home_recommend_space;
+                    self.ipProject = data.home_project;
+//                    self.caseSelected = data.home_case_selected;
+
+                    for (var i = 0; i <  data.home_case_selected.length - 1; i++){ // 关键词 需要按,分割
+                        data.home_case_selected[i].keywords = data.home_case_selected[i].keyword.split(',')
+                        console.log(data.home_case_selected[i].keywords)
+                    }
+
+                    self.caseSelected = data.home_case_selected;
+
+                    self.newFindTopFour = data.home_new_find_top; // 新发现4个
+                    self.newFindFirst = self.newFindTopFour.shift(); //新发现第一个
+
+//                    console.log(self.spaceRecommend);
+//                    console.log(self.newFindRandom);
+                    setTimeout(function () {
+                        self.init()
+                    },500)
+                }
             });
 
-            var self = this;
             $.ajax({
-                url: window.YUNAPI.homeIpProject, context: document.body, success: function (data) {
+                url: window.YUNAPI.homeSearch, context: document.body, success: function (data) {
                     console.log(data);
-                    self.ipProject = data.projects
+                    self.searchCondition = data
                 }
             });
 
@@ -532,20 +514,50 @@
         methods: {
             whatToSearchInputClick : function () {
                 this.$parent.$data.isShowHomeSearchCondition = !this.$parent.$data.isShowHomeSearchCondition
+            },
+            init : function () {
+                var citySelectionSwiper = new Swiper('.citySelection', {
+                    pagination: '.swiper-pagination',
+                    nextButton: '.citysubject .btnright',
+                    prevButton: '.citysubject .btnleft',
+                    slidesPerView: 3,
+                    paginationClickable: true,
+                    spaceBetween: 1,
+//                    freeMode: true
+                });
             }
 
         }
     }
 </script>
-<style>
+<style scoped>
     .citySelection .swiper-slide{
         background-color: #fff;
-        height: 350px;
+        /*height: 350px;*/
         margin-right: 1px;
+        position: relative;
     }
-    .citySelection{
-        width: 1200px;
+    .swiper-container{
+        overflow: visible;
     }
+    .citySelection .swiper-slide img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #aaa;
+    }
+    .citySelection .swiper-slide p{
+        position: absolute;
+        bottom: 0;
+        font-size:18px;
+        color:#ffffff;
+        padding: 0 15px 20px 15px;
+        height: 70px;
+        box-sizing: border-box;
+    }
+    /*.citySelection{*/
+        /*width: 1200px;*/
+    /*}*/
 </style>
 
 
