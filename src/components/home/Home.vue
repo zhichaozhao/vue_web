@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home" v-if="!this.$parent.loading">
         <!--banner板块-开始-->
         <div class="banner-search">
             <!--banner部分-->
@@ -312,7 +312,7 @@
                         </div>
                         <ul class="numbs clearfix">
                             <li class="fl"><i class="icons icon-skimbg"></i>{{item.viewed}}</li>
-                            <li class="fr"><i class="icons icon-zanbg"></i>54</li>
+                            <li class="fr"><i class="icons icon-zanbg"></i>{{item.up_number}}</li>
                         </ul>
                     </div>
                 </li>
@@ -373,7 +373,7 @@
     import 'assets/libs/swiper/swiper.js'
 
     require ('assets/css/component.css');
-    require ('assets/css/home.css');
+//    require ('assets/css/home.css');
     export default {
         data(){
             return {
@@ -407,6 +407,7 @@
                 }],
                 value: '',
                 showdowhat: 0,
+                LoadComplete : false,
 
                 searchCondition : {}, //搜索条件
 
@@ -458,8 +459,9 @@
 
 //                    console.log(self.spaceRecommend);
 //                    console.log(self.newFindRandom);
+                    self.$parent.loading = false;
                     setTimeout(function () {
-                        self.init()
+                        self.init();
                     },500)
                 }
             });
@@ -477,6 +479,7 @@
                 this.$parent.$data.isShowHomeSearchCondition = !this.$parent.$data.isShowHomeSearchCondition
             },
             init : function () {
+
                 var citySelectionSwiper = new Swiper('.citySelection', {
                     pagination: '.swiper-pagination',
                     nextButton: '.citysubject .btnright',
@@ -519,6 +522,669 @@
     /*.citySelection{*/
         /*width: 1200px;*/
     /*}*/
+
+    .btnlookmore {
+        display: block;
+        width: 398px;
+        height: 48px;
+        line-height: 48px;
+        border: 1px solid #000;
+        text-align: center;
+        margin: 30px auto 0;
+        font-size: 18px;
+        color: #000;
+        background: #fff;
+    }
+
+    .btnlookmore:hover {
+        background: #000;
+        color: #fff;
+    }
+
+    .section {
+        width: 1200px;
+        margin: 0 auto 50px;
+    }
+
+    .section > h3 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .banner-search{
+        position: relative;
+        min-width: 1200px;
+    }
+    .banner-wrap{
+        width: 100%;
+        min-width: 1200px;
+        height: 400px;
+        margin: 0 auto;
+        background: #ddd;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .banner {
+        width: 1920px;
+        height: 400px;
+        background: #ddd;
+        position: absolute;
+        left: 50%;
+        margin-left: -960px;
+        top: 0;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .banner>img{width: 100%;height: 100%;}
+
+    .search {
+        width: 1000px;
+        padding: 0 100px;
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        margin-left: -600px;
+        z-index: 2;
+    }
+
+    .search .select {
+        position: relative;
+    }
+
+    .search .select:hover .result .icon-updown {
+        transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg); /* IE 9 */
+        -moz-transform: rotate(-180deg); /* Firefox */
+        -webkit-transform: rotate(-180deg); /* Safari 和 Chrome */
+        -o-transform: rotate(-180deg); /* Opera */
+    }
+
+    .search .select .cont {
+        position: absolute;
+        left: 0;
+        top: 52px
+    }
+
+    .search .result {
+        width: 150px;
+        height: 50px;
+        background: #fff;
+        position: relative;
+    }
+
+    .search .result input {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        cursor: pointer;
+    }
+
+    .search .result .icon-updown {
+        display: block;
+        width: 0px;
+        height: 0px;
+        border: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid #000;
+        position: absolute;
+        right: 22px;
+        top: 21px;
+        transition: all linear .2s;
+    }
+    body .search .el-input__inner{
+        padding: 3px 20px;
+    }
+    body .search .el-input__icon{right: 19px;top:25px;}
+    body .el-select-dropdown__item{
+        padding: 8px 20px;
+    }
+    body .el-select-dropdown{
+        margin: 2px 0;
+    }
+    body .el-select-dropdown__item.selected.hover,
+    body .el-select-dropdown__item.selected{
+        background: #e92332;
+    }
+
+    .citylist {
+        width: 150px;
+    }
+
+    .citylist li {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .citylist li > a {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        text-indent: 20px;
+    }
+
+    .citylist li a:hover {
+        background: #e92332;
+        color: #fff;
+    }
+    .dowhat .result{
+        padding: 0 20px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+    .dowhat-contlist {
+        width: 800px;
+        background: #fff;
+    }
+
+    .dowhat-contlist dl {
+        border-bottom: 2px solid #ccc;
+        padding: 15px 20px;
+    }
+
+    .dowhat-contlist dl:last-child {
+        border: 0;
+    }
+
+    .dowhat-contlist dt {
+        width: 9%;
+        height: 30px;
+        line-height: 30px;
+        margin: 5px 0;
+    }
+
+    .dowhat-contlist dd {
+        width: 91%;
+    }
+
+    .dowhat-contlist dd > a {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 12px;
+        margin: 5px;
+    }
+
+    .dowhat-contlist dd > a:hover {
+        background: #e92332;
+        color: #fff;
+    }
+
+    .searchinput {
+        width: 440px;
+        height: 50px;
+        padding: 0 20px;
+    }
+
+    .searchbtn {
+        width: 160px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        background: #272335;
+        cursor: pointer;
+    }
+
+    .searchbtn:hover {
+        background: #2e2550;
+    }
+
+    /*快捷链接*/
+    .quicklinks {
+        width: 1000px;
+        padding: 0 100px;
+        margin: 40px auto;
+    }
+
+    .quicklinks li {
+        float: left;
+        width: 300px;
+        height: 235px;
+        margin-right: 50px;
+    }
+
+    .quicklinks li:last-child {
+        margin-right: 0;
+    }
+
+    .quicklinks li a {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .quicklinks li .text {
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        margin-top: -12px;
+        z-index: 2;
+    }
+
+    li .mask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .5);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+
+    }
+    .classifyselected li .mask{
+        border-radius: 50%;
+    }
+
+    li .imgtitle {
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 24px;
+    }
+
+    /*城市精选专题*/
+
+    /*分类精选*/
+    .classifyselected li {
+        float: left;
+        width: 150px;
+        height: 185px;
+        margin-right: 55px;
+        position: relative;
+    }
+
+    .classifyselected li:last-child {
+        margin-right: 0;
+    }
+
+    .classifyselected li a {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border-radius: 75px;
+        position: relative;
+    }
+
+    .classifyselected li .numb {
+        width: 60px;
+        height: 60px;
+        background: #000;
+        line-height: 60px;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        top: 45px;
+        right: -30px;
+        z-index: 2;
+    }
+
+    .classifyselected li .numb {
+        transition: All 1s;
+        -webkit-transition: All 1s;
+        -moz-transition: All 1s;
+        -o-transition: All 1s;
+    }
+
+    /**小圆转一圈效果**/
+    /*.classifyselected li:hover .numb {*/
+    /*transform-origin: -82px 85px;*/
+    /*-webkit-transform-origin: -82px 85px;*/
+
+    /*transform: rotate(360deg);*/
+    /*-webkit-transform: rotate(360deg);*/
+    /*-moz-transform: rotate(360deg);*/
+    /*-o-transform: rotate(360deg);*/
+    /*-ms-transform: rotate(360deg);*/
+    /*}*/
+
+    .citysubject.section {
+        width: 100%;
+        min-width: 1200px;
+        overflow: hidden
+    }
+
+    .citysubject h3 {
+        width: 1200px;
+        margin: 0 auto;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .citysubject .cont {
+        width: 100%;
+        height: 235px;
+        min-width: 1200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /*空间推荐*/
+    .recommend-main {
+        margin-bottom: 20px;
+    }
+
+    .recommend-main li .tags {
+        top: 10px;
+    }
+
+    .recommend-main .price {
+        margin-bottom: 15px;
+    }
+
+    /*IP文创项目*/
+    .ipwinchuang li {
+        float: left;
+        background: #fff;
+        width: 595px;
+        height: 200px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .ipwinchuang li:nth-child(2n+2) {
+        margin-right: 0;
+    }
+
+    .ipwinchuang .maskbtn {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, .8);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    .ipwinchuang .maskbtn p {
+        background: #272335;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -60px;
+        margin-top: -20px;
+
+    }
+
+    .ipwinchuang li:hover .maskbtn {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+
+    .ipwinchuang li .img {
+        float: left;
+        width: 300px;
+        height: 200px;
+        background: #ddd;
+        overflow: hidden;
+    }
+
+    .ipwinchuang .textinfo {
+        float: left;
+        padding: 0 10px;
+    }
+
+    .ipwinchuang .textinfo .title {
+        font-size: 18px;
+        padding: 18px 0 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ipwinchuang .textinfo .tags {
+        margin-bottom: 15px;
+    }
+
+    .ipwinchuang .textinfo .tags span {
+        margin-right: 20px;
+    }
+
+    .ipwinchuang .textinfo p {
+        line-height: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ipwinchuang .textinfo .group p {
+        float: left;
+        margin-right: 20px;
+    }
+
+    /*场地配套服务*/
+    .ipwinchuang .cont {
+        position: relative;
+    }
+
+    /*新发现*/
+    .newfound .info {
+        background: #fff;
+    }
+
+    .newfound .info .img {
+        background: #ddd;
+        overflow: hidden;
+    }
+
+    .newfound .info-big {
+        float: left;
+        width: 377px;
+        height: 419px;
+    }
+
+    .newfound .info-big .img {
+        width: 378px;
+        height: 350px;
+    }
+
+    .newfound .info-big .text {
+        font-size: 18px;
+        padding: 7px 15px;
+        display: block;
+        height: 50px;
+    }
+
+    .newfound .infolist {
+        width: 420px;
+    }
+
+    .newfound .info-normal {
+        float: left;
+        width: 200px;
+        height: 205px;
+        margin: 0 0 10px 10px;
+    }
+
+    .newfound .info-normal .img {
+        float: left;
+        width: 100%;
+        height: 133px;
+    }
+
+    .newfound .info-normal .text {
+        float: left;
+        padding: 7px 10px;
+        height: 57px;
+        overflow: hidden;
+    }
+
+    .textinfolist {
+        width: 378px;
+    }
+
+    .textinfolist li {
+        max-height: 88px;
+        overflow: hidden;
+        border-bottom: 2px solid #979797;
+        padding: 8px 0;
+    }
+
+    .textinfolist .title {
+        font-size: 18px;
+        color: #000;
+        position: relative;
+        margin-bottom: 5px;
+    }
+
+    .newfound .textinfolist .title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .textinfolist .title .point {
+        display: block;
+        width: 5px;
+        height: 5px;
+        background: #000;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 10px;
+    }
+
+    .textinfolist li p {
+        padding-left: 15px;
+        line-height: 1.4;
+    }
+
+    /*精选案例*/
+    .caseselected .cont > li {
+        float: left;
+        width: 392px;
+        height: 420px;
+        background: #fff;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    .caseselected li:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .caseselected .img {
+        width: 100%;
+        height: 264px;
+        background: #ddd;
+        overflow: hidden;
+    }
+
+    .caseselected .title {
+        color: #000;
+        font-size: 18px;
+        padding-bottom: 5px;
+        height: 55px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .caseselected .textinfo {
+        padding: 8px 10px 12px;
+    }
+
+    .caseselected .tags span {
+        display: inline-block;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 25px;
+        background: #fff;
+        border: 1px solid #000;
+        color: #666;
+        margin-right: 5px;
+        margin-top: 5px;
+    }
+
+    .caseselected .numbs {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        color: #666;
+    }
+
+    .caseselected .numbs li {
+        position: relative;
+        height: 25px;
+        line-height: 25px;
+        padding-left: 32px;
+        margin-left: 30px;
+    }
+
+    .caseselected .numbs i {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    i.scan {
+        background: url("/static/images/home/icon-scan.png") no-repeat center;
+    }
+
+    i.zan {
+        background: url("/static/images/home/icon-zan.png") no-repeat center;
+    }
+
+    /*媒体报道*/
+    .mediacoverage .textinfolist li {
+        height: 70px;
+        padding-top: 7px;
+        overflow: hidden;
+    }
+
+    .mediacoverage .textinfolist li > a {
+        width: 100%;
+    }
+
+    .mediacoverage .textinfolist .title {
+        height: 48px;
+        overflow: hidden;
+    }
+
+    .mediacoverage .textinfolist .time {
+        text-align: right;
+    }
+
+    .imglogo-media {
+        width: 795px;
+        height: 320px;
+        padding: 15px 0;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    /*合作品牌*/
+    .logofriends .cont {
+        width: 1200px;
+        height: 157px;
+        background: #fff;
+    }
+
+    /*swiper*/
+    .citySelection .btns{
+        z-index: 99;
+    }
 </style>
 
 

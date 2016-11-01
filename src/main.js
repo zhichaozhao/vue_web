@@ -85,11 +85,11 @@ const router = new VueRouter({
                         component: (resolve) => require(['./components/newfound/articlelist'], resolve)
             },
             {
-                path: '/article',
+                path: '/article/list',
                         component: (resolve) => require(['./components/newfound/article'], resolve)
             },
             {
-                path: '/articledtl',
+                path: '/article/:id',
                         component: (resolve) => require(['./components/newfound/article-dtl'], resolve)
             },
             {

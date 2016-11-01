@@ -3,8 +3,13 @@
         <module-header cities = "cities"></module-header>
 
         <!--<router-view></router-view>-->
+        <div class="loading-wrap" v-if="this.loading">
+            <div v-loading="loading" class="el-loading-yun"></div>
+        </div>
+
 
         <router-view  class="child-view"></router-view>
+
 
 
         <module-footer ref="test"></module-footer>
@@ -20,7 +25,8 @@
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
         home : host + 'api/indexs',
-        homeSearch : host + 'api/tags/get_home_search'
+        homeSearch : host + 'api/tags/get_home_search',
+        articleContent : host + 'api/informations'
     };
 
     export default {
@@ -28,7 +34,8 @@
         data(){
             return {
                 cities:[],
-                isShowHomeSearchCondition : false
+                isShowHomeSearchCondition : false,
+                loading: true
             }
 
         },
