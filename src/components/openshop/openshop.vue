@@ -1,3 +1,4 @@
+<script src="../../assets/libs/jquery/jquery-3.1.1.min.js"></script>
 <template>
 <div>
     <!--banner板块-开始-->
@@ -273,9 +274,25 @@
         <div class="evtitle clearfix">
             <h3>合作伙伴</h3>
         </div>
-        <ul class="cont clearfix">
-
-        </ul>
+        <div class="cont partners clearfix">
+            <div id="Slide1" class="zy-Slide">
+                <section class="icon-arrowleft"></section>
+                <section class="icon-arrowright"></section>
+                <ul>
+                    <li><img src="/static/images/openshop/1.png" /></li>
+                    <li><img src="/static/images/openshop/2.png" /></li>
+                    <li><img src="/static/images/openshop/3.png" /></li>
+                    <li><img src="/static/images/openshop/4.png" /></li>
+                    <li><img src="/static/images/openshop/1.png" /></li>
+                    <li><img src="/static/images/openshop/2.png" /></li>
+                    <li><img src="/static/images/openshop/3.png" /></li>
+                </ul>
+            </div>
+            <div class="abouttext">
+                <p>TASTE is hidden deep in Shanghai’s Tianzifang area</p>
+                <h5>A Matter of TASTE</h5>
+            </div>
+        </div>
     </div><!--合作伙伴-结束-->
 
 </div>
@@ -284,9 +301,10 @@
 <script>
 
     import Lib from 'assets/Lib.js';
-    //import Jquery from 'assets/jquery-3.1.0.min.js'
+    import zyslide from 'assets/libs/jquery/zySlide/jquery.zySlide.js';
     require ('assets/css/component.css');
-//    import 'assets/css/openshop.css';
+    require ('assets/css/openshop.css');
+    require ('assets/css/jquery.zySlide.css');
     export default {
         data(){
             return {
@@ -297,520 +315,16 @@
 
         },
         components: {},
-        ready(){
-
+        mounted () {
+            $.noConflict();
+            jQuery('.zy-Slide').zySlide({ speed: 500 }).css('border', '0px solid blue');
         },
-        methods: {}
+        methods: {},
+
     }
 </script>
-<style scoped>
 
-    /*搜索*/
-    .banner-search{
-        width: 100%;
-        min-width: 1200px;
-        height: 600px;
-        background: url("/static/images/openshopbanner.png") no-repeat center;
-        background-size: 100% 100%;
-        overflow: hidden;
-    }
-    .banner-search>h1{
-        font-size:38px;
-        height: 38px;
-        line-height: 38px;
-        color:#fff;
-        letter-spacing:20px;
-        text-align:center;
-        text-indent: 20px;
-        margin-top: 115px;
-    }
-    .banner-search .btnopenshop{
-        border:1px solid #fff;
-        width:200px;
-        height:60px;
-        line-height: 60px;
-        text-align: center;
-        display: block;
-        margin: 70px auto 80px;
-        font-size: 24px;
-        color: #fff;
-        box-sizing: border-box;
-    }
-    .banner-search .search{
-        width: 680px;
-        margin: 0 auto;
-        position: relative;
-    }
-    .banner-search .search>h2{
-        width: 710px;
-        font-size:38px;
-        height: 38px;
-        line-height: 38px;
-        color:#ffffff;
-        letter-spacing:20px;
-        text-align: left;
-        margin-bottom: 50px;
-    }
-    .banner-search .inputbox{width: 100%;}
-    .banner-search .inputbox input{
-        float: left;
-        display: block;
-        width: 470px;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 15px;
-        border: 1px solid #000;
-        background: #fff;
-    }
-    .banner-search .searchbtn{
-        float: right;
-        display: block;
-        width: 150px;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 15px;
-        border: 1px solid #fff;
-        background:#272335;
-        cursor: pointer;
-        color: #fff;
-        font-size: 18px;
-    }
-    .banner-search .hot{
-        margin-top: 10px;
-    }
-    .banner-search .hot p{
-        float: left;
-        color: #fff;
-    }
-    .banner-search .hotlist{
-        float: left;
-    }
-    .banner-search .hotlist a{
-        color: #fff;
-        margin-right: 5px;
-    }
 
-    /**主体部分开始**/
-    .evtitle{
-        width: 100%;
-    }
-    .evtitle h3{
-        float: left;
-        border-bottom: 2px solid #000;
-        padding-bottom: 10px;
-        margin-bottom: 30px;
-        font-size: 24px;
-    }
-    .evtitle .more{
-        float: right;
-        height: 24px;
-        line-height: 24px;
-        font-size: 18px;
-        color: #000;
-        padding-right: 20px;
-        margin-top: 5px;
-        position: relative;
-    }
-    .evtitle .more:hover{
-        color:#e92332;
-        border-color: #e92332;
-    }
-    .evtitle .more:hover .icon{
-        color:#e92332;
-        border-color: #e92332;
-    }
-    .evtitle .more .icon{
-        position: absolute;
-        right: 4px;
-        top: 4px;
-        width: 13px;
-        height: 13px;
-        transition: all .5s;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
-    }
 
-    /*我要开店*/
-    .openshop li{
-        float: left;
-        width: 216px;
-        height: 80px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        background: #fff;
-        margin-right: 30px;
-    }
-    .openshop li:last-child{
-        margin-right: 0;
-    }
-    .openshop li>a{
-        width: 100%;
-        height: 100%;
-        color: #000;
-        text-align: center;
-        font-size: 18px;
-        line-height: 80px;
-    }
-    .openshop li.dob>a{
-        line-height: 22px;
-
-        display: -webkit-box;
-        -webkit-box-orient: horizontal;
-        -webkit-box-pack: center;
-        -webkit-box-align: center;
-
-        display: -moz-box;
-        -moz-box-orient: horizontal;
-        -moz-box-pack: center;
-        -moz-box-align: center;
-
-        display: -o-box;
-        -o-box-orient: horizontal;
-        -o-box-pack: center;
-        -o-box-align: center;
-
-        display: -ms-box;
-        -ms-box-orient: horizontal;
-        -ms-box-pack: center;
-        -ms-box-align: center;
-
-        display: box;
-        box-orient: horizontal;
-        box-pack: center;
-        box-align: center;
-    }
-    .openshop li>a span{
-        font-size: 12px;
-        line-height: 12px;
-    }
-
-    /*合作流程*/
-    .process li{
-        float: left;
-        width: 210px;
-        overflow: hidden;
-        position: relative;
-    }
-    .process li:last-child{
-        width: 150px;
-    }
-    .process li .ibox{
-        width: 150px;
-        height: 150px;
-        background: #fff;
-        overflow: hidden;
-    }
-    .process li .img{
-        display: block;
-        width: 62px;
-        height: 62px;
-        margin: 25px auto 12px;
-        background: url("/static/images/iconopenshop.png") no-repeat;
-    }
-    .process li:nth-of-type(1) .img{
-        background-position: 0 0;
-    }
-    .process li:nth-of-type(2) .img{
-        background-position: 0 -62px;
-    }
-    .process li:nth-of-type(3) .img{
-        background-position: 0 -124px;
-    }
-    .process li:nth-of-type(4) .img{
-        background-position: 0 -186px;
-    }
-    .process li:nth-of-type(5) .img{
-        background-position: 0 -248px;
-    }
-    .process li:nth-of-type(6) .img{
-        background-position: 0 -310px;
-    }
-    .process li p{
-        text-align: center;
-    }
-    .process li .iconright{
-        width: 60px;
-        height: 60px;
-        position: absolute;
-        right: 0;
-        top:50%;
-        margin-top: -30px;
-        background: url("/static/images/iconopenshop.png") no-repeat -2px bottom;
-    }
-
-    /*专题*/
-    .subject li{
-        float: left;
-        width: 380px;
-        margin-right: 30px;
-    }
-    .subject li:last-child{
-        margin-right: 0;
-    }
-    .subject li .img{
-        display: block;
-        width: 100%;
-        height: 250px;
-    }
-    .subject li .text{
-        width: 100%;
-        height: 120px;
-        background: #fff;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-    .subject li .title{
-        font-size: 24px;
-        margin-bottom: 8px;
-    }
-
-    /*空间分类*/
-    .classfiylist{width: 1000px;}
-    .classfiylist>a{
-        float: left;
-        width: 220px;
-        height: 150px;
-        background: #fff;
-        text-align: center;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        overflow: hidden;
-    }
-    .classfiylist>a .icons{
-        display: block;
-        width: 60px;
-        height: 60px;
-        margin: 20px auto 2px;
-    }
-    .classfiylist>a.art .icons{
-        background-position: -240px 0;
-    }
-    .classfiylist>a.show .icons{
-        background-position: -240px -60px;
-    }
-    .classfiylist>a.business .icons{
-        background-position: -240px -120px;
-    }
-    .classfiylist>a.starbusiness .icons{
-        background-position: -240px -180px;
-    }
-    .classfiylist>a p{
-        font-size: 24px;
-    }
-    .classfiymore{
-        display: block;
-        width: 200px;
-        height: 330px;
-        background: #fff;
-        text-align: center;
-    }
-    .classfiymore .icons{
-        isplay: block;
-        width: 60px;
-        height: 60px;
-        margin: 105px auto 12px;
-        background-position: -240px -240px;
-    }
-    .classfiymore p{
-        font-size: 24px;
-    }
-
-    /*TOP榜单*/
-    .toplist li{
-        float: left;
-        width: 585px;
-        height: 390px;
-        position: relative;
-        margin-right: 30px;
-    }
-    .toplist li:last-child{
-        margin-right: 0;
-    }
-    .toplist li>a{
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    .toplist li>a img{
-        width: 100%;
-        height: 100%;
-    }
-    .toplist li>a p{
-        width: 90%;
-        height: 60px;
-        padding: 0 5%;
-        background: rgba(0,0,0,.5);
-        color: #fff;
-        font-size: 18px;
-        line-height: 60px;
-        text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        transition: all .5s;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
-    }
-    .toplist li>a:hover p{
-        height: 100%;
-        line-height: 390px;
-    }
-
-    /*推荐空间*/
-    .venues-recommend li{
-        float: left;
-        width: 380px;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        background: #fff;
-        position: relative;
-    }
-    .venues-recommend li:nth-child(3n+3){
-        margin-right: 0;
-    }
-    .venues-recommend li .img{
-        width: 100%;
-        height: 250px;
-        position: relative;
-    }
-    .venues-recommend li .text{
-        width: 100%;
-        height: 250px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        padding: 20px;
-    }
-    .venues-recommend .title{
-        display: block;
-        height: 24px;
-        line-height: 24px;
-        font-size: 24px;
-        margin: 10px 0 15px;
-        text-align: center;
-    }
-    .venues-recommend .price{
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        z-index: 1;
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 10px;
-        color: #fff;
-        background: #000;
-    }
-    .venues-recommend li .img:hover .collect-mask{display: block;}
-    .venues-recommend li .text>p{margin-bottom: 10px;}
-    .icondou{
-        width: 30px;
-        height: 30px;
-        background-position: -195px -134px;
-        position: absolute;
-        bottom: 26px;
-        left: 50%;
-        margin-left: -15px;
-        z-index: 3;
-    }
-    .collect-mask{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: none;
-        z-index: 2;
-    }
-    .collect-mask .collect{
-        width: 60px;
-        height: 60px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -30px;
-        margin-top: -30px;
-        z-index: 2;
-    }
-    .collect-mask .mask{
-        width: 100%;
-        height: 100%;
-        background: rgba(255,255,255,.8);
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    /*精选案例*/
-    .selectedcases li{
-        float: left;
-        width: 585px;
-        height: 300px;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        position: relative;
-    }
-    .selectedcases li:nth-child(2n+2){
-        margin-right: 0;
-    }
-    .selectedcases li .textinfo{
-        width: 476px;
-        height: 280px;
-        background: #fff;
-        box-sizing: border-box;
-        padding: 30px;
-    }
-    .selectedcases li .textinfo .title{
-        display: block;
-        width: 310px;
-        font-size: 24px;
-        color: #000;
-        margin-bottom: 10px;
-    }
-    .selectedcases li .textinfo p{
-        width: 310px;
-    }
-    .selectedcases li .btnlook{
-        display: block;
-        width: 200px;
-        height: 40px;
-        background: #fff;
-        color: #000;
-        border: 1px solid #000;
-        text-align: center;
-        line-height: 40px;
-        box-sizing: border-box;
-        padding-right: 20px;
-        position: relative;
-        margin-top: -20px;
-        margin-left: 30px;
-    }
-    .selectedcases li .btnlook .icon{
-        position: absolute;
-        right: 80px;
-        top: 15px;
-        width: 8px;
-        height: 8px;
-        transition: all .5s;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
-    }
-    .selectedcases li .btnlook:hover{
-        background: #000;
-        color: #fff;
-    }
-    .selectedcases li .btnlook:hover .icon{
-        border-color: #fff;
-    }
-    .selectedcases li .img{
-        width: 220px;
-        height: 220px;
-        position: absolute;
-        right: 0;
-        top:30px;
-    }
-</style>
 
 
