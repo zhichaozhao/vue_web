@@ -65,6 +65,10 @@ const router = new VueRouter({
               component: (resolve) => require(['./components/space/dtl.vue'], resolve)
             },
             {
+                path: '/space/map',
+                        component: (resolve) => require(['./components/space/maplist.vue'], resolve)
+            },
+            {
               path: '/place/dtl',
                       component: (resolve) => require(['./components/place/app.vue'], resolve)
             },
