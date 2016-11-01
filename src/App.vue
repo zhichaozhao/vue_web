@@ -26,7 +26,8 @@
         homeIpProject : host + 'api/projects/get_home_list',
         home : host + 'api/indexs',
         homeSearch : host + 'api/tags/get_home_search',
-        articleContent : host + 'api/informations'
+        article : host + 'api/informations',
+        articleTags : host + 'api/tags/get_information_tags',
     };
 
     export default {
