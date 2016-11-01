@@ -1,3 +1,4 @@
+<script src="../../assets/libs/jquery/jquery-3.1.1.min.js"></script>
 <template>
 <div>
     <!--banner板块-开始-->
@@ -273,9 +274,25 @@
         <div class="evtitle clearfix">
             <h3>合作伙伴</h3>
         </div>
-        <ul class="cont clearfix">
-
-        </ul>
+        <div class="cont partners clearfix">
+            <div id="Slide1" class="zy-Slide">
+                <section class="icon-arrowleft"></section>
+                <section class="icon-arrowright"></section>
+                <ul>
+                    <li><img src="/static/images/openshop/1.png" /></li>
+                    <li><img src="/static/images/openshop/2.png" /></li>
+                    <li><img src="/static/images/openshop/3.png" /></li>
+                    <li><img src="/static/images/openshop/4.png" /></li>
+                    <li><img src="/static/images/openshop/1.png" /></li>
+                    <li><img src="/static/images/openshop/2.png" /></li>
+                    <li><img src="/static/images/openshop/3.png" /></li>
+                </ul>
+            </div>
+            <div class="abouttext">
+                <p>TASTE is hidden deep in Shanghai’s Tianzifang area</p>
+                <h5>A Matter of TASTE</h5>
+            </div>
+        </div>
     </div><!--合作伙伴-结束-->
 
 </div>
@@ -284,9 +301,10 @@
 <script>
 
     import Lib from 'assets/Lib.js';
-    //import Jquery from 'assets/jquery-3.1.0.min.js'
+    import zyslide from 'assets/libs/jquery/zySlide/jquery.zySlide.js';
     require ('assets/css/component.css');
     require ('assets/css/openshop.css');
+    require ('assets/css/jquery.zySlide.css');
     export default {
         data(){
             return {
@@ -297,10 +315,12 @@
 
         },
         components: {},
-        ready(){
-
+        mounted () {
+            $.noConflict();
+            jQuery('.zy-Slide').zySlide({ speed: 500 }).css('border', '0px solid blue');
         },
-        methods: {}
+        methods: {},
+
     }
 </script>
 

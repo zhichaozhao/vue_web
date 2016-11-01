@@ -505,7 +505,12 @@
     right: 0;
     top:30px;
 }
-
+/*合作伙伴*/
+.partners{margin-bottom: 50px;}
+.abouttext{text-align: center;}
+.abouttext h5{
+    font-size:24px;
+}
 
 
 
