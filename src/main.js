@@ -89,7 +89,7 @@ const router = new VueRouter({
                         component: (resolve) => require(['./components/newfound/articlelist'], resolve)
             },
             {
-                path: '/article/list',
+                path: '/articles',
                         component: (resolve) => require(['./components/newfound/article'], resolve)
             },
             {
@@ -116,6 +116,10 @@ const router = new VueRouter({
                 path: '/calender',
                         component: (resolve) => require(['./components/openshop/calender'], resolve)
             },
+            {
+                path: '/map',
+                        component: (resolve) => require(['./components/event/map'], resolve)
+            }
 
       ]
 })

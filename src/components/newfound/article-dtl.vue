@@ -142,7 +142,7 @@
         mounted(){
             var self = this;
             $.ajax({
-                url: window.YUNAPI.articleContent + "/" + this.$route.params.id, context: document.body, success: function (data) {
+                url: window.YUNAPI.article + "/" + this.$route.params.id, context: document.body, success: function (data) {
 //                    self.cities = data.cities;
                     self.article = data.information;
                     self.$parent.loading = false;

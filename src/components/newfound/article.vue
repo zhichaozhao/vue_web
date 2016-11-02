@@ -1,47 +1,47 @@
 <template>
-    <div class="w1200 newfound clearfix">
+    <div class="w1200 newfound clearfix" v-if="!this.$parent.loading">
         <!--左边文章列表-开始-->
         <div class="fl left clearfix">
             <div class="s-wrap clearfix">
                 <ul class="fl selectlist clearfix">
-                    <li>全部</li>
-                    <li>
+                    <li :class="selectType == '' ? 'active' : '' " v-on:click="clearType">全部</li>
+                    <li :class="selectType == 'newsType' ? 'active' : '' ">
                         <!--资讯-->
-                        <el-select v-model="valnews">
+                        <el-select v-model="newsType"  v-on:change = 'newsTypeChange'>
                             <el-option
-                                    v-for="item in news"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="(value,key) in articleType['资讯']"
+                                    :label="key"
+                                    :value="value">
                             </el-option>
                         </el-select>
                     </li>
 
-                    <li>
+                    <li :class="selectType == 'guideType' ? 'active' : '' ">
                         <!--攻略-->
-                        <el-select v-model="valguides">
+                        <el-select v-model="guideType" v-on:change = 'guideTypeChange'>
                             <el-option
-                                    v-for="item in guides"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="(value,key) in articleType['攻略']"
+                                    :label="key"
+                                    :value="value">
                             </el-option>
                         </el-select>
                     </li>
 
-                    <li>
+                    <li :class="selectType == 'caseType' ? 'active' : '' ">
                         <!--案例-->
-                        <el-select v-model="valcases">
+                        <el-select v-model="caseType" v-on:change = 'caseTypeChange'>
                             <el-option
-                                    v-for="item in aboutcases"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="(value,key) in articleType['案例']"
+                                    :label="key"
+                                    :value="value">
                             </el-option>
                         </el-select>
                     </li>
                 </ul>
                 <!--selectlist-end-->
                 <div class="fl search-warp clearfix">
-                    <input class="fl" type="text" placeholder="输入关键字">
-                    <button class="fr searchbtn">搜索</button>
+                    <input class="fl" type="text" v-model="searchKeyword" placeholder="输入关键字" v-on:keypress = 'searchSubmit'>
+                    <button class="fr searchbtn" v-on:click="getArticle">搜索</button>
                 </div>
             </div>
 
@@ -49,23 +49,25 @@
                 <ul>
                     <li class="clearfix" v-for="item in articles">
                         <div class="fl img">
-                            <a href="javascript:;"><img src=""></a>
+                            <a href="javascript:;"><img v-bind:src="item.first_picture.url"></a>
                             <span class="tag red">活动</span>
                         </div>
                         <div class="fr text">
-                            <a class="title" href="javascript:;">2016年创意年会演出节目和晚会节目单</a>
-                            <p>一年到头了，终于有个机会放松一下，就别搞得那么苦大仇深的了，也别做领导报告了，让大家释放下压力，搞搞团队文化建设，挺好的。娱乐归娱乐，该正经的时候还得正经。这一年公司的发展情况，各部门的发展情况，个人的发展情况，都可以在年会中有所表现。</p>
+
+                            <a target="_blank" class="title" v-bind:href=" '/article/' + item.id">{{item.title}}</a>
+
+                            <p>{{item.abstract}}</p>
                             <div class="numb-time clearfix">
-                                <p class="fl">2016-08-28</p>
+                                <p class="fl">{{item.updated_at}}</p>
                                 <ul class="fr numbs clearfix">
-                                    <li class="fl"><i class="icons icon-skim"></i>233</li>
+                                    <li class="fl"><i class="icons icon-skim"></i>{{item.viewed}}</li>
                                     <li class="fr"><i class="icons icon-zan"></i>54</li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                 </ul>
-                <a class="more" href="javascript:;">加载更多<i class="icon-arrowbottom"></i></a>
+                <a class="more" href="javascript:;" v-on:click="moreArticle">加载更多<i class="icon-arrowbottom"></i></a>
             </div><!--article-wrap-end-->
         </div>
         <!--左边文章列表-结束-->
@@ -116,58 +118,92 @@
     export default{
         data(){
             return {
-                valnews:'选项1',
-                valguides:'选项1',
-                valcases:'选项1',
-                news: [{
-                    value: '选项1',
-                    label: '活动'
-                }, {
-                    value: '选项2',
-                    label: '空间'
-                }, {
-                    value: '选项3',
-                    label: '创意'
-                }, {
-                    value: '选项4',
-                    label: '榜单'
-                }, {
-                    value: '选项5',
-                    label: '行业'
-                }, {
-                    value: '选项5',
-                    label: '推广'
-                }],
-                guides:[
-                    {
-                        value: '选项1',
-                        label: '攻略'
-                    },
-                    {
-                        value: '选项2',
-                        label: '攻略'
-                    }],
-                aboutcases:[
-                    {
-                        value: '选项1',
-                        label: '案例'
-                    },
-                    {
-                        value: '选项2',
-                        label: '案例'
-                    }],
-                articles:[1,2,3,4,5,6],
-                recommends:[1,2,3,4,5,6]
+                newsType:'',
+                guideType : '',
+                caseType : '',
+                articles:[],
+                articleTags : [],
+                articleType : [],
+                recommends:[1,2,3,4,5,6],
+                selectType : '',
+                selectTypeKey : 0, // 文章类型
+                searchKeyword : '', // 搜索关键词
             }
         },
         components: {
 
         },
-        ready(){
 
+        mounted(){
+            var self= this;
+            $.ajax({
+                url: window.YUNAPI.articleTags,
+                success: function (data) {
+//                    self.cities = data.cities;
+                    self.articleTags = data;
+//                    console.log(data);
+                    self.articleType = data.information_type;
+                    self.newsType = 1;
+                    self.guideType = 23;
+                    self.caseType = 6;
+                    self.selectType = '';
+                },
+                error : function () {
+                    console.log('error'.window.YUNAPI.articleTags)
+                }
+            });
+
+            this.getArticle()
         },
         methods: {
-            //获取活动人数、类型
+            newsTypeChange : function (e) {
+                this.selectType = "newsType";
+                this.selectTypeKey = e;
+                this.getArticle();
+
+            },
+            guideTypeChange : function (e) {
+                this.selectType = "guideType";
+                this.selectTypeKey = e;
+                this.getArticle();
+            },
+            caseTypeChange : function (e) {
+                this.selectType = "caseType";
+                this.selectTypeKey = e;
+                this.getArticle();
+            },
+            searchSubmit : function () {
+                if(event.keyCode==13){
+                    this.getArticle();
+                }
+            },
+            clearType : function () {
+                this.selectType = '';
+                this.getArticle();
+            },
+            moreArticle : function () {
+
+            },
+            getArticle : function () { //请求 文章列表
+                var self= this;
+                var urlData = {
+                    page : 1,
+                    i_keyword : self.searchKeyword,
+                    i_class : '',
+                    i_type : self.selectTypeKey
+                };
+                console.log(urlData);
+                $.ajax({
+                    url: window.YUNAPI.article,
+                    context: document.body,
+                    data : urlData,
+                    success: function (data) {
+//                    self.cities = data.cities;
+                        self.articles = data.information;
+                        self.$parent.loading = false;
+                    }
+                });
+            }
         }
 
     }
