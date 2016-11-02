@@ -7,7 +7,7 @@
                     <li :class="selectType == '' ? 'active' : '' " v-on:click="clearType">全部</li>
                     <li :class="selectType == 'newsType' ? 'active' : '' ">
                         <!--资讯-->
-                        <el-select v-model="newsType"  v-on:change = 'newsTypeChange'>
+                        <el-select v-model="newsType"  v-on:change = 'newsTypeChange' placeholder="资讯">
                             <el-option
                                     v-for="(value,key) in articleType['资讯']"
                                     :label="key"
@@ -18,7 +18,7 @@
 
                     <li :class="selectType == 'guideType' ? 'active' : '' ">
                         <!--攻略-->
-                        <el-select v-model="guideType" v-on:change = 'guideTypeChange'>
+                        <el-select v-model="guideType" v-on:change = 'guideTypeChange' placeholder="攻略">
                             <el-option
                                     v-for="(value,key) in articleType['攻略']"
                                     :label="key"
@@ -29,7 +29,7 @@
 
                     <li :class="selectType == 'caseType' ? 'active' : '' ">
                         <!--案例-->
-                        <el-select v-model="caseType" v-on:change = 'caseTypeChange'>
+                        <el-select v-model="caseType" v-on:change = 'caseTypeChange' placeholder="案例">
                             <el-option
                                     v-for="(value,key) in articleType['案例']"
                                     :label="key"
@@ -41,7 +41,7 @@
                 <!--selectlist-end-->
                 <div class="fl search-warp clearfix">
                     <input class="fl" type="text" v-model="searchKeyword" placeholder="输入关键字" v-on:keypress = 'searchSubmit'>
-                    <button class="fr searchbtn" v-on:click="getArticle">搜索</button>
+                    <button class="fr searchbtn" v-on:click="bindGetArticle">搜索</button>
                 </div>
             </div>
 
@@ -88,13 +88,13 @@
             <div class="hot-recommend">
                 <h2>热门推荐</h2>
                 <ul>
-                    <li class="clearfix" v-for="item in recommends">
+                    <li class="clearfix" v-for="item in hotArticle">
                         <div class="fl img">
-                            <a href="javascript:;"><img src=""></a>
+                            <a href="javascript:;"><img v-bind:src="item.first_picture.url"></a>
                         </div>
                         <div class="fr text">
-                            <a class="title" href="javascript:;">云SPACE护航《微微一笑很倾城》开启泛娱乐IP多维度营销先河</a>
-                            <p class="time">2016-08-28</p>
+                            <a class="title" href="javascript:;">{{item.title}}</a>
+                            <p class="time">{{item.created_at}}</p>
                         </div>
                     </li>
                 </ul>
@@ -118,7 +118,7 @@
     export default{
         data(){
             return {
-                newsType:'',
+                newsType: '',
                 guideType : '',
                 caseType : '',
                 articles:[],
@@ -126,8 +126,9 @@
                 articleType : [],
                 recommends:[1,2,3,4,5,6],
                 selectType : '',
-                selectTypeKey : 0, // 文章类型
+                selectTypeKey : '', // 文章类型
                 searchKeyword : '', // 搜索关键词
+                hotArticle : [], //热门文章
             }
         },
         components: {
@@ -143,13 +144,23 @@
                     self.articleTags = data;
 //                    console.log(data);
                     self.articleType = data.information_type;
-                    self.newsType = 1;
-                    self.guideType = 23;
-                    self.caseType = 6;
+//                    self.newsType = 1;
+//                    self.guideType = 23;
+//                    self.caseType = 6;
                     self.selectType = '';
                 },
                 error : function () {
                     console.log('error'.window.YUNAPI.articleTags)
+                }
+            });
+
+            $.ajax({
+                url: window.YUNAPI.articleHot,
+                success: function (data) {
+                    self.hotArticle = data.hot_recommend;
+                },
+                error : function () {
+                    console.log('error'.window.YUNAPI.articleHot)
                 }
             });
 
@@ -179,27 +190,37 @@
             },
             clearType : function () {
                 this.selectType = '';
+                this.selectTypeKey = '';
                 this.getArticle();
             },
             moreArticle : function () {
-
+                var lastId = this.articles[this.articles.length - 1].id;
+                this.getArticle(lastId,'more');
             },
-            getArticle : function () { //请求 文章列表
+            bindGetArticle : function () {
+                this.getArticle();
+            },
+            getArticle : function (id,method) { //请求 文章列表
                 var self= this;
                 var urlData = {
                     page : 1,
                     i_keyword : self.searchKeyword,
                     i_class : '',
-                    i_type : self.selectTypeKey
+                    i_type : self.selectTypeKey,
+                    i_id : id || ''
                 };
-                console.log(urlData);
                 $.ajax({
                     url: window.YUNAPI.article,
                     context: document.body,
                     data : urlData,
                     success: function (data) {
 //                    self.cities = data.cities;
-                        self.articles = data.information;
+                        if(method == 'more'){
+                            self.articles = self.articles.concat(data.information);
+                        }else{
+                            self.articles = data.information;
+                        }
+
                         self.$parent.loading = false;
                     }
                 });

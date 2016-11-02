@@ -28,6 +28,7 @@
         homeSearch : host + 'api/tags/get_home_search',
         article : host + 'api/informations',
         articleTags : host + 'api/tags/get_information_tags',
+        articleHot : host + 'api/informations/get_hot_recommend'
     };
 
     export default {
