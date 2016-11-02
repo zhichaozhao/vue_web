@@ -1,16 +1,16 @@
 <template>
     <div class="home" v-if="!this.$parent.loading">
-        <!--banner板块-开始-->
-        <div class="banner-search">
-            <!--banner部分-->
-            <div class="banner-wrap">
-                <div class="banner">
+        <!--home-banner板块-开始-->
+        <div class="home-banner-search">
+            <!--home-banner部分-->
+            <div class="home-banner-wrap">
+                <div class="home-banner">
                     <img src="/static/images/home/banner1.png">
                 </div>
             </div>
 
             <!--搜索-->
-            <div class="search clearfix">
+            <div class="home-search clearfix">
                 <!--城市选择-->
                 <div class="fl select city">
                     <div class="result">
@@ -65,7 +65,7 @@
 
             </div>
         </div>
-        <!--banner板块-结束-->
+        <!--home-banner板块-结束-->
 
         <!--快捷链接块-开始-->
         <ul class="quicklinks clearfix">
@@ -550,11 +550,11 @@
         font-size: 24px;
         margin-bottom: 30px;
     }
-    .banner-search{
+    .home-banner-search{
         position: relative;
         min-width: 1200px;
     }
-    .banner-wrap{
+    .home-banner-wrap{
         width: 100%;
         min-width: 1200px;
         height: 400px;
@@ -564,7 +564,7 @@
         position: relative;
     }
 
-    .banner {
+    .home-banner {
         width: 1920px;
         height: 400px;
         background: #ddd;
@@ -575,9 +575,9 @@
         overflow: hidden;
         z-index: 1;
     }
-    .banner>img{width: 100%;height: 100%;}
+    .home-banner>img{width: 100%;height: 100%;}
 
-    .search {
+    .home-search {
         width: 1000px;
         padding: 0 100px;
         position: absolute;
@@ -587,11 +587,11 @@
         z-index: 2;
     }
 
-    .search .select {
+    .home-search .select {
         position: relative;
     }
 
-    .search .select:hover .result .icon-updown {
+    .home-search .select:hover .result .icon-updown {
         transform: rotate(-180deg);
         -ms-transform: rotate(-180deg); /* IE 9 */
         -moz-transform: rotate(-180deg); /* Firefox */
@@ -599,27 +599,27 @@
         -o-transform: rotate(-180deg); /* Opera */
     }
 
-    .search .select .cont {
+    .home-search .select .cont {
         position: absolute;
         left: 0;
         top: 52px
     }
 
-    .search .result {
+    .home-search .result {
         width: 150px;
         height: 50px;
         background: #fff;
         position: relative;
     }
 
-    .search .result input {
+    .home-search .result input {
         width: 100%;
         height: 50px;
         line-height: 50px;
         cursor: pointer;
     }
 
-    .search .result .icon-updown {
+    .home-search .result .icon-updown {
         display: block;
         width: 0px;
         height: 0px;
@@ -632,10 +632,10 @@
         top: 21px;
         transition: all linear .2s;
     }
-    body .search .el-input__inner{
+    body .home-search .el-input__inner{
         padding: 3px 20px;
     }
-    body .search .el-input__icon{right: 19px;top:25px;}
+    body .home-search .el-input__icon{right: 19px;top:25px;}
     body .el-select-dropdown__item{
         padding: 8px 20px;
     }
