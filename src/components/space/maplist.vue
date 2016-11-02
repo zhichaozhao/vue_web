@@ -1,7 +1,7 @@
 <template>
     <div class="space-dtl-wrap">
         <div class="w1200 topback">
-            <a class="back" href="javascript:;"><i class="icon-arrowleft"></i> 返回搜索</a>
+            <a class="back" href="javascript:;"><i class="icon-arrowleft"></i> 返回空间列表</a>
         </div>
 
         <div class="w1200 map-container clearfix">
@@ -66,23 +66,23 @@
                             </li>
                         </ul>
                     <ul class="mapcont">
-                        <li>
+                        <li class="clearfix">
                             <a href="javascript:;" class="img"><img src="" ></a>
-                            <div class="cont ">
-                                <a href="javascript:;">上海蒲公英会议中心－北中环</a>
+                            <div class="pcont ">
+                                <a class="title" href="javascript:;">上海蒲公英会议中心－北中环</a>
                                 <div class="price red">
                                     ¥3000/元 天 <span>起</span>
                                 </div>
                                 <p>场地类型：酒店</p>
                                 <p>场地面积：500㎡</p>
-                                <p>地址：长柳路58号</p>
+                                <p>地址：上海市浦东新区上南路长柳路13弄45号</p>
                                 <a class="btnjoin" href="javascript:;">加入询价</a>
                             </div>
                         </li>
-                        <li>
+                        <li class="clearfix">
                             <a href="javascript:;" class="img"><img src="" ></a>
-                            <div class="cont">
-                                <a href="javascript:;">上海蒲公英会议中心－北中环</a>
+                            <div class="pcont">
+                                <a class="title" href="javascript:;">上海蒲公英会议中心－北中环</a>
                                 <div class="price">
                                     ¥3000/元 天 <span>起</span>
                                 </div>
@@ -92,10 +92,10 @@
                                 <a class="btnjoin hv" href="javascript:;">已加入询价单</a>
                             </div>
                         </li>
-                        <li>
+                        <li class="clearfix">
                             <a href="javascript:;" class="img"><img src="" ></a>
-                            <div class="cont">
-                                <a href="javascript:;">上海蒲公英会议中心－北中环</a>
+                            <div class="pcont">
+                                <a class="title" href="javascript:;">上海蒲公英会议中心－北中环</a>
                                 <div class="price">
                                     ¥3000/元 天 <span>起</span>
                                 </div>
@@ -112,6 +112,18 @@
             <!--地图-->
             <div class="fr spacemap-wrap">
                 <div class="spacemap"></div>
+
+
+                <div class="pcont map-pcont">
+                    <a class="title" href="javascript:;">上海蒲公英会议中心－北中环</a>
+                    <div class="price red">
+                        ¥3000/元 天 <span>起</span>
+                    </div>
+                    <p>场地类型：酒店</p>
+                    <p>场地面积：500㎡</p>
+                    <p>地址：上海市浦东新区上南路长柳路13弄45号</p>
+                    <a class="btnjoin" href="javascript:;">加入询价</a>
+                </div>
 
                 <button class="key-enquiry-btn">
                     一键询价
@@ -141,18 +153,7 @@
                 activeTab:'空间详情',
                 spacesubs: [
                     1, 2, 3, 4
-                ],
-                distance: [{
-                    value: '选项1',
-                    label: '黄金糕'
-                }, {
-                    value: '选项2',
-                    label: '双皮奶'
-                }, {
-                    value: '选项3',
-                    label: '蚵仔煎'
-                }],
-                distancetype: '选项一',
+                ]
             }
         },
 
@@ -171,12 +172,12 @@
 
 </script>
 <style>
+    .map-container *{box-sizing: border-box;}
     /*左侧内容部分*/
     .map-container{margin-top: 30px;}
     .mapcontleft{
         width: 500px;
     }
-    .mapsearch-warp *{box-sizing: border-box;}
     .mapsearch-warp .adress-name{
         width: 250px;
         height: 50px;
@@ -188,7 +189,6 @@
     .mapsearch-warp .distance{
         width: 126px;
         height: 50px;
-        padding: 10px;
         background: #fff;
         border: 1px solid #ccc;
         margin: 0 2px;
@@ -204,7 +204,6 @@
     }
     .mapcont-wrap{margin-top: 30px;}
     .mapcont-wrap .selectlist{
-        width: 501px;
         border-left: 1px solid #ccc;
     }
     .mapcont-wrap .selectlist li{
@@ -216,14 +215,94 @@
         background: #fff;
         box-sizing: border-box;
     }
+    .mapcont-wrap .selectlist li:last-child{width: 124px;}
+    .mapcont{
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-top: 0;
+    }
+    .mapcont li{
+        width: 100%;
+        min-height: 142px;
+        padding: 20px 20px 10px;
+        border-bottom: 2px solid #ccc;
+    }
+    .mapcont li:last-child{border-bottom: 0;}
+    .mapcont li:hover{
+        background: #f4f4f4;
+    }
+    .mapcont li .img{
+        float: left;
+        width: 150px;
+        height: 100px;
+    }
+    .pcont{
+        float: left;
+        background: #fff;
+        width: 308px;
+        padding-left: 10px;
+        position: relative;
+    }
+    .pcont .title{
+        display: block;
+        font-size: 18px;
+        line-height: 18px;
+        color: #000;
+        margin-bottom: 7px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .pcont .title:hover{color: #e92332;}
+    .pcont .price{
+        margin: 3px 0;
+    }
+    .pcont .price span{
+        font-size: 12px;
+    }
+    .pcont p{
+        width: 195px;
+        color: #666;
+        line-height: 1.3em;
+    }
+    .pcont .btnjoin{
+        display: block;
+        background:#fff;
+        border:1px solid #000000;
+        width:100px;
+        height:30px;
+        color: #000;
+        text-align: center;
+        line-height: 30px;
+        position: absolute;
+        top: 70px;
+        right: 0;
+    }
+    .mapcont .btnjoin.hv{
+        background:#e92332;
+        color: #fff;
+        border-color: #e92332;
+    }
 
 
-    /*右侧地图部分*/
+        /*右侧地图部分*/
     .spacemap-wrap{
         width: 680px;
         height: 1000px;
-        background: #ccc;
+        background: #333;
         position: relative;
+    }
+    .map-pcont{
+        position: absolute;
+        left: 20px;
+        top:100px;
+        width: 338px;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    .map-pcont .btnjoin{
+        right: 20px;
     }
     .spacemap-wrap .key-enquiry-btn{
         display: block;
