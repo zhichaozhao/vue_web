@@ -1,6 +1,6 @@
 <script src="../../assets/libs/jquery/jquery-3.1.1.min.js"></script>
 <template>
-<div>
+<div class="openshop-box">
     <!--banner板块-开始-->
     <div class="banner-search">
         <h1>我要开店</h1>
@@ -28,7 +28,7 @@
 
     <!--主题部分-开始-->
     <div class="w1200 mt30">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>我要开店</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
@@ -53,11 +53,11 @@
 
     <!--合作流程-->
     <div class="w1200 mt30">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>合作流程</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont process clearfix">
+        <ul class="cont opprocess clearfix">
             <li>
                 <div class="ibox">
                     <span class="img"></span>
@@ -104,11 +104,11 @@
 
     <!--专题-->
     <div class="w1200 mt30">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>专题</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont subject clearfix">
+        <ul class="cont opsubject clearfix">
             <li>
                 <a class="img" href="javascript:;"><img src=""></a>
                 <div class="text">
@@ -135,7 +135,7 @@
 
     <!--空间分类-->
     <div class="w1200 mt30 clearfix">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>空间分类</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
@@ -181,11 +181,11 @@
 
     <!--TOP榜单-->
     <div class="w1200 mt30">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>TOP榜单</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont toplist clearfix">
+        <ul class="cont optoplist clearfix">
             <li>
                 <a href="">
                     <img src="">
@@ -203,11 +203,11 @@
 
     <!--推荐空间-开始-->
     <div class="w1200 mt30">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>推荐空间</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
-        <ul class="cont venues-recommend clearfix">
+        <ul class="cont opvenues-recommend clearfix">
             <li v-for="venue in venues">
                 <div class="img">
                     <img src="/static/images/home/imgmain1.png">
@@ -229,7 +229,7 @@
 
     <!--精选案例-开始-->
     <div class="w1200">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>精选案例</h3>
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
@@ -271,7 +271,7 @@
 
     <!--合作伙伴-开始-->
     <div class="w1200 mt30">
-        <div class="evtitle clearfix">
+        <div class="optitle clearfix">
             <h3>合作伙伴</h3>
         </div>
         <div class="cont partners clearfix">
@@ -318,6 +318,8 @@
         mounted () {
             $.noConflict();
             jQuery('.zy-Slide').zySlide({ speed: 500 }).css('border', '0px solid blue');
+
+            this.$parent.loading = false;
         },
         methods: {},
 

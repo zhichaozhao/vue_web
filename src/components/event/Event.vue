@@ -377,6 +377,7 @@
 //                paginationHide:true
             });
 
+            this.$parent.loading = false;
         },
         methods: {
             //获取活动人数、类型
