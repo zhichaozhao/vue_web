@@ -24,7 +24,7 @@
     window.YUNAPI = {
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
-        home : host + 'api/indexs',
+        home : host + 'api/index',
         homeSearch : host + 'api/tags/get_home_search',
         article : host + 'api/informations',
         articleTags : host + 'api/tags/get_information_tags',

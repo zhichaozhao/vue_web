@@ -24,14 +24,14 @@
     font-size: 18px;
     cursor: pointer;
 }
-.selectlist li:hover{
+.selectlist li:hover,.selectlist li.active{
     background: #272335;
     color: #fff;
 }
-.selectlist li:hover input{
+.selectlist li:hover input,.selectlist li.active input{
     color: #fff;
 }
-.selectlist li:hover .el-select .el-input .el-input__icon{
+.selectlist li:hover .el-select .el-input .el-input__icon,.selectlist li.active .el-select .el-input .el-input__icon{
     color: #fff;
     border-top-color: #fff;
 }
