@@ -4,21 +4,21 @@
             <h2>我要办活动</h2>
             <div class="mainbox">
                 <ul class="inputbox">
-                    <li class="inputwrap">
+                    <li class="inputwrap clearfix">
                         <div class="text"><span class="red">*</span>您的称呼：</div>
                         <input class="fminput" type="text" placeholder="请输入您的真实姓名" />
                     </li>
-                    <li class="inputwrap war">
+                    <li class="inputwrap war clearfix">
                         <div class="text"><span class="red">*</span>您的联系方式：</div>
                         <input class="fminput" type="text" placeholder="请输入11位手机号" />
-                        <div class="warning"><i class="icons icon-warningbg"></i>请输入正确的11位手机号码</div>
+                        <div class="warning">请输入正确的11位手机号码</div>
                     </li>
-                    <li class="inputwrap">
+                    <li class="inputwrap clearfix">
                         <div class="text"><span class="red">*</span>短信验证码：</div>
                         <input class="fminput" type="text" placeholder="请输入6位数验证码" />
                         <button class="sendcode">发送验证码</button>
                     </li>
-                    <li class="inputwrap">
+                    <li class="inputwrap clearfix">
                         <div class="wrap" @click="showcitys=!showcitys">
                             <i class="icon-triangedown triange-bg"></i>
                             <div class="text">活动城市：</div>
@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="inputwrap">
+                    <li class="inputwrap clearfix">
                         <div class="swrap" @click="shownumbs=!shownumbs">
                             <i class="icon-triangedown triange-bg"></i>
                             <div class="text">活动人数：</div>
@@ -67,7 +67,7 @@
                             <input class="timeinput" type="text" placeholder="结束日期" />
                         </div>
                     </li>
-                    <li class="inputwrap">
+                    <li class="inputwrap clearfix">
                         <div class="swrap" @click="showtype=!showtype">
                             <i class="icon-triangedown triange-bg"></i>
                             <div class="text">活动类型：</div>
@@ -78,7 +78,7 @@
                         </ul>
                     </li>
 
-                    <li class="inputwrap trea">
+                    <li class="inputwrap trea clearfix">
                         <div class="text">其他要求：</div>
                         <textarea rows="8" placeholder="请填写更多的详细信息，帮助您快速找到适合的场地。"></textarea>
                     </li>
