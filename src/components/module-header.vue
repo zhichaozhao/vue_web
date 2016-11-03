@@ -60,7 +60,7 @@
                 </ul>
                 <ul class="fr btns clearfix">
                     <li class="log-reg">
-                        <a href="javascript:;">注册/登录</a>
+                        <a href="javascript:;" @click="toggleLoginForm">注册/登录</a>
                     </li>
                     <li class="inquiry">
                         <a href="javascript:;">一键询价<span class="red">(2)</span></a>
@@ -115,6 +115,12 @@
             console.log(this.$parent.$data.cities);
 //            console.log(this.$route)
         },
+        methods: {
+            toggleLoginForm : function () {
+                this.$parent.$data.showLoginForm = !this.$parent.$data.showLoginForm
+            }
+        }
+
     }
 </script>
 

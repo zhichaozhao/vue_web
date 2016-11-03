@@ -750,7 +750,7 @@ body .el-select-dropdown__list{
     color: #fff;
     position: relative;
 }
-.warning:before{
+.error.warning:before{
     display: block;
     float: left;
     margin-left: 24px;

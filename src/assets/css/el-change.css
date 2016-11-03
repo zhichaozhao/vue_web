@@ -104,3 +104,10 @@ body .el-button{
 body .el-dialog{
     width: auto;
 }
+body .el-select-dropdown{
+    z-index: 10000!important;
+}
+body .el-dialog__body{
+    /*padding: 0;*/
+    padding-top: 0;
+}

@@ -13,11 +13,6 @@ input:-moz-placeholder { color:#999;font-size: 12px; }
     width: 360px;
     padding: 30px 48px;
     background: #fff;
-    position: absolute;
-    top: 120px;
-    left: 50%;
-    margin-left: -228px;
-    z-index: 10;
 }
 .loginreg-box h2{
     font-size: 24px;

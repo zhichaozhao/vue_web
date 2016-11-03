@@ -1,6 +1,6 @@
 <template>
     <div id="app2" v-on:click="bodyClick">
-        <module-header cities = "cities"></module-header>
+        <module-header cities = "cities" v-on:toggleLoginForm ="toggleLoginForm"></module-header>
 
         <!--<router-view></router-view>-->
         <div v-loading="loading" class="el-loading-yun"></div>
@@ -9,6 +9,98 @@
         <router-view  class="child-view"></router-view>
 
         <module-footer ref="test" v-if="!loading"></module-footer>
+
+        <el-dialog v-model="showRegForm" top="20px">
+            <!--regbox注册-开始-->
+            <div class="loginreg-box">
+                <div class="regbox">
+                    <h2>注册</h2>
+                    <div class="mainbox">
+                        <ul class="inputbox">
+                            <li class="logregwrap">
+                                <span class="text">姓</span>
+                                <input class="logreginput" type="text" placeholder="请输入您的姓氏" />
+                            </li>
+                            <li class="logregwrap">
+                                <span class="text">名</span>
+                                <input class="logreginput" type="text" placeholder="请输入您的名称" />
+                            </li>
+                            <li class="logregwrap">
+                                <span class="text">手机号</span>
+                                <input class="logreginput" type="text" placeholder="请输入正确的11位手机号码" />
+                            </li>
+                            <li class="logregwrap">
+                                <span class="text">验证码</span>
+                                <input class="logreginput" type="text" placeholder="" />
+                                <button class="sendcode">发送验证码</button>
+                            </li>
+                            <li class="logregwrap">
+                                <span class="text">设置密码</span>
+                                <input class="logreginput" type="text" placeholder="密码长度不能少于6位，不能包含空格" />
+                                <i class="icons icon-passwordhide"></i>
+                            </li>
+                            <li class="logregwrap">
+                                <span class="text">确认密码</span>
+                                <input class="logreginput" type="password" placeholder="" />
+                            </li>
+                        </ul>
+                        <button class="logreg-btn" type="button">立即注册</button>
+                    </div>
+                </div><!--regbox注册-结束-->
+            </div>
+
+        </el-dialog>
+        <el-dialog v-model="showLoginForm">
+            <!--regbox注册-开始-->
+            <div class="loginreg-box">
+                <!--loginbox登录-开始-->
+                <div class="loginbox">
+                    <h2>登录</h2>
+                    <div class="mainbox">
+                        <ul class="inputbox">
+                            <li class="logregwrap war">
+                                <input class="logreginput" type="text" placeholder="手机号" />
+                                <div class="warning"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>
+                            </li>
+                            <li class="logregwrap">
+                                <input class="logreginput" type="password" placeholder="密码" />
+                                <i class="icons icon-passwordshow"></i>
+                            </li>
+                        </ul>
+
+                        <div class="rememberbox clearfix">
+                            <div class="fl remember clearfix">
+                                <label>
+                                    <input class="fl checkbox" type="checkbox" value="记住手机号码">
+                                    <p class="fr">记住手机号码</p>
+                                </label>
+                            </div>
+                            <a class="fr forget" href="javascript:;">忘记密码？</a>
+                        </div>
+
+                        <button class="logreg-btn" type="button">登录</button>
+                    </div>
+                    <div class="hreftext clearfix">
+                        <a class="fl" href="javascript:;" @click="showRegForm = true">创建账号</a>
+                        <a class="fr" href="javascript:;">验证码登录</a>
+                    </div>
+
+                    <div class="log-thirdparty">
+                        <div class="title">
+                            <div class="line"></div>
+                            <h5>或通过以下方式快速登录</h5>
+                        </div>
+                        <ul class="thirdparty clearfix">
+                            <li><a class="wechat" href="javascript:;"></a> </li>
+                            <li><a class="sina" href="javascript:;"></a></li>
+                            <li><a class="qq" href="javascript:;"></a></li>
+                        </ul>
+                    </div>
+                </div><!--loginbox登录-结束-->
+            </div>
+
+        </el-dialog>
+
     </div>
 </template>
 
@@ -16,6 +108,8 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
+    import 'assets/css/logreg.css';
+
     const host = "http://172.16.1.154:3000/";
     window.YUNAPI = {
         cities : host + 'api/cities',
@@ -37,7 +131,9 @@
             return {
                 cities:[],
                 isShowHomeSearchCondition : false,
-                loading: true
+                loading: true,
+                showLoginForm : false,
+                showRegForm : false,
             }
 
         },
@@ -67,6 +163,9 @@
                     elem = elem.parentNode;
                 }
                 this.isShowHomeSearchCondition = false
+            },
+            toggleLoginForm : function () {
+                this.showLoginForm = !showLoginForm
             }
         }
 

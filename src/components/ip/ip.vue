@@ -39,7 +39,7 @@
         </div>
         <div class="ip-category clearfix">
             <a href="">全部</a>
-            <a href="" v-for="i in 7" v-text="ipType[i-1].ke"></a>
+            <a href="" v-for="(key,value,index) in ipType" v-if="index < 7">{{value}}</a>
             <a href="">更多</a>
             <!--<a href="">动漫</a>-->
             <!--<a href="">卡通</a>-->
@@ -165,7 +165,7 @@
                                     <div class="text"><span class="red">*</span>选择城市：</div>
                                     <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
                                     <div class="result fminput">
-                                        <el-select v-model="value">
+                                        <el-select v-model="consult.consultCity" placeholder='请选择城市'>
                                             <el-option
                                                     v-for="item in this.$parent.$data.cities"
                                                     :label="item.name"
@@ -231,7 +231,8 @@
                     username : '',
                     phone : '',
                     content : '',
-                    project_id : ''
+                    project_id : '',
+                    consultCity : '上海'
                 }
             }
 
@@ -246,16 +247,16 @@
                     self.ipCase = data.ip_case
                     self.ipProject = data.ip_project
                     self.ipRecommend = data.ip_recommend
-//                    self.ipType = data.ip_type
+                    self.ipType = data.ip_type
 
-                    for (var i in data.ip_type){
-                        var k = {
-                            ke : i,
-                            v : data.ip_type[i]
-                        }
-
-                        self.ipType.push(k)
-                    }
+//                    for (var i in data.ip_type){
+//                        var k = {
+//                            ke : i,
+//                            v : data.ip_type[i]
+//                        }
+//
+//                        self.ipType.push(k)
+//                    }
                     setTimeout(function () {
                         self.init();
                     },300)
