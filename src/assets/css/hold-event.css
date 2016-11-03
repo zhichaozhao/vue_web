@@ -297,6 +297,10 @@
     white-space: nowrap;
     margin-bottom: 10px;
 }
+.subject li .text p{
+    height: 40px;
+    overflow: hidden;
+}
 
 /*分类*/
 .classfiylist li{
@@ -459,7 +463,8 @@
     margin-bottom: 12px;
 }
 .evcases p{
-
+    height: 40px;
+    overflow: hidden;
 }
 
 /*TOP榜*/

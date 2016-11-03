@@ -30,7 +30,8 @@
         articleTags : host + 'api/tags/get_information_tags',
         articleHot : host + 'api/informations/get_hot_recommend',
         findIp : host + 'api/ip_project',
-        ipList : host + 'api/projects'
+        ipList : host + 'api/projects',
+        active : host + 'api/activities'
     };
 
     export default {

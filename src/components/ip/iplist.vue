@@ -6,7 +6,7 @@
             <span>IP类别</span>
         </div>
         <div class="ip-category clearfix">
-            <a @click="ipTypeChange(v)" href="javascript:;" v-for="(v,key) in projectType">{{key}}</a>
+            <a @click="ipTypeChange(v)" :class="ipCategory == v ? 'current' : ''" href="javascript:;" v-for="(v,key) in projectType">{{key}}</a>
         </div>
         <div class="concentration">
             <ul class="clearfix">
@@ -45,7 +45,8 @@
         data(){
             return {
                 projects:[],
-                projectType:[]
+                projectType:[],
+                ipCategory: ''
             }
 
         },
@@ -62,7 +63,6 @@
                 var urlData = {
                     p_type : id || ''
                 };
-                self.$parent.loading = true;
                 $.ajax({
                     url: window.YUNAPI.ipList,
                     data:urlData,
@@ -79,8 +79,9 @@
                     }
                 });
             },
-            ipTypeChange: function (v) {
-                this.getIpList(v)
+            ipTypeChange: function (id) {
+                this.getIpList(id);
+                this.ipCategory = id;
             }
         }
     }
