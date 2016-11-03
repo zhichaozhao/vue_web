@@ -39,14 +39,16 @@
         </div>
         <div class="ip-category clearfix">
             <a href="">全部</a>
-            <a href="">动漫</a>
-            <a href="">卡通</a>
-            <a href="">影视</a>
-            <a href="">游戏</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
+            <a href="" v-for="i in 7" v-text="ipType[i-1].ke"></a>
+            <a href="">更多</a>
+            <!--<a href="">动漫</a>-->
+            <!--<a href="">卡通</a>-->
+            <!--<a href="">影视</a>-->
+            <!--<a href="">游戏</a>-->
+            <!--<a href="">市集</a>-->
+            <!--<a href="">市集</a>-->
+            <!--<a href="">市集</a>-->
+            <!--<a href="">市集</a>-->
         </div>
         <div class="module-header">
             <span>精选推荐</span>
@@ -211,6 +213,8 @@
                 ipCase : [],
                 ipRecommend : [],
                 ipProject : [],
+                ipType : [],
+                ipTypeValues : [],
 
                 username : '',
                 comment :'',
@@ -233,7 +237,16 @@
                     self.ipCase = data.ip_case
                     self.ipProject = data.ip_project
                     self.ipRecommend = data.ip_recommend
+//                    self.ipType = data.ip_type
 
+                    for (var i in data.ip_type){
+                        var k = {
+                            ke : i,
+                            v : data.ip_type[i]
+                        }
+
+                        self.ipType.push(k)
+                    }
                     setTimeout(function () {
                         self.init();
                     },300)
@@ -295,11 +308,12 @@
                     paginationHide:true
                 });
             },
-            submitConsult : function (id) {
+            submitConsult : function () {
                 var self = this;
                 console.log(self.consult);
                 $.post({
                     url: window.YUNAPI.submitConsult,
+                    data : self.consult,
                     success: function (data) {
                         console.log(data);
                         self.$message({
