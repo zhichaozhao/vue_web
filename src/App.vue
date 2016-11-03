@@ -3,16 +3,12 @@
         <module-header cities = "cities"></module-header>
 
         <!--<router-view></router-view>-->
-        <div class="loading-wrap" v-if="this.loading">
-            <div v-loading="loading" class="el-loading-yun"></div>
-        </div>
+        <div v-loading="loading" class="el-loading-yun"></div>
 
 
         <router-view  class="child-view"></router-view>
 
-
-
-        <module-footer ref="test"></module-footer>
+        <module-footer ref="test" v-if="!loading"></module-footer>
     </div>
 </template>
 
@@ -28,7 +24,10 @@
         homeSearch : host + 'api/tags/get_home_search',
         article : host + 'api/informations',
         articleTags : host + 'api/tags/get_information_tags',
-        articleHot : host + 'api/informations/get_hot_recommend'
+        articleHot : host + 'api/informations/get_hot_recommend',
+        findIp : host + 'api/projects/ip_project',
+        ipList : host + 'api/projects',
+        submitConsult : host + 'api/consults',
     };
 
     export default {
@@ -37,7 +36,7 @@
             return {
                 cities:[],
                 isShowHomeSearchCondition : false,
-                loading: true
+                loading: true,
             }
 
         },
@@ -67,8 +66,9 @@
                     elem = elem.parentNode;
                 }
                 this.isShowHomeSearchCondition = false
-            }
+            },
         }
+
 
     }
 </script>

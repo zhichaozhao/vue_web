@@ -1,5 +1,5 @@
 <template>
-    <div class="home" v-if="!this.$parent.loading">
+    <div class="home">
         <!--home-banner板块-开始-->
         <div class="home-banner-search">
             <!--home-banner部分-->
@@ -155,54 +155,54 @@
         <!--分类精选-结束-->
 
         <!--空间推荐-开始-->
-        <!--<div class="section spacerecommend clearfix">-->
-            <!--<h3>空间推荐</h3>-->
-            <!--<ul class="recommend recommend-main clearfix">-->
-                <!--<li v-for="n in 3">-->
-                    <!--<div class="img">-->
-                        <!--<a href="javascript:;">-->
-                            <!--<img src="/static/images/home/imgmain1.png">-->
-                        <!--</a>-->
-                        <!--<span class="tags">上海</span>-->
-                    <!--</div>-->
-                    <!--<div class="text">-->
-                        <!--<a class="title" href="javascript:;">{{spaceRecommend[n-1].name}}</a>-->
-                        <!--<div class="price">￥{{spaceRecommend[n-1].market_price}}/元 天</div>-->
-                        <!--<div class="textinfo">-->
-                            <!--<p><span>场地类型：</span>{{spaceRecommend[n-1].space_type}}</p>-->
-                            <!--<p><span>落地区域：</span>{{spaceRecommend[n-1].through_three_areas}}</p>-->
-                            <!--<div class="numb clearfix">-->
-                                <!--<p><span>面积：</span>{{spaceRecommend[n-1].area}}</p>-->
-                                <!--<p><span>层高：</span>{{spaceRecommend[n-1].height}}</p>-->
-                                <!--<p><span>人数：</span>{{spaceRecommend[n-1].Max_seating_capacity}}</p>-->
-                            <!--</div>-->
-                            <!--<p><span>地址：</span>{{spaceRecommend[n-1].areas}} | {{spaceRecommend[n-1].address}}</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-            <!--</ul>-->
-            <!--<ul class="recommend recommend-sub clearfix">-->
-                <!--<li v-for="n in (spaceRecommend.length - 3)">-->
-                    <!--<div class="img">-->
-                        <!--<a href="javascript:;">-->
-                            <!--<img src="/static/images/home/imgmain1.png">-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <!--<div class="text">-->
-                        <!--<a class="title" href="javascript:;">{{spaceRecommend[n+2].name}}</a>-->
-                        <!--<div class="price">￥{{spaceRecommend[n+2].market_price}}/元 天</div>-->
-                        <!--<div class="city">杭州</div>-->
-                        <!--<div class="textinfo">-->
-                            <!--<p><span>场地类型：</span>{{spaceRecommend[n+2].space_type}}</p>-->
-                            <!--<p><span>落地区域：</span>{{spaceRecommend[n+2].through_three_areas}}</p>-->
-                            <!--<p><span>地址：</span>{{spaceRecommend[n+2].areas}}|{{spaceRecommend[n+2].address}}</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-            <!--</ul>-->
-            <!--<ul class="recommend-other"></ul>-->
-            <!--<a class="btnlookmore" href="javascript:;">查看更多空间</a>-->
-        <!--</div>-->
+        <div class="section spacerecommend clearfix">
+            <h3>空间推荐</h3>
+            <ul class="recommend recommend-main clearfix">
+                <li v-for="n in 3">
+                    <div class="img">
+                        <a href="javascript:;">
+                            <img src="/static/images/home/imgmain1.png">
+                        </a>
+                        <span class="tags">上海</span>
+                    </div>
+                    <div class="text">
+                        <a class="title" href="javascript:;">{{spaceRecommend[n-1].name}}</a>
+                        <div class="price">￥{{spaceRecommend[n-1].market_price}}/元 天</div>
+                        <div class="textinfo">
+                            <p><span>场地类型：</span>{{spaceRecommend[n-1].space_type}}</p>
+                            <p><span>落地区域：</span>{{spaceRecommend[n-1].through_three_areas}}</p>
+                            <div class="numb clearfix">
+                                <p><span>面积：</span>{{spaceRecommend[n-1].area}}</p>
+                                <p><span>层高：</span>{{spaceRecommend[n-1].height}}</p>
+                                <p><span>人数：</span>{{spaceRecommend[n-1].Max_seating_capacity}}</p>
+                            </div>
+                            <p><span>地址：</span>{{spaceRecommend[n-1].areas}} | {{spaceRecommend[n-1].address}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="recommend recommend-sub clearfix">
+                <li v-for="n in (spaceRecommend.length - 3)">
+                    <div class="img">
+                        <a href="javascript:;">
+                            <img src="/static/images/home/imgmain1.png">
+                        </a>
+                    </div>
+                    <div class="text">
+                        <a class="title" href="javascript:;">{{spaceRecommend[n+2].name}}</a>
+                        <div class="price">￥{{spaceRecommend[n+2].market_price}}/元 天</div>
+                        <div class="city">杭州</div>
+                        <div class="textinfo">
+                            <p><span>场地类型：</span>{{spaceRecommend[n+2].space_type}}</p>
+                            <p><span>落地区域：</span>{{spaceRecommend[n+2].through_three_areas}}</p>
+                            <p><span>地址：</span>{{spaceRecommend[n+2].areas}}|{{spaceRecommend[n+2].address}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="recommend-other"></ul>
+            <a class="btnlookmore" href="javascript:;">查看更多空间</a>
+        </div>
         <!--空间推荐-结束-->
 
         <!--ip文创项目-开始-->
@@ -407,8 +407,6 @@
                 }],
                 value: '',
                 showdowhat: 0,
-                LoadComplete : false,
-
                 searchCondition : {}, //搜索条件
 
                 ipProject : [],
@@ -426,9 +424,14 @@
         components: {},
         mounted () {
             var self = this;
+
+            self.$parent.loading = true; //显示loading 状态
+
             $.ajax({
                 url: window.YUNAPI.home, context: document.body, success: function (data) {
                     console.log(data);
+
+                    self.$parent.loading = false;
 
                     self.topicOfCity = data.home_city_special;
                     self.newFindTop = data.home_new_find_top;
@@ -459,10 +462,10 @@
 
 //                    console.log(self.spaceRecommend);
 //                    console.log(self.newFindRandom);
-                    self.$parent.loading = false;
+
                     setTimeout(function () {
                         self.init();
-                    },500)
+                    },300)
                 }
             });
 

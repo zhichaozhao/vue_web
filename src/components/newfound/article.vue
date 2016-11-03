@@ -1,5 +1,5 @@
 <template>
-    <div class="w1200 newfound clearfix" v-if="!this.$parent.loading">
+    <div class="w1200 newfound clearfix">
         <!--左边文章列表-开始-->
         <div class="fl left clearfix">
             <div class="s-wrap clearfix">
@@ -164,7 +164,8 @@
                 }
             });
 
-            this.getArticle()
+            self.$parent.loading = true; //显示loading 状态
+            this.getArticle() // 请求文章列表
         },
         methods: {
             newsTypeChange : function (e) {
@@ -201,7 +202,10 @@
                 this.getArticle();
             },
             getArticle : function (id,method) { //请求 文章列表
+
                 var self= this;
+                self.$parent.loading = true;
+
                 var urlData = {
                     page : 1,
                     i_keyword : self.searchKeyword,
