@@ -6,42 +6,26 @@
             <span>IP类别</span>
         </div>
         <div class="ip-category clearfix">
-            <a href="">全部</a>
-            <a href="">动漫</a>
-            <a href="">卡通</a>
-            <a href="">影视</a>
-            <a href="">游戏</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">游戏</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
-            <a href="">市集</a>
+            <a @click="ipTypeChange(v)" href="javascript:;" v-for="(v,key) in projectType">{{key}}</a>
         </div>
         <div class="concentration">
             <ul class="clearfix">
-                <li v-for="i in s">
-                    <a href=""><img src="http://placehold.it/590x400" alt=""></a>
+                <li v-for="item in projects">
+                    <a href=""><img :src="item.img_paths.url" alt=""></a>
                     <div class="rec-dtl">
                         <a href="" class="op-coop">合作咨询</a>
-                        <p class="title">冰川时代主题快闪店</p>
-                        <p class="tag">ICE AGE 大电影</p>
+                        <p class="title" v-text="item.title"></p>
+                        <p class="tag" v-text="item.keyword"></p>
                         <div class="dl-wrap clearfix">
-                            <dl><dt>类别 : </dt><dd>影视</dd></dl>
-                            <dl><dt>来源 :</dt><dd>国际</dd></dl>
-                            <dl><dt>场地面积 :</dt><dd>100-500m</dd></dl>
+                            <dl><dt>类别 : </dt><dd v-text="item.p_type"></dd></dl>
+                            <dl><dt>来源 :</dt><dd v-text="item.source">国际</dd></dl>
+                            <dl><dt>场地面积 :</dt><dd v-text="item.area">100-500m</dd></dl>
                         </div>
                         <div class="">
-                            <dl><dt>适用人群 :</dt><dd>冰川时代影迷</dd></dl>
-                            <dl><dt>场地面积 :</dt><dd>面议</dd></dl>
+                            <dl><dt>适用人群 :</dt><dd v-text="item.applicable_people">冰川时代影迷</dd></dl>
+                            <dl><dt>预算范围 :</dt><dd v-text="item.budget_amount">面议</dd></dl>
                         </div>
-                        <p class="des">是继Playze与Tony合作有机农庄之后的第二个项目。
-                            多利有机屋旨在向上海市民展示他们的农庄产品及推广有机生活方式，为城市生活居民引入自然生活理念。
-                            像素化的方木箱出现在建筑的每一层， 成为空间关联的主线。
-                            采用立体化的可移动模块将中央楼梯打造成一个灵活的居善地，这里可以适应演讲，展览，接待，非正式回应等多种活动。</p>
+                        <p class="des" v-text="item.p_notes"></p>
                     </div>
                 </li>
             </ul>
@@ -60,18 +44,44 @@
     export default {
         data(){
             return {
-                s:[1,2,3,4],
-                s2:[1,2,3]
+                projects:[],
+                projectType:[]
             }
 
         },
         mounted () {
-
+            var self = this;
+            this.getIpList();
+            //this.ipType();
         },
         components: {},
 
         methods: {
+            getIpList : function (id) {
+                var self = this;
+                var urlData = {
+                    p_type : id || ''
+                };
+                self.$parent.loading = true;
+                $.ajax({
+                    url: window.YUNAPI.ipList,
+                    data:urlData,
+                    success: function (data) {
+                        self.projects=data.projects;
+                        self.projectType = data.project_type;
 
+                        //ip类别 关键词
+                        for(var i = 0; i < self.projects.length - 1; i++){
+                            self.projects[i].keyword = self.projects[i].keyword.replace(',',' ');
+                        }
+
+                        self.$parent.loading = false;
+                    }
+                });
+            },
+            ipTypeChange: function (v) {
+                this.getIpList(v)
+            }
         }
     }
 </script>

@@ -44,10 +44,12 @@
 }
 .concentration ul li{
     width: 590px;
+    height: 640px;
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
-
+    background: #fff;
+    overflow: hidden;
 }
 .concentration ul li .rec-dtl{
     padding: 20px;
