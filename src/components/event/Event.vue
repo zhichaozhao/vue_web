@@ -138,11 +138,11 @@
                         <li v-for="subject in subjects">
                             <a href="javascript:;">
                                 <div class="img">
-                                    <img src="/static/images/holdEvent/imgsubject1.png">
+                                    <img :src="subject.first_picture.url">
                                 </div>
                                 <div class="text">
-                                    <h5>LK+RIGI Design Office</h5>
-                                    <p>他用建筑世界发问，他以文人意气造房子，追溯山水意境，园林情趣。</p>
+                                    <h5 v-text="subject.title">LK+RIGI Design Office</h5>
+                                    <p v-text="subject.abstract">他用建筑世界发问，他以文人意气造房子，追溯山水意境，园林情趣。</p>
                                 </div>
                             </a>
                         </li>
@@ -188,23 +188,23 @@
                     <ul class="cont clearfix">
                         <li v-for="venue in venues">
                             <div class="img">
-                                <img src="/static/images/home/imgmain1.png">
+                                <img :src="venue.img_paths.url">
                                 <div class="collect-mask">
                                     <div class="collect icons icon-collectbg-hv"></div>
                                     <div class="mask"></div>
                                 </div>
                             </div>
                             <div class="text">
-                                <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                                <div class="price">￥50000/元 天</div>
+                                <a class="title" href="javascript:;" v-text="venue.site_name">上海电影场-五号棚</a>
+                                <div class="price">￥{{venue.market_price}}/元 {{venue.units}}</div>
                                 <div class="textinfo">
-                                    <p><span>场地类型：</span>高端场所 | 主题派对 | 年会晚会 | 颁奖晚会</p>
+                                    <p><span>场地类型：</span>{{venue.site_type}}</p>
                                     <div class="numb clearfix">
-                                        <p><span>面积：</span>450㎡</p>
-                                        <p><span>层高：</span>4m</p>
-                                        <p><span>人数：</span>200人</p>
+                                        <p><span>面积：</span>{{venue.area}}㎡</p>
+                                        <p><span>层高：</span>{{venue.height}}m</p>
+                                        <p><span>人数：</span>{{venue.site_max_people}}人</p>
                                     </div>
-                                    <p><span>地址：</span>上海市 黄浦区 | 南京东路789号</p>
+                                    <p><span>地址：</span>{{venue.city_name}}&nbsp;{{venue.areas}} | {{venue.address}}</p>
                                 </div>
                             </div>
                         </li>
@@ -225,9 +225,9 @@
                                 <div class="disrate">9.5折</div>
                             </div>
                             <div class="text">
-                                <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                                <div class="price">￥50000/元 天</div>
-                                <div class="price disprice">￥48000/元 天</div>
+                                <a class="title" href="javascript:;" v-text="discount.title">上海电影场-五号棚</a>
+                                <div class="price">￥{{discount.market_price}}/元 {{discount.units}}</div>
+                                <div class="price disprice">￥{{discount.the_price}}/元 {{discount.units}}</div>
                             </div>
                         </li>
                     </ul>
@@ -243,11 +243,11 @@
                     <ul class="cont clearfix">
                         <li v-for="eventcase in eventcases">
                             <div class="img">
-                                <img src="/static/images/home/imgmain1.png">
+                                <img :src="eventcase.first_picture.url">
                             </div>
                             <div class="text">
-                                <a class="title" href="javascript:;">Hisham Akira Bharoocha</a>
-                                <p>他们最新的创意作品——《Hair Highway》意在向中国，这个世界上最大的热带硬木 进口国和头发的出口国。</p>
+                                <a class="title" href="javascript:;" v-text="eventcase.title">Hisham Akira Bharoocha</a>
+                                <p v-text="eventcase.abstract"></p>
                             </div>
                         </li>
                     </ul>
@@ -265,26 +265,10 @@
                         <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
                     </div>
                     <ul class="cont">
-                        <li>
+                        <li v-for="toplist in toplists">
                             <a href="javascript:;">
-                                <img src="/static/images/holdEvent/topimg1.png">
-                                <div class="title">
-                                    文青必去的上海五大剧院
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/static/images/holdEvent/topimg1.png">
-                                <div class="title">
-                                    文青必去的上海五大剧院
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/static/images/holdEvent/topimg1.png">
-                                <div class="title">
+                                <img :src="toplist.first_picture.url">
+                                <div class="title" v-text="toplist.title">
                                     文青必去的上海五大剧院
                                 </div>
                             </a>
@@ -351,18 +335,11 @@
                 peoplenumbs: [
                     111, 222
                 ],
-                subjects: [
-                    1, 2, 3
-                ],
-                venues: [
-                    1, 2, 3, 4
-                ],
-                discounts: [
-                    1, 2, 3, 4, 5, 6
-                ],
-                eventcases: [
-                    1, 2, 3, 4
-                ]
+                subjects: [ ],
+                venues: [ ],
+                discounts: [ ],
+                eventcases: [ ],
+                toplists: [ ]
 
             }
         },
@@ -377,7 +354,32 @@
 //                paginationHide:true
             });
 
-            this.$parent.loading = false;
+            var self=this;
+            $.ajax({
+                url: window.YUNAPI.active,
+                success : function (data) {
+                    //console.log(data,111);
+                    //专题
+                    self.subjects=data.activity_topic;
+
+                    //场馆推荐
+                    self.venues=data.space_recommend;
+
+                    //限时优惠
+                    self.discounts=data.space_calendar;
+
+                    //活动案例
+                    self.eventcases=data.space_case;
+
+                    //TOP榜
+                    self.toplists=data.activity_top;
+                }
+            });
+
+
+
+
+            self.$parent.loading = false;
         },
         methods: {
             //获取活动人数、类型

@@ -12,7 +12,6 @@
     margin-right: -20px;
 }
 .ip-category a{
-    display: inline-block;
     background-color: #fff;
     color: #000;
     width: 115px;
@@ -24,6 +23,10 @@
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
+}
+.ip-category a.current{
+    background: #000;
+    color: #fff;
 }
 .module-header .more{
     float: right;
@@ -44,10 +47,12 @@
 }
 .concentration ul li{
     width: 590px;
+    height: 640px;
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
-
+    background: #fff;
+    overflow: hidden;
 }
 .concentration ul li .rec-dtl{
     padding: 20px;
@@ -88,7 +93,9 @@
     display: inline-block;
 }
 .concentration ul li p.des{
+    height: 70px;
     line-height: 1.6;
+    overflow: hidden;
 }
 .concentration ul li .op-coop{
     position: absolute;

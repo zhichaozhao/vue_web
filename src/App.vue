@@ -27,6 +27,7 @@
         articleHot : host + 'api/informations/get_hot_recommend',
         findIp : host + 'api/projects/ip_project',
         ipList : host + 'api/projects',
+        active : host + 'api/activities',
         submitConsult : host + 'api/consults',
     };
 
@@ -36,7 +37,7 @@
             return {
                 cities:[],
                 isShowHomeSearchCondition : false,
-                loading: true,
+                loading: true
             }
 
         },
@@ -66,9 +67,8 @@
                     elem = elem.parentNode;
                 }
                 this.isShowHomeSearchCondition = false
-            },
+            }
         }
-
 
     }
 </script>

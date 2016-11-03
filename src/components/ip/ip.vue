@@ -229,7 +229,6 @@
             $.ajax({
 
                 url: window.YUNAPI.findIp,
-                data : self.consult,
                 success: function (data) {
                     self.ipCase = data.ip_case
                     self.ipProject = data.ip_project
