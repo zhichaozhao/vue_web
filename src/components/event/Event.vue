@@ -107,8 +107,8 @@
             <div class="search">
                 <h2>找到适合你的活动空间</h2>
                 <div class="inputbox clearfix">
-                    <input type="text" placeholder="商圈／地标／机场／火车站／场地名">
-                    <button class="searchbtn">搜&nbsp;索</button>
+                    <input class="searchInputVal" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                    <button class="searchbtn" @click="getSearchVal">搜&nbsp;索</button>
                 </div>
                 <div class="hot clearfix">
                     <p>热点：</p>
@@ -222,7 +222,7 @@
                         <li v-for="discount in discounts">
                             <div class="img">
                                 <img src="/static/images/home/imgmain1.png">
-                                <div class="disrate">9.5折</div>
+                                <div class="disrate">{{discount.disrate}}折</div>
                             </div>
                             <div class="text">
                                 <a class="title" href="javascript:;" v-text="discount.title">上海电影场-五号棚</a>
@@ -338,6 +338,7 @@
                 subjects: [ ],
                 venues: [ ],
                 discounts: [ ],
+                disrate:[ ],
                 eventcases: [ ],
                 toplists: [ ]
 
@@ -367,12 +368,19 @@
 
                     //限时优惠
                     self.discounts=data.space_calendar;
+                    //折扣率
+                    for(var i = 0; i < self.discounts.length; i++){
+                        self.discounts[i].disrate=(self.discounts[i].the_price/self.discounts[i].market_price)*10;
+                        self.discounts[i].disrate=self.discounts[i].disrate.toString().slice(0, 3);
+                    }
 
                     //活动案例
                     self.eventcases=data.space_case;
 
                     //TOP榜
                     self.toplists=data.activity_top;
+
+                    self.$parent.loading = false;
                 }
             });
 
@@ -382,7 +390,12 @@
             self.$parent.loading = false;
         },
         methods: {
-            //获取活动人数、类型
+            //搜索点击跳转到空间列表页
+            getSearchVal:function () {
+                this.searchInputVal=$('.searchInputVal').val();
+                console.log(this.searchInputVal);
+                window.location.href ='/spacelist/:'+this.searchInputVal;
+            }
 
         }
     }

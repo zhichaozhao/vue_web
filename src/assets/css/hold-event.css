@@ -1323,9 +1323,40 @@ body .el-select-dropdown__list{
   margin-right: -20px;
 }
 .list-piece li{
-  width: 288px;
-  margin-bottom: 20px;
-  margin-right: 18px;
+    width: 288px;
+    height: 400px;
+    margin-bottom: 20px;
+    margin-right: 18px;
+    padding-bottom: 50px;
+}
+.list-piece li .img{height: 190px;}
+.list-piece li .title{margin-bottom: 10px;}
+.list-piece li .price{
+    top: 150px;
+    left: 0;
+}
+.list-piece li p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.text .btnjoin{
+    display: block;
+    background:#fff;
+    border:1px solid #000000;
+    width:100px;
+    height:30px;
+    color: #000;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.text .btnjoin.hv{
+    background:#e92332;
+    color: #fff;
+    border-color: #e92332;
 }
 
 /*空间详情*/

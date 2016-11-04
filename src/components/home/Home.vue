@@ -556,6 +556,7 @@
     .home-banner-search{
         position: relative;
         min-width: 1200px;
+        z-index: 10;
     }
     .home-banner-wrap{
         width: 100%;

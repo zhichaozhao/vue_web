@@ -29,6 +29,9 @@
         ipList : host + 'api/projects',
         active : host + 'api/activities',
         submitConsult : host + 'api/consults',
+        openShop : host + 'api/informations/get_retail',
+        SpaceList: host + 'api/spaces',
+        SpaceDtl: host + 'api/spaces/4'
     };
 
     export default {

@@ -319,7 +319,7 @@
             },
             submitConsult : function () {
                 var self = this;
-                console.log(self.consult);
+                //console.log(self.consult);
                 $.post({
                     url: window.YUNAPI.submitConsult,
                     data : self.consult,
