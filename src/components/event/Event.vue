@@ -34,28 +34,13 @@
             <div class="event-banner">
                 <div class="swiper-container event-swiper">
                     <div class="swiper-wrapper owl-carousel">
-
-                        <div class="swiper-slide item">
-                            <img class="imgload" src="http://www.atool.org/placeholder.png?size=590x320&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
+                        <a href="javascript:;" class="swiper-slide item" v-for="item in banners">
+                            <img class="imgload" src="item.first_picture.url" alt="首页banner图片">
                             <div class="owlitem-title">
-                                <h5>年会必备</h5>
-                                <p>2016企业年会 云SPACE推荐空间精选</p>
+                                <h5>{{item.title}}</h5>
+                                <p>{{item.abstract}}</p>
                             </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <img class="imgload" src="http://www.atool.org/placeholder.png?size=590x320&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
-                            <div class="owlitem-title">
-                                <h5>年会必备</h5>
-                                <p>2016企业年会 云SPACE推荐空间精选</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide item">
-                            <img class="imgload" src="http://www.atool.org/placeholder.png?size=590x320&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
-                            <div class="owlitem-title">
-                                <h5>年会必备</h5>
-                                <p>2016企业年会 云SPACE推荐空间精选</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -83,10 +68,14 @@
                         </el-select>
                     </li>
                     <li class="selectwrap">
-                        <div class="select">
-                            <p>您的活动类型？</p>
-                            <i class="icon icon-arrowbottom"></i>
-                        </div>
+                        <!--活动类型-->
+                        <el-select v-model="valtypes">
+                            <el-option
+                                    v-for="item in activityType"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
                     </li>
                     <li class="text">省时，省心，找你所想...</li>
                     <li>
@@ -346,7 +335,23 @@
                         label:'200人以上'
                     }
                 ],
+                activityType: [
+                    {
+                        value:'选项一',
+                        label:'您的活动类型？'
+                    },
+                    {
+                        value:'选项二',
+                        label:'活动类型1'
+                    },
+                    {
+                        value:'选项三',
+                        label:'活动类型二'
+                    },
+                ],
+                banners:[ ],
                 valnumbs: '选项一',
+                valtypes: '选项一',
                 subjects: [ ],
                 venues: [ ],
                 discounts: [ ],
@@ -358,20 +363,25 @@
         },
         components: {},
         mounted () {
-            var swiper = new Swiper('.event-swiper', {
-                nextButton: '.yun-swiper-next',
-                prevButton: '.yun-swiper-prev',
-                pagination: '.swiper-pagination',
-                paginationClickable :true,
+            setTimeout(function () {
+                var swiper = new Swiper('.event-swiper', {
+                    nextButton: '.yun-swiper-next',
+                    prevButton: '.yun-swiper-prev',
+                    pagination: '.swiper-pagination',
+                    paginationClickable :true,
 //                paginationType: 'fraction',
 //                paginationHide:true
-            });
+                });
+            },300);
+
 
             var self=this;
             $.ajax({
                 url: window.YUNAPI.active,
                 success : function (data) {
-                    //console.log(data,111);
+                    console.log(data,111);
+                    //banner
+                    self.banners=data.activity_banner;
                     //专题
                     self.subjects=data.activity_topic;
 
