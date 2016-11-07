@@ -1,95 +1,96 @@
 <template>
     <div>
-        <div class="evformbox">
-            <h2>我要办活动</h2>
-            <div class="mainbox">
-                <ul class="inputbox">
-                    <li class="inputwrap clearfix">
-                        <div class="text"><span class="red">*</span>您的称呼：</div>
-                        <input class="fminput" type="text" placeholder="请输入您的真实姓名" />
-                    </li>
-                    <li class="inputwrap war clearfix">
-                        <div class="text"><span class="red">*</span>您的联系方式：</div>
-                        <input class="fminput" type="text" placeholder="请输入11位手机号" />
-                        <div class="warning">请输入正确的11位手机号码</div>
-                    </li>
-                    <li class="inputwrap clearfix">
-                        <div class="text"><span class="red">*</span>短信验证码：</div>
-                        <input class="fminput" type="text" placeholder="请输入6位数验证码" />
-                        <button class="sendcode">发送验证码</button>
-                    </li>
-                    <li class="inputwrap clearfix">
-                        <div class="wrap" @click="showcitys=!showcitys">
-                            <i class="icon-triangedown triange-bg"></i>
-                            <div class="text">活动城市：</div>
-                            <p class="selected">上海</p>
-                        </div>
-                        <ul class="checkbox-wrap" v-show="showcitys">
-                            <li>
-                                <input class="ckbox" type="checkbox" name="city" id="beijing" value="北京">
-                                <label for="beijing">北京</label>
-                            </li>
-                            <li>
-                                <input class="ckbox" type="checkbox" name="city" id="shagnhai" value="上海">
-                                <label for="shagnhai">上海</label>
-                            </li>
-                            <li>
-                                <input class="ckbox" type="checkbox" name="city" id="guangzhou" value="广州">
-                                <label for="guangzhou">广州</label>
-                            </li>
-                            <li>
-                                <input class="ckbox" type="checkbox" name="city" id="shenzhen" value="深圳">
-                                <label for="shenzhen">深圳</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="inputwrap clearfix">
-                        <div class="swrap" @click="shownumbs=!shownumbs">
-                            <i class="icon-triangedown triange-bg"></i>
-                            <div class="text">活动人数：</div>
-                            <p class="selected">60人</p>
-                        </div>
-                        <ul class="selectlist" v-show="shownumbs">
-                            <li v-for="peoplenumb in peoplenumbs">
-                                {{peoplenumb}}
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="inputwrap clearfix">
-                        <div class="text"><span class="red">*</span>活动时间：</div>
-                        <div class="fl time">
-                            <i class="icons icon-time"></i>
-                            <input class="timeinput" type="text" placeholder="开始日期" />
-                        </div>
-                        <p class="fl zhi">至</p>
-                        <div class="fl time">
-                            <i class="icons icon-time"></i>
-                            <input class="timeinput" type="text" placeholder="结束日期" />
-                        </div>
-                    </li>
-                    <li class="inputwrap clearfix">
-                        <div class="swrap" @click="showtype=!showtype">
-                            <i class="icon-triangedown triange-bg"></i>
-                            <div class="text">活动类型：</div>
-                            <p class="selected">秀场展馆</p>
-                        </div>
-                        <ul class="selectlist" v-show="showtype">
-                            <li>活动类型</li>
-                        </ul>
-                    </li>
+        <form action="" id="submit-demand">
+            <div class="evformbox">
+                <h2>我要办活动</h2>
+                <div class="mainbox">
+                    <ul class="inputbox">
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>您的称呼：</div>
+                            <input class="fminput" v-model="demand.contact" name="username" data-rule-required="true" data-msg-required="请输入您的称呼!" placeholder="请输入您的称呼!">
+                        </li>
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>您的联系方式：</div>
+                            <input class="fminput" v-model="demand.phone" name="phone" type="text" data-msg-required="请输入您的联系方式!" placeholder="请输入11位手机号" />
+                        </li>
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>短信验证码：</div>
+                            <input v-model="demand.auth_code" class="fminput" type="text" placeholder="请输入6位数验证码" />
+                            <button type="button" id="sendCode" class="sendcode" @click="sendPhoneCode">发送验证码</button>
+                        </li>
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>选择城市：</div>
+                            <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
+                            <div class="result fminput">
+                                <el-select v-model="demand.order_city" placeholder='请选择城市'>
+                                    <el-option
+                                            v-for="item in this.$parent.$data.cities"
+                                            :label="item.name"
+                                            :value="item.name">
+                                    </el-option>
+                                </el-select>
+                            </div>
+                            <!--<input style="visibility: hidden" name="city" v-model="demand.city" type="text" data-rule-required="true" data-msg-required="请选择城市!">-->
+                        </li>
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>活动人数：</div>
+                            <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
+                            <div class="result fminput">
+                                <el-select v-model="demand.number_of_activities" placeholder='请选择活动人数'>
+                                    <el-option
+                                            v-for="item in this.$parent.$data.peopleNumberCondition"
+                                            :label="item.key"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </div>
+                        </li>
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>活动时间：</div>
+                            <div class="fl time">
+                                <el-date-picker
+                                        v-model="demand.time"
+                                        type="daterange"
+                                        placeholder="选择日期范围"
+                                        format="yyyy年MM月dd"
+                                        style="width: 300px">
+                                </el-date-picker>
+                            </div>
+                            <!--<p class="fl zhi">至</p>-->
+                            <!--<div class="fl time">-->
+                                <!--<i class="icons icon-time"></i>-->
+                                <!--<input class="timeinput" type="text" placeholder="结束日期" />-->
+                            <!--</div>-->
+                        </li>
+                        <li class="inputwrap clearfix">
+                            <div class="text"><span class="red">*</span>活动类型：</div>
+                            <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
+                            <div class="result fminput">
+                                <el-select v-model="demand.activity_type" placeholder='请选择活动类型'>
+                                    <el-option
+                                            v-for="(value,key) in this.$parent.$data.searchCondition.activity_type"
+                                            :label="value"
+                                            :value="value">
+                                    </el-option>
+                                </el-select>
+                            </div>
+                            <!--<input style="visibility: hidden" name="city" v-model="demand.city" type="text" data-rule-required="true" data-msg-required="请选择城市!">-->
+                        </li>
 
-                    <li class="inputwrap trea clearfix">
-                        <div class="text">其他要求：</div>
-                        <textarea rows="8" placeholder="请填写更多的详细信息，帮助您快速找到适合的场地。"></textarea>
-                    </li>
-                </ul>
-                <button class="evform-btn" type="button" @click="showstate=!showstate">提交</button>
-                <div class="caption">
-                    <p>一键提交你的活动需求</p>
-                    <p>我们将在30分钟内您提供多份精准场地报价</p>
-                </div>
-            </div><!--表单mainbox-end-->
-        </div>
+                        <li class="inputwrap trea clearfix">
+                            <div class="text">其他要求：</div>
+                            <textarea v-model="demand.activities_required" rows="8" placeholder="请填写更多的详细信息，帮助您快速找到适合的场地。"></textarea>
+                        </li>
+                    </ul>
+                    <button class="evform-btn" type="button" @click="submitHoldEvent">提交</button>
+                    <div class="caption">
+                        <p>一键提交你的活动需求</p>
+                        <p>我们将在30分钟内您提供多份精准场地报价</p>
+                    </div>
+                </div><!--表单mainbox-end-->
+            </div>
+        </form>
+
 
         <!--状态弹窗-->
         <div class="formstate-wp" v-show="showstate">
@@ -170,28 +171,140 @@
                 showtype: 0,
                 showcitys: 0,
                 showstate: 0,
-                showcooper:0
+                showcooper:0,
+                demand : {
+                    phone : '',
+                    contact : '',
+                    order_city : '',
+                    number_of_activities : '',
+                    time : ['',''],
+                    user_id : 1,
+                    activity_type : '',
+                    auth_code : '',
+                    activities_required : '',
+                    code_token : '',
+                    s_time:'',
+                    e_time:'',
+                    ip_city:'上海'
+                }
             }
         },
-        components: {
-            moduleHeader, moduleFooter
-        },
-        ready(){
-            $("#owl-demo").owlCarousel({
-                navigation: true,
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true
-                // "singleItem:true" is a shortcut for:
-                // items : 1,
-                // itemsDesktop : false,
-                // itemsDesktopSmall : false,
-                // itemsTablet: false,
-                // itemsMobile : false
-            });
+        mounted () {
+            $(function() {
+
+                window.submitDemand = $("#submit-demand").validate({
+                    debug: true,
+                    errorElement: "div",
+//                    errorClass : 'warning',
+                    errorPlacement: function(error, element) {
+                        error.addClass('warning').appendTo(element.parent("li"));
+                        error.parent('li').addClass('war')
+                    },
+                    success : function (e) {
+                        e.parents('li').removeClass('war');
+                        e.parents('li').find('.warning').remove();
+                    },
+                    rules : {
+                        phone : {
+                            required : true,
+//                            minlength : 11,
+                            // 自定义方法：校验手机号在数据库中是否存在
+                            // checkPhoneExist : true,
+                            isMobile : true
+                        },
+                    }
+                })
+            })
         },
         methods: {
             //获取活动人数、类型
+            submitHoldEvent : function () {
+                var self = this;
+                var isValid = $("#submit-demand").valid();
+
+                var sd = new Date(self.demand.time[0]);
+                var ed = new Date(self.demand.time[1]);
+                self.demand.s_time = sd.getFullYear() + '-' + (sd.getMonth() + 1) + '-' + sd.getDate() ;
+                self.demand.e_time = ed.getFullYear() + '-' + (ed.getMonth() + 1) + '-' + ed.getDate() ;
+
+                if(isValid){
+                    $.post({
+                        url: window.YUNAPI.submitHoldEvent,
+                        data : self.demand,
+                        success: function (data) {
+                            if (data.status == 1){
+                                self.$message({
+                                    message: data.message,
+                                    type: 'success'
+                                });
+                            }else{
+                                self.$message({
+                                    message: data.message,
+                                    type: 'error'
+                                });
+                            }
+                        },
+                        error : function () {
+
+                        }
+                    });
+                }
+            },
+            sendPhoneCode : function () {
+                var self = this;
+                if(!self.demand.phone){
+                    self.$message({
+                        message: '手机号不能为空!',
+                        type: 'error'
+                    });
+                    return;
+                }
+                $.get({
+                    url: window.YUNAPI.sendPhoneCode,
+                    data : {
+                        phone : self.demand.phone
+                    },
+                    success: function (data) {
+                        if (data.status == 1){
+                            self.demand.code_token = data.data;
+                            self.codeTiming()
+                            self.$message({
+                                message: data.message,
+                                type: 'success'
+                            });
+                        }else{
+                            self.$message({
+                                message: data.message,
+                                type: 'error'
+                            });
+                        }
+//                        self.demand.
+                    },
+                    error : function () {
+
+                    }
+                });
+            },
+            codeTiming : function () {
+                var time = 60;
+                $('#sendCode').text('60s重新发送');
+                $('#sendCode').attr('disabled',true);
+
+                var interval = setInterval(function () {
+                    time -- ;
+
+                    if(time < 0){
+                        time == 60;
+                        clearInterval(interval);
+                        $('#sendCode').text('发送验证码')
+                        $('#sendCode').attr('disabled',false);
+                    }else{
+                        $('#sendCode').text(time+'s重新发送')
+                    }
+
+                },1000)
+
+            }
         }
 
     }

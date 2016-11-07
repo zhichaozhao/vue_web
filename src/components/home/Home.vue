@@ -37,21 +37,21 @@
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in searchCondition.space_type">{{key}}</a>
+                                <a href="javascript:;" v-for="(key,value) in this.$parent.$data.searchCondition.space_type">{{key}}</a>
                                 <!--<a href="javascript:;">商业发布</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">要开店</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in searchCondition.retail">{{key}}</a>
+                                <a href="javascript:;" v-for="(key,value) in this.$parent.$data.searchCondition.retail">{{key}}</a>
                                 <!--<a href="javascript:;">店中店</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">IP项目</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in searchCondition.project_type">{{key}}</a>
+                                <a href="javascript:;" v-for="(key,value) in this.$parent.$data.searchCondition.project_type">{{value}}</a>
                                 <!--<a href="javascript:;">卡通</a>-->
                             </dd>
                         </dl>
@@ -70,14 +70,20 @@
         <!--快捷链接块-开始-->
         <ul class="quicklinks clearfix">
             <li>
-                <a class="imgtext" href="javascript:;">
+                <router-link to="/event/hold" class="imgtext">
                     <img src="/static/images/home/links1.png">
                     <p class="text">本月新增场地345加</p>
                     <div class="mask"></div>
-                </a>
+                </router-link>
+                <!--<a class="imgtext" href="/event/hold">-->
+                    <!--<img src="/static/images/home/links1.png">-->
+                    <!--<p class="text">本月新增场地345加</p>-->
+                    <!--<div class="mask"></div>-->
+                <!--</a>-->
                 <p class="imgtitle">我要办活动</p>
             </li>
             <li>
+
                 <a class="imgtext" href="javascript:;">
                     <img src="/static/images/home/links1.png">
                     <p class="text">本月新增场地345加</p>
@@ -111,8 +117,10 @@
                     <div class="citySelection" style="height: 100%;">
                         <div class="swiper-wrapper swiper-container">
                             <div class="swiper-slide" v-for="item in topicOfCity">
-                                <img src="" alt="">
-                                <p>{{item.title}}</p>
+                                <a href="">
+                                    <img v-bind:src="item.first_picture.url" alt="">
+                                    <p>{{item.title}}</p>
+                                </a>
                             </div>
                             <!--<div class="swiper-slide">Slide 2</div>-->
                             <!--<div class="swiper-slide">Slide 3</div>-->
@@ -120,7 +128,7 @@
 
                         </div>
                         <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
+                        <!--<div class="swiper-pagination"></div>-->
                     </div>
                     <ul class="subject-list"></ul>
                 </div>
@@ -158,44 +166,44 @@
         <div class="section spacerecommend clearfix">
             <h3>空间推荐</h3>
             <ul class="recommend recommend-main clearfix">
-                <li v-for="n in 3">
+                <li v-for="(item,index) in spaceRecommend" v-if="index < 3">
                     <div class="img">
                         <a href="javascript:;">
-                            <img src="/static/images/home/imgmain1.png">
+                            <img v-bind:src="item.img_paths.url">
                         </a>
                         <span class="tags">上海</span>
                     </div>
                     <div class="text">
-                        <a class="title" href="javascript:;">{{spaceRecommend[n-1].name}}</a>
-                        <div class="price">￥{{spaceRecommend[n-1].market_price}}/元 天</div>
+                        <a class="title" href="javascript:;">{{item.name}}</a>
+                        <div class="price">￥{{item.market_price}}/元 天</div>
                         <div class="textinfo">
-                            <p><span>场地类型：</span>{{spaceRecommend[n-1].space_type}}</p>
-                            <p><span>落地区域：</span>{{spaceRecommend[n-1].through_three_areas}}</p>
+                            <p><span>场地类型：</span>{{item.space_type}}</p>
+                            <p><span>落地区域：</span>{{item.through_three_areas}}</p>
                             <div class="numb clearfix">
-                                <p><span>面积：</span>{{spaceRecommend[n-1].area}}</p>
-                                <p><span>层高：</span>{{spaceRecommend[n-1].height}}</p>
-                                <p><span>人数：</span>{{spaceRecommend[n-1].Max_seating_capacity}}</p>
+                                <p><span>面积：</span>{{item.area}}</p>
+                                <p><span>层高：</span>{{item.height}}</p>
+                                <p><span>人数：</span>{{item.Max_seating_capacity}}</p>
                             </div>
-                            <p><span>地址：</span>{{spaceRecommend[n-1].areas}} | {{spaceRecommend[n-1].address}}</p>
+                            <p><span>地址：</span>{{item.areas}} | {{item.address}}</p>
                         </div>
                     </div>
                 </li>
             </ul>
             <ul class="recommend recommend-sub clearfix">
-                <li v-for="n in (spaceRecommend.length - 3)">
+                <li v-for="(item,index) in spaceRecommend" v-if=" index >=3">
                     <div class="img">
                         <a href="javascript:;">
-                            <img src="/static/images/home/imgmain1.png">
+                            <img v-bind:src="item.img_paths.url">
                         </a>
                     </div>
                     <div class="text">
-                        <a class="title" href="javascript:;">{{spaceRecommend[n+2].name}}</a>
-                        <div class="price">￥{{spaceRecommend[n+2].market_price}}/元 天</div>
+                        <a class="title" href="javascript:;">{{item.name}}</a>
+                        <div class="price">￥{{item.market_price}}/元 天</div>
                         <div class="city">杭州</div>
                         <div class="textinfo">
-                            <p><span>场地类型：</span>{{spaceRecommend[n+2].space_type}}</p>
-                            <p><span>落地区域：</span>{{spaceRecommend[n+2].through_three_areas}}</p>
-                            <p><span>地址：</span>{{spaceRecommend[n+2].areas}}|{{spaceRecommend[n+2].address}}</p>
+                            <p><span>场地类型：</span>{{item.space_type}}</p>
+                            <p><span>落地区域：</span>{{item.through_three_areas}}</p>
+                            <p><span>地址：</span>{{item.areas}}|{{item.address}}</p>
                         </div>
                     </div>
                 </li>
@@ -261,7 +269,7 @@
                 <!--大图那个-->
                 <div class="fl info info-big">
                     <a class="img" href="javascript:;">
-                        <img src="">
+                        <img v-bind:src="newFindFirst.first_picture.url">
                     </a>
                     <a class="text display-center" href="javascript:;">
                         {{newFindFirst.title}}
@@ -271,7 +279,7 @@
                 <ul class="infolist fl clearfix">
                     <li class="info info-normal" v-for="item in newFindTopFour">
                         <a class="img" href="javascript:;">
-                            <img src="">
+                            <img v-bind:src="item.first_picture.url">
                         </a>
                         <a class="text display-center" href="javascript:;">
                             {{item.title}}
@@ -303,7 +311,7 @@
             <ul class="cont clearfix">
                 <li v-for="item in caseSelected">
                     <a href="javascript:;" class="img">
-                        <img src="">
+                        <img v-bind:src="item.first_picture.url">
                     </a>
                     <div class="textinfo">
                         <a class="title" href="javascript:;">{{item.title}}</a>
@@ -407,7 +415,6 @@
                 }],
                 value: '',
                 showdowhat: 0,
-                searchCondition : {}, //搜索条件
 
                 ipProject : [],
                 topicOfCity : [], // 城市精选专题
@@ -469,12 +476,6 @@
                 }
             });
 
-            $.ajax({
-                url: window.YUNAPI.homeSearch, context: document.body, success: function (data) {
-                    console.log(data);
-                    self.searchCondition = data
-                }
-            });
 
         },
         methods: {
@@ -484,7 +485,7 @@
             init : function () {
 
                 var citySelectionSwiper = new Swiper('.citySelection', {
-                    pagination: '.swiper-pagination',
+//                    pagination: '.swiper-pagination',
                     nextButton: '.citysubject .btnright',
                     prevButton: '.citysubject .btnleft',
                     slidesPerView: 3,
@@ -506,6 +507,11 @@
     }
     .swiper-container{
         overflow: visible;
+    }
+    .citySelection .swiper-slide a{
+        display: block;
+        width: 100%;
+        height: 100%;
     }
     .citySelection .swiper-slide img{
         display: block;

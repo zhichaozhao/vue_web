@@ -110,7 +110,7 @@
     import ModuleHeader from './components/module-header.vue'
     import 'assets/css/logreg.css';
 
-    const host = "http://172.16.1.154:3000/";
+    const host = "http://172.16.1.225:3000/";
     window.YUNAPI = {
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
@@ -123,6 +123,8 @@
         ipList : host + 'api/projects',
         active : host + 'api/activities',
         submitConsult : host + 'api/consults',
+        submitHoldEvent : host + 'api/orders',
+        sendPhoneCode : host + 'api/auth_codes/send_code'
     };
 
     export default {
@@ -130,10 +132,35 @@
         data(){
             return {
                 cities:[],
+                activityType : [],
+                searchCondition : [],
                 isShowHomeSearchCondition : false,
                 loading: true,
                 showLoginForm : false,
                 showRegForm : false,
+                peopleNumberCondition : [
+                    {
+                        key : '50人以下',
+                        value : '50'
+                    },
+                    {
+                        key : '50-100人',
+                        value : '100'
+                    },
+                    {
+                        key : '100-300人',
+                        value : '300'
+                    },
+                    {
+                        key : '300-500人',
+                        value : '500'
+                    },
+                    {
+                        key : '500人以上',
+                        value : '500+'
+                    },
+
+                ]
             }
 
         },
@@ -146,6 +173,14 @@
             $.ajax({
                 url: window.YUNAPI.cities, context: document.body, success: function (data) {
                     self.cities = data.cities;
+                }
+            });
+
+            $.ajax({
+                url: window.YUNAPI.homeSearch, context: document.body, success: function (data) {
+                    console.log(data);
+                    self.searchCondition = data;
+                    self.activityType = data.activity_type;
                 }
             });
         },

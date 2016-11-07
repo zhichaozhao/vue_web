@@ -5,6 +5,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import 'assets/Libs/jquery.validate.js';
 
 Vue.use(Element)
 Vue.use(VueRouter);
@@ -73,7 +74,7 @@ const router = new VueRouter({
                       component: (resolve) => require(['./components/place/app.vue'], resolve)
             },
             {
-              path: '/event/form',
+              path: '/event/hold',
                 component: (resolve) => require(['./components/event/Form'], resolve)
             },
             {
@@ -128,7 +129,13 @@ window.app = new Vue({
     render: h => h(App),
     router:router
 
-}).$mount('#app')
+}).$mount('#app');
+
+jQuery.validator.addMethod("isMobile", function(value, element) {
+    var length = value.length;
+    var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+    return this.optional(element) || (length == 11 && mobile.test(value));
+}, "请正确填写您的手机号码");
 
 // new Vue({
 //     el: '#app',
