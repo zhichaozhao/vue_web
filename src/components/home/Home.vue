@@ -168,13 +168,13 @@
             <ul class="recommend recommend-main clearfix">
                 <li v-for="(item,index) in spaceRecommend" v-if="index < 3">
                     <div class="img">
-                        <a href="javascript:;">
+                        <a :href=" '/space/' + item.id" target="_blank">
                             <img v-bind:src="item.img_paths.url">
                         </a>
                         <span class="tags">上海</span>
                     </div>
                     <div class="text">
-                        <a class="title" href="javascript:;">{{item.name}}</a>
+                        <a target="_blank" class="title" :href=" '/space/' + item.id">{{item.name}}</a>
                         <div class="price">￥{{item.market_price}}/元 天</div>
                         <div class="textinfo">
                             <p><span>场地类型：</span>{{item.space_type}}</p>
@@ -192,12 +192,12 @@
             <ul class="recommend recommend-sub clearfix">
                 <li v-for="(item,index) in spaceRecommend" v-if=" index >=3">
                     <div class="img">
-                        <a href="javascript:;">
+                        <a :href=" '/space/' + item.id" target="_blank">
                             <img v-bind:src="item.img_paths.url">
                         </a>
                     </div>
                     <div class="text">
-                        <a class="title" href="javascript:;">{{item.name}}</a>
+                        <a class="title" target="_blank" :href=" '/space/' + item.id">{{item.name}}</a>
                         <div class="price">￥{{item.market_price}}/元 天</div>
                         <div class="city">杭州</div>
                         <div class="textinfo">
@@ -459,7 +459,7 @@
                     }
                     self.ipProject = data.home_project;
 
-                    self.typeSelected = data.home_type_selected_by_retail.concat(data.home_type_selected_by_space);
+//                    self.typeSelected = data.home_type_selected_by_retail.concat(data.home_type_selected_by_space);
 
 
                     self.newFindTopFour = data.home_new_find_top; // 新发现4个

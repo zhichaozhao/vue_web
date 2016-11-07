@@ -127,7 +127,8 @@
         sendPhoneCode : host + 'api/auth_codes/send_code',
         openShop : host + 'api/informations/get_retail',
         SpaceList: host + 'api/spaces',
-        SpaceDtl: host + 'api/spaces/4'
+        SpaceDtl: host + 'api/spaces',
+        placeDtl : host + 'api/sites'
     };
 
     export default {

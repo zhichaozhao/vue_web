@@ -9,8 +9,8 @@
                 <div class="fl left">
                     <div class="banner-cont bgwhite">
                         <div class="title">
-                            <h2>03 - 大会议室</h2>
-                            <p class="addr">区域位置 : 上海市闸北区大场、大华沪太支路538号飞马旅5i</p>
+                            <h2>{{spaceDtl.site_name}}</h2>
+                            <p class="addr">区域位置 : {{spaceDtl.address}}</p>
                             <a href="javascript:;" class="collect"><i class="icons icon-collect"></i> <span>收藏</span></a>
                         </div>
                         <div class="banner">
@@ -55,15 +55,17 @@
 
                                     <div class="clearfix">
                                         <div class="p3">
-                                            <div class="clearfix"><p>最大容量 : </p><p>30人</p></div>
-                                            <div class="clearfix"><p>空间承重 : </p><p>4m</p></div>
+                                            <div class="clearfix"><p>最大容量 : </p><p>{{spaceDtl.Max_seating_capacity}}人</p></div>
+                                            <!--<div class="clearfix"><p>空间承重 : </p><p>4m</p></div>-->
+                                            <div class="clearfix"><p>空间承重 : </p><p></p></div>
                                         </div>
                                         <div class="p3">
-                                            <div class="clearfix"><p>空间面积 : </p><p>50m</p></div>
-                                            <div class="clearfix"><p>活动类型 : </p><p>文体娱乐｜会议会务｜培训演讲｜新闻发布</p></div>
+                                            <div class="clearfix"><p>空间面积 : </p><p>{{spaceDtl.area}}㎡</p></div>
+                                            <!--<div class="clearfix"><p>活动类型 : </p><p>文体娱乐｜会议会务｜培训演讲｜新闻发布</p></div>-->
+                                            <div class="clearfix"><p>活动类型 : </p><p></p></div>
                                         </div>
                                         <div class="p3">
-                                            <div class="clearfix"><p>空间层高 : </p><p>30人</p></div>
+                                            <div class="clearfix"><p>空间层高 : </p><p>{{spaceDtl.height}}</p></div>
                                         </div>
                                     </div>
 
@@ -146,9 +148,7 @@
                                 </ul>
                             </div>
                             <div class="dtl-content" v-if="activeTab=='场地介绍'" style="padding: 20px">
-                                <p>位于F518时尚创意园中部，将园区分成高端办公和精品消费两个区域。创展中心为二三错层建筑，占地面积1300平方米，
-                                    总建筑面积达3400平方米。F518时尚创意园以创展中心为主体，每年例行策划执行文博会分会场、创意12月之创意文化节、独立音乐现场演出活动，同时对外承接设计展、艺术展、车展、订货会、服装秀、影视广告拍摄、动漫展会、音乐演出、企业年会、大小会议论坛等场地租赁和策划活动。
-                                    创展中心已服务过茵宝、宝马、保时捷、TCL、米其林等品牌企业，为商品展示、用户交互提供了良好平台。</p>
+                                <p>{{spaceDtl.introduced}}</p>
                             </div>
                         </div>
 
@@ -190,7 +190,7 @@
                                 <div class="text">
                                     <a class="title" href="javascript:;">上海电影场-五号棚</a>
                                     <div class="textinfo">
-                                        <p>最大容纳：800人</p>
+                                        <p>最大容纳：{{spaceDtl.site_max_people}}人</p>
                                         <p>空间面积：60㎡</p>
                                         <p>地理位置：浦东新区陆家嘴</p>
                                     </div>
@@ -205,15 +205,15 @@
                         <div class="title  clearfix">
                             <img src="http://placehold.it/120x120" alt="">
                             <div class="title-dtl">
-                                <h2>上海蒲公英会议中心－北中环</h2>
-                                <dl><dt>场地类型 : </dt><dd>洗手间</dd></dl>
-                                <dl><dt>区域位置 : </dt><dd>上海市浦东新区世纪公园长柳路58号</dd></dl>
+                                <h2>{{spaceDtl.site_name}}</h2>
+                                <dl><dt>场地类型 : </dt><dd>{{spaceDtl.site_type}}</dd></dl>
+                                <dl><dt>区域位置 : </dt><dd>{{spaceDtl.address}}</dd></dl>
                             </div>
                         </div>
                         <div class="cont clearfix">
                             <dl><i class="icons icon-pnumbs"></i>
-                                <dt>最大容纳 : </dt>
-                                <dd>800人</dd>
+                                <dt>最大容纳 :</dt>
+                                <dd> {{spaceDtl.site_max_people}}人</dd>
                             </dl>
                             <dl><i class="icons icon-assort"></i>
                                 <dt>场地配套 : </dt>
@@ -254,35 +254,26 @@
                     </div>
                     <div class="map"></div>
                     <div class="other-space">
-                        <h4>上海蒲公英会议中心－北中环的其他空间</h4>
+                        <h4>{{spaceDtl.site_name}}的其他空间</h4>
                         <ul>
-                            <li class="clearfix">
-                                <a href=""><img src="http://placehold.it/150x100" alt=""></a>
+                            <li class="clearfix" v-for="item in otherSpace">
+                                <a class="img" href=""><img src="item.img_paths.url" alt=""></a>
                                 <div class="dtl-s">
-                                    <a href="">04－中会议室</a>
-                                    <dl><dt>最大容纳 : </dt><dd>800人</dd></dl>
-                                    <dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>
-                                    <dl><dt>空间面积 : </dt><dd>220m</dd></dl>
+                                    <a href="">{{item.name}}</a>
+                                    <dl><dt>最大容纳 : </dt><dd>{{item.Max_seating_capacity}}人</dd></dl>
+                                    <dl><dt>落位区域 : </dt><dd>{{item.through_three_areas}}</dd></dl>
+                                    <dl><dt>空间面积 : </dt><dd>{{item.area}}㎡</dd></dl>
                                 </div>
                             </li>
-                            <li class="clearfix">
-                                <a href=""><img src="http://placehold.it/150x100" alt=""></a>
-                                <div class="dtl-s">
-                                    <a>04－中会议室</a>
-                                    <dl><dt>最大容纳 : </dt><dd>800人</dd></dl>
-                                    <dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>
-                                    <dl><dt>空间面积 : </dt><dd>220m</dd></dl>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href=""><img src="http://placehold.it/150x100" alt=""></a>
-                                <div class="dtl-s">
-                                    <a>04－中会议室</a>
-                                    <dl><dt>最大容纳 : </dt><dd>800人</dd></dl>
-                                    <dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>
-                                    <dl><dt>空间面积 : </dt><dd>220m</dd></dl>
-                                </div>
-                            </li>
+                            <!--<li class="clearfix">-->
+                                <!--<a href=""><img src="http://placehold.it/150x100" alt=""></a>-->
+                                <!--<div class="dtl-s">-->
+                                    <!--<a>04－中会议室</a>-->
+                                    <!--<dl><dt>最大容纳 : </dt><dd>800人</dd></dl>-->
+                                    <!--<dl><dt>落位区域 : </dt><dd>三楼会议室</dd></dl>-->
+                                    <!--<dl><dt>空间面积 : </dt><dd>220m</dd></dl>-->
+                                <!--</div>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                     <button class="key-enquiry-btn">
@@ -314,11 +305,28 @@
                 spacesubs: [
                     1, 2, 3, 4
                 ],
+                spaceDtl : [],
+                otherSpace : [],
             }
         },
 
         components: {},
         mounted () {
+            var self = this;
+            $.get({
+                url: window.YUNAPI.SpaceDtl +'/'+ this.$route.params.id,
+                data : {},
+                success: function (data) {
+                    self.spaceDtl = data.space;
+                    self.otherSpace = data.other_spaces
+                    self.$parent.loading = false;
+                    console.log(data)
+                },
+                error : function () {
+
+                }
+            });
+
             var swiper = new Swiper('.banner-swiper', {
                 nextButton: '.yun-swiper-next',
                 prevButton: '.yun-swiper-prev',

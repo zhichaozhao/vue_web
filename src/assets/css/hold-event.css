@@ -1626,7 +1626,7 @@ button .icon-arrowbottom{
     background-color: #666;
     margin-top: 30px;
 }
-.other-space ul li a{
+.other-space ul li a.img{
     float: left;
     display: block;
 }

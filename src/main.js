@@ -25,7 +25,7 @@ const router = new VueRouter({
               component: (resolve) => require(['./components/event/Event'], resolve)
             },
             {
-              path: '/spacelist/:keyword',
+              path: '/spaces/:keyword',
               component: (resolve) => require(['./components/event/SpaceList.vue'], resolve)
             },
             {
@@ -62,7 +62,7 @@ const router = new VueRouter({
                     ]
             },
             {
-              path: '/space/dtl',
+              path: '/space/:id',
               component: (resolve) => require(['./components/space/dtl.vue'], resolve)
             },
             {
@@ -70,7 +70,7 @@ const router = new VueRouter({
                         component: (resolve) => require(['./components/space/maplist.vue'], resolve)
             },
             {
-              path: '/place/dtl',
+              path: '/site/:id',
                       component: (resolve) => require(['./components/place/app.vue'], resolve)
             },
             {
