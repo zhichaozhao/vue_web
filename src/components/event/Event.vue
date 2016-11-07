@@ -73,24 +73,20 @@
                 <div class="title">我要办活动</div>
                 <ul class="inputbox">
                     <li class="selectwrap">
-                        <div class="select">
-                            <p>您的活动人数</p>
-                            <i class="icon icon-arrowbottom"></i>
-                        </div>
-                        <ul class="selectlist">
-                            <li v-for="peoplenumb in peoplenumbs">
-                                {{peoplenumb}}
-                            </li>
-                        </ul>
+                        <!--活动人数-->
+                        <el-select v-model="valnumbs">
+                            <el-option
+                                    v-for="peoplenumb in peoplenumbs"
+                                    :label="peoplenumb.label"
+                                    :value="peoplenumb.value">
+                            </el-option>
+                        </el-select>
                     </li>
                     <li class="selectwrap">
                         <div class="select">
                             <p>您的活动类型？</p>
                             <i class="icon icon-arrowbottom"></i>
                         </div>
-                        <ul class="selectlist">
-                            <li>活动类型</li>
-                        </ul>
                     </li>
                     <li class="text">省时，省心，找你所想...</li>
                     <li>
@@ -333,8 +329,24 @@
         data(){
             return {
                 peoplenumbs: [
-                    111, 222
+                    {
+                        value:'选项一',
+                        label:'您的活动人数'
+                    },
+                    {
+                        value:'选项二',
+                        label:'50~100人'
+                    },
+                    {
+                        value:'选项三',
+                        label:'100~200人'
+                    },
+                    {
+                        value:'选项四',
+                        label:'200人以上'
+                    }
                 ],
+                valnumbs: '选项一',
                 subjects: [ ],
                 venues: [ ],
                 discounts: [ ],
@@ -385,9 +397,6 @@
             });
 
 
-
-
-            self.$parent.loading = false;
         },
         methods: {
             //搜索点击跳转到空间列表页
@@ -402,7 +411,7 @@
 </script>
 
 <style scoped>
-
+    .el-select .el-input .el-input__inner{text-indent: 10px;}
 </style>
 
 

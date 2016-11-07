@@ -16,7 +16,7 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
-    const host = "http://172.16.1.154:3000/";
+    const host = "http://172.16.1.225:3000/";
     window.YUNAPI = {
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
