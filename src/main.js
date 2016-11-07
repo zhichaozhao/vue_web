@@ -25,7 +25,7 @@ const router = new VueRouter({
               component: (resolve) => require(['./components/event/Event'], resolve)
             },
             {
-              path: '/spacelist',
+              path: '/spacelist/:keyword',
               component: (resolve) => require(['./components/event/SpaceList.vue'], resolve)
             },
             {

@@ -108,9 +108,9 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
+    const host = "http://172.16.1.225:3000/";
     import 'assets/css/logreg.css';
 
-    const host = "http://172.16.1.225:3000/";
     window.YUNAPI = {
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
@@ -124,7 +124,10 @@
         active : host + 'api/activities',
         submitConsult : host + 'api/consults',
         submitHoldEvent : host + 'api/orders',
-        sendPhoneCode : host + 'api/auth_codes/send_code'
+        sendPhoneCode : host + 'api/auth_codes/send_code',
+        openShop : host + 'api/informations/get_retail',
+        SpaceList: host + 'api/spaces',
+        SpaceDtl: host + 'api/spaces/4'
     };
 
     export default {

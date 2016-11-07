@@ -9,8 +9,8 @@
         <div class="search">
             <h2>找到适合你的商业短租场地</h2>
             <div class="inputbox clearfix">
-                <input type="text" placeholder="商圈／地标／机场／火车站／场地名">
-                <button class="searchbtn">搜&nbsp;索</button>
+                <input class="searchInputVal" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                <button class="searchbtn" @click="getSearchVal">搜&nbsp;索</button>
             </div>
             <div class="hot clearfix">
                 <p>热点：</p>
@@ -109,25 +109,11 @@
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
         <ul class="cont opsubject clearfix">
-            <li>
-                <a class="img" href="javascript:;"><img src=""></a>
+            <li v-for="special in specials">
+                <a class="img" href="javascript:;"><img :src="special.first_picture.url"></a>
                 <div class="text">
-                    <a class="title" href="javascript:;">LK+RIGI Design Office</a>
-                    <p>聚集了一帮才华横溢的年轻设计师，为工作室推出的诸多品牌设计注入新鲜想法与创意。</p>
-                </div>
-            </li>
-            <li>
-                <a class="img" href="javascript:;"><img src=""></a>
-                <div class="text">
-                    <a class="title" href="javascript:;">你的魅力就像星光般闪耀</a>
-                    <p>RIGI睿集设计已成长为一个多元化的综合设计团队。这个由设计师刘恺一手创立的公司。</p>
-                </div>
-            </li>
-            <li>
-                <a class="img" href="javascript:;"><img src=""></a>
-                <div class="text">
-                    <a class="title" href="javascript:;">我盛装打扮就像出席毕业舞会</a>
-                    <p>RIGI睿集设计已成长为一个多元化的综合设计团队。这个由设计师刘恺一手创立的公司。</p>
+                    <a class="title" href="javascript:;">{{special.title}}</a>
+                    <p>{{special.abstract}}</p>
                 </div>
             </li>
         </ul>
@@ -186,16 +172,10 @@
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
         <ul class="cont optoplist clearfix">
-            <li>
+            <li v-for="topList in topLists">
                 <a href="">
-                    <img src="">
-                    <p>设计美学独树一帜空间排行</p>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="">
-                    <p>今夜会是一个好夜晚，让我们尽情狂欢</p>
+                    <img :src="topList.first_picture.url">
+                    <p>{{topList.title}}</p>
                 </a>
             </li>
         </ul>
@@ -208,19 +188,19 @@
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
         <ul class="cont opvenues-recommend clearfix">
-            <li v-for="venue in venues">
+            <li v-for="space in recommendSpace">
                 <div class="img">
-                    <img src="/static/images/home/imgmain1.png">
+                    <img :src="space.img_paths">
                     <div class="collect-mask">
                         <div class="collect icons icon-collectbgmore-hv"></div>
                         <div class="mask"></div>
                     </div>
-                    <div class="price">￥50000/元 天</div>
+                    <div class="price">￥{{space.market_price}}/元 天</div>
                 </div>
                 <div class="text">
-                    <a class="title" href="javascript:;">UNDEF/NE</a>
-                    <p>UNDEF/NE是位于上海著名的创意园区M50里的一个创意空间。在这里，你可以接触到很多文化类活动、演出、创意工作坊和展览等等。</p>
-                    <p>中国 上海市普陀区<br>莫干山路50号6号楼105室</p>
+                    <a class="title" href="javascript:;">{{space.site_name}}</a>
+                    <p>{{space.introduced}}</p>
+                    <p>{{space.city_name}}&nbsp;{{space.areas}}<br>{{space.address}}</p>
                 </div>
                 <div class="icons icondou"></div>
             </li>
@@ -234,37 +214,13 @@
             <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
         </div>
         <ul class="cont selectedcases clearfix">
-            <li>
+            <li v-for="item in selectedCase">
                 <div class="textinfo">
-                    <a class="title" href="">Zen & Tea Chamber</a>
-                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
+                    <a class="title" href="">{{item.title}}</a>
+                    <p>{{item.abstract}}</p>
                 </div>
                 <a class="btnlook" href="">查看<i class="icon icon-arrowright"></i></a>
-                <a class="img" href=""><img src=""></a>
-            </li>
-            <li>
-                <div class="textinfo">
-                    <a class="title" href="">Zen & Tea Chamber</a>
-                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
-                </div>
-                <a class="btnlook" href="">查看<i class="icon icon-arrowright"></i></a>
-                <a class="img" href=""><img src=""></a>
-            </li>
-            <li>
-                <div class="textinfo">
-                    <a class="title" href="">Zen & Tea Chamber</a>
-                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
-                </div>
-                <a class="btnlook" href="">查看<i class="icon icon-arrowright"></i></a>
-                <a class="img" href=""><img src=""></a>
-            </li>
-            <li>
-                <div class="textinfo">
-                    <a class="title" href="">Zen & Tea Chamber</a>
-                    <p>北京老厂房定慧圆经重修改造，摇身一变成为一古意盎然的禅茶会所，其柔和精巧的设计风格完美阐释了禅宗之美：极简、包容、流动。</p>
-                </div>
-                <a class="btnlook" href="">查看<i class="icon icon-arrowright"></i></a>
-                <a class="img" href=""><img src=""></a>
+                <a class="img" href=""><img :src="item.first_picture.url"></a>
             </li>
         </ul>
     </div><!--精选案例-结束-->
@@ -308,9 +264,11 @@
     export default {
         data(){
             return {
-                venues:[
-                    1,2,3,4,5,6
-                ],
+                specials:[ ],
+                topLists:[ ],
+                recommendSpace:[ ],
+                selectedCase:[ ],
+                searchInputVal:[ ]
             }
 
         },
@@ -319,9 +277,29 @@
             $.noConflict();
             jQuery('.zy-Slide').zySlide({ speed: 500 }).css('border', '0px solid blue');
 
-            this.$parent.loading = false;
+            var self=this;
+            $.ajax({
+                url: window.YUNAPI.openShop,
+                success: function (data) {
+                    console.log(data);
+                    self.specials=data.retail_special;
+                    self.topLists=data.retail_top_list;
+                    self.recommendSpace=data.retail_recommend_space;
+                    self.selectedCase=data.retail_selected_case;
+
+                    self.$parent.loading = false;
+                }
+            });
+
         },
-        methods: {},
+        methods: {
+            //搜索点击跳转到空间列表页
+            getSearchVal:function () {
+                this.searchInputVal=$('.searchInputVal').val();
+                console.log(this.searchInputVal);
+                window.location.href ='/spacelist/:'+this.searchInputVal;
+            }
+        },
 
     }
 </script>

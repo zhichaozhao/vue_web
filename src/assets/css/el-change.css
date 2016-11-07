@@ -31,7 +31,7 @@ body .el-pagination{
   font-size: 14px;
 }
 .pagination-fore-end .el-pagination__jump{
-  float: right;
+  /*float: right;*/
 }
 
 /*复选框*/

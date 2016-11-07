@@ -66,18 +66,25 @@
                             <li v-for="spacesub in spacesubs">
                                 <div class="img">
                                     <a href="/space/dtl" target="_blank">
-                                        <img src="/static/images/home/imgmain1.png">
+                                        <img :src="spacesub.img_paths.url">
                                     </a>
                                 </div>
                                 <div class="text">
-                                    <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                                    <div class="price">￥50000/元 天</div>
-                                    <div class="city">杭州</div>
+                                    <a class="title" href="javascript:;">{{spacesub.site_name}}</a>
+                                    <div class="price">￥{{spacesub.market_price}}/元 {{spacesub.units}}</div>
                                     <div class="textinfo">
-                                        <p><span>场地类型：</span>高端场所 | 主题派对</p>
-                                        <p><span>落地区域：</span>主题餐厅</p>
-                                        <p><span>地址：</span>上海市 黄浦区|南京东路789号</p>
+                                        <p><span>场地类型：</span>{{spacesub.keyword}}</p>
+                                        <p><span>落位区域：</span>{{spacesub.through_three_areas}}</p>
+                                        <p><span>容纳人数：</span>{{spacesub.site_max_people}}人</p>
+                                        <div class="numb clearfix">
+                                            <p><span>面积：</span>{{spacesub.area}}㎡</p>
+                                            <p><span>层高：</span>{{spacesub.height}}m</p>
+                                        </div>
+                                        <p><span>地址：</span>{{spacesub.city_name}}&nbsp;{{spacesub.areas}}&nbsp;{{spacesub.address}}</p>
                                     </div>
+
+                                    <a class="btnjoin" href="javascript:;">加入询价</a>
+                                    <!--<a class="btnjoin hv" href="javascript:;">已加入询价单</a>-->
                                 </div>
                             </li>
                         </ul>
@@ -120,12 +127,26 @@
                 spacemains: [
                     1, 2, 3, 4, 5, 6
                 ],
-                spacesubs: [
-                    1, 2, 3, 4, 5, 6
-                ],
+                spacesubs: [ ],
                 page: 1,
                 recordCount: 205
             }
+        },
+        mounted () {
+            var self = this;
+            $.ajax({
+                url: window.YUNAPI.SpaceList,
+                success:function (data) {
+                    self.spacesubs=data.spaces;
+
+                    //场地类型
+                    for(var i = 0; i < self.spacesubs.length - 1; i++){
+                        self.spacesubs[i].keyword = self.spacesubs[i].keyword.replace(',','|');
+                    }
+
+                    self.$parent.loading = false;
+                }
+            });
         },
         components: {},
         methods: {

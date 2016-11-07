@@ -253,6 +253,10 @@
     padding: 20px;
     box-sizing: border-box;
 }
+.opsubject li .text>p{
+    height: 40px;
+    overflow: hidden;
+}
 .opsubject li .title{
     font-size: 24px;
     margin-bottom: 8px;
@@ -398,7 +402,11 @@
     background: #000;
 }
 .opvenues-recommend li .img:hover .collect-mask{display: block;}
-.opvenues-recommend li .text>p{margin-bottom: 10px;}
+.opvenues-recommend li .text>p{
+    margin-bottom: 10px;
+    max-height: 60px;
+    overflow: hidden;
+}
 .icondou{
     width: 30px;
     height: 30px;
@@ -465,6 +473,8 @@
 }
 .selectedcases li .textinfo p{
     width: 310px;
+    height: 160px;
+    overflow: hidden;
 }
 .selectedcases li .btnlook{
     display: block;
