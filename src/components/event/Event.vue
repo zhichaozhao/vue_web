@@ -181,7 +181,7 @@
                             </div>
                             <div class="text">
                                 <a class="title" href="javascript:;" v-text="venue.site_name">上海电影场-五号棚</a>
-                                <div class="price">￥{{venue.market_price}}/元 {{venue.units}}</div>
+                                <div class="price">￥{{venue.market_price}}元/{{venue.units}}</div>
                                 <div class="textinfo">
                                     <p><span>场地类型：</span>{{venue.site_type}}</p>
                                     <div class="numb clearfix">
@@ -211,8 +211,8 @@
                             </div>
                             <div class="text">
                                 <a class="title" href="javascript:;" v-text="discount.title">上海电影场-五号棚</a>
-                                <div class="price">￥{{discount.market_price}}/元 {{discount.units}}</div>
-                                <div class="price disprice">￥{{discount.the_price}}/元 {{discount.units}}</div>
+                                <div class="price">￥{{discount.market_price}}元/{{discount.units}}</div>
+                                <div class="price disprice">￥{{discount.the_price}}元/{{discount.units}}</div>
                             </div>
                         </li>
                     </ul>
@@ -274,7 +274,7 @@
                             </a>
                             <div class="text">
                                 <a class="title" href="javascript:;">Giardino Mountain</a>
-                                <div class="price">￥50000/元 天</div>
+                                <div class="price">￥50000元/天</div>
                             </div>
                         </li>
                         <li>
@@ -283,7 +283,7 @@
                             </a>
                             <div class="text">
                                 <a class="title" href="javascript:;">Giardino Mountain</a>
-                                <div class="price">￥50000/元 天</div>
+                                <div class="price">￥50000元/天</div>
                             </div>
                         </li>
                         <li>
@@ -292,7 +292,7 @@
                             </a>
                             <div class="text">
                                 <a class="title" href="javascript:;">Giardino Mountain</a>
-                                <div class="price">￥50000/元 天</div>
+                                <div class="price">￥50000元/天</div>
                             </div>
                         </li>
                     </ul>
