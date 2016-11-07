@@ -2,7 +2,7 @@
 
     <div class="w1200 ip-page">
         <div class="top-banner">
-            <img src="http://www.atool.org/placeholder.png?size=1200x400&text=图片&&bg=836&fg=fff" alt="">
+            <img src="/static/images/ip/banner.png" alt="">
         </div>
         <div class="module-header">
             <span>品牌推荐</span>

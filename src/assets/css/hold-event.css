@@ -1159,14 +1159,21 @@ body .el-select-dropdown__list{
 .condition-sp{
   float: left;
   background-color: #fff;
-  width: 215px;
-  margin-right: 3px;
+  width: 236px;
+  margin-right: 4px;
   box-sizing: border-box;
-  padding: 8px 10px;
+  padding: 8px 0 0;
+    height: 60px;
+    box-sizing: border-box;
 }
+.condition-sp:last-child{margin-right: 0;}
 .condition-sp p{
   margin-left: 23px;
   margin-top: 4px;
+}
+.condition-sp .icon-text{
+    padding: 0 10px;
+    color: #666;
 }
 .condition-sp .icon-text:before{
   content: " ";
@@ -1208,19 +1215,24 @@ body .el-select-dropdown__list{
   position: relative;
 }
 .condition-sp .select-text{
-  position: relative;
+    position: relative;
+    height: 30px;
 }
-.condition-sp .select-text:after{
-  content: " ";
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  background: url("/static/images/yun.png");
-  background-position: -800px -80px;
-  position: absolute;
-  right: 0;
-  top:0;
+.condition-sp .select-text .el-input__inner{
+    text-indent: 20px;
+    font-size: 16px;
 }
+/*.condition-sp .select-text:after{*/
+  /*content: " ";*/
+  /*width: 16px;*/
+  /*height: 16px;*/
+  /*display: inline-block;*/
+  /*background: url("/static/images/yun.png");*/
+  /*background-position: -800px -80px;*/
+  /*position: absolute;*/
+  /*right: 0;*/
+  /*top:0;*/
+/*}*/
 .sub-condition{
   position: absolute;
   top:30px;
