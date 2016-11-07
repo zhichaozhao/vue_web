@@ -128,7 +128,8 @@
         openShop : host + 'api/informations/get_retail',
         SpaceList: host + 'api/spaces',
         SpaceDtl: host + 'api/spaces',
-        placeDtl : host + 'api/sites'
+        placeDtl : host + 'api/sites',
+        feedBack: host + 'api/feedback',
     };
 
     export default {
