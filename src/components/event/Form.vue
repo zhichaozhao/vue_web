@@ -190,12 +190,12 @@
             }
         },
         mounted () {
+            this.$parent.loading = false;
             $(function() {
 
                 window.submitDemand = $("#submit-demand").validate({
-                    debug: true,
+                    debug: false,
                     errorElement: "div",
-//                    errorClass : 'warning',
                     errorPlacement: function(error, element) {
                         error.addClass('warning').appendTo(element.parent("li"));
                         error.parent('li').addClass('war')
@@ -221,6 +221,7 @@
             submitHoldEvent : function () {
                 var self = this;
                 var isValid = $("#submit-demand").valid();
+                self.$parent.loading = true;
 
                 var sd = new Date(self.demand.time[0]);
                 var ed = new Date(self.demand.time[1]);
@@ -237,12 +238,17 @@
                                     message: data.message,
                                     type: 'success'
                                 });
+                                for( var key in self.demand){ // 提交成功清空数据
+                                    self.demand[key] = ''
+                                }
+
                             }else{
                                 self.$message({
                                     message: data.message,
                                     type: 'error'
                                 });
                             }
+                            self.$parent.loading = false;
                         },
                         error : function () {
 
@@ -267,7 +273,7 @@
                     success: function (data) {
                         if (data.status == 1){
                             self.demand.code_token = data.data;
-                            self.codeTiming()
+                            self.codeTiming();
                             self.$message({
                                 message: data.message,
                                 type: 'success'
@@ -281,7 +287,10 @@
 //                        self.demand.
                     },
                     error : function () {
-
+                        self.$message({
+                            message: '网络链接失败',
+                            type: 'error'
+                        });
                     }
                 });
             },
@@ -303,7 +312,6 @@
                     }
 
                 },1000)
-
             }
         }
 

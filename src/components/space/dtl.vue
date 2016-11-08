@@ -9,7 +9,7 @@
                 <div class="fl left">
                     <div class="banner-cont bgwhite">
                         <div class="title">
-                            <h2>{{spaceDtl.site_name}}</h2>
+                            <h2>{{spaceDtl.name}}</h2>
                             <p class="addr">区域位置 : {{spaceDtl.address}}</p>
                             <a href="javascript:;" class="collect"><i class="icons icon-collect"></i> <span>收藏</span></a>
                         </div>

@@ -10,6 +10,11 @@
 
         <module-footer ref="test" v-if="!loading"></module-footer>
 
+        <div v-if="httpError">
+            请求错误
+            <button>刷新页面</button>
+        </div>
+
         <el-dialog v-model="showRegForm" top="20px">
             <!--regbox注册-开始-->
             <div class="loginreg-box">
@@ -108,7 +113,7 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
-    const host = "http://172.16.1.225:3000/";
+    const host = "http://172.16.0.76:3000/";
     import 'assets/css/logreg.css';
 
     window.YUNAPI = {
@@ -132,7 +137,6 @@
         feedBack: host + 'api/feedback',
         inquiry: host + 'api/orders/create_inquiry'
     };
-
     export default {
         name: 'app',
         data(){
@@ -142,6 +146,8 @@
                 searchCondition : [],
                 isShowHomeSearchCondition : false,
                 loading: true,
+                httpError:false,
+                cdVisible : false,  // 合作咨询的弹出框 是否显示
                 showLoginForm : false,
                 showRegForm : false,
                 peopleNumberCondition : [
@@ -179,6 +185,8 @@
             $.ajax({
                 url: window.YUNAPI.cities, context: document.body, success: function (data) {
                     self.cities = data.cities;
+                    console.log(data.cities)
+                    store.state.cities = data.cities
                 }
             });
 
@@ -207,6 +215,46 @@
             },
             toggleLoginForm : function () {
                 this.showLoginForm = !showLoginForm
+            },
+            sendPhoneCode : function (phone,success,error) {
+                var self = this;
+                if(!phone){
+                    self.$message({
+                        message: '手机号不能为空!',
+                        type: 'error'
+                    });
+                    return;
+                }
+                $.get({
+                    url: window.YUNAPI.sendPhoneCode,
+                    data : {
+                        phone : phone
+                    },
+                    success: function (data) {
+                        success(data)
+                    },
+                    error : function () {
+                        error()
+                    }
+                });
+            },
+            codeTiming : function (id) {
+                var time = 60;
+                var btn = $('#'+id);
+                btn.text('60s重新发送');
+                btn.attr('disabled',true);
+                var interval = setInterval(function () {
+                    time -- ;
+                    if(time < 0){
+                        time == 60;
+                        clearInterval(interval);
+                        btn.text('发送验证码');
+                        btn.attr('disabled',false);
+                    }else{
+                        btn.text(time+'s重新发送')
+                    }
+
+                },1000)
             }
         }
 

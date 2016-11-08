@@ -115,7 +115,7 @@
         },
         mounted () {
             var self = this;
-            console.log(this.$parent.$data.cities);
+//            console.log(this.$parent.$data.cities);
 //            console.log(this.$route)
         },
         methods: {
