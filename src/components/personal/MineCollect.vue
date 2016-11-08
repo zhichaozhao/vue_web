@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="alink mb20">
-            <a href="" class="active">场地</a>
-            <a href="">空间</a>
-            <a href="">资讯</a>
+            <a href="javascript:;" class="active">场地</a>
+            <a href="javascript:;">空间</a>
+            <a href="javascript:;">资讯</a>
         </div>
         <div class="collection">
             <i class="icons icon-collect-hv"></i>
@@ -59,7 +59,16 @@
         },
         components: {},
         mounted(){
+            var self = this;
+            $.ajax({
+                url: window.YUNAPI.collection,
+                success:function (data) {
 
+                    console.log(data);
+
+                    self.$parent.loading = false;
+                }
+            });
         },
         methods: {
             handleSizeChange(val) {

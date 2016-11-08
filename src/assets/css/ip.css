@@ -1,3 +1,7 @@
+.top-banner{
+    height: 400px;
+    overflow: hidden;
+}
 .module-header span{
     font-size:24px;
     color:#000000;

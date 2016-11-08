@@ -42,7 +42,7 @@ const router = new VueRouter({
                         { path: 'enquiry/dtl', component: (resolve) => require(['./components/personal/enquiry/dtl.vue'], resolve),name:'我的询价'},
                         { path: 'order', component: (resolve) => require(['./components/personal/order/MineOrders.vue'], resolve),name:'我的订单'},
                         { path: 'order/dtl', component: (resolve) => require(['./components/personal/order/dtl.vue'], resolve),name:'我的订单'},
-                        { path: 'collect', component: (resolve) => require(['./components/personal/MineCollect.vue'], resolve) ,name:'我的收藏'},
+                        { path: 'collect/:type', component: (resolve) => require(['./components/personal/MineCollect.vue'], resolve) ,name:'我的收藏'},
                         { path: 'feedback', component: (resolve) => require(['./components/personal/FeedBack.vue'], resolve) ,name:'意见反馈'}
                     ]
             },

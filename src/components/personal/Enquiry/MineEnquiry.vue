@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="alink">
-            <a href="" class="active">全部</a>
+            <a href="" class="active">vv全部</a>
             <a href="">咨询中</a>
             <a href="">收到报价</a>
             <a href="">已过期</a>
@@ -68,7 +68,10 @@
         },
         components: {},
         mounted () {
-            console.log(111);
+            var self=this;
+            console.log(111)
+
+            self.$parent.loading = false;
         },
         methods: {
             handleSizeChange(val) {

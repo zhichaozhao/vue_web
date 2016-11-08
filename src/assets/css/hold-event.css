@@ -610,7 +610,6 @@ body .evformbox .el-input__icon{
     top: 0;
 }
 .evformbox .result input{text-indent: 95px;padding-top: 5px;}
-body .el-select-dropdown{margin-top: 13px;}
 body .el-select-dropdown__list{
     border: 1px solid #ccc;
     box-sizing: content-box;
@@ -717,6 +716,29 @@ body .el-select-dropdown__list{
     height: 50px;
     line-height: 50px;
     position: relative;
+}
+.evformbox .timedate{
+    width: 535px;
+    padding-left: 0;
+    border: 0;
+}
+.evformbox .el-date-editor{width: 100% !important;}
+.evformbox .timedate .el-date-editor__editor{
+    border: 0;
+    color: #000;
+}
+.evformbox .el-date-editor__trigger.el-icon{
+    display: block;
+    width: 20px;
+    height: 20px;
+    top: 15px;
+}
+.evformbox .el-icon-date:before{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url("/static/images/yun.png") no-repeat -440px -20px;
 }
 .evformbox .time .timeinput{width: 100%;}
 .evformbox .zhi{
