@@ -67,7 +67,7 @@
                         </div>
                     </li>
                 </ul>
-                <a class="more" href="javascript:;" v-on:click="moreArticle">加载更多<i class="icon-arrowbottom"></i></a>
+                <span class="more" href="javascript:;" @click="moreArticle">加载更多<i class="icon-arrowbottom"></i></span>
             </div><!--article-wrap-end-->
         </div>
         <!--左边文章列表-结束-->
@@ -90,10 +90,10 @@
                 <ul>
                     <li class="clearfix" v-for="item in hotArticle">
                         <div class="fl img">
-                            <a href="javascript:;"><img v-bind:src="item.first_picture.url"></a>
+                            <a target="_blank" :href="'/article/'+item.id"><img v-bind:src="item.first_picture.url"></a>
                         </div>
                         <div class="fr text">
-                            <a class="title" href="javascript:;">{{item.title}}</a>
+                            <a class="title" target="_blank" :href="'/article/'+item.id">{{item.title}}</a>
                             <p class="time">{{item.created_at}}</p>
                         </div>
                     </li>

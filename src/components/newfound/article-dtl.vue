@@ -145,6 +145,7 @@
                 url: window.YUNAPI.article + "/" + this.$route.params.id, context: document.body, success: function (data) {
 //                    self.cities = data.cities;
                     self.article = data.information;
+                    console.log(data);
                     self.$parent.loading = false;
                 }
             });

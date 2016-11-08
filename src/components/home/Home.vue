@@ -117,7 +117,7 @@
                     <div class="citySelection" style="height: 100%;">
                         <div class="swiper-wrapper swiper-container">
                             <div class="swiper-slide" v-for="item in topicOfCity">
-                                <a href="">
+                                <a :href=" '/article/' + item.id" target="_blank">
                                     <img v-bind:src="item.first_picture.url" alt="">
                                     <p>{{item.title}}</p>
                                 </a>
@@ -268,20 +268,20 @@
             <div class="cont clearfix">
                 <!--大图那个-->
                 <div class="fl info info-big">
-                    <a class="img" href="javascript:;">
+                    <a class="img" :href=" '/article/' + newFindFirst.id" target="_blank">
                         <img v-bind:src="newFindFirst.first_picture.url">
                     </a>
-                    <a class="text display-center" href="javascript:;">
+                    <a class="text display-center" :href=" '/article/' + newFindFirst.id" target="_blank">
                         {{newFindFirst.title}}
                     </a>
                 </div>
                 <!--中间4个-->
                 <ul class="infolist fl clearfix">
                     <li class="info info-normal" v-for="item in newFindTopFour">
-                        <a class="img" href="javascript:;">
+                        <a class="img" :href="'/article/' + item.id" target="_blank">
                             <img v-bind:src="item.first_picture.url">
                         </a>
-                        <a class="text display-center" href="javascript:;">
+                        <a class="text display-center" :href="'/article/' + item.id" target="_blank">
                             {{item.title}}
                         </a>
                     </li>
@@ -290,7 +290,7 @@
                 <ul class="fr textinfolist clearfix">
 
                     <li v-for="item in newFindRandom">
-                        <a href="javascript:;">
+                        <a :href="'/article/' + item.id" target="_blank">
                             <div class="title">
                                 <i class="point"></i>
                                 <p>{{item.title}}</p>
@@ -310,11 +310,11 @@
             <h3>精选案例</h3>
             <ul class="cont clearfix">
                 <li v-for="item in caseSelected">
-                    <a href="javascript:;" class="img">
+                    <a :href="'/article/' + item.id" target="_blank" class="img">
                         <img v-bind:src="item.first_picture.url">
                     </a>
                     <div class="textinfo">
-                        <a class="title" href="javascript:;">{{item.title}}</a>
+                        <a class="title" :href="'/article/' + item.id" target="_blank">{{item.title}}</a>
                         <div class="tags">
                             <span v-for="i in item.keywords">{{i}}</span>
                         </div>

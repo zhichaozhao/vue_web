@@ -38,6 +38,9 @@
                     <router-link tag="li" to="/ip">
                         <a>找IP</a>
                     </router-link>
+                    <router-link tag="li" to="/found">
+                        <a>新发现</a>
+                    </router-link>
 
                     <!--<li><a target="_blank" href="javascript:;">新发现</a></li>-->
                 </ul>

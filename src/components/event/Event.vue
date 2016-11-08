@@ -120,14 +120,14 @@
                         <a class="more" href="javascript:;">查看更多<i class="icon icon-arrowright"></i></a>
                     </div>
                     <ul class="cont clearfix">
-                        <li v-for="subject in subjects">
-                            <a href="javascript:;">
+                        <li v-for="item in subjects">
+                            <a :href="'/article/'+item.id" target="_blank">
                                 <div class="img">
-                                    <img :src="subject.first_picture.url">
+                                    <img :src="item.first_picture.url">
                                 </div>
                                 <div class="text">
-                                    <h5 v-text="subject.title">LK+RIGI Design Office</h5>
-                                    <p v-text="subject.abstract">他用建筑世界发问，他以文人意气造房子，追溯山水意境，园林情趣。</p>
+                                    <h5 v-text="item.title">LK+RIGI Design Office</h5>
+                                    <p v-text="item.abstract">他用建筑世界发问，他以文人意气造房子，追溯山水意境，园林情趣。</p>
                                 </div>
                             </a>
                         </li>
@@ -180,7 +180,7 @@
                                 </div>
                             </div>
                             <div class="text">
-                                <a class="title" href="javascript:;" v-text="venue.site_name">上海电影场-五号棚</a>
+                                <a class="title" target="_blank" :href="'/site/'+venue.id" v-text="venue.site_name">上海电影场-五号棚</a>
                                 <div class="price">￥{{venue.market_price}}元/{{venue.units}}</div>
                                 <div class="textinfo">
                                     <p><span>场地类型：</span>{{venue.site_type}}</p>
@@ -210,7 +210,7 @@
                                 <div class="disrate">{{discount.disrate}}折</div>
                             </div>
                             <div class="text">
-                                <a class="title" href="javascript:;" v-text="discount.title">上海电影场-五号棚</a>
+                                <a class="title" target="_blank" :href="'/site/'+discount.id" v-text="discount.title">上海电影场-五号棚</a>
                                 <div class="price">￥{{discount.market_price}}元/{{discount.units}}</div>
                                 <div class="price disprice">￥{{discount.the_price}}元/{{discount.units}}</div>
                             </div>
@@ -227,11 +227,11 @@
                     </div>
                     <ul class="cont clearfix">
                         <li v-for="eventcase in eventcases">
-                            <div class="img">
+                            <a class="img" :href="'/article/'+eventcase.id" target="_blank">
                                 <img :src="eventcase.first_picture.url">
-                            </div>
+                            </a>
                             <div class="text">
-                                <a class="title" href="javascript:;" v-text="eventcase.title">Hisham Akira Bharoocha</a>
+                                <a class="title" target="_blank" :href="'/article/'+eventcase.id" v-text="eventcase.title">Hisham Akira Bharoocha</a>
                                 <p v-text="eventcase.abstract"></p>
                             </div>
                         </li>

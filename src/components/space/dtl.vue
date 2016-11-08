@@ -257,9 +257,11 @@
                         <h4>{{spaceDtl.site_name}}的其他空间</h4>
                         <ul>
                             <li class="clearfix" v-for="item in otherSpace">
-                                <a class="img" href=""><img src="item.img_paths.url" alt=""></a>
+                                <a class="img" :href="'/space/'+item.id"><img :src="item.img_paths.url" alt=""></a>
+                                <!--<router-link :to="'/space/'+item.id"><img :src="item.img_paths.url" alt=""></router-link>-->
                                 <div class="dtl-s">
-                                    <a href="">{{item.name}}</a>
+                                    <!--<a href="">{{item.name}}</a>-->
+                                    <router-link :to="'/space/'+item.id" replace>{{item.name}}</router-link>
                                     <dl><dt>最大容纳 : </dt><dd>{{item.Max_seating_capacity}}人</dd></dl>
                                     <dl><dt>落位区域 : </dt><dd>{{item.through_three_areas}}</dd></dl>
                                     <dl><dt>空间面积 : </dt><dd>{{item.area}}㎡</dd></dl>
@@ -312,20 +314,7 @@
 
         components: {},
         mounted () {
-            var self = this;
-            $.get({
-                url: window.YUNAPI.SpaceDtl +'/'+ this.$route.params.id,
-                data : {},
-                success: function (data) {
-                    self.spaceDtl = data.space;
-                    self.otherSpace = data.other_spaces
-                    self.$parent.loading = false;
-                    console.log(data)
-                },
-                error : function () {
-
-                }
-            });
+            this.getData();
 
             var swiper = new Swiper('.banner-swiper', {
                 nextButton: '.yun-swiper-next',
@@ -345,10 +334,31 @@
                 paginationHide:true
             });
         },
+        watch: {
+            // 如果路由有变化，会再次执行该方法
+            '$route': 'getData'
+        },
         methods: {
             tapClick(event){
                 this.activeTab = event.target.innerHTML;
             },
+            getData(){
+                var self = this;
+                self.$parent.loading = true;
+                $.get({
+                    url: window.YUNAPI.SpaceDtl +'/'+ this.$route.params.id,
+                    data : {},
+                    success: function (data) {
+                        self.spaceDtl = data.space;
+                        self.otherSpace = data.other_spaces
+                        self.$parent.loading = false;
+                        console.log(data)
+                    },
+                    error : function () {
+
+                    }
+                });
+            }
         },
 
     }

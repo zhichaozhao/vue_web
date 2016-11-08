@@ -110,9 +110,9 @@
         </div>
         <ul class="cont opsubject clearfix">
             <li v-for="special in specials">
-                <a class="img" href="javascript:;"><img :src="special.first_picture.url"></a>
+                <a class="img" target="_blank" :href="'/article/'+special.id"><img :src="special.first_picture.url"></a>
                 <div class="text">
-                    <a class="title" href="javascript:;">{{special.title}}</a>
+                    <a class="title" target="_blank" :href="'/article/'+special.id">{{special.title}}</a>
                     <p>{{special.abstract}}</p>
                 </div>
             </li>
@@ -173,7 +173,7 @@
         </div>
         <ul class="cont optoplist clearfix">
             <li v-for="topList in topLists">
-                <a href="">
+                <a target="_blank" :href="'/article/'+topList.id">
                     <img :src="topList.first_picture.url">
                     <p>{{topList.title}}</p>
                 </a>
@@ -198,7 +198,7 @@
                     <div class="price">￥{{space.market_price}}/元 天</div>
                 </div>
                 <div class="text">
-                    <a class="title" href="javascript:;">{{space.site_name}}</a>
+                    <a class="title" target="_blank" :href="'/space/'+space.id">{{space.site_name}}</a>
                     <p>{{space.introduced}}</p>
                     <p>{{space.city_name}}&nbsp;{{space.areas}}<br>{{space.address}}</p>
                 </div>
@@ -216,11 +216,11 @@
         <ul class="cont selectedcases clearfix">
             <li v-for="item in selectedCase">
                 <div class="textinfo">
-                    <a class="title" href="">{{item.title}}</a>
+                    <a class="title" target="_blank" :href="'/article/'+item.id">{{item.title}}</a>
                     <p>{{item.abstract}}</p>
                 </div>
-                <a class="btnlook" href="">查看<i class="icon icon-arrowright"></i></a>
-                <a class="img" href=""><img :src="item.first_picture.url"></a>
+                <a class="btnlook" target="_blank" :href="'/article/'+item.id">查看<i class="icon icon-arrowright"></i></a>
+                <a class="img" target="_blank" :href="'/article/'+item.id"><img :src="item.first_picture.url"></a>
             </li>
         </ul>
     </div><!--精选案例-结束-->
