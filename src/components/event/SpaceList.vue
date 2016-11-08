@@ -3,11 +3,16 @@
         <div class="condition-wrap clearfix">
             <div class="condition-sp">
                 <span class="icon-text">区域范围</span>
-                <p class="select-text">全部</p>
-
+                <el-select v-model="valType" class="select-text">
+                    <el-option
+                            v-for="item in areaRange"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
             </div>
             <div class="condition-sp">
-                <span class="icon-text">区域范围</span>
+                <span class="icon-text">行政区域</span>
                 <p class="select-text">全部</p>
                 <div class="sub-condition clearfix">
                     <ul class="condition-left">
@@ -36,18 +41,35 @@
                 </div>
             </div>
             <div class="condition-sp">
-                <span class="icon-text">区域范围</span>
-                <p class="select-text">全部</p>
+                <span class="icon-text">场地类型</span>
+                <el-select v-model="valType" class="select-text">
+                    <el-option
+                            v-for="item in placeTypes"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
             </div>
             <div class="condition-sp">
-                <span class="icon-text">区域范围</span>
-                <p class="select-text">全部</p>
+                <span class="icon-text">价格</span>
+                <el-select v-model="valType" class="select-text">
+                    <el-option
+                            v-for="item in prices"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
             </div>
             <div class="condition-sp">
-                <span class="icon-text">区域范围</span>
-                <p class="select-text">全部</p>
+                <span class="icon-text">可用面积</span>
+                <el-select v-model="valType" class="select-text">
+                    <el-option
+                            v-for="item in usableArea"
+                            :label="item.label"
+                            :value="item.value">
+                    </el-option>
+                </el-select>
             </div>
-            <button class="condition-search">搜索</button>
         </div>
         <div class="search-content">
             <div class="w1200 mt20 clearfix">
@@ -124,10 +146,68 @@
         data() {
             return {
                 checked: true,
+                areaRange: [ ],
                 spacemains: [
                     1, 2, 3, 4, 5, 6
                 ],
+                areaRange: [
+                    {
+                        value:'选项一',
+                        label:'全部'
+                    },
+                    {
+                        value:'选项二',
+                        label:'范围一'
+                    },
+                    {
+                        value:'选项三',
+                        label:'范围二'
+                    },
+                ],
+                placeTypes:[
+                    {
+                        value:'选项一',
+                        label:'全部'
+                    },
+                    {
+                        value:'选项二',
+                        label:'场地类型一'
+                    },
+                    {
+                        value:'选项三',
+                        label:'场地类型二'
+                    },
+                ],
+                prices:[
+                    {
+                        value:'选项一',
+                        label:'全部'
+                    },
+                    {
+                        value:'选项二',
+                        label:'价格一'
+                    },
+                    {
+                        value:'选项三',
+                        label:'价格二'
+                    },
+                ],
+                usableArea:[
+                    {
+                        value:'选项一',
+                        label:'全部'
+                    },
+                    {
+                        value:'选项二',
+                        label:'面积一'
+                    },
+                    {
+                        value:'选项三',
+                        label:'面积二'
+                    },
+                ],
                 spacesubs: [ ],
+                valType:'选项一',
                 page: 1,
                 recordCount: 205
             }
@@ -139,6 +219,7 @@
                 success:function (data) {
                     self.spacesubs=data.spaces;
 
+                    console.log(data);
                     //场地类型
                     for(var i = 0; i < self.spacesubs.length - 1; i++){
                         self.spacesubs[i].keyword = self.spacesubs[i].keyword.replace(',','|');
