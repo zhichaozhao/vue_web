@@ -130,6 +130,7 @@
         SpaceDtl: host + 'api/spaces',
         placeDtl : host + 'api/sites',
         feedBack: host + 'api/feedback',
+        inquiry: host + 'api/orders/create_inquiry'
     };
 
     export default {

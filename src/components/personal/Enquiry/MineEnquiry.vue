@@ -56,7 +56,7 @@
                     :total="1000">
             </el-pagination>
         </div>
-    <!--</div>-->
+    </div>
 </template>
 <script>
     export default {
@@ -67,6 +67,9 @@
             }
         },
         components: {},
+        mounted () {
+            console.log(111);
+        },
         methods: {
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
