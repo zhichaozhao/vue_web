@@ -135,7 +135,8 @@
         SpaceDtl: host + 'api/spaces',
         placeDtl : host + 'api/sites',
         feedBack: host + 'api/feedback',
-        inquiry: host + 'api/orders/create_inquiry'
+        inquiry: host + 'api/orders/create_inquiry',
+        collection: host + 'api/collections'
     };
     export default {
         name: 'app',

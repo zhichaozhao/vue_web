@@ -2,7 +2,7 @@
 
     <div class="w1200 ip-page">
         <div class="top-banner">
-            <img src="/static/images/ip/banner.png" alt="">
+            <img src="/static/images/ip/banner.jpg" alt="">
         </div>
         <div class="module-header">
             <span>品牌推荐</span>

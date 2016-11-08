@@ -71,33 +71,27 @@
         <ul class="quicklinks clearfix">
             <li>
                 <router-link to="/event/hold" class="imgtext">
-                    <img src="/static/images/home/links1.png">
-                    <p class="text">本月新增场地345加</p>
+                    <img src="/static/images/home/links1.jpg">
+                    <p class="text">本月新增场地345家</p>
                     <div class="mask"></div>
                 </router-link>
-                <!--<a class="imgtext" href="/event/hold">-->
-                    <!--<img src="/static/images/home/links1.png">-->
-                    <!--<p class="text">本月新增场地345加</p>-->
-                    <!--<div class="mask"></div>-->
-                <!--</a>-->
                 <p class="imgtitle">我要办活动</p>
             </li>
             <li>
-
-                <a class="imgtext" href="javascript:;">
-                    <img src="/static/images/home/links1.png">
-                    <p class="text">本月新增场地345加</p>
+                <router-link to="/event/hold" class="imgtext">
+                    <img src="/static/images/home/links2.jpg">
+                    <p class="text">本月新增空间92家</p>
                     <div class="mask"></div>
-                </a>
-                <p class="imgtitle">我要办活动</p>
+                </router-link>
+                <p class="imgtitle">我要开店</p>
             </li>
             <li>
-                <a class="imgtext" href="javascript:;">
-                    <img src="/static/images/home/links1.png">
-                    <p class="text">本月新增场地345加</p>
+                <router-link to="/event/hold" class="imgtext">
+                    <img src="/static/images/home/links3.jpg">
+                    <p class="text">本月新增项目5个</p>
                     <div class="mask"></div>
-                </a>
-                <p class="imgtitle">我要办活动</p>
+                </router-link>
+                <p class="imgtitle">我要找IP项目</p>
             </li>
         </ul>
 

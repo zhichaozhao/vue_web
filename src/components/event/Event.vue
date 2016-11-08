@@ -35,7 +35,7 @@
                 <div class="swiper-container event-swiper">
                     <div class="swiper-wrapper owl-carousel">
                         <a href="javascript:;" class="swiper-slide item" v-for="item in banners">
-                            <img class="imgload" src="item.first_picture.url" alt="首页banner图片">
+                            <img class="imgload" :src="item.first_picture.url" alt="首页banner图片">
                             <div class="owlitem-title">
                                 <h5>{{item.title}}</h5>
                                 <p>{{item.abstract}}</p>
@@ -320,7 +320,7 @@
                 peoplenumbs: [
                     {
                         value:'选项一',
-                        label:'您的活动人数'
+                        label:'50人以下'
                     },
                     {
                         value:'选项二',
@@ -328,11 +328,15 @@
                     },
                     {
                         value:'选项三',
-                        label:'100~200人'
+                        label:'100-300人'
                     },
                     {
                         value:'选项四',
-                        label:'200人以上'
+                        label:'100-300人'
+                    },
+                    {
+                        value:'选项五',
+                        label:'500人以上'
                     }
                 ],
                 activityType: [
@@ -363,17 +367,6 @@
         },
         components: {},
         mounted () {
-            setTimeout(function () {
-                var swiper = new Swiper('.event-swiper', {
-                    nextButton: '.yun-swiper-next',
-                    prevButton: '.yun-swiper-prev',
-                    pagination: '.swiper-pagination',
-                    paginationClickable :true,
-//                paginationType: 'fraction',
-//                paginationHide:true
-                });
-            },300);
-
 
             var self=this;
             $.ajax({
@@ -401,7 +394,7 @@
 
                     //TOP榜
                     self.toplists=data.activity_top;
-
+                    self.getBanner();
                     self.$parent.loading = false;
                 }
             });
@@ -414,6 +407,17 @@
                 this.searchInputVal=$('.searchInputVal').val();
                 console.log(this.searchInputVal);
                 window.location.href ='/spacelist/:'+this.searchInputVal;
+            },
+
+            getBanner:function () {
+                setTimeout(function () {
+                    var swiper = new Swiper('.event-swiper', {
+                        nextButton: '.yun-swiper-next',
+                        prevButton: '.yun-swiper-prev',
+                        pagination: '.swiper-pagination',
+                        paginationClickable :true
+                    });
+                },300);
             }
 
         }

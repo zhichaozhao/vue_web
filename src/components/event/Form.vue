@@ -47,7 +47,7 @@
                         </li>
                         <li class="inputwrap clearfix">
                             <div class="text"><span class="red">*</span>活动时间：</div>
-                            <div class="fl time">
+                            <div class="fl time timedate">
                                 <el-date-picker
                                         v-model="demand.time"
                                         type="daterange"
