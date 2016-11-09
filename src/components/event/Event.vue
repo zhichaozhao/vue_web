@@ -61,19 +61,19 @@
                         <!--活动人数-->
                         <el-select v-model="valnumbs">
                             <el-option
-                                    v-for="peoplenumb in peoplenumbs"
-                                    :label="peoplenumb.label"
-                                    :value="peoplenumb.value">
+                                    v-for="item in this.$parent.$data.peopleNumberCondition"
+                                    :label="item.key"
+                                    :value="item.value">
                             </el-option>
                         </el-select>
                     </li>
                     <li class="selectwrap">
                         <!--活动类型-->
-                        <el-select v-model="valtypes">
+                        <el-select v-model="selectEventType">
                             <el-option
-                                    v-for="item in activityType"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="(v,k) in eventType"
+                                    :label="v"
+                                    :value="k">
                             </el-option>
                         </el-select>
                     </li>
@@ -317,45 +317,10 @@
     export default{
         data(){
             return {
-                peoplenumbs: [
-                    {
-                        value:'选项一',
-                        label:'50人以下'
-                    },
-                    {
-                        value:'选项二',
-                        label:'50~100人'
-                    },
-                    {
-                        value:'选项三',
-                        label:'100-300人'
-                    },
-                    {
-                        value:'选项四',
-                        label:'100-300人'
-                    },
-                    {
-                        value:'选项五',
-                        label:'500人以上'
-                    }
-                ],
-                activityType: [
-                    {
-                        value:'选项一',
-                        label:'您的活动类型？'
-                    },
-                    {
-                        value:'选项二',
-                        label:'活动类型1'
-                    },
-                    {
-                        value:'选项三',
-                        label:'活动类型二'
-                    },
-                ],
+                selectEventType : '',
+
                 banners:[ ],
                 valnumbs: '选项一',
-                valtypes: '选项一',
                 subjects: [ ],
                 venues: [ ],
                 discounts: [ ],
@@ -366,6 +331,11 @@
             }
         },
         components: {},
+        computed: {
+            eventType (){
+                return store.state.searchCondition.activity_type
+            }
+        },
         mounted () {
 
             var self=this;

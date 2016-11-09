@@ -63,7 +63,7 @@
                     phone : '',
                     consulting_content : '',
                     project_id : '',
-                    city_id : '上海',
+                    city_id : 1,
                     code_token : '',
                     auth_code : ''
                 },
@@ -72,7 +72,7 @@
         },
         computed: {
             cities (){
-                return store.state.cities
+                return this.$store.state.cities
             }
         },
         mounted () {
@@ -107,10 +107,10 @@
                 var success = function (data) {
                     self.consult.code_token = data.data;
                 };
-                GlobleFun.sendPhoneCode(this.consult.phone,success)
+                GlobleFun.sendPhoneCode(this.consult.phone,success,'.sendcode')
             },
             open : function () {
-                console.log(111);
+
                 setTimeout(function () {
                     $("#submit-consult").validate({
                         debug: true,

@@ -16,11 +16,11 @@
                     <div class="result">
                         <!--<input type="text" value="" placeholder="在哪个城市">-->
                         <!--<i class="icon-updown"></i>-->
-                        <el-select v-model="value">
+                        <el-select v-model="searchCity">
                             <el-option
-                                    v-for="item in this.$parent.$data.cities"
+                                    v-for="item in searchCondition.cities"
                                     :label="item.name"
-                                    :value="item.name">
+                                    :value="item.id">
                             </el-option>
                         </el-select>
                     </div>
@@ -37,21 +37,21 @@
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in this.$parent.$data.searchCondition.space_type">{{key}}</a>
+                                <a href="javascript:;" v-for="(key,value) in searchCondition.space_type">{{key}}</a>
                                 <!--<a href="javascript:;">商业发布</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">要开店</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in this.$parent.$data.searchCondition.retail">{{key}}</a>
+                                <a href="javascript:;" v-for="(key,value) in searchCondition.retail">{{key}}</a>
                                 <!--<a href="javascript:;">店中店</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">IP项目</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in this.$parent.$data.searchCondition.project_type">{{value}}</a>
+                                <a href="javascript:;" v-for="(key,value) in searchCondition.project_type">{{value}}</a>
                                 <!--<a href="javascript:;">卡通</a>-->
                             </dd>
                         </dl>
@@ -364,6 +364,7 @@
         </div>
 
     </div>
+
     </div>
 
 
@@ -407,7 +408,7 @@
                     value: '选项5',
                     label: '北京烤鸭'
                 }],
-                value: '',
+                searchCity: 1,
                 showdowhat: 0,
 
                 ipProject : [],
@@ -421,13 +422,16 @@
                 mediaReport : [] //媒体
             }
         },
+        computed : {
+            searchCondition (){
+                return this.$store.state.searchCondition
+            }
+        },
 
         components: {},
         mounted () {
             var self = this;
-
             self.$parent.loading = true; //显示loading 状态
-
             $.ajax({
                 url: window.YUNAPI.home, context: document.body, success: function (data) {
                     console.log(data);

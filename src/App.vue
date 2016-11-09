@@ -15,93 +15,102 @@
             <button>刷新页面</button>
         </div>
 
-        <el-dialog v-model="showRegForm" top="20px">
+        <el-dialog v-model="showForm.reg" @open="regOpen">
             <!--regbox注册-开始-->
             <div class="loginreg-box">
                 <div class="regbox">
                     <h2>注册</h2>
-                    <div class="mainbox">
-                        <ul class="inputbox">
-                            <li class="logregwrap">
-                                <span class="text">姓</span>
-                                <input class="logreginput" type="text" placeholder="请输入您的姓氏" />
-                            </li>
-                            <li class="logregwrap">
-                                <span class="text">名</span>
-                                <input class="logreginput" type="text" placeholder="请输入您的名称" />
-                            </li>
-                            <li class="logregwrap">
-                                <span class="text">手机号</span>
-                                <input class="logreginput" type="text" placeholder="请输入正确的11位手机号码" />
-                            </li>
-                            <li class="logregwrap">
-                                <span class="text">验证码</span>
-                                <input class="logreginput" type="text" placeholder="" />
-                                <button class="sendcode">发送验证码</button>
-                            </li>
-                            <li class="logregwrap">
-                                <span class="text">设置密码</span>
-                                <input class="logreginput" type="text" placeholder="密码长度不能少于6位，不能包含空格" />
-                                <i class="icons icon-passwordhide"></i>
-                            </li>
-                            <li class="logregwrap">
-                                <span class="text">确认密码</span>
-                                <input class="logreginput" type="password" placeholder="" />
-                            </li>
-                        </ul>
-                        <button class="logreg-btn" type="button">立即注册</button>
-                    </div>
+                    <form action="" id="regForm">
+                        <div class="mainbox">
+                            <ul class="inputbox">
+                                <li class="logregwrap">
+                                    <span class="text">姓</span>
+                                    <!--<input class="logreginput" type="text" placeholder="请输入您的姓氏" />-->
+                                    <input class="logreginput" v-model="regData.surname" name="surname" data-rule-required="true" data-msg-required="请输入您的姓氏!" placeholder="请输入您的姓氏">
+                                </li>
+                                <li class="logregwrap">
+                                    <span class="text">名</span>
+                                    <!--<input class="logreginput" type="text" placeholder="请输入您的名称" />-->
+                                    <input class="logreginput" v-model="regData.name" name="name" data-rule-required="true" data-msg-required="请输入您的名称!" placeholder="请输入您的名称">
+                                </li>
+                                <li class="logregwrap">
+                                    <span class="text">手机号</span>
+                                    <input class="logreginput" v-model="regData.mobile" name="phone" type="text" data-msg-required="请输入您的联系方式!" placeholder="请输入正确的11位手机号码" />
+                                </li>
+                                <li class="logregwrap">
+                                    <span class="text">验证码</span>
+                                    <!--<input class="logreginput" type="text" placeholder="" />-->
+                                    <input class="logreginput" v-model="regData.auth_code" name="auth_code" data-rule-required="true" data-msg-required="请输入验证码!" placeholder="请输入验证码">
+                                    <button class="sendcode" type="button" @click="sendPhoneCode">发送验证码</button>
+                                </li>
+                                <li class="logregwrap">
+                                    <span class="text">设置密码</span>
+                                    <!--<input class="logreginput" type="text" placeholder="密码长度不能少于6位，不能包含空格" />-->
+                                    <input class="logreginput" v-model="regData.password" name="password" data-rule-required="true" data-msg-required="请输入密码!" placeholder="密码长度不能少于6位，不能包含空格">
+                                    <i class="icons icon-passwordhide"></i>
+                                </li>
+                                <li class="logregwrap">
+                                    <span class="text">确认密码</span>
+                                    <input class="logreginput" v-model="regData.password_confirmation" name="password_confirmation" data-rule-required="true" data-msg-required="请输入确认密码!" placeholder="请输入确认密码">
+                                    <!--<input class="logreginput" type="password" placeholder="" />-->
+                                </li>
+                            </ul>
+                            <button class="logreg-btn" type="button" @click="submitReg">立即注册</button>
+                        </div>
+                    </form>
                 </div><!--regbox注册-结束-->
             </div>
 
         </el-dialog>
-        <el-dialog v-model="showLoginForm">
+        <el-dialog v-model="showForm.login" @open="loginFormOpen">
             <!--regbox注册-开始-->
             <div class="loginreg-box">
-                <!--loginbox登录-开始-->
-                <div class="loginbox">
-                    <h2>登录</h2>
-                    <div class="mainbox">
-                        <ul class="inputbox">
-                            <li class="logregwrap war">
-                                <input class="logreginput" type="text" placeholder="手机号" />
-                                <div class="warning"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>
-                            </li>
-                            <li class="logregwrap">
-                                <input class="logreginput" type="password" placeholder="密码" />
-                                <i class="icons icon-passwordshow"></i>
-                            </li>
-                        </ul>
+                <form action="" id="loginForm">
+                    <!--loginbox登录-开始-->
+                    <div class="loginbox">
+                        <h2>登录</h2>
+                        <div class="mainbox">
+                            <ul class="inputbox">
+                                <li class="logregwrap">
+                                    <input class="logreginput" v-model="loginData.mobile" name="phone" type="text" data-msg-required="请输入您的联系方式!" placeholder="请输入11位手机号" />
+                                    <!--<div class="warning"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>-->
+                                </li>
+                                <li class="logregwrap">
+                                    <input class="logreginput" v-model="loginData.password" name="password" data-rule-required="true" data-msg-required="请输入密码!" placeholder="请输入密码!">
+                                    <i class="icons icon-passwordshow"></i>
+                                </li>
+                            </ul>
 
-                        <div class="rememberbox clearfix">
-                            <div class="fl remember clearfix">
-                                <label>
-                                    <input class="fl checkbox" type="checkbox" value="记住手机号码">
-                                    <p class="fr">记住手机号码</p>
-                                </label>
+                            <div class="rememberbox clearfix">
+                                <div class="fl remember clearfix">
+                                    <label>
+                                        <input class="fl checkbox" type="checkbox" value="记住手机号码">
+                                        <p class="fr">记住手机号码</p>
+                                    </label>
+                                </div>
+                                <a class="fr forget" href="javascript:;">忘记密码？</a>
                             </div>
-                            <a class="fr forget" href="javascript:;">忘记密码？</a>
+
+                            <button class="logreg-btn" type="button" @click="login">登录</button>
+                        </div>
+                        <div class="hreftext clearfix">
+                            <a class="fl" href="javascript:;" @click="showForm.reg = true">创建账号</a>
+                            <a class="fr" href="javascript:;">验证码登录</a>
                         </div>
 
-                        <button class="logreg-btn" type="button">登录</button>
-                    </div>
-                    <div class="hreftext clearfix">
-                        <a class="fl" href="javascript:;" @click="showRegForm = true">创建账号</a>
-                        <a class="fr" href="javascript:;">验证码登录</a>
-                    </div>
-
-                    <div class="log-thirdparty">
-                        <div class="title">
-                            <div class="line"></div>
-                            <h5>或通过以下方式快速登录</h5>
+                        <div class="log-thirdparty">
+                            <div class="title">
+                                <div class="line"></div>
+                                <h5>或通过以下方式快速登录</h5>
+                            </div>
+                            <ul class="thirdparty clearfix">
+                                <li><a class="wechat" href="javascript:;"></a> </li>
+                                <li><a class="sina" href="javascript:;"></a></li>
+                                <li><a class="qq" href="javascript:;"></a></li>
+                            </ul>
                         </div>
-                        <ul class="thirdparty clearfix">
-                            <li><a class="wechat" href="javascript:;"></a> </li>
-                            <li><a class="sina" href="javascript:;"></a></li>
-                            <li><a class="qq" href="javascript:;"></a></li>
-                        </ul>
-                    </div>
-                </div><!--loginbox登录-结束-->
+                    </div><!--loginbox登录-结束-->
+                </form>
             </div>
 
         </el-dialog>
@@ -113,9 +122,10 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
-    const host = "http://172.16.0.76:3000/";
+    import LF from 'assets/Libs/localforage.min';
     import 'assets/css/logreg.css';
 
+    const host = "http://172.16.0.76:3000/";
     window.YUNAPI = {
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
@@ -136,21 +146,28 @@
         placeDtl : host + 'api/sites',
         feedBack: host + 'api/feedback',
         inquiry: host + 'api/orders/create_inquiry',
-        collection: host + 'api/collections'
+        collection: host + 'api/collections',
+        login : host + 'api/auth/sign_in',
+        register : host + 'api/auth',
+        tags : host + 'api/tags/all_tags'
     };
+
     export default {
         name: 'app',
         data(){
             return {
-                cities:[],
+//                cities:[],
                 activityType : [],
                 searchCondition : [],
                 isShowHomeSearchCondition : false,
                 loading: true,
                 httpError:false,
                 cdVisible : false,  // 合作咨询的弹出框 是否显示
-                showLoginForm : false,
                 showRegForm : false,
+                showForm : {
+                    reg : false,
+                    login : false
+                },
                 peopleNumberCondition : [
                     {
                         key : '50人以下',
@@ -173,9 +190,32 @@
                         value : '500+'
                     },
 
-                ]
+                ],
+                loginData : {
+                    mobile : '',
+                    password : ''
+                },
+                regData : {
+                    mobile : '',
+                    password : '',
+                    password_confirmation : '',
+                    auth_code : '',
+                    code_token : '',
+                    familyName : '',
+                    name : '',
+                    surname : ''
+                },
+//                cities : window.store.state.cities
             }
 
+        },
+        computed: {
+            cities (){
+                return this.$store.state.cities
+            }
+//            get () {
+//                return this.$store.state.cities
+//            },
         },
         components: {
             Hello, ModuleFooter, ModuleHeader
@@ -183,19 +223,16 @@
         mounted () {
             var self = this;
 //            console.log(window.YUNAPI);
-            $.ajax({
-                url: window.YUNAPI.cities, context: document.body, success: function (data) {
-                    self.cities = data.cities;
-                    console.log(data.cities)
-                    store.state.cities = data.cities
-                }
-            });
+
 
             $.ajax({
-                url: window.YUNAPI.homeSearch, context: document.body, success: function (data) {
+                url: window.YUNAPI.tags, context: document.body, success: function (data) {
                     console.log(data);
-                    self.searchCondition = data;
-                    self.activityType = data.activity_type;
+//                    self.searchCondition = data;
+                    self.$store.state.searchCondition = data;
+                    self.$store.state.cities = data.cities;
+//                    self.$store.commit('searchCondition', data)
+//                    self.activityType = data.activity_type;
                 }
             });
         },
@@ -215,48 +252,83 @@
                 this.isShowHomeSearchCondition = false
             },
             toggleLoginForm : function () {
-                this.showLoginForm = !showLoginForm
+                this.showForm.login = !this.showForm.login
             },
-            sendPhoneCode : function (phone,success,error) {
+            loginFormOpen : function () {
+                GlobleFun.validate("#loginForm");
+                self.showRegForm = false;
+            },
+            login : function () {
                 var self = this;
-                if(!phone){
-                    self.$message({
-                        message: '手机号不能为空!',
-                        type: 'error'
-                    });
-                    return;
-                }
-                $.get({
-                    url: window.YUNAPI.sendPhoneCode,
-                    data : {
-                        phone : phone
-                    },
-                    success: function (data) {
-                        success(data)
+                var valid =  $("#loginForm").valid();
+                if(!valid) return;
+                $.post({
+                    url: window.YUNAPI.login,
+                    data : self.loginData,
+                    success: function (data ,status, xhr) {
+                        console.log(data);
+                        var status = data.status == 1 ? 'success' : 'error';
+                        APP.$message({
+                            message: data.message,
+                            type: status
+                        });
+//                        if(data.status == 1){
+//                            self.cdVisible = false
+//                        }
+                        localStorage.setItem('accessToken',xhr.getResponseHeader('access-token'));
+//                        LF.setItem('accessToken',xhr.getResponseHeader('access-token')).then(function (value) {
+//                            // Do other things once the value has been saved.
+////                            console.log(value);
+//                            var at = LF.getItem('accessToken')
+//                            console.log(at)
+//                        })
+                        if(data.status == 1){
+                            self.showForm.login = false
+                            router.replace(self.$route.path);  // 刷新页面
+                        }
+
+
                     },
                     error : function () {
-                        error()
                     }
                 });
             },
-            codeTiming : function (id) {
-                var time = 60;
-                var btn = $('#'+id);
-                btn.text('60s重新发送');
-                btn.attr('disabled',true);
-                var interval = setInterval(function () {
-                    time -- ;
-                    if(time < 0){
-                        time == 60;
-                        clearInterval(interval);
-                        btn.text('发送验证码');
-                        btn.attr('disabled',false);
-                    }else{
-                        btn.text(time+'s重新发送')
-                    }
+            regOpen : function () {
+                GlobleFun.validate("#regForm");
+                this.showForm.login = false;
+            },
+            submitReg : function () {
+                var self = this;
+                var valid =  $("#regForm").valid();
+                if(!valid) return;
+                $.post({
+                    url: window.YUNAPI.register,
+                    data : self.regData,
+                    success: function (data ,status, xhr) {
 
-                },1000)
-            }
+                        console.log(data)
+
+                        var status = data.status == 1 ? 'success' : 'error';
+                        APP.$message({
+                            message: data.message,
+                            type: status
+                        });
+                        if(data.status == 1){
+                            self.showForm.reg = false
+                        }
+                    },
+                    error : function () {
+                    }
+                });
+            },
+            sendPhoneCode : function () {
+                var self = this;
+                var success = function (data) {
+                    self.regData.code_token = data.data;
+                };
+                GlobleFun.sendPhoneCode(this.regData.mobile,success,'.sendcode')
+                return false
+            },
         }
 
     }

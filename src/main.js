@@ -6,13 +6,14 @@ import VueRouter from 'vue-router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import 'assets/Libs/jquery.validate.js';
+import  'assets/Libs/localforage.min';
 import Vuex from 'vuex'
 
 Vue.use(Element)
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-const router = new VueRouter({
+window.router = new VueRouter({
     mode: 'history',
     base: __dirname,
     history: true,
@@ -193,8 +194,31 @@ const router = new VueRouter({
 
     ]
 })
-window.APP = new Vue({
+window.store = new Vuex.Store({
+    state:{
+        cdVisible : false,
+        cities:{},
+        city_id : 1,
+        searchCondition : {
+            space_type : ''
+        },
+        elDialog : {
+            cdVisible : false,
+            loginForm : false,
+            regForm : false
+        }
+    },
+    mutations : {
+        searchCondition (state,value) {
+            state.searchCondition = value
+        }
+    },
+    actions : {
 
+    }
+});
+window.APP = new Vue({
+    store,
     render: h => h(App),
     router: router
 
@@ -206,19 +230,8 @@ jQuery.validator.addMethod("isMobile", function (value, element) {
     return this.optional(element) || (length == 11 && mobile.test(value));
 }, "请正确填写您的手机号码");
 
-window.store = new Vuex.Store({
-    state:{
-        cdVisible : false,
-        cities:{},
-    },
-
-    actions : {
-
-    }
-});
-
 window.GlobleFun = {
-    sendPhoneCode : function (phone,success) {
+    sendPhoneCode : function (phone,success,$ele) {
         if(!phone){
             APP.$message({
                 message: '手机号不能为空!',
@@ -232,12 +245,16 @@ window.GlobleFun = {
                 phone : phone
             },
             success: function (data) {
-
+                
                 var status = data.status == 1 ? 'success' : 'error';
                 APP.$message({
                     message: data.message,
                     type: status
                 });
+
+                if(data.status == 1){
+                    GlobleFun.codeTiming($ele)
+                }
 
                 success(data);
             },
@@ -246,9 +263,9 @@ window.GlobleFun = {
             }
         });
     },
-    codeTiming : function (id) {
+    codeTiming : function ($ele) {
         var time = 60;
-        var btn = $('#'+id);
+        var btn = $($ele);
         btn.text('60s重新发送');
         btn.attr('disabled',true);
         var interval = setInterval(function () {
@@ -263,8 +280,85 @@ window.GlobleFun = {
             }
 
         },1000)
+    },
+    validate : function ($ele) {
+        setTimeout(function () {
+            $($ele).validate({
+                debug: false,
+                errorElement: "div",
+//                    errorClass : 'warning',
+                errorPlacement: function(error, element) {
+                    error.addClass('warning').appendTo(element.parent("li"));
+                    error.parent('li').addClass('war')
+                },
+                success : function (e) {
+                    e.parents('li').removeClass('war');
+                    e.parents('li').find('.warning').remove();
+                },
+                rules : {
+                    phone : {
+                        required : true,
+//                            minlength : 11,
+                        // 自定义方法：校验手机号在数据库中是否存在
+                        // checkPhoneExist : true,
+                        isMobile : true
+                    },
+                }
+            })
+        },300)
     }
-}
+};
+
+window.YunConfig = {
+    peopleNumberCondition : [
+        {
+            key : '50人以下',
+            value : '50'
+        },
+        {
+            key : '50-100人',
+            value : '100'
+        },
+        {
+            key : '100-300人',
+            value : '300'
+        },
+        {
+            key : '300-500人',
+            value : '500'
+        },
+        {
+            key : '500人以上',
+            value : '500+'
+        },
+
+    ]
+};
+const host = "http://172.16.0.76:3000/";
+window.YUNAPI = {
+    cities : host + 'api/cities',
+    homeIpProject : host + 'api/projects/get_home_list',
+    home : host + 'api/index',
+    homeSearch : host + 'api/tags/get_home_search',
+    article : host + 'api/informations',
+    articleTags : host + 'api/tags/get_information_tags',
+    articleHot : host + 'api/informations/get_hot_recommend',
+    findIp : host + 'api/projects/ip_project',
+    ipList : host + 'api/projects',
+    active : host + 'api/activities',
+    submitConsult : host + 'api/consults',
+    submitHoldEvent : host + 'api/orders',
+    sendPhoneCode : host + 'api/auth_codes/send_code',
+    openShop : host + 'api/informations/get_retail',
+    SpaceList: host + 'api/spaces',
+    SpaceDtl: host + 'api/spaces',
+    placeDtl : host + 'api/sites',
+    feedBack: host + 'api/feedback',
+    inquiry: host + 'api/orders/create_inquiry',
+    collection: host + 'api/collections',
+    login : host + 'api/auth/sign_in',
+    register : host + 'api/auth'
+};
 
 // new Vue({
 //     el: '#app',

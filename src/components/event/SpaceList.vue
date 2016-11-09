@@ -224,7 +224,6 @@
                     for(var i = 0; i < self.spacesubs.length - 1; i++){
                         self.spacesubs[i].keyword = self.spacesubs[i].keyword.replace(',','|');
                     }
-
                     self.$parent.loading = false;
                 }
             });

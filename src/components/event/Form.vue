@@ -15,7 +15,7 @@
                         </li>
                         <li class="inputwrap clearfix">
                             <div class="text"><span class="red">*</span>短信验证码：</div>
-                            <input v-model="demand.auth_code" class="fminput" type="text" placeholder="请输入6位数验证码" />
+                            <input v-model="demand.auth_code" class="fminput" type="text" placeholder="请输入6位数验证码" data-rule-required="true" data-msg-required="请输入验证码!"/>
                             <button type="button" id="sendCode" class="sendcode" @click="sendPhoneCode">发送验证码</button>
                         </li>
                         <li class="inputwrap clearfix">
@@ -24,9 +24,9 @@
                             <div class="result fminput">
                                 <el-select v-model="demand.order_city" placeholder='请选择城市'>
                                     <el-option
-                                            v-for="item in this.$parent.$data.cities"
+                                            v-for="item in searchCondition.cities"
                                             :label="item.name"
-                                            :value="item.name">
+                                            :value="item.id">
                                     </el-option>
                                 </el-select>
                             </div>
@@ -38,9 +38,9 @@
                             <div class="result fminput">
                                 <el-select v-model="demand.number_of_activities" placeholder='请选择活动人数'>
                                     <el-option
-                                            v-for="item in this.$parent.$data.peopleNumberCondition"
-                                            :label="item.key"
-                                            :value="item.value">
+                                            v-for="(value,key) in searchCondition.activity_people"
+                                            :label="value"
+                                            :value="key">
                                     </el-option>
                                 </el-select>
                             </div>
@@ -68,9 +68,9 @@
                             <div class="result fminput">
                                 <el-select v-model="demand.activity_type" placeholder='请选择活动类型'>
                                     <el-option
-                                            v-for="(value,key) in this.$parent.$data.searchCondition.activity_type"
+                                            v-for="(value,key) in searchCondition.activity_type"
                                             :label="value"
-                                            :value="value">
+                                            :value="key">
                                     </el-option>
                                 </el-select>
                             </div>
@@ -175,11 +175,11 @@
                 demand : {
                     phone : '',
                     contact : '',
-                    order_city : '',
-                    number_of_activities : '',
+                    order_city : 1,
+                    number_of_activities : "50",
                     time : ['',''],
                     user_id : 1,
-                    activity_type : '',
+                    activity_type : 0,
                     auth_code : '',
                     activities_required : '',
                     code_token : '',
@@ -187,6 +187,11 @@
                     e_time:'',
                     ip_city:'上海'
                 }
+            }
+        },
+        computed : {
+            searchCondition (){
+                return this.$store.state.searchCondition
             }
         },
         mounted () {

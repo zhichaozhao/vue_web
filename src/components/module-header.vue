@@ -10,21 +10,21 @@
                     <!--<p>全国</p>-->
                     <!--<i class="icon-down"></i>-->
                     <template>
-                        <el-select v-model="navValCity">
+                        <el-select v-model="city_id">
                             <el-option
-                                    v-for="item in this.$parent.$data.cities"
+                                    v-for="item in cities"
                                     :label="item.name"
-                                    :value="item.name">
+                                    :value="item.id">
                             </el-option>
                         </el-select>
                     </template>
                 </div>
                 <ul class="fl navbar clearfix">
                     <!--<router-link tag="li" to="/">-->
-                        <!--<a href="/" target="_blank">首页</a>-->
+                    <!--<a href="/" target="_blank">首页</a>-->
                     <!--</router-link>-->
                     <!--<li :class="this.$router.path == '/' ? 'current' : '' ">-->
-                        <!--<router-link to="/">首页</router-link>-->
+                    <!--<router-link to="/">首页</router-link>-->
                     <!--</li>-->
                     <router-link tag="li" to="/" exact>
                         <a>首页</a>
@@ -103,24 +103,33 @@
                 navValCity: '上海',
             }
         },
+        computed: {
+            cities (){
+                return this.$store.state.cities
+            },
+            city_id (){
+                return this.$store.state.city_id
+            }
+        },
         props: {
             "title": {
                 type: String,
                 default: "标题"
             },
-            "cities" : {
-                type : String,
-                default : []
+            "cities": {
+                type: String,
+                default: []
             }
         },
         mounted () {
             var self = this;
 //            console.log(this.$parent.$data.cities);
 //            console.log(this.$route)
+            console.log(store)
         },
         methods: {
-            toggleLoginForm : function () {
-                this.$parent.$data.showLoginForm = !this.$parent.$data.showLoginForm
+            toggleLoginForm: function () {
+                this.$parent.$data.showForm.login = !this.$parent.$data.showForm.login
             }
         }
 
@@ -197,7 +206,7 @@
     }
 
     .navbar li a:hover,
-    .navbar li.current a,.navbar li.router-link-active a {
+    .navbar li.current a, .navbar li.router-link-active a {
         background-color: #fff;
         color: #000;
     }
