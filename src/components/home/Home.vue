@@ -16,7 +16,7 @@
                     <div class="result">
                         <!--<input type="text" value="" placeholder="在哪个城市">-->
                         <!--<i class="icon-updown"></i>-->
-                        <el-select v-model="searchCity">
+                        <el-select v-model="homeSearchCondition.city">
                             <el-option
                                     v-for="item in searchCondition.cities"
                                     :label="item.name"
@@ -30,28 +30,28 @@
                 <!--做什么-->
                 <div class="fl select ml20 dowhat"  id="whatToSearch">
                     <div class="result" v-on:click="whatToSearchInputClick">
-                        <input type="text" disabled value="" placeholder="做什么">
+                        <input type="text" disabled value="" placeholder="做什么" v-model="homeSearchCondition.doWhat">
                         <i class="el-input__icon el-icon-caret-bottom"></i>
                     </div>
                     <div class="cont dowhat-contlist" v-show="this.$parent.$data.isShowHomeSearchCondition" id="whatToSearchContent">
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in searchCondition.space_type">{{key}}</a>
+                                <a :class=" homeSearchCondition.doWhat ==  key ? 'active' : ''" @click="searchConditionSelect(1,value,key)" href="javascript:;" v-for="(key,value) in searchCondition.space_type">{{key}}</a>
                                 <!--<a href="javascript:;">商业发布</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">要开店</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in searchCondition.retail">{{key}}</a>
+                                <a @click="searchConditionSelect(2,value,key)" href="javascript:;" v-for="(key,value) in searchCondition.retail">{{key}}</a>
                                 <!--<a href="javascript:;">店中店</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">IP项目</dt>
                             <dd class="fl">
-                                <a href="javascript:;" v-for="(key,value) in searchCondition.project_type">{{value}}</a>
+                                <a @click="searchConditionSelect(3,key,value)" href="javascript:;" v-for="(key,value) in searchCondition.project_type">{{value}}</a>
                                 <!--<a href="javascript:;">卡通</a>-->
                             </dd>
                         </dl>
@@ -60,7 +60,7 @@
                 <!--做什么-结束-->
 
                 <!--搜索-->
-                <input class="fl ml20 searchinput" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                <input v-model="homeSearchCondition.q.keyword_cont" class="fl ml20 searchinput" type="text" placeholder="商圈／地标／机场／火车站／场地名">
                 <button class="fl ml20 searchbtn">搜 索</button>
 
             </div>
@@ -419,7 +419,17 @@
                 typeSelected : [], //分类精选
                 spaceRecommend : [], //空间推荐
                 caseSelected : [], //精选案例
-                mediaReport : [] //媒体
+                mediaReport : [], //媒体,
+
+                homeSearchCondition : {
+                    city : 1,
+                    project_type : '',
+                    doWhat : '',
+                    q : {
+                        site_site_type_eq : '',
+                        keyword_cont : ''
+                    }
+                }
             }
         },
         computed : {
@@ -434,7 +444,6 @@
             self.$parent.loading = true; //显示loading 状态
             $.ajax({
                 url: window.YUNAPI.home, context: document.body, success: function (data) {
-                    console.log(data);
 
                     self.$parent.loading = false;
 
@@ -491,6 +500,22 @@
                     spaceBetween: 1,
 //                    freeMode: true
                 });
+            },
+            searchConditionSelect : function (type,key,value) {
+                var self = this;
+//                console.log(type,key,value)
+                if(type == 1){
+                    self.homeSearchCondition.project_type = key
+                }
+                if(type == 2){
+//                    self.homeSearchCondition.project_type = key
+                }
+                if(type == 3){
+//                    self.homeSearchCondition.project_type = key
+                    self.homeSearchCondition.q.site_site_type_eq = key
+                }
+                self.homeSearchCondition.doWhat = value;
+                self.$parent.isShowHomeSearchCondition = false
             }
 
         }
@@ -713,7 +738,7 @@
         margin: 5px;
     }
 
-    .dowhat-contlist dd > a:hover {
+    .dowhat-contlist dd > a:hover,.dowhat-contlist dd > a.active {
         background: #e92332;
         color: #fff;
     }

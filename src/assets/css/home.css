@@ -180,7 +180,11 @@ body .el-select-dropdown__item.selected{
     margin: 5px;
 }
 
-.dowhat-contlist dd > a:hover {
+.dowhat-contlist dd > a:hover{
+    background: #e92332;
+    color: #fff;
+}
+.dowhat-contlist dd > a.active{
     background: #e92332;
     color: #fff;
 }

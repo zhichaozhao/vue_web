@@ -3,7 +3,10 @@
         <module-header cities = "cities" v-on:toggleLoginForm ="toggleLoginForm"></module-header>
 
         <!--<router-view></router-view>-->
-        <div v-loading="loading" class="el-loading-yun"></div>
+        <div v-loading="loading" class="el-loading-yun">
+
+        </div>
+        <div v-if="loading" class="loading-bg"></div>
 
 
         <router-view  class="child-view"></router-view>

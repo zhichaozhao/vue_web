@@ -59,19 +59,19 @@
                 <ul class="inputbox">
                     <li class="selectwrap">
                         <!--活动人数-->
-                        <el-select v-model="valnumbs">
+                        <el-select v-model="demand.number_of_activities">
                             <el-option
-                                    v-for="item in this.$parent.$data.peopleNumberCondition"
-                                    :label="item.key"
-                                    :value="item.value">
+                                    v-for="(value,key) in searchCondition.activity_people"
+                                    :label="value"
+                                    :value="key">
                             </el-option>
                         </el-select>
                     </li>
                     <li class="selectwrap">
                         <!--活动类型-->
-                        <el-select v-model="selectEventType">
+                        <el-select v-model="demand.activity_type">
                             <el-option
-                                    v-for="(v,k) in eventType"
+                                    v-for="(v,k) in searchCondition.activity_type"
                                     :label="v"
                                     :value="k">
                             </el-option>
@@ -318,7 +318,6 @@
         data(){
             return {
                 selectEventType : '',
-
                 banners:[ ],
                 valnumbs: '选项一',
                 subjects: [ ],
@@ -326,14 +325,29 @@
                 discounts: [ ],
                 disrate:[ ],
                 eventcases: [ ],
-                toplists: [ ]
+                toplists: [ ],
+                demand : {
+                    phone : '',
+                    contact : '',
+                    order_city : 1,
+                    number_of_activities : "50",
+                    time : ['',''],
+                    user_id : 1,
+                    activity_type : 0,
+                    auth_code : '',
+                    activities_required : '',
+                    code_token : '',
+                    s_time:'',
+                    e_time:'',
+                    ip_city:'上海'
+                }
 
             }
         },
         components: {},
         computed: {
-            eventType (){
-                return store.state.searchCondition.activity_type
+            searchCondition (){
+                return this.$store.state.searchCondition
             }
         },
         mounted () {

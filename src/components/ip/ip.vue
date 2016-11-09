@@ -255,7 +255,7 @@
 
         methods: {
             init : function () {
-                this.$parent.loading = false;
+//                this.$parent.loading = false;
                 var swiper2 = new Swiper('.relative-topic-swiper', {
                     pagination: '.swiper-pagination',
                     nextButton: '.yun-swiper-next',
