@@ -4,15 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import Element from 'element-ui'
+import LS from 'assets/Libs/store.min';
 import 'element-ui/lib/theme-default/index.css'
 import 'assets/Libs/jquery.validate.js';
-import  'assets/Libs/localforage.min';
 import Vuex from 'vuex'
 
 Vue.use(Element)
 Vue.use(VueRouter);
 Vue.use(Vuex);
-
+window.LS = LS
 window.router = new VueRouter({
     mode: 'history',
     base: __dirname,
@@ -31,7 +31,7 @@ window.router = new VueRouter({
             component: (resolve) => require(['./components/event/Event'], resolve)
         },
         {
-            path: '/spaces/:keyword',
+            path: '/spaces',
             component: (resolve) => require(['./components/event/SpaceList.vue'], resolve)
         },
         {
@@ -177,8 +177,16 @@ window.router = new VueRouter({
         },
         {
             path: '/openshop',
-            component: (resolve) => require(['./components/openshop/openshop'], resolve)
+            component: (resolve) => require(['./components/openshop/openshop'], resolve),
+
         },
+
+        {
+            path: '/inquiry',
+            component: (resolve) => require(['./components/openshop/inquiryForm'], resolve),
+            name: '业务合作'
+        },
+
         {
             path: '/test',
             component: (resolve) => require(['./components/test2'], resolve)
@@ -206,17 +214,102 @@ window.store = new Vuex.Store({
             cdVisible : false,
             loginForm : false,
             regForm : false
+        },
+        spaceSearchCondition: {
+            city : 1,
+            project_type : '',
+            doWhat : '',
+            q : {
+                site_site_type_eq : '',
+                keyword_cont : ''
+            }
+        },
+        inquiryCount : '',
+        inquiryList: []
+    },
+    getters: {
+        inquiryCount: state => {
+            var inquiry =  LS.get('inquiry');
+            if(inquiry){
+                return inquiry.length
+            }else{
+                return ''
+            }
+        },
+        inquiryList : () => {
+            return LS.get('inquiry');
         }
     },
     mutations : {
         searchCondition (state,value) {
             state.searchCondition = value
+        },
+        spaceSearchCondition(state,value){
+            state.spaceSearchCondition = value
+        },
+        inquiryChange(state,values){
+
+            state.inquiryList =  LS.get('inquiry');
+
+            if(!state.inquiryList){
+                state.inquiryList = {}
+            }
+
+            if(typeof values === 'object'){
+
+                if(values.type == 1){ // -1 减 , 1 加
+
+                    state.inquiryList[values.id] = values.name
+
+                }
+                if(values.type == -1){
+                    // 对象方式
+                    // for(var i=0;i<state.inquiryList.length;i++)
+                    // {
+                    //     var id = state.inquiryList[i].id;
+                    //     if(value.id==id)
+                    //     {
+                    //         state.inquiryList.splice(i,1);
+                    //     }
+                    // }
+                    delete state.inquiryList[values.id]
+                }
+
+                if(values.type === 2){
+                    if(state.inquiryList[values.id]){
+                        delete state.inquiryList[values.id]
+                    }else{
+                        state.inquiryList[values.id] = values.name
+                    }
+                }
+
+                LS.set('inquiry',state.inquiryList)
+            }
+
+
+
+            if(state.inquiryList){
+                state.inquiryCount = countProperties(state.inquiryList)
+            }else{
+                state.inquiryCount = ''
+            }
         }
     },
     actions : {
 
     }
 });
+
+function countProperties (obj) { // 计算对象长度
+    var count = 0;
+    for (var property in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, property)) {
+            count++;
+        }
+    }
+    return count;
+}
+
 window.APP = new Vue({
     store,
     render: h => h(App),
@@ -245,7 +338,7 @@ window.GlobleFun = {
                 phone : phone
             },
             success: function (data) {
-                
+
                 var status = data.status == 1 ? 'success' : 'error';
                 APP.$message({
                     message: data.message,
@@ -334,31 +427,31 @@ window.YunConfig = {
 
     ]
 };
-const host = "http://172.16.0.76:3000/";
-window.YUNAPI = {
-    cities : host + 'api/cities',
-    homeIpProject : host + 'api/projects/get_home_list',
-    home : host + 'api/index',
-    homeSearch : host + 'api/tags/get_home_search',
-    article : host + 'api/informations',
-    articleTags : host + 'api/tags/get_information_tags',
-    articleHot : host + 'api/informations/get_hot_recommend',
-    findIp : host + 'api/projects/ip_project',
-    ipList : host + 'api/projects',
-    active : host + 'api/activities',
-    submitConsult : host + 'api/consults',
-    submitHoldEvent : host + 'api/orders',
-    sendPhoneCode : host + 'api/auth_codes/send_code',
-    openShop : host + 'api/informations/get_retail',
-    SpaceList: host + 'api/spaces',
-    SpaceDtl: host + 'api/spaces',
-    placeDtl : host + 'api/sites',
-    feedBack: host + 'api/feedback',
-    inquiry: host + 'api/orders/create_inquiry',
-    collection: host + 'api/collections',
-    login : host + 'api/auth/sign_in',
-    register : host + 'api/auth'
-};
+// const host = "http://172.16.0.76:3000/";
+// window.YUNAPI = {
+//     cities : host + 'api/cities',
+//     homeIpProject : host + 'api/projects/get_home_list',
+//     home : host + 'api/index',
+//     homeSearch : host + 'api/tags/get_home_search',
+//     article : host + 'api/informations',
+//     articleTags : host + 'api/tags/get_information_tags',
+//     articleHot : host + 'api/informations/get_hot_recommend',
+//     findIp : host + 'api/projects/ip_project',
+//     ipList : host + 'api/projects',
+//     active : host + 'api/activities',
+//     submitConsult : host + 'api/consults',
+//     submitHoldEvent : host + 'api/orders',
+//     sendPhoneCode : host + 'api/auth_codes/send_code',
+//     openShop : host + 'api/informations/get_retail',
+//     SpaceList: host + 'api/spaces',
+//     SpaceDtl: host + 'api/spaces',
+//     placeDtl : host + 'api/sites',
+//     feedBack: host + 'api/feedback',
+//     inquiry: host + 'api/orders/create_inquiry',
+//     collection: host + 'api/collections',
+//     login : host + 'api/auth/sign_in',
+//     register : host + 'api/auth'
+// };
 
 // new Vue({
 //     el: '#app',

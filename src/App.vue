@@ -3,9 +3,7 @@
         <module-header cities = "cities" v-on:toggleLoginForm ="toggleLoginForm"></module-header>
 
         <!--<router-view></router-view>-->
-        <div v-loading="loading" class="el-loading-yun">
-
-        </div>
+        <div v-if="loading" v-loading="loading" class="el-loading-yun"></div>
         <div v-if="loading" class="loading-bg"></div>
 
 
@@ -125,10 +123,11 @@
     import Hello from './components/Hello'
     import ModuleFooter from './components/module-footer.vue'
     import ModuleHeader from './components/module-header.vue'
-    import LF from 'assets/Libs/localforage.min';
     import 'assets/css/logreg.css';
 
+//    const host = "http://106.14.38.81/";
     const host = "http://172.16.0.76:3000/";
+
     window.YUNAPI = {
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
@@ -152,9 +151,9 @@
         collection: host + 'api/collections',
         login : host + 'api/auth/sign_in',
         register : host + 'api/auth',
-        tags : host + 'api/tags/all_tags'
+        tags : host + 'api/tags/all_tags',
+        createInquiry : host + 'api/orders/create_inquiry'
     };
-
     export default {
         name: 'app',
         data(){
@@ -226,7 +225,6 @@
         mounted () {
             var self = this;
 //            console.log(window.YUNAPI);
-
 
             $.ajax({
                 url: window.YUNAPI.tags, context: document.body, success: function (data) {

@@ -33,7 +33,7 @@
             <!--</div>-->
             <div class="event-banner">
                 <div class="swiper-container event-swiper">
-                    <div class="swiper-wrapper owl-carousel">
+                    <div class="swiper-wrapper carousel">
                         <a href="javascript:;" class="swiper-slide item" v-for="item in banners">
                             <img class="imgload" :src="item.first_picture.url" alt="首页banner图片">
                             <div class="owlitem-title">

@@ -60,8 +60,8 @@
                 <!--做什么-结束-->
 
                 <!--搜索-->
-                <input v-model="homeSearchCondition.q.keyword_cont" class="fl ml20 searchinput" type="text" placeholder="商圈／地标／机场／火车站／场地名">
-                <button class="fl ml20 searchbtn">搜 索</button>
+                <input @keyup.enter="homeDoSearch" v-model="homeSearchCondition.q.keyword_cont" class="fl ml20 searchinput" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                <button class="fl ml20 searchbtn" @click="homeDoSearch">搜 索</button>
 
             </div>
         </div>
@@ -112,7 +112,7 @@
                         <div class="swiper-wrapper swiper-container">
                             <div class="swiper-slide" v-for="item in topicOfCity">
                                 <a :href=" '/article/' + item.id" target="_blank">
-                                    <img v-bind:src="item.first_picture.url" alt="">
+                                    <!--<img :src="item.img_paths.url" alt="">-->
                                     <p>{{item.title}}</p>
                                 </a>
                             </div>
@@ -163,7 +163,7 @@
                 <li v-for="(item,index) in spaceRecommend" v-if="index < 3">
                     <div class="img">
                         <a :href=" '/space/' + item.id" target="_blank">
-                            <img v-bind:src="item.img_paths.url">
+                            <!--<img v-bind:src="item.img_paths.url">-->
                         </a>
                         <span class="tags">上海</span>
                     </div>
@@ -187,7 +187,7 @@
                 <li v-for="(item,index) in spaceRecommend" v-if=" index >=3">
                     <div class="img">
                         <a :href=" '/space/' + item.id" target="_blank">
-                            <img v-bind:src="item.img_paths.url">
+                            <!--<img v-bind:src="item.img_paths.url">-->
                         </a>
                     </div>
                     <div class="text">
@@ -216,7 +216,7 @@
                         <p>合作咨询</p>
                     </a>
                     <div class="img">
-                        <img v-bind:src="item.img_paths.url">
+                        <!--<img v-bind:src="item.img_paths.url">-->
                     </div>
                     <div class="textinfo">
                         <div class="title">{{item.title}}</div>
@@ -261,19 +261,19 @@
             <h3>新发现</h3>
             <div class="cont clearfix">
                 <!--大图那个-->
-                <div class="fl info info-big">
-                    <a class="img" :href=" '/article/' + newFindFirst.id" target="_blank">
-                        <img v-bind:src="newFindFirst.first_picture.url">
+                <div class="fl info info-big" v-for="(item,index) in newFindTopFour" v-if="index < 1">
+                    <a class="img" :href=" '/article/' + item.id" target="_blank">
+                        <img :src="item.img_paths.url_390_260">
                     </a>
-                    <a class="text display-center" :href=" '/article/' + newFindFirst.id" target="_blank">
-                        {{newFindFirst.title}}
+                    <a class="text display-center" :href=" '/article/' + item.id" target="_blank">
+                        {{item.title}}
                     </a>
                 </div>
                 <!--中间4个-->
                 <ul class="infolist fl clearfix">
-                    <li class="info info-normal" v-for="item in newFindTopFour">
+                    <li class="info info-normal" v-for="(item,index) in newFindTopFour" v-if="index > 0">
                         <a class="img" :href="'/article/' + item.id" target="_blank">
-                            <img v-bind:src="item.first_picture.url">
+                            <img v-bind:src="item.img_paths.url_150_100">
                         </a>
                         <a class="text display-center" :href="'/article/' + item.id" target="_blank">
                             {{item.title}}
@@ -305,7 +305,7 @@
             <ul class="cont clearfix">
                 <li v-for="item in caseSelected">
                     <a :href="'/article/' + item.id" target="_blank" class="img">
-                        <img v-bind:src="item.first_picture.url">
+                        <!--<img v-bind:src="item.first_picture.url">-->
                     </a>
                     <div class="textinfo">
                         <a class="title" :href="'/article/' + item.id" target="_blank">{{item.title}}</a>
@@ -435,7 +435,10 @@
         computed : {
             searchCondition (){
                 return this.$store.state.searchCondition
-            }
+            },
+//            spaceSearchCondition () {
+//                return this.$store.state.spaceSearchCondition
+//            }
         },
 
         components: {},
@@ -470,7 +473,7 @@
 
 
                     self.newFindTopFour = data.home_new_find_top; // 新发现4个
-                    self.newFindFirst = self.newFindTopFour.shift(); //新发现第一个
+//                    self.newFindFirst = self.newFindTopFour.shift(); //新发现第一个
 
                     self.mediaReport = data.home_media;
 
@@ -516,6 +519,13 @@
                 }
                 self.homeSearchCondition.doWhat = value;
                 self.$parent.isShowHomeSearchCondition = false
+            },
+            homeDoSearch : function () {
+//                this.$store.state.spaceSearchCondition = this.homeSearchCondition
+                this.$store.commit('spaceSearchCondition', this.homeSearchCondition);
+                router.push('/spaces');
+//                this.$router.params.SearchCondition = this.homeSearchCondition
+
             }
 
         }

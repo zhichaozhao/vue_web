@@ -7,7 +7,7 @@
                     <ul class="inputbox">
                         <li class="inputwrap clearfix">
                             <div class="text"><span class="red">*</span>您的称呼：</div>
-                            <input class="fminput" v-model="demand.contact" name="username" data-rule-required="true" data-msg-required="请输入您的称呼!" placeholder="请输入您的称呼!">
+                            <input class="fminput" v-model="demand.contact" name="username" data-rule-required="true" data-msg-required="请输入您的真实姓名!" placeholder="请输入您的真实姓名!">
                         </li>
                         <li class="inputwrap clearfix">
                             <div class="text"><span class="red">*</span>您的联系方式：</div>
@@ -226,7 +226,6 @@
             submitHoldEvent : function () {
                 var self = this;
                 var isValid = $("#submit-demand").valid();
-                self.$parent.loading = true;
 
                 var sd = new Date(self.demand.time[0]);
                 var ed = new Date(self.demand.time[1]);
@@ -234,6 +233,7 @@
                 self.demand.e_time = ed.getFullYear() + '-' + (ed.getMonth() + 1) + '-' + ed.getDate() ;
 
                 if(isValid){
+                    self.$parent.loading = true;
                     $.post({
                         url: window.YUNAPI.submitHoldEvent,
                         data : self.demand,

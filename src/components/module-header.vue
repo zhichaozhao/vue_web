@@ -66,7 +66,8 @@
                         <a href="javascript:;" @click="toggleLoginForm">注册/登录</a>
                     </li>
                     <li class="inquiry">
-                        <a href="javascript:;">一键询价<span class="red">(2)</span></a>
+                        <router-link to="/inquiry">一键询价<span class="red">({{inquiryCount}})</span></router-link>
+                        <!--<a href="javascript:;"></a>-->
                     </li>
                 </ul>
             </div>
@@ -109,6 +110,9 @@
             },
             city_id (){
                 return this.$store.state.city_id
+            },
+            inquiryCount () {
+                return this.$store.state.inquiryCount
             }
         },
         props: {
@@ -125,7 +129,7 @@
             var self = this;
 //            console.log(this.$parent.$data.cities);
 //            console.log(this.$route)
-            console.log(store)
+            this.$store.commit('inquiryChange');
         },
         methods: {
             toggleLoginForm: function () {
