@@ -128,7 +128,7 @@
                         <li class="inputwrap">
                             <div class="text"><span class="red">*</span>短信验证码：</div>
                             <input class="fminput" type="text" placeholder="请输入6位数验证码" />
-                            <button class="sendcode">发送验证码</button>
+                            <button class="sendcode" @click="sendPhoneCode">发送验证码</button>
                         </li>
                         <li class="inputwrap trea">
                             <div class="text"><span class="red">*</span>您想咨询的内容：</div>
@@ -192,10 +192,16 @@
         computed : {
             searchCondition (){
                 return this.$store.state.searchCondition
+            },
+            personalData (){
+                return this.$store.state.personalData
             }
         },
         mounted () {
+
+            this.$root.loading = false;
             this.$parent.loading = false;
+
             $(function() {
 
                 window.submitDemand = $("#submit-demand").validate({
@@ -220,11 +226,23 @@
                     }
                 })
             })
+            if(typeof this.$route.query.activity_type != 'undefined'){
+                this.demand.activity_type = this.$route.query.activity_type * 1
+            }
+            if(typeof this.$route.query.number_of_activities != 'undefined'){
+                this.demand.number_of_activities = this.$route.query.number_of_activities
+            }
         },
         methods: {
             //获取活动人数、类型
             submitHoldEvent : function () {
                 var self = this;
+
+                if(!this.personalData.uid){ // 本地验证是否登陆
+                    this.$parent.showForm.login = true
+                    return
+                }
+
                 var isValid = $("#submit-demand").valid();
 
                 var sd = new Date(self.demand.time[0]);
@@ -232,20 +250,28 @@
                 self.demand.s_time = sd.getFullYear() + '-' + (sd.getMonth() + 1) + '-' + sd.getDate() ;
                 self.demand.e_time = ed.getFullYear() + '-' + (ed.getMonth() + 1) + '-' + ed.getDate() ;
 
+                //验证是否登陆
+                self.demand.uid = this.personalData.uid
+                self.demand['access-token'] = this.personalData.access_token
+                self.demand.client= this.personalData.client
+
                 if(isValid){
                     self.$parent.loading = true;
                     $.post({
                         url: window.YUNAPI.submitHoldEvent,
                         data : self.demand,
                         success: function (data) {
+
+                            self.$parent.loading = false;
                             if (data.status == 1){
                                 self.$message({
                                     message: data.message,
                                     type: 'success'
                                 });
-                                for( var key in self.demand){ // 提交成功清空数据
-                                    self.demand[key] = ''
-                                }
+//                                for( var key in self.demand){ // 提交成功清空数据
+//                                    self.demand[key] = ''
+//                                }
+                                router.push('/personal/order')
 
                             }else{
                                 self.$message({
@@ -253,7 +279,7 @@
                                     type: 'error'
                                 });
                             }
-                            self.$parent.loading = false;
+
                         },
                         error : function () {
 
@@ -263,61 +289,13 @@
             },
             sendPhoneCode : function () {
                 var self = this;
-                if(!self.demand.phone){
-                    self.$message({
-                        message: '手机号不能为空!',
-                        type: 'error'
-                    });
-                    return;
-                }
-                $.get({
-                    url: window.YUNAPI.sendPhoneCode,
-                    data : {
-                        phone : self.demand.phone
-                    },
-                    success: function (data) {
-                        if (data.status == 1){
-                            self.demand.code_token = data.data;
-                            self.codeTiming();
-                            self.$message({
-                                message: data.message,
-                                type: 'success'
-                            });
-                        }else{
-                            self.$message({
-                                message: data.message,
-                                type: 'error'
-                            });
-                        }
-//                        self.demand.
-                    },
-                    error : function () {
-                        self.$message({
-                            message: '网络链接失败',
-                            type: 'error'
-                        });
+                var success = function (data) {
+                    if (data.status == 1){
+                        self.demand.code_token = data.data;
                     }
-                });
+                };
+                GlobleFun.sendPhoneCode(self.demand.phone,success,'#sendCode');
             },
-            codeTiming : function () {
-                var time = 60;
-                $('#sendCode').text('60s重新发送');
-                $('#sendCode').attr('disabled',true);
-
-                var interval = setInterval(function () {
-                    time -- ;
-
-                    if(time < 0){
-                        time == 60;
-                        clearInterval(interval);
-                        $('#sendCode').text('发送验证码')
-                        $('#sendCode').attr('disabled',false);
-                    }else{
-                        $('#sendCode').text(time+'s重新发送')
-                    }
-
-                },1000)
-            }
         }
 
     }

@@ -63,7 +63,7 @@
                 </ul>
                 <ul class="fr btns clearfix">
                     <li class="log-reg">
-                        <a href="javascript:;" @click="toggleLoginForm">注册/登录</a>
+                        <a href="javascript:;" @click="toggleLoginForm" v-text=" typeof personalData.name != 'undefined' ? personalData.name : '注册/登录' "></a>
                     </li>
                     <li class="inquiry">
                         <router-link to="/inquiry">一键询价<span class="red">({{inquiryCount}})</span></router-link>
@@ -113,6 +113,9 @@
             },
             inquiryCount () {
                 return this.$store.state.inquiryCount
+            },
+            personalData (){
+                return this.$store.state.personalData
             }
         },
         props: {
@@ -130,10 +133,17 @@
 //            console.log(this.$parent.$data.cities);
 //            console.log(this.$route)
             this.$store.commit('inquiryChange');
+            this.$store.commit('getPersonalData');
         },
         methods: {
             toggleLoginForm: function () {
-                this.$parent.$data.showForm.login = !this.$parent.$data.showForm.login
+
+                if(this.personalData.uid){
+                    router.push('/personal/info') //已登陆 跳到个人页面
+                }else{
+                    this.$parent.$data.showForm.login = !this.$parent.$data.showForm.login
+                }
+
             }
         }
 

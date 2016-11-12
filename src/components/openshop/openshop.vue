@@ -9,8 +9,8 @@
         <div class="search">
             <h2>找到适合你的商业短租场地</h2>
             <div class="inputbox clearfix">
-                <input class="searchInputVal" type="text" placeholder="商圈／地标／机场／火车站／场地名">
-                <button class="searchbtn" @click="getSearchVal">搜&nbsp;索</button>
+                <input class="searchInputVal" v-model="homeSearchCondition.q.keyword_cont" @keyup.enter="goSpaceSearch" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                <button class="searchbtn" @click="goSpaceSearch">搜&nbsp;索</button>
             </div>
             <div class="hot clearfix">
                 <p>热点：</p>
@@ -268,7 +268,16 @@
                 topLists:[ ],
                 recommendSpace:[ ],
                 selectedCase:[ ],
-                searchInputVal:[ ]
+                searchInputVal:[ ],
+                homeSearchCondition : {
+                    city : 1,
+                    project_type : '',
+                    doWhat : '',
+                    q : {
+                        site_site_type_eq : '',
+                        keyword_cont : ''
+                    }
+                }
             }
 
         },
@@ -277,7 +286,10 @@
             $.noConflict();
             jQuery('.zy-Slide').zySlide({ speed: 500 }).css('border', '0px solid blue');
 
-            var self=this;
+            var self = this;
+
+            self.$parent.loading = true;
+
             $.ajax({
                 url: window.YUNAPI.openShop,
                 success: function (data) {
@@ -298,6 +310,10 @@
                 this.searchInputVal=$('.searchInputVal').val();
                 console.log(this.searchInputVal);
                 window.location.href ='/spacelist/:'+this.searchInputVal;
+            },
+            goSpaceSearch :function () {
+                this.$store.commit('spaceSearchCondition', this.homeSearchCondition);
+                router.push('/spaces');
             }
         },
 

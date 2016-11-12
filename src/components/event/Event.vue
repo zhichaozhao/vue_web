@@ -79,7 +79,7 @@
                     </li>
                     <li class="text">省时，省心，找你所想...</li>
                     <li>
-                        <button class="holdeventbtn">下一步</button>
+                        <button class="holdeventbtn" @click="gotoHoldEvent">下一步</button>
                     </li>
                 </ul>
             </div>
@@ -92,8 +92,8 @@
             <div class="search">
                 <h2>找到适合你的活动空间</h2>
                 <div class="inputbox clearfix">
-                    <input class="searchInputVal" type="text" placeholder="商圈／地标／机场／火车站／场地名">
-                    <button class="searchbtn" @click="getSearchVal">搜&nbsp;索</button>
+                    <input class="searchInputVal" v-model="homeSearchCondition.q.keyword_cont" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                    <button class="searchbtn" @click="goSpaceSearch">搜&nbsp;索</button>
                 </div>
                 <div class="hot clearfix">
                     <p>热点：</p>
@@ -340,6 +340,15 @@
                     s_time:'',
                     e_time:'',
                     ip_city:'上海'
+                },
+                homeSearchCondition : {
+                    city : 1,
+                    project_type : '',
+                    doWhat : '',
+                    q : {
+                        site_site_type_eq : '',
+                        keyword_cont : ''
+                    }
                 }
 
             }
@@ -402,6 +411,15 @@
                         paginationClickable :true
                     });
                 },300);
+            },
+
+            gotoHoldEvent : function () {
+//                router.push('/event/hold')
+                router.push({ path: '/event/hold', query: { activity_type: this.demand.activity_type, number_of_activities : this.demand.number_of_activities}})
+            },
+            goSpaceSearch :function () {
+                this.$store.commit('spaceSearchCondition', this.homeSearchCondition);
+                router.push('/spaces');
             }
 
         }

@@ -129,10 +129,10 @@
                     <el-pagination
                             @sizechange="handleSizeChange"
                             @currentchange="handleCurrentChange"
-                            :current-page="5"
-                            :page-size="100"
+                            :current-page="page"
+                            :page-size="10"
                             layout="prev, pager, next, jumper"
-                            :total="1000">
+                            :total="total">
                     </el-pagination>
                 </div>
                 <div class="search-left">
@@ -230,7 +230,7 @@
                 spacesubs: [ ],
                 valType:'选项一',
                 page: 1,
-                recordCount: 205
+                total: 0
             }
         },
 
@@ -262,12 +262,15 @@
         methods: {
             search : function () {
                 var self = this;
+
+                self.spaceSearchCondition.page = this.page
+
                 $.ajax({
                     url: window.YUNAPI.SpaceList,
                     data : self.spaceSearchCondition,
                     success:function (data) {
                         self.spacesubs=data.spaces;
-
+                        self.total = data.page_count
                         console.log(data);
                         //场地类型
                         for(var i = 0; i < self.spacesubs.length - 1; i++){
@@ -282,6 +285,8 @@
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
+                this.page = val
+                this.search()
             },
             spaceSearch : function () {
                 this.$store.commit('spaceSearchCondition', this.spaceSearchCondition);

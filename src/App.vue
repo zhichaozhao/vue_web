@@ -3,7 +3,7 @@
         <module-header cities = "cities" v-on:toggleLoginForm ="toggleLoginForm"></module-header>
 
         <!--<router-view></router-view>-->
-        <div v-if="loading" v-loading="loading" class="el-loading-yun"></div>
+        <div v-loading="loading" class="el-loading-yun"></div>
         <div v-if="loading" class="loading-bg"></div>
 
 
@@ -214,6 +214,9 @@
         computed: {
             cities (){
                 return this.$store.state.cities
+            },
+            personalData (){
+                return this.$store.state.personalData
             }
 //            get () {
 //                return this.$store.state.cities
@@ -273,24 +276,17 @@
                             message: data.message,
                             type: status
                         });
-//                        if(data.status == 1){
-//                            self.cdVisible = false
-//                        }
-                        localStorage.setItem('accessToken',xhr.getResponseHeader('access-token'));
-//                        LF.setItem('accessToken',xhr.getResponseHeader('access-token')).then(function (value) {
-//                            // Do other things once the value has been saved.
-////                            console.log(value);
-//                            var at = LF.getItem('accessToken')
-//                            console.log(at)
-//                        })
                         if(data.status == 1){
-                            self.showForm.login = false
+                            data.data.access_token = xhr.getResponseHeader('access-token');
+                            data.data.client = xhr.getResponseHeader('client');
+                            self.$store.commit('personalDataChange',data.data);//保存个人信息
+
+                            self.showForm.login = false;
                             router.replace(self.$route.path);  // 刷新页面
                         }
-
-
                     },
                     error : function () {
+
                     }
                 });
             },
@@ -315,6 +311,11 @@
                             type: status
                         });
                         if(data.status == 1){
+
+                            data.data.access_token = xhr.getResponseHeader('access-token');
+                            data.data.client = xhr.getResponseHeader('client');
+                            self.$store.commit('personalDataChange',data.data);//保存个人信息
+
                             self.showForm.reg = false
                         }
                     },

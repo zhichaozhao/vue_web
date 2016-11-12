@@ -37,7 +37,7 @@
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
-                                <a :class=" homeSearchCondition.doWhat ==  key ? 'active' : ''" @click="searchConditionSelect(1,value,key)" href="javascript:;" v-for="(key,value) in searchCondition.space_type">{{key}}</a>
+                                <a :class=" homeSearchCondition.doWhat ==  key ? 'active' : ''" @click="searchConditionSelect(1,value,key)" href="javascript:;" v-for="(value,key) in searchCondition.space_type">{{key}}</a>
                                 <!--<a href="javascript:;">商业发布</a>-->
                             </dd>
                         </dl>
@@ -112,7 +112,7 @@
                         <div class="swiper-wrapper swiper-container">
                             <div class="swiper-slide" v-for="item in topicOfCity">
                                 <a :href=" '/article/' + item.id" target="_blank">
-                                    <!--<img :src="item.img_paths.url" alt="">-->
+                                    <img :src="item.img_paths.url_400_267" alt="">
                                     <p>{{item.title}}</p>
                                 </a>
                             </div>
@@ -163,7 +163,7 @@
                 <li v-for="(item,index) in spaceRecommend" v-if="index < 3">
                     <div class="img">
                         <a :href=" '/space/' + item.id" target="_blank">
-                            <!--<img v-bind:src="item.img_paths.url">-->
+                            <img v-bind:src="item.img_paths.url_400_267">
                         </a>
                         <span class="tags">上海</span>
                     </div>
@@ -187,7 +187,7 @@
                 <li v-for="(item,index) in spaceRecommend" v-if=" index >=3">
                     <div class="img">
                         <a :href=" '/space/' + item.id" target="_blank">
-                            <!--<img v-bind:src="item.img_paths.url">-->
+                            <img v-bind:src="item.img_paths.url_400_267">
                         </a>
                     </div>
                     <div class="text">
@@ -216,7 +216,7 @@
                         <p>合作咨询</p>
                     </a>
                     <div class="img">
-                        <!--<img v-bind:src="item.img_paths.url">-->
+                        <img v-bind:src="item.img_paths.url_400_267">
                     </div>
                     <div class="textinfo">
                         <div class="title">{{item.title}}</div>
@@ -273,7 +273,7 @@
                 <ul class="infolist fl clearfix">
                     <li class="info info-normal" v-for="(item,index) in newFindTopFour" v-if="index > 0">
                         <a class="img" :href="'/article/' + item.id" target="_blank">
-                            <img v-bind:src="item.img_paths.url_150_100">
+                            <img v-bind:src="item.img_paths.url_400_267">
                         </a>
                         <a class="text display-center" :href="'/article/' + item.id" target="_blank">
                             {{item.title}}
@@ -305,7 +305,7 @@
             <ul class="cont clearfix">
                 <li v-for="item in caseSelected">
                     <a :href="'/article/' + item.id" target="_blank" class="img">
-                        <!--<img v-bind:src="item.first_picture.url">-->
+                        <img v-bind:src="item.img_paths.url_400_267">
                     </a>
                     <div class="textinfo">
                         <a class="title" :href="'/article/' + item.id" target="_blank">{{item.title}}</a>

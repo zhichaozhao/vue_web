@@ -1553,10 +1553,13 @@ body .el-select-dropdown__list{
     background-color: #272335;
     color: #fff;
     font-size: 18px;
+    line-height: 50px;
+    text-align: center;
 }
-.price-dtl button:nth-child(1){
+.price-dtl a:nth-child(1){
     width: 100%;
     margin-bottom: 8px;
+    display: block;
 }
 .price-dtl button:nth-child(2){
     width: 143px;

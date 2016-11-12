@@ -68,7 +68,6 @@
                                             <div class="clearfix"><p>空间层高 : </p><p>{{spaceDtl.height}}</p></div>
                                         </div>
                                     </div>
-
                                     <div class="price-dtl">
                                         <div class="clearfix">
                                             <div class="price-num fl">
@@ -77,31 +76,10 @@
                                                 <p>¥ 9888元／天 起</p>
                                             </div>
                                             <div class="price-op fr">
-                                                <button class="btn-dark btn-now">立即预定</button>
+                                                <a class="btn-dark btn-now">立即预定</a>
                                                 <button class="btn-schedule btn-dark">档期日历 <i class="icon-arrowbottom"></i></button>
-                                                <button class="btn-add btn-dark">加入批量询价</button>
-                                            </div>
-                                        </div>
-                                        <h6>套餐信息</h6>
-                                        <p>是继Playze与Tony合作有机农庄之后的第二个项目。多利有机屋旨在向上海市民展示他们的农庄产品及推广有机生活方式，为城市生活居民引入自然生活理念。像素化的方木箱出现在建筑的每一层，
-                                            成为空间关联的主线。采用立体化的可移动模块将中央楼梯打造成一个灵活的居善地，这里可以适应演讲，展览，接待，非正式回应等多种活动。
-                                        </p>
-                                        <h6>预订须知</h6>
-                                        <p>是继Playze与Tony合作有机农庄之后的第二个项目。多利有机屋旨在向上海市民展示他们的农庄产品及推广有机生活方式，为城市生活居民引入自然生活理念。像素化的方木箱出现在建筑的每一层，
-                                            成为空间关联的主线。采用立体化的可移动模块将中央楼梯打造成一个灵活的居善地，这里可以适应演讲，展览，接待，非正式回应等多种活动。
-                                        </p>
-                                    </div>
-                                    <div class="price-dtl">
-                                        <div class="clearfix">
-                                            <div class="price-num fl">
-                                                <p>周一至周四</p>
-                                                <p>¥ 8888元／天 起</p>
-                                                <p>¥ 9888元／天 起</p>
-                                            </div>
-                                            <div class="price-op fr">
-                                                <button class="btn-dark btn-now">立即预定</button>
-                                                <button class="btn-schedule btn-dark">档期日历 <i class="icon-arrowbottom"></i></button>
-                                                <button class="btn-add btn-dark">加入批量询价</button>
+                                                <button @click="addInquiry(spaceDtl.id,spaceDtl.name)" class="btn-add btn-dark"
+                                                        v-text="inquiryList.hasOwnProperty(spaceDtl.id) ? '已加入询价' : '加入询价' ">加入批量询价</button>
                                             </div>
                                         </div>
                                         <h6>套餐信息</h6>
@@ -278,10 +256,14 @@
                             <!--</li>-->
                         </ul>
                     </div>
-                    <button class="key-enquiry-btn">
+                    <!--<button class="key-enquiry-btn">-->
+                        <!--一键询价-->
+                        <!--<span class="enquiry-num">0</span>-->
+                    <!--</button>-->
+                    <router-link class="key-enquiry-btn" to="/inquiry">
                         一键询价
-                        <span class="enquiry-num">0</span>
-                    </button>
+                        <span class="enquiry-num">{{inquiryCount}}</span>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -338,6 +320,14 @@
             // 如果路由有变化，会再次执行该方法
             '$route': 'getData'
         },
+        computed : {
+            inquiryList () {
+                return this.$store.state.inquiryList
+            },
+            inquiryCount () {
+                return this.$store.state.inquiryCount
+            },
+        },
         methods: {
             tapClick(event){
                 this.activeTab = event.target.innerHTML;
@@ -358,6 +348,10 @@
 
                     }
                 });
+            },
+            addInquiry : function (id,name) {
+//                LS.set('inquiry',[id,name])
+                this.$store.commit('inquiryChange',{id : id, name : name, type : 2});
             }
         },
 

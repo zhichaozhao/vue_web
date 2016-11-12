@@ -110,7 +110,6 @@
 
     import 'assets/css/component.css';
     import 'assets/css/newfound.css';
-    //  import holder from 'http://cdn.bootcss.com/holder/2.9.4/holder.js';
 
     import moduleHeader from 'components/module-header';
     import moduleFooter from 'components/module-footer';
@@ -160,7 +159,7 @@
                     self.hotArticle = data.hot_recommend;
                 },
                 error : function () {
-                    console.log('error'.window.YUNAPI.articleHot)
+//                    console.log('error'.window.YUNAPI.articleHot)
                 }
             });
 

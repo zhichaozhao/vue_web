@@ -225,7 +225,10 @@ window.store = new Vuex.Store({
             }
         },
         inquiryCount : '',
-        inquiryList: []
+        inquiryList: [],
+        personalData : {
+            uid:''
+        },
     },
     getters: {
         inquiryCount: state => {
@@ -292,6 +295,16 @@ window.store = new Vuex.Store({
                 state.inquiryCount = countProperties(state.inquiryList)
             }else{
                 state.inquiryCount = ''
+            }
+        },
+        personalDataChange(state,value){
+            state.personalData = value;
+            LS.set('USER',value);
+        },
+        getPersonalData(state){
+            var user = LS.get('USER');
+            if(user){
+                state.personalData = user
             }
         }
     },
@@ -399,6 +412,21 @@ window.GlobleFun = {
                 }
             })
         },300)
+    },
+    httpMessage : function (data,successMsg,errorMessage) {
+
+        if(data.status == 1){
+            APP.$message({
+                message: successMsg || data.message,
+                type: 'success'
+            });
+        }else{
+            APP.$message({
+                message: errorMessage || data.message,
+                type: 'error'
+            });
+        }
+
     }
 };
 
