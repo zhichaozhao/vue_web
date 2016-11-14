@@ -52,103 +52,118 @@
         </div>
 
         <!--预定信息填写-->
-        <div class="fr booking-right">
-            <h2>预订信息填写</h2>
-            <div class="evformbox">
-                <div class="mainbox">
-                    <ul class="inputbox">
-                        <li class="inputwrap">
-                            <div class="text"><span class="red">*</span>您的称呼：</div>
-                            <input class="fminput" type="text" placeholder="请输入您的真实姓名" />
-                        </li>
-                        <li class="inputwrap war">
-                            <div class="text"><span class="red">*</span>您的联系方式：</div>
-                            <input class="fminput" type="text" placeholder="请输入11位手机号" />
-                            <div class="warning hide"><i class="icons icon-warning"></i>请输入正确的11位手机号码</div>
-                        </li>
-                        <li class="inputwrap">
-                            <div class="text"><span class="red">*</span>手机验证码：</div>
-                            <input class="fminput" type="text" placeholder="请输入6位数验证码" />
-                            <button class="sendcode">获取验证码</button>
-                        </li>
-                        <li class="inputwrap clearfix">
-                            <div class="text"><span class="red">*</span>活动时间：</div>
-                            <div class="fl time">
-                                <i class="icons icon-time"></i>
-                                <input class="timeinput" type="text" placeholder="开始日期" />
-                            </div>
-                            <p class="fl zhi">至</p>
-                            <div class="fl time">
-                                <i class="icons icon-time"></i>
-                                <input class="timeinput" type="text" placeholder="结束日期" />
-                            </div>
-                        </li>
-                        <li class="inputwrap inputsex clearfix">
-                            <div class="text"><span class="red"></span>可改期：</div>
-                            <div class="man sexwrap">
-                                <input type="radio" name="sex" id="man" value="男">
-                                <label for="man">男</label>
-                            </div>
-                            <div class="woman sexwrap">
-                                <input type="radio" name="sex" id="woman" value="女">
-                                <label for="woman">女</label>
-                            </div>
-                        </li>
-                        <li class="inputwrap">
-                            <div class="swrap" @click="shownumbs=!shownumbs">
-                                <i class="icon-triangedown triange-bg"></i>
+        <form action="" id="bookingForm">
+            <div class="fr booking-right ">
+                <h2>基本信息</h2>
+                <div class="evformbox">
+                    <div class="mainbox">
+                        <ul class="inputbox">
+                            <li class="inputwrap clearfix">
+                                <div class="text"><span class="red">*</span>您的称呼：</div>
+                                <input class="fminput" v-model="inquiryData.contact" name="username" data-rule-required="true" data-msg-required="请输入您的真实姓名!" placeholder="请输入您的真实姓名!">
+                            </li>
+                            <li class="inputwrap clearfix">
+                                <div class="text"><span class="red">*</span>您的联系方式：</div>
+                                <input class="fminput" v-model="inquiryData.phone" name="phone" type="text" data-msg-required="请输入您的联系方式!" placeholder="请输入11位手机号" />
+                            </li>
+                            <li class="inputwrap clearfix">
+                                <div class="text"><span class="red">*</span>短信验证码：</div>
+                                <input v-model="inquiryData.auth_code" class="fminput" type="text" placeholder="请输入6位数验证码" data-rule-required="true" data-msg-required="请输入验证码!"/>
+                                <button type="button" id="inquirySendCode" class="sendcode" @click="sendPhoneCode">发送验证码</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div  class="mainbox">
+                        <ul class="inputbox">
+
+                            <li class="inputwrap clearfix">
+                                <div class="text"><span class="red">*</span>活动时间：</div>
+                                <div class="fl time timedate">
+                                    <el-date-picker
+                                            v-model="inquiryData.time"
+                                            type="daterange"
+                                            placeholder="选择日期范围"
+                                            format="yyyy年MM月dd"
+                                            style="width: 300px">
+                                    </el-date-picker>
+                                </div>
+                            </li>
+
+                            <li class="inputwrap inputsex clearfix">
+                                <div class="text"><span class="red"></span>可改期：</div>
+                                <div class="man sexwrap">
+                                    <el-radio class="radio" v-model="inquiryData.change_time" label="1">是</el-radio>
+                                </div>
+                                <div class="woman sexwrap">
+                                    <el-radio class="radio" v-model="inquiryData.change_time" label="0">否</el-radio>
+                                </div>
+
+                            </li>
+
+                            <li class="inputwrap clearfix">
                                 <div class="text">活动人数：</div>
-                                <p class="selected">60人</p>
-                            </div>
-                            <ul class="selectlist" v-show="shownumbs">
-                                <li v-for="peoplenumb in peoplenumbs">
-                                    {{peoplenumb}}
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="inputwrap">
-                            <div class="swrap">
-                                <i class="icon-triangedown triange-bg"></i>
+                                <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
+                                <div class="result fminput">
+                                    <el-select v-model="inquiryData.number_of_activities" placeholder='请选择活动人数'>
+                                        <el-option
+                                                v-for="(value,key) in searchCondition.activity_people"
+                                                :label="value"
+                                                :value="key">
+                                        </el-option>
+                                    </el-select>
+                                </div>
+                            </li>
+
+                            <li class="inputwrap clearfix">
                                 <div class="text">活动预算：</div>
-                                <p class="selected">￥60000~￥100000</p>
-                            </div>
-                            <ul class="selectlist" v-show="showbugdets">
-                                <li v-for="bugdet in bugdets">
-                                    {{bugdet}}
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="inputwrap">
-                            <div class="swrap" @click="showtype=!showtype">
-                                <i class="icon-triangedown triange-bg"></i>
+                                <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
+                                <div class="result fminput">
+                                    <el-select v-model="inquiryData.budget_amount" placeholder='请选择您的预算范围'>
+                                        <el-option
+                                                v-for="(value,key) in searchCondition.activity_people"
+                                                :label="value"
+                                                :value="key">
+                                        </el-option>
+                                    </el-select>
+                                </div>
+                            </li>
+
+                            <li class="inputwrap clearfix">
                                 <div class="text">活动类型：</div>
-                                <p class="selected">秀场展馆</p>
-                            </div>
-                            <ul class="selectlist" v-show="showtype">
-                                <li>活动类型</li>
-                            </ul>
-                        </li>
+                                <!--<input class="fminput" type="text" placeholder="请输入项目计划落地城市" />-->
+                                <div class="result fminput">
+                                    <el-select v-model="inquiryData.activity_type" placeholder='请选择活动类型'>
+                                        <el-option
+                                                v-for="(value,key) in searchCondition.activity_type"
+                                                :label="value"
+                                                :value="key">
+                                        </el-option>
+                                    </el-select>
+                                </div>
+                                <!--<input style="visibility: hidden" name="city" v-model="demand.city" type="text" data-rule-required="true" data-msg-required="请选择城市!">-->
+                            </li>
 
-                        <li class="inputwrap trea">
-                            <div class="text">其他要求：</div>
-                            <textarea rows="8" placeholder="请填写更多的详细信息，帮助您快速找到适合的场地。"></textarea>
-                        </li>
-                    </ul>
-                    <button class="evform-btn" type="button" @click="showstate=!showstate">预定</button>
-                </div><!--表单mainbox-end-->
-            </div>
-
-            <!--状态弹窗-->
-            <div class="formstate-wp" v-show="showstate && !showmask">
-                <div class="mask-bg" @click="showstate=!showstate"></div>
-                <div class="formstate">
-                    <h2>提交成功</h2>
-                    <p>我们将在30分钟内和您取得联系<br>
-                        请注意接听来电</p>
+                            <li class="inputwrap trea clearfix">
+                                <div class="text">其他要求：</div>
+                                <textarea v-model="inquiryData.activities_required" rows="8" placeholder="请填写更多的详细信息，帮助您快速找到适合的场地。"></textarea>
+                            </li>
+                        </ul>
+                        <button class="evform-btn" type="button" @click="submitInquiry">提交</button>
+                    </div><!--表单mainbox-end-->
                 </div>
-            </div>
 
-        </div><!--right-end-->
+                <!--状态弹窗-->
+                <div class="formstate-wp" v-show="showstate && !showmask">
+                    <div class="mask-bg" @click="showstate=!showstate"></div>
+                    <div class="formstate">
+                        <h2>提交成功</h2>
+                        <p>我们将在30分钟内和您取得联系<br>
+                            请注意接听来电</p>
+                    </div>
+                </div>
+
+            </div><!--right-end-->
+        </form>
     </div>
   </div>
 </template>
@@ -180,13 +195,133 @@
                 showcitys: 0,
                 showstate:0,
                 bugdets:[1,2,3],
-                showbugdets:0
+                showbugdets:0,
+                inquiryData : {
+                    contact : '',
+                    auth_code : '',
+                    company : '',
+                    phone : '',
+                    s_time : '',
+                    e_time : '',
+                    ip_city : '' ,
+                    number_of_activities : "50",
+                    budget_amount : '',
+                    activity_type : 0,
+                    source : '',
+                    activities_required : '',
+                    time : ['',''],
+                    change_time : '1'
+                },
             }
         },
         components: {
 
         },
-        methods: {},
+        mounted () {
+            var self = this;
+            setTimeout(function () {
+                self.$parent.loading = false;
+            },300)
+            setTimeout(function () {
+                GlobleFun.validate("#bookingForm");
+            },300)
+        },
+        computed : {
+            searchCondition (){
+                return this.$store.state.searchCondition
+            },
+            inquiryCount () {
+                return this.$store.state.inquiryCount
+            },
+            inquiryList () {
+                return this.$store.state.inquiryList
+            },
+//            inquiryListChange : {
+//                get: function () {
+//                    var e = {}
+//                    for( var i in this.inquiryList){
+//                        e[i] = true
+//                    }
+//                    return e
+//                },
+//                // setter
+//                set: function (newValue) {
+//                    console.log(newValue)
+//                }
+//            },
+            selectInquiryIds () {
+                var e = []
+                for (var i in this.inquiryListChange){
+                    if(this.inquiryListChange[i]){
+                        e.push(i)
+                    }
+                }
+                return e;
+            },
+            personalData (){
+                return this.$store.state.personalData
+            }
+        },
+        methods: {
+            sendPhoneCode : function (e) {
+                var self = this;
+                var success = function (data) {
+                    self.inquiryData.code_token = data.data;
+                };
+                GlobleFun.sendPhoneCode(this.inquiryData.phone,success,'#inquirySendCode');
+                return false
+            },
+            submitInquiry : function () {
+                if(!this.personalData.uid){
+                    this.$parent.showForm.login = true
+                    return
+                }
+
+                var self = this;
+                var isValid = $("#bookingForm").valid();
+
+                if(!isValid) return
+
+                self.$store.commit('loading',true);
+
+                if(!this.inquiryData.time[0]){
+                    this.$message({
+                        message: "请选择日期",
+                        type: "error"
+                    });
+                    return
+                }
+                //询价必须数据
+                this.inquiryData.space_ids = [self.$route.params.id]
+                this.inquiryData.uid = this.personalData.uid
+                this.inquiryData['access-token'] = this.personalData.access_token
+                this.inquiryData.client= this.personalData.client
+
+                var sd = new Date(this.inquiryData.time[0]);
+                var ed = new Date(this.inquiryData.time[1]);
+                this.inquiryData.s_time = sd.getFullYear() + '-' + (sd.getMonth() + 1) + '-' + sd.getDate() ;
+                this.inquiryData.e_time = ed.getFullYear() + '-' + (ed.getMonth() + 1) + '-' + ed.getDate() ;
+
+                console.log(self.inquiryData);
+
+                $.post({
+                    url: window.YUNAPI.createBooking,
+                    data : self.inquiryData,
+                    success : function (data) {
+                        console.log(data);
+
+                        if(data.status == 1){
+
+                        }
+
+                        GlobleFun.httpMessage(data);
+
+                        self.$store.commit('loading',false);
+                    }
+                });
+
+            }
+        },
 
         //记住密码
         rememberPassword(){}

@@ -8,6 +8,15 @@
 # install dependencies
 npm install
 
+# install element
+npm i element-ui -D 
+
+# install vue-router
+npm install vue-router
+
+# install vuex
+npm install vuex
+
 # serve with hot reload at localhost:8080
 npm run dev
 

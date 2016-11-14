@@ -28,9 +28,29 @@ a,button{
 .ml15{margin-left: 15px}
 .ml20{margin-left: 20px}
 .red{color:#e92332;}
+.text-center{text-align: center}
+
+.display-center{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
 .icons{
     display: inline-block;
     background: url("/static/images/yun.png") no-repeat;
+}
+.img img{
+    width: 100%;
+    height: 100%;
 }
 /*满屏黑色遮罩*/
 .mask-bg{
@@ -55,6 +75,14 @@ a,button{
     -moz-transform: rotate(-45deg);
     /*需要自定义width、height、border-color*/
 }
+.icon-arrowleft.black{
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+}
+.icon-arrowleft.white{
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
 .icon-arrowright{/*箭头向右*/
     display: inline-block;
     width: 10px;
@@ -65,10 +93,14 @@ a,button{
     -ms-transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
-    transform-origin: 25% 50%;
-    -ms-transform-origin: 25% 50%;
-    -webkit-transform-origin: 25% 50%;
-    -moz-transform-origin: 25% 50%;
+}
+.icon-arrowright.black{
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+}
+.icon-arrowright.white{
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
 }
 .icon-arrowtop{/*箭头向上*/
     display: inline-block;

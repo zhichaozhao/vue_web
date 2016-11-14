@@ -1,84 +1,58 @@
 <template>
     <div class="home">
-        <!--banner板块-开始-->
-        <div class="banner-search">
-            <!--banner部分-->
-            <div class="banner">
-                <img src="/static/images/home/banner1.png">
+        <!--home-banner板块-开始-->
+        <div class="home-banner-search">
+            <!--home-banner部分-->
+            <div class="home-banner-wrap">
+                <div class="home-banner">
+                    <img src="/static/images/home/banner1.png">
+                </div>
             </div>
 
             <!--搜索-->
-            <div class="search clearfix">
+            <div class="home-search clearfix">
                 <!--城市选择-->
                 <div class="fl select city">
                     <div class="result">
                         <!--<input type="text" value="" placeholder="在哪个城市">-->
                         <!--<i class="icon-updown"></i>-->
-                        <el-select v-model="value">
+                        <el-select v-model="homeSearchCondition.city">
                             <el-option
-                                    v-for="item in options"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="item in searchCondition.cities"
+                                    :label="item.name"
+                                    :value="item.id">
                             </el-option>
                         </el-select>
                     </div>
-                    <ul class="cont citylist hide">
-                        <li><a href="javasctipt;;">上海</a></li>
-                        <li><a href="javasctipt;;">北京</a></li>
-                    </ul>
                 </div>
                 <!--城市选择-结束-->
 
                 <!--做什么-->
-                <div class="fl select ml20 dowhat">
-                    <div class="result">
-                        <input type="text" value="" placeholder="做什么">
-                        <i class="icon-updown"></i>
+                <div class="fl select ml20 dowhat"  id="whatToSearch">
+                    <div class="result" v-on:click="whatToSearchInputClick">
+                        <input type="text" disabled value="" placeholder="做什么" v-model="homeSearchCondition.doWhat">
+                        <i class="el-input__icon el-icon-caret-bottom"></i>
                     </div>
-                    <div class="cont dowhat-contlist hide">
+                    <div class="cont dowhat-contlist" v-show="this.$parent.$data.isShowHomeSearchCondition" id="whatToSearchContent">
                         <dl class="clearfix">
                             <dt class="fl">办活动</dt>
                             <dd class="fl">
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
-                                <a href="javascript:;">展览展示</a>
-                                <a href="javascript:;">商业发布</a>
-                                <a href="javascript:;">晚会年会</a>
+                                <a :class=" homeSearchCondition.doWhat ==  key ? 'active' : ''" @click="searchConditionSelect(1,value,key)" href="javascript:;" v-for="(value,key) in searchCondition.space_type">{{key}}</a>
+                                <!--<a href="javascript:;">商业发布</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">要开店</dt>
                             <dd class="fl">
-                                <a href="javascript:;">Pop Up Store</a>
-                                <a href="javascript:;">店中店</a>
-                                <a href="javascript:;">市集/展</a>
+                                <a @click="searchConditionSelect(2,value,key)" href="javascript:;" v-for="(key,value) in searchCondition.retail">{{key}}</a>
+                                <!--<a href="javascript:;">店中店</a>-->
                             </dd>
                         </dl>
                         <dl class="clearfix">
                             <dt class="fl">IP项目</dt>
                             <dd class="fl">
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
-                                <a href="javascript:;">亲子</a>
-                                <a href="javascript:;">卡通</a>
-                                <a href="javascript:;">艺术</a>
+                                <a @click="searchConditionSelect(3,key,value)" href="javascript:;" v-for="(key,value) in searchCondition.project_type">{{value}}</a>
+                                <!--<a href="javascript:;">卡通</a>-->
                             </dd>
                         </dl>
                     </div>
@@ -86,58 +60,75 @@
                 <!--做什么-结束-->
 
                 <!--搜索-->
-                <input class="fl ml20 searchinput" type="text" placeholder="商圈／地标／机场／火车站／场地名">
-                <button class="fl ml20 searchbtn">搜 索</button>
+                <input @keyup.enter="homeDoSearch" v-model="homeSearchCondition.q.keyword_cont" class="fl ml20 searchinput" type="text" placeholder="商圈／地标／机场／火车站／场地名">
+                <button class="fl ml20 searchbtn" @click="homeDoSearch">搜 索</button>
 
             </div>
-
         </div>
-        <!--banner板块-结束-->
+        <!--home-banner板块-结束-->
 
         <!--快捷链接块-开始-->
         <ul class="quicklinks clearfix">
             <li>
-                <a class="imgtext" href="javascript:;">
-                    <img src="/static/images/home/links1.png">
-                    <p class="text">本月新增场地345加</p>
+                <router-link to="/event/hold" class="imgtext">
+                    <img src="/static/images/home/links1.jpg">
+                    <p class="text">本月新增场地345家</p>
                     <div class="mask"></div>
-                </a>
+                </router-link>
                 <p class="imgtitle">我要办活动</p>
             </li>
             <li>
-                <a class="imgtext" href="javascript:;">
-                    <img src="/static/images/home/links1.png">
-                    <p class="text">本月新增场地345加</p>
+                <router-link to="/event/hold" class="imgtext">
+                    <img src="/static/images/home/links2.jpg">
+                    <p class="text">本月新增空间92家</p>
                     <div class="mask"></div>
-                </a>
-                <p class="imgtitle">我要办活动</p>
+                </router-link>
+                <p class="imgtitle">我要开店</p>
             </li>
             <li>
-                <a class="imgtext" href="javascript:;">
-                    <img src="/static/images/home/links1.png">
-                    <p class="text">本月新增场地345加</p>
+                <router-link to="/event/hold" class="imgtext">
+                    <img src="/static/images/home/links3.jpg">
+                    <p class="text">本月新增项目5个</p>
                     <div class="mask"></div>
-                </a>
-                <p class="imgtitle">我要办活动</p>
+                </router-link>
+                <p class="imgtitle">我要找IP项目</p>
             </li>
         </ul>
-        <!--快捷链接块-结束-->
 
         <!--城市精选专题-开始-->
         <div class="section citysubject clearfix">
-            <h3>城市精选专题</h3>
-            <div class="cont">
-                <div class="btns">
-                    <a class="btn btnleft" href="javascript:;">
-                        <span class="icon-arrowleft"></span>
-                    </a>
-                    <a class="btn btnright" href="javascript:;">
-                        <span class="icon-arrowright"></span>
-                    </a>
+            <div class="w1200">
+                <h3>城市精选专题</h3>
+                <div class="cont">
+                    <div class="btns">
+                        <a class="btn btnleft" href="javascript:;">
+                            <span class="icon-arrowleft"></span>
+                        </a>
+                        <a class="btn btnright" href="javascript:;">
+                            <span class="icon-arrowright"></span>
+                        </a>
+                    </div>
+                    <div class="citySelection" style="height: 100%;">
+                        <div class="swiper-wrapper swiper-container">
+                            <div class="swiper-slide" v-for="item in topicOfCity">
+                                <a :href=" '/article/' + item.id" target="_blank">
+                                    <img :src="item.img_paths.url_400_267" alt="">
+                                    <p>{{item.title}}</p>
+                                </a>
+                            </div>
+                            <!--<div class="swiper-slide">Slide 2</div>-->
+                            <!--<div class="swiper-slide">Slide 3</div>-->
+                            <!--<div class="swiper-slide">Slide 4</div>-->
+
+                        </div>
+                        <!-- Add Pagination -->
+                        <!--<div class="swiper-pagination"></div>-->
+                    </div>
+                    <ul class="subject-list"></ul>
                 </div>
-                <ul class="subject-list"></ul>
+                <a href="javascript:;" class="btnlookmore">查看更多专题</a>
             </div>
-            <a href="javascript:;" class="btnlookmore">查看更多专题</a>
+
         </div>
         <!--城市精选专题-结束-->
 
@@ -145,7 +136,7 @@
         <div class="section classifyselected clearfix">
             <h3>分类精选</h3>
             <ul class="cont clearfix">
-                <li>
+                <li v-for="item in typeSelected">
                     <a class="imgnumb" href="javascript:;">
                         <img src="/static/images/home/links1.png">
                         <div class="mask"></div>
@@ -153,46 +144,14 @@
                     <p class="numb">255</p>
                     <p class="imgtitle">高端会所</p>
                 </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">场馆</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">会务中心</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">餐厅酒吧</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">艺术馆画廊</p>
-                </li>
-                <li>
-                    <a class="imgnumb" href="javascript:;">
-                        <img src="/static/images/home/links1.png">
-                        <div class="mask"></div>
-                    </a>
-                    <p class="numb">255</p>
-                    <p class="imgtitle">星级酒店</p>
-                </li>
+                <!--<li>-->
+                    <!--<a class="imgnumb" href="javascript:;">-->
+                        <!--<img src="/static/images/home/links1.png">-->
+                        <!--<div class="mask"></div>-->
+                    <!--</a>-->
+                    <!--<p class="numb">255</p>-->
+                    <!--<p class="imgtitle">场馆</p>-->
+                <!--</li>-->
             </ul>
         </div>
         <!--分类精选-结束-->
@@ -201,44 +160,44 @@
         <div class="section spacerecommend clearfix">
             <h3>空间推荐</h3>
             <ul class="recommend recommend-main clearfix">
-                <li v-for="spacemain in spacemains">
+                <li v-for="(item,index) in spaceRecommend" v-if="index < 3">
                     <div class="img">
-                        <a href="javascript:;">
-                            <img src="/static/images/home/imgmain1.png">
+                        <a :href=" '/space/' + item.id" target="_blank">
+                            <img v-bind:src="item.img_paths.url_400_267">
                         </a>
                         <span class="tags">上海</span>
                     </div>
                     <div class="text">
-                        <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                        <div class="price">￥50000/元 天</div>
+                        <a target="_blank" class="title" :href=" '/space/' + item.id">{{item.name}}</a>
+                        <div class="price">￥{{item.market_price}}/元 天</div>
                         <div class="textinfo">
-                            <p><span>场地类型：</span>高端场所 | 主题派对 | 年会晚会 | 颁奖晚会</p>
-                            <p><span>落地区域：</span>主题餐厅</p>
+                            <p><span>场地类型：</span>{{item.space_type}}</p>
+                            <p><span>落地区域：</span>{{item.through_three_areas}}</p>
                             <div class="numb clearfix">
-                                <p><span>面积：</span>450㎡</p>
-                                <p><span>层高：</span>4m</p>
-                                <p><span>人数：</span>200人</p>
+                                <p><span>面积：</span>{{item.area}}</p>
+                                <p><span>层高：</span>{{item.height}}</p>
+                                <p><span>人数：</span>{{item.Max_seating_capacity}}</p>
                             </div>
-                            <p><span>地址：</span>上海市 黄浦区 | 南京东路789号</p>
+                            <p><span>地址：</span>{{item.areas}} | {{item.address}}</p>
                         </div>
                     </div>
                 </li>
             </ul>
             <ul class="recommend recommend-sub clearfix">
-                <li v-for="spacesub in spacesubs">
+                <li v-for="(item,index) in spaceRecommend" v-if=" index >=3">
                     <div class="img">
-                        <a href="javascript:;">
-                            <img src="/static/images/home/imgmain1.png">
+                        <a :href=" '/space/' + item.id" target="_blank">
+                            <img v-bind:src="item.img_paths.url_400_267">
                         </a>
                     </div>
                     <div class="text">
-                        <a class="title" href="javascript:;">上海电影场-五号棚</a>
-                        <div class="price">￥50000/元 天</div>
+                        <a class="title" target="_blank" :href=" '/space/' + item.id">{{item.name}}</a>
+                        <div class="price">￥{{item.market_price}}/元 天</div>
                         <div class="city">杭州</div>
                         <div class="textinfo">
-                            <p><span>场地类型：</span>高端场所 | 主题派对</p>
-                            <p><span>落地区域：</span>主题餐厅</p>
-                            <p><span>地址：</span>上海市 黄浦区|南京东路789号</p>
+                            <p><span>场地类型：</span>{{item.space_type}}</p>
+                            <p><span>落地区域：</span>{{item.through_three_areas}}</p>
+                            <p><span>地址：</span>{{item.areas}}|{{item.address}}</p>
                         </div>
                     </div>
                 </li>
@@ -252,26 +211,26 @@
         <div class="section ipwinchuang clearfix">
             <h3>IP文创项目</h3>
             <ul class="cont clearfix">
-                <li class="clearfix" v-for="ipinfo in ipinfos">
+                <li class="clearfix" v-for="item in ipProject">
                     <a class="maskbtn" href="javascript:;">
                         <p>合作咨询</p>
                     </a>
                     <div class="img">
-                        <img src="">
+                        <img v-bind:src="item.img_paths.url_400_267">
                     </div>
                     <div class="textinfo">
-                        <div class="title">冰川时代主题快闪店</div>
+                        <div class="title">{{item.title}}</div>
                         <p class="tags">
-                            <span>ICE AGE</span>
-                            <span>大电影</span>
+                            <span v-for="i in item.keywords">{{i}}</span>
                         </p>
-                        <div class="group">
-                            <p>类别：影视</p>
-                            <p>来源：国际</p>
+                        <div class="group clearfix">
+                            <p>类别：{{item.p_type}}</p>
+                            <p>来源：{{item.source}}</p>
                         </div>
-                        <p>场地面积：100-500㎡</p>
+                        <p>场地面积：{{item.area}}</p>
+                        <!--MARK无对应字段-->
                         <p>适用人群：冰川时代影迷</p>
-                        <p>预算范围：面议</p>
+                        <p>预算范围：{{item.budget_amount}}</p>
                     </div>
                 </li>
             </ul>
@@ -279,83 +238,61 @@
         <!--ip文创项目-结束-->
 
         <!--场地配套服务-开始-->
-        <div class="section ipwinchuang clearfix">
-            <h3>场地配套服务</h3>
-            <div class="cont">
-                <div class="btns">
-                    <a class="btn btnleft" href="javascript:;">
-                        <span class="icon-arrowleft"></span>
-                    </a>
-                    <a class="btn btnright" href="javascript:;">
-                        <span class="icon-arrowright"></span>
-                    </a>
-                </div>
+        <!--<div class="section ipwinchuang clearfix">-->
+            <!--<h3>场地配套服务</h3>-->
+            <!--<div class="cont">-->
+                <!--<div class="btns">-->
+                    <!--<a class="btn btnleft" href="javascript:;">-->
+                        <!--<span class="icon-arrowleft"></span>-->
+                    <!--</a>-->
+                    <!--<a class="btn btnright" href="javascript:;">-->
+                        <!--<span class="icon-arrowright"></span>-->
+                    <!--</a>-->
+                <!--</div>-->
 
-                <ul class="iplist"></ul>
-            </div>
+                <!--<ul class="iplist"></ul>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
         <!--场地配套服务-结束-->
 
         <!--新发现-开始-->
         <div class="section newfound clearfix">
             <h3>新发现</h3>
             <div class="cont clearfix">
-                <div class="fl info info-big">
-                    <a class="img" href="javascript:;">
-                        <img src="">
+                <!--大图那个-->
+                <div class="fl info info-big" v-for="(item,index) in newFindTopFour" v-if="index < 1">
+                    <a class="img" :href=" '/article/' + item.id" target="_blank">
+                        <img :src="item.img_paths.url_390_260">
                     </a>
-                    <a class="text" href="javascript:;">
-                        内地音乐节产业链风头正劲 云SPACE布局文艺非标“地主”
+                    <a class="text display-center" :href=" '/article/' + item.id" target="_blank">
+                        {{item.title}}
                     </a>
                 </div>
+                <!--中间4个-->
                 <ul class="infolist fl clearfix">
-                    <li class="info info-normal" v-for="newfoundinfo in newfoundinfos">
-                        <a class="img" href="javascript:;">
-                            <img src="">
+                    <li class="info info-normal" v-for="(item,index) in newFindTopFour" v-if="index > 0">
+                        <a class="img" :href="'/article/' + item.id" target="_blank">
+                            <img v-bind:src="item.img_paths.url_400_267">
                         </a>
-                        <a class="text" href="javascript:;">
-                            云SPACE护航《微微一笑很倾城》开启泛娱乐IP多维度营销先河
+                        <a class="text display-center" :href="'/article/' + item.id" target="_blank">
+                            {{item.title}}
                         </a>
                     </li>
                 </ul>
+                <!--右边列表-->
                 <ul class="fr textinfolist clearfix">
-                    <li>
-                        <a href="javascript:;">
+
+                    <li v-for="item in newFindRandom">
+                        <a :href="'/article/' + item.id" target="_blank">
                             <div class="title">
                                 <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
+                                <p>{{item.title}}</p>
                             </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
+                            <p>{{item.abstract}}</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
-                            </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
-                            </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>希仕会游艇福利，约女神一起出海</p>
-                            </div>
-                            <p>还在犹豫周末约哪里？玩什么？ 希仕会游艇俱乐部，普通人约不了的老码头空间。 希仕会联合云space秋季福利套餐。</p>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
             <a class="btnlookmore" href="javascript:;">发现更多精彩</a>
@@ -366,20 +303,18 @@
         <div class="section caseselected clearfix">
             <h3>精选案例</h3>
             <ul class="cont clearfix">
-                <li v-for="i in cases">
-                    <a href="javascript:;" class="img">
-                        <img src="">
+                <li v-for="item in caseSelected">
+                    <a :href="'/article/' + item.id" target="_blank" class="img">
+                        <img v-bind:src="item.img_paths.url_400_267">
                     </a>
                     <div class="textinfo">
-                        <a class="title" href="javascript:;">《国家地理》跑进国家会展中心 实体商业空间添加内容场景</a>
+                        <a class="title" :href="'/article/' + item.id" target="_blank">{{item.title}}</a>
                         <div class="tags">
-                            <span>发布会</span>
-                            <span>展览</span>
-                            <span>路演</span>
+                            <span v-for="i in item.keywords">{{i}}</span>
                         </div>
                         <ul class="numbs clearfix">
-                            <li class="fl"><i class="scan"></i>233</li>
-                            <li class="fr"><i class="zan"></i>54</li>
+                            <li class="fl"><i class="icons icon-skimbg"></i>{{item.viewed}}</li>
+                            <li class="fr"><i class="icons icon-zanbg"></i>{{item.up_number}}</li>
                         </ul>
                     </div>
                 </li>
@@ -396,42 +331,25 @@
                     <img src="/static/images/home/imglogo-media.png">
                 </div>
                 <ul class="fr textinfolist clearfix">
-                    <li>
+                    <li v-for="item in mediaReport">
                         <a href="javascript:;">
                             <div class="title">
                                 <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
+                                <p>{{item.abstract}}</p>
                             </div>
-                            <div class="time">2016-08-15</div>
+                            <div class="time">{{item.i_time}}</div>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
-                            </div>
-                            <div class="time">2016-08-15</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
-                            </div>
-                            <div class="time">2016-08-15</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="title">
-                                <i class="point"></i>
-                                <p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>
-                            </div>
-                            <div class="time">2016-08-15</div>
-                        </a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="javascript:;">-->
+                            <!--<div class="title">-->
+                                <!--<i class="point"></i>-->
+                                <!--<p>[网易] 商业地产短租入侵零售领域 云SPACE掀起商业场景革命</p>-->
+                            <!--</div>-->
+                            <!--<div class="time">2016-08-15</div>-->
+                        <!--</a>-->
+                    <!--</li>-->
+
                 </ul>
             </div>
         </div>
@@ -446,6 +364,7 @@
         </div>
 
     </div>
+
     </div>
 
 
@@ -454,8 +373,10 @@
 <script>
 
     import Lib from 'assets/Lib.js';
-    //import Jquery from 'assets/jquery-3.1.0.min.js'
-    import 'assets/css/component.css';
+    import 'assets/libs/swiper/swiper.js'
+
+    require ('assets/css/component.css');
+//    require ('assets/css/home.css');
     export default {
         data(){
             return {
@@ -466,9 +387,6 @@
                     1, 2, 3, 4
                 ],
                 ipinfos: [
-                    1, 2, 3, 4
-                ],
-                newfoundinfos: [
                     1, 2, 3, 4
                 ],
                 cases: [
@@ -490,19 +408,163 @@
                     value: '选项5',
                     label: '北京烤鸭'
                 }],
-                value: ''
+                searchCity: 1,
+                showdowhat: 0,
+
+                ipProject : [],
+                topicOfCity : [], // 城市精选专题
+                newFindTopFour : [], // 新发现左边
+                newFindRandom : [], // 新发现右边
+                newFindFirst : {},
+                typeSelected : [], //分类精选
+                spaceRecommend : [], //空间推荐
+                caseSelected : [], //精选案例
+                mediaReport : [], //媒体,
+
+                homeSearchCondition : {
+                    city : 1,
+                    project_type : '',
+                    doWhat : '',
+                    q : {
+                        site_site_type_eq : '',
+                        keyword_cont : ''
+                    }
+                }
+            }
+        },
+        computed : {
+            searchCondition (){
+                return this.$store.state.searchCondition
+            },
+//            spaceSearchCondition () {
+//                return this.$store.state.spaceSearchCondition
+//            }
+        },
+
+        components: {},
+        mounted () {
+            var self = this;
+            self.$store.commit('loading',true); //显示loading 状态
+            $.ajax({
+                url: window.YUNAPI.home, context: document.body, success: function (data) {
+
+                    self.$store.commit('loading',false);
+
+                    self.topicOfCity = data.home_city_special;
+                    self.newFindTop = data.home_new_find_top;
+                    self.newFindRandom = data.home_new_find_random;
+                    self.spaceRecommend = data.home_recommend_space;
+
+//                    self.caseSelected = data.home_case_selected;
+
+                    // 关键词 需要按,分割
+                    for (var i = 0; i <  data.home_case_selected.length - 1; i++){
+                        data.home_case_selected[i].keywords = data.home_case_selected[i].keyword.split(',')
+                    }
+                    self.caseSelected = data.home_case_selected;
+
+                    //ip项目 关键词
+                    for(var i = 0; i <  data.home_project.length - 1; i++){
+                        data.home_project[i].keywords = data.home_project[i].keyword.split(',')
+                    }
+                    self.ipProject = data.home_project;
+
+//                    self.typeSelected = data.home_type_selected_by_retail.concat(data.home_type_selected_by_space);
+
+
+                    self.newFindTopFour = data.home_new_find_top; // 新发现4个
+//                    self.newFindFirst = self.newFindTopFour.shift(); //新发现第一个
+
+                    self.mediaReport = data.home_media;
+
+//                    console.log(self.spaceRecommend);
+//                    console.log(self.newFindRandom);
+
+                    setTimeout(function () {
+                        self.init();
+                    },300)
+                }
+            });
+
+
+        },
+        methods: {
+            whatToSearchInputClick : function () {
+                this.$parent.$data.isShowHomeSearchCondition = !this.$parent.$data.isShowHomeSearchCondition
+            },
+            init : function () {
+
+                var citySelectionSwiper = new Swiper('.citySelection', {
+//                    pagination: '.swiper-pagination',
+                    nextButton: '.citysubject .btnright',
+                    prevButton: '.citysubject .btnleft',
+                    slidesPerView: 3,
+                    paginationClickable: true,
+                    spaceBetween: 1,
+//                    freeMode: true
+                });
+            },
+            searchConditionSelect : function (type,key,value) {
+                var self = this;
+//                console.log(type,key,value)
+                if(type == 1){
+                    self.homeSearchCondition.project_type = key
+                }
+                if(type == 2){
+//                    self.homeSearchCondition.project_type = key
+                }
+                if(type == 3){
+//                    self.homeSearchCondition.project_type = key
+                    self.homeSearchCondition.q.site_site_type_eq = key
+                }
+                self.homeSearchCondition.doWhat = value;
+                self.$parent.isShowHomeSearchCondition = false
+            },
+            homeDoSearch : function () {
+//                this.$store.state.spaceSearchCondition = this.homeSearchCondition
+                this.$store.commit('spaceSearchCondition', this.homeSearchCondition);
+                router.push('/spaces');
+//                this.$router.params.SearchCondition = this.homeSearchCondition
+
             }
 
-        },
-        components: {},
-        ready(){
-
-        },
-        methods: {}
+        }
     }
 </script>
-
 <style scoped>
+    .citySelection .swiper-slide{
+        background-color: #fff;
+        /*height: 350px;*/
+        margin-right: 1px;
+        position: relative;
+    }
+    .swiper-container{
+        overflow: visible;
+    }
+    .citySelection .swiper-slide a{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .citySelection .swiper-slide img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #aaa;
+    }
+    .citySelection .swiper-slide p{
+        position: absolute;
+        bottom: 0;
+        font-size:18px;
+        color:#ffffff;
+        padding: 0 15px 20px 15px;
+        height: 70px;
+        box-sizing: border-box;
+    }
+    /*.citySelection{*/
+        /*width: 1200px;*/
+    /*}*/
+
     .btnlookmore {
         display: block;
         width: 398px;
@@ -530,58 +592,24 @@
         font-size: 24px;
         margin-bottom: 30px;
     }
-
-    .btns .btn {
-        width: 40px;
-        height: 80px;
-        background: rgba(0, 0, 0, .5);
-        position: absolute;
-        top: 50%;
-        margin-top: -40px;
+    .home-banner-search{
+        position: relative;
+        min-width: 1200px;
+        z-index: 10;
     }
-
-    .btns .btn:hover {
-        background: rgba(0, 0, 0, 1);
-    }
-
-    .btns .btn span {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -4px;
-        margin-top: -8px;
-    }
-
-    .btns .btnleft {
-        left: 50%;
-        margin-left: -600px;
-    }
-
-    .btns .btnright {
-        right: 50%;
-        margin-right: -600px;
-    }
-
-    .btns .icon-arrowleft,
-    .btns .icon-arrowright {
-        width: 13px;
-        height: 13px;
-        border-width: 2px;
-        border-color: #fff;
-    }
-
-    .banner-search {
+    .home-banner-wrap{
         width: 100%;
         min-width: 1200px;
-        height: 533px;
+        height: 400px;
+        margin: 0 auto;
         background: #ddd;
         overflow: hidden;
         position: relative;
     }
 
-    .banner {
+    .home-banner {
         width: 1920px;
-        height: 533px;
+        height: 400px;
         background: #ddd;
         position: absolute;
         left: 50%;
@@ -590,8 +618,9 @@
         overflow: hidden;
         z-index: 1;
     }
+    .home-banner>img{width: 100%;height: 100%;}
 
-    .search {
+    .home-search {
         width: 1000px;
         padding: 0 100px;
         position: absolute;
@@ -601,11 +630,11 @@
         z-index: 2;
     }
 
-    .search .select {
+    .home-search .select {
         position: relative;
     }
 
-    .search .select:hover .result .icon-updown {
+    .home-search .select:hover .result .icon-updown {
         transform: rotate(-180deg);
         -ms-transform: rotate(-180deg); /* IE 9 */
         -moz-transform: rotate(-180deg); /* Firefox */
@@ -613,27 +642,27 @@
         -o-transform: rotate(-180deg); /* Opera */
     }
 
-    .search .select .cont {
+    .home-search .select .cont {
         position: absolute;
         left: 0;
         top: 52px
     }
 
-    .search .result {
-        width: 110px;
+    .home-search .result {
+        width: 150px;
         height: 50px;
-        padding: 0 20px;
         background: #fff;
         position: relative;
     }
 
-    .search .result input {
+    .home-search .result input {
         width: 100%;
         height: 50px;
         line-height: 50px;
+        cursor: pointer;
     }
 
-    .search .result .icon-updown {
+    .home-search .result .icon-updown {
         display: block;
         width: 0px;
         height: 0px;
@@ -645,6 +674,20 @@
         right: 22px;
         top: 21px;
         transition: all linear .2s;
+    }
+    body .home-search .el-input__inner{
+        padding: 3px 20px;
+    }
+    body .home-search .el-input__icon{right: 19px;top:25px;}
+    body .el-select-dropdown__item{
+        padding: 8px 20px;
+    }
+    body .el-select-dropdown{
+        margin: 2px 0;
+    }
+    body .el-select-dropdown__item.selected.hover,
+    body .el-select-dropdown__item.selected{
+        background: #e92332;
     }
 
     .citylist {
@@ -668,7 +711,11 @@
         background: #e92332;
         color: #fff;
     }
-
+    .dowhat .result{
+        padding: 0 20px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
     .dowhat-contlist {
         width: 800px;
         background: #fff;
@@ -701,7 +748,7 @@
         margin: 5px;
     }
 
-    .dowhat-contlist dd > a:hover {
+    .dowhat-contlist dd > a:hover,.dowhat-contlist dd > a.active {
         background: #e92332;
         color: #fff;
     }
@@ -773,6 +820,10 @@
         left: 0;
         top: 0;
         z-index: 1;
+
+    }
+    .classifyselected li .mask{
+        border-radius: 50%;
     }
 
     li .imgtitle {
@@ -829,16 +880,17 @@
         -o-transition: All 1s;
     }
 
-    .classifyselected li:hover .numb {
-        transform-origin: -82px 85px;
-        -webkit-transform-origin: -82px 85px;
+    /**小圆转一圈效果**/
+    /*.classifyselected li:hover .numb {*/
+    /*transform-origin: -82px 85px;*/
+    /*-webkit-transform-origin: -82px 85px;*/
 
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-    }
+    /*transform: rotate(360deg);*/
+    /*-webkit-transform: rotate(360deg);*/
+    /*-moz-transform: rotate(360deg);*/
+    /*-o-transform: rotate(360deg);*/
+    /*-ms-transform: rotate(360deg);*/
+    /*}*/
 
     .citysubject.section {
         width: 100%;
@@ -849,6 +901,8 @@
     .citysubject h3 {
         width: 1200px;
         margin: 0 auto;
+        font-size: 24px;
+        margin-bottom: 30px;
     }
 
     .citysubject .cont {
@@ -990,6 +1044,8 @@
     .newfound .info-big .text {
         font-size: 18px;
         padding: 7px 15px;
+        display: block;
+        height: 50px;
     }
 
     .newfound .infolist {
@@ -1012,7 +1068,7 @@
     .newfound .info-normal .text {
         float: left;
         padding: 7px 10px;
-        max-height: 57px;
+        height: 57px;
         overflow: hidden;
     }
 
@@ -1053,6 +1109,7 @@
 
     .textinfolist li p {
         padding-left: 15px;
+        line-height: 1.4;
     }
 
     /*精选案例*/
@@ -1081,6 +1138,9 @@
         color: #000;
         font-size: 18px;
         padding-bottom: 5px;
+        height: 55px;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 
     .caseselected .textinfo {
@@ -1116,8 +1176,6 @@
 
     .caseselected .numbs i {
         display: inline-block;
-        width: 25px;
-        height: 25px;
         position: absolute;
         left: 0;
         top: 0;
@@ -1133,7 +1191,7 @@
 
     /*媒体报道*/
     .mediacoverage .textinfolist li {
-        height: 69px;
+        height: 70px;
         padding-top: 7px;
         overflow: hidden;
     }
@@ -1166,9 +1224,11 @@
         background: #fff;
     }
 
-
+    /*swiper*/
+    .citySelection .btns{
+        z-index: 99;
+    }
 </style>
-
 
 
 

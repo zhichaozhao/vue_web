@@ -1,0 +1,188 @@
+.top-banner{
+    height: 400px;
+    overflow: hidden;
+}
+.module-header span{
+    font-size:24px;
+    color:#000000;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e92332;
+    display: inline-block;
+    font-family:PingFangHK-Regular;
+}
+.ip-category{
+    margin-right: -20px;
+}
+.ip-category a{
+    background-color: #fff;
+    color: #000;
+    width: 115px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 18px;
+    display: block;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.ip-category a.current{
+    background: #000;
+    color: #fff;
+}
+.module-header .more{
+    float: right;
+    font-size: 20px;
+    line-height: 20px;
+    margin-top: 40px;
+    color: #000;
+}
+.module-header .icon-arrowright{
+    width: 13px;
+    height: 13px;
+    vertical-align: 3px;
+    margin-left: 10px;
+}
+/*精选推荐*/
+.concentration ul{
+    margin-right: -20px;
+}
+.concentration ul li{
+    width: 590px;
+    height: 640px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    overflow: hidden;
+}
+.concentration ul li .rec-dtl{
+    padding: 20px;
+    background-color: #fff;
+    position: relative;
+}
+.concentration ul li a{
+    display: block;
+    background-color: #fff;
+}
+.concentration ul li img{
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+.concentration ul li p.title{
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 10px;
+}
+.concentration ul li p.tag{
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.concentration ul li dl{
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 8px;
+}
+.concentration ul li dl dt{
+    color: #666;
+    display: inline-block;
+    margin-right: 4px;
+}
+.concentration ul li dl dd{
+    color: #000;
+    display: inline-block;
+}
+.concentration ul li p.des{
+    height: 70px;
+    line-height: 1.6;
+    overflow: hidden;
+}
+.concentration ul li .op-coop{
+    position: absolute;
+    top:20px;
+    right: 20px;
+    background:#272335;
+    width:120px;
+    height:40px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+}
+.case-list ul li a{
+    display: block;
+    position: relative;
+}
+.case-list ul{
+    margin-right: -20px;
+}
+.case-list ul li{
+    width:386px;
+    float: left;
+    margin-right: 20px;
+}
+.case-list ul li img{
+    width: 100%;
+    height:300px;
+    display: block;
+}
+.case-list ul li .case-des{
+    background-color:rgba(255,255,255,0.8);
+    height:60px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size:18px;
+    color:#000000;
+    line-height: 60px;
+    text-align: center;
+}
+.platform-super ul li{
+    float: left;
+    width:224px;
+    height:224px;
+    background-color: #fff;
+    margin-right: 20px;
+}
+.platform-super ul,.team-super ul{
+    margin-right: -20px;
+}
+.platform-super ul li .super-icon,.team-super ul li .super-icon{
+    width: 46px;
+    height: 46px;
+    margin: auto;
+    display: block;
+    margin-top: 46px;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+.platform-super ul li .super-icon img,.team-super ul li .super-icon img{
+    max-width: 46px;
+    max-height: 46px;
+}
+.platform-super p,.team-super p{
+    text-align: center;
+    font-size:18px;
+    color:#000000;
+    margin-bottom: 4px;
+}
+.team-super ul li{
+    float: left;
+    margin-right: 20px;
+    background-color: #fff;
+    width:386px;
+    height:200px;
+}
+.ip-page{
+    margin-bottom: 120px;
+}
+.brand-swiper img{
+    width: 100%;
+    height: 100%;
+}

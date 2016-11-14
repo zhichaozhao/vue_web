@@ -10,25 +10,39 @@
                     <!--<p>全国</p>-->
                     <!--<i class="icon-down"></i>-->
                     <template>
-                        <el-select v-model="value">
+                        <el-select v-model="city_id">
                             <el-option
-                                    v-for="item in options"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="item in cities"
+                                    :label="item.name"
+                                    :value="item.id">
                             </el-option>
                         </el-select>
                     </template>
                 </div>
                 <ul class="fl navbar clearfix">
-                    <li class="current">
-                        <router-link to="/">首页</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/event">办活动</router-link>
-                    </li>
-                    <li><a target="_blank" href="javascript:;">要开店</a></li>
-                    <li><a target="_blank" href="javascript:;">找IP</a></li>
-                    <li><a target="_blank" href="javascript:;">新发现</a></li>
+                    <!--<router-link tag="li" to="/">-->
+                    <!--<a href="/" target="_blank">首页</a>-->
+                    <!--</router-link>-->
+                    <!--<li :class="this.$router.path == '/' ? 'current' : '' ">-->
+                    <!--<router-link to="/">首页</router-link>-->
+                    <!--</li>-->
+                    <router-link tag="li" to="/" exact>
+                        <a>首页</a>
+                    </router-link>
+                    <router-link tag="li" to="/event">
+                        <a>办活动</a>
+                    </router-link>
+                    <router-link tag="li" to="/openshop">
+                        <a>要开店</a>
+                    </router-link>
+                    <router-link tag="li" to="/ip">
+                        <a>找IP</a>
+                    </router-link>
+                    <router-link tag="li" to="/found">
+                        <a>新发现</a>
+                    </router-link>
+
+                    <!--<li><a target="_blank" href="javascript:;">新发现</a></li>-->
                 </ul>
             </div>
 
@@ -49,10 +63,11 @@
                 </ul>
                 <ul class="fr btns clearfix">
                     <li class="log-reg">
-                        <a href="javascript:;">注册/登录</a>
+                        <a href="javascript:;" @click="toggleLoginForm" v-text=" typeof personalData.name != 'undefined' ? personalData.name : '注册/登录' "></a>
                     </li>
                     <li class="inquiry">
-                        <a href="javascript:;">一键询价<span class="red">(2)</span></a>
+                        <router-link to="/inquiry">一键询价<span class="red">({{inquiryCount}})</span></router-link>
+                        <!--<a href="javascript:;"></a>-->
                     </li>
                 </ul>
             </div>
@@ -72,29 +87,66 @@
             return {
                 options: [{
                     value: '选项1',
-                    label: '黄金糕'
+                    label: '全国'
                 }, {
                     value: '选项2',
-                    label: '双皮奶'
+                    label: '上海'
                 }, {
                     value: '选项3',
-                    label: '蚵仔煎'
+                    label: '北京'
                 }, {
                     value: '选项4',
-                    label: '龙须面'
+                    label: '广州'
                 }, {
                     value: '选项5',
-                    label: '北京烤鸭'
+                    label: '深圳'
                 }],
-                value: ''
+                navValCity: '上海',
+            }
+        },
+        computed: {
+            cities (){
+                return this.$store.state.cities
+            },
+            city_id (){
+                return this.$store.state.city_id
+            },
+            inquiryCount () {
+                return this.$store.state.inquiryCount
+            },
+            personalData (){
+                return this.$store.state.personalData
             }
         },
         props: {
             "title": {
                 type: String,
                 default: "标题"
+            },
+            "cities": {
+                type: String,
+                default: []
+            }
+        },
+        mounted () {
+            var self = this;
+//            console.log(this.$parent.$data.cities);
+//            console.log(this.$route)
+            this.$store.commit('inquiryChange');
+            this.$store.commit('getPersonalData');
+        },
+        methods: {
+            toggleLoginForm: function () {
+
+                if(this.personalData.uid){
+                    router.push('/personal/info') //已登陆 跳到个人页面
+                }else{
+                    this.$parent.$data.showForm.login = !this.$parent.$data.showForm.login
+                }
+
             }
         }
+
     }
 </script>
 
@@ -168,7 +220,7 @@
     }
 
     .navbar li a:hover,
-    .navbar li.current a {
+    .navbar li.current a, .navbar li.router-link-active a {
         background-color: #fff;
         color: #000;
     }

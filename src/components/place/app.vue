@@ -9,24 +9,24 @@
             <div class="fl logo"><img src=""></div>
             <div class="fl evdtlcont">
                 <div class="title">
-                    <h2>上海蒲公英会议中心－北中环</h2>
+                    <h2>{{placeDtl.title}}</h2>
                     <div class="icons-text">
-                        <i class="icon-place"></i>
-                        <p class="title">区域位置：上海市浦东新区世纪公园长柳路58号</p>
+                        <i class="icons icon-place"></i>
+                        <p class="title">区域位置：{{placeDtl.address}}</p>
                     </div>
                     <a class="collect" href="javascript:;">
-                        <i class="icon-collect"></i>
+                        <i class="icons icon-collect-hv"></i>
                         <span>收藏</span>
                     </a>
                 </div>
                 <div class="intro">
                     <h5>场地介绍</h5>
-                    <p>京金所多功能厅是京金所（北京）信息技术有限公司旗下用于组织沙龙、培训等公开交流互动的场地。“我所地为众所用”，我们关注每个行业组织的活动需求，通过与协会、青年团体、金融、MBA联盟、企业组织合作，共同为每个参会的个人提供有价值的活动体验和优质服务，使多功能厅成为人脉链接的桥梁。 合作，共同发现价值。我们希望不仅为需求方提供舒适的环境和服务，更能一起提升并创造价值。 自2015年合作以来，目前举办了20场，参与的人数达到了近千人。 免费茶水、果盘供应，全程贴心一站式服务。 凡到场者均有精美礼品赠送</p>
+                    <p>{{placeDtl.brand_story}}</p>
                 </div>
                 <div class="reason">
                     <h6>推荐理由</h6>
                     <div class="icons-text">
-                        <i class="icon-zan"></i>
+                        <i class="icons icon-zan-red"></i>
                         <p class="title">时尚汇聚地，潮流风向标</p>
                     </div>
                 </div>
@@ -34,13 +34,13 @@
             <div class="fr evdtllist">
                 <div class="title">
                     <i class="icons icon-space"></i>
-                    <p>拥有<span class="red">3</span>个空间</p>
+                    <p>拥有<span class="red">{{placeDtl.count_space}}</span>个空间</p>
                 </div>
                 <div class="cont">
                     <dl>
                         <i class="icons icon-pnumbs"></i>
                         <dt>最大容纳</dt>
-                        <dd>800人</dd>
+                        <dd>{{placeDtl.max_people}}人</dd>
                     </dl>
                     <dl>
                         <i class="icons icon-assort"></i>
@@ -85,18 +85,18 @@
             <div class="fl left">
                 <div class="spacetitle">场地空间</div>
                 <ul class="recommend clearfix">
-                    <li v-for="spacesub in spacesubs">
+                    <li v-for="item in spaces">
                         <div class="img">
                             <a href="javascript:;">
-                                <img src="/static/images/home/imgmain1.png">
+                                <img :src="item.img_paths.url">
                             </a>
                         </div>
                         <div class="text">
-                            <a class="title" href="javascript:;">04－中会议室</a>
+                            <a class="title" href="javascript:;">{{item.name}}</a>
                             <div class="textinfo">
-                                <p>最大容纳：800人</p>
-                                <p>落位区域：三楼会议室</p>
-                                <p>空间面积：60㎡</p>
+                                <p>最大容纳：{{item.Max_seating_capacity}}人</p>
+                                <p>落位区域：{{item.through_three_areas}}</p>
+                                <p>空间面积：{{item.area}}㎡</p>
                             </div>
                         </div>
                     </li>
@@ -167,13 +167,27 @@
                 username:'',
                 spacesubs:[
                         1,2,3
-                ]
+                ],
+                placeDtl : [],
+                spaces : []
             }
         },
-        components: {
-            moduleHeader,moduleFooter
+        mounted () {
+            var self = this;
+            $.get({
+                url: window.YUNAPI.placeDtl + '/' + this.$route.params.id,
+                data: {},
+                success: function (data) {
+                    self.placeDtl = data.site
+                    self.$parent.loading = false;
+                    self.spaces = data.site_spaces
+                    console.log(data)
+                },
+                error: function () {
+
+                }
+            });
         },
-        ready(){},
         methods: {},
 
         //记住密码
