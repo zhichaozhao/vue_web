@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="alink">
-            <a href="" class="active">vv全部</a>
-            <a href="">咨询中</a>
-            <a href="">收到报价</a>
-            <a href="">已过期</a>
-            <a href="">已关闭</a>
+            <a href="" class="active">全部</a>
+            <a href="javascript:;">咨询中</a>
+            <a href="javascript:;">收到报价</a>
+            <a href="javascript:;">已过期</a>
+            <a href="javascript:;">已关闭</a>
         </div>
         <table class="tblist" cellspacing="0" cellpadding="0">
             <tr>
@@ -23,9 +23,13 @@
                 <td>{{item.order_city}}</td>
                 <td>{{item.s_time}}~{{item.e_time}}</td>
                 <td>{{item.activity_type}}</td>
-                <td><a href="">奢居会派对会所</a></td>
+                <td>
+                    <router-link :to="'/space/'+space.id" v-for="space in item.spaces">{{space.title}}</router-link>
+                </td>
                 <td>已收到2份报价</td>
-                <td><a href="/personal/enquiry/dtl">查看</a></td>
+                <td>
+                    <router-link :to="'/personal/enquiry/dtl/'+item.id">查看</router-link>
+                </td>
             </tr>
             <!--<tr>-->
                 <!--<td>2016/8/26 15:00</td>-->
@@ -76,7 +80,7 @@
 //            console.log(window.YUNAPI.host + 'api/users/' + self.personalData.id + '/orders/index_inquiry')
 
             $.get({
-                url: window.YUNAPI.host + 'api/users/' + self.personalData.id + '/orders/index_inquiry',
+                url: window.YUNAPI.host + 'api/users/' + self.personalData.id + '/demands',
                 data : self.$store.getters.validationData,
                 success : function (data) {
                     console.log(data,111);

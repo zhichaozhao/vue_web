@@ -10,18 +10,10 @@
         <div class="yun-swiper-wrap2 brand-swiper">
             <div class="swiper-container relative-topic-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide topic-pic">
-                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
+                    <div class="swiper-slide topic-pic" v-for="item in ipRecommend">
+                        <img :src="item.img_paths.url" alt="">
                     </div>
-                    <div class="swiper-slide topic-pic">
-                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
-                    </div>
-                    <div class="swiper-slide topic-pic">
-                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
-                    </div>
-                    <div class="swiper-slide topic-pic">
-                        <img src="http://www.atool.org/placeholder.png?size=390x260&text=图片&&bg=836&fg=fff" alt="">
-                    </div>
+
                 </div>
                 <!-- Add Pagination -->
                 <!--<div class="swiper-pagination"></div>-->
@@ -196,6 +188,8 @@
 
                 url: window.YUNAPI.findIp,
                 success: function (data) {
+
+                    console.log(data);
 
                     self.$store.commit('loading',false);
 

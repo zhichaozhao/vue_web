@@ -153,7 +153,8 @@
         register : host + 'api/auth',
         tags : host + 'api/tags/all_tags',
         createInquiry : host + 'api/orders/create_inquiry',
-        createBooking : host + 'api/orders/create_booking'
+        createBooking : host + 'api/orders/create_booking',
+        inquiryContent : host + 'api/demands/'
     };
     export default {
         name: 'app',

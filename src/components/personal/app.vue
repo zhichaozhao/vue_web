@@ -24,7 +24,7 @@
                 <li><router-link to="/personal/enquiry">我的询价</router-link></li>
                 <li><router-link to="/personal/order">我的订单</router-link></li>
                 <li><router-link to="/personal/collect">我的收藏</router-link></li>
-                <li><router-link to="/personal/collect">我的消息</router-link></li>
+                <!--<li><router-link to="/personal/collect">我的消息</router-link></li>-->
                 <li><router-link to="/personal/feedback">意见反馈</router-link></li>
             </ul>
         </div>
@@ -141,6 +141,7 @@
 <script>
 
     import Lib from 'assets/Lib.js'
+
     import 'assets/css/component.css';
     import 'assets/css/personal.css';
 

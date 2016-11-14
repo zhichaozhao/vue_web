@@ -110,7 +110,7 @@
         </div>
         <ul class="cont opsubject clearfix">
             <li v-for="special in specials">
-                <a class="img" target="_blank" :href="'/article/'+special.id"><img :src="special.first_picture.url"></a>
+                <a class="img" target="_blank" :href="'/article/'+special.id"><img :src="special.img_paths.url_400_267"></a>
                 <div class="text">
                     <a class="title" target="_blank" :href="'/article/'+special.id">{{special.title}}</a>
                     <p>{{special.abstract}}</p>
@@ -174,7 +174,7 @@
         <ul class="cont optoplist clearfix">
             <li v-for="topList in topLists">
                 <a target="_blank" :href="'/article/'+topList.id">
-                    <img :src="topList.first_picture.url">
+                    <img :src="topList.img_paths.url_400_267">
                     <p>{{topList.title}}</p>
                 </a>
             </li>
@@ -190,7 +190,7 @@
         <ul class="cont opvenues-recommend clearfix">
             <li v-for="space in recommendSpace">
                 <div class="img">
-                    <img :src="space.img_paths">
+                    <img :src="space.img_paths.url_400_267">
                     <div class="collect-mask">
                         <div class="collect icons icon-collectbgmore-hv"></div>
                         <div class="mask"></div>
@@ -220,7 +220,7 @@
                     <p>{{item.abstract}}</p>
                 </div>
                 <a class="btnlook" target="_blank" :href="'/article/'+item.id">查看<i class="icon icon-arrowright"></i></a>
-                <a class="img" target="_blank" :href="'/article/'+item.id"><img :src="item.first_picture.url"></a>
+                <a class="img" target="_blank" :href="'/article/'+item.id"><img :src="item.img_paths.url_400_267"></a>
             </li>
         </ul>
     </div><!--精选案例-结束-->

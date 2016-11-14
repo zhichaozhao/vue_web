@@ -2,22 +2,22 @@
     <div class="info-form" >
         <div class="clearfix">
             <div class="head-img-big">
-                <img src="/static/images/personal/head.png" alt="">
+                <img :src="personalData.head_portrait.url" alt="">
                 <a href="" class="change-info">修改资料</a>
             </div>
         </div>
         <div class="info-from-piece">
             <span>称 呼</span>
-            <input class="w270" type="text" value="王丽丽">
-            <input class="w270 ml15" type="text" value="王丽丽">
+            <input class="w270" type="text" :value="personalData.surname" disabled>
+            <input class="w270 ml15" type="text" :value="personalData.name" disabled>
         </div>
         <div class="info-from-piece">
             <span>手机号</span>
-            <input type="text" value="15012345678">
+            <input type="text" :value="personalData.mobile" disabled>
         </div>
         <div class="info-from-piece">
             <span>公司名称</span>
-            <input type="text" value="上海星期网络科技有限公司">
+            <input type="text" :value="personalData.company_name" disabled>
         </div>
         <div class="info-from-piece">
             <span>第三方绑定</span>

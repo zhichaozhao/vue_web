@@ -160,7 +160,6 @@
 
     import Lib from 'assets/Lib.js'
 
-
     import 'assets/css/component.css';
     import 'assets/css/hold-event.css';
     export default {

@@ -54,12 +54,12 @@ window.router = new VueRouter({
                 },
                 {
                     path: 'enquiry',
-                    component: (resolve) => require(['./components/personal/Enquiry/list.vue'], resolve),
+                    component: (resolve) => require(['components/personal/enquiry/list.vue'], resolve),
                     name: '我的询价'
                 },
                 {
-                    path: 'enquiry/dtl',
-                    component: (resolve) => require(['./components/personal/enquiry/dtl.vue'], resolve),
+                    path: 'enquiry/dtl/:id',
+                    component: (resolve) => require(['components/personal/enquiry/enquiryDtl.vue'], resolve),
                     name: '我的询价'
                 },
                 {
