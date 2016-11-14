@@ -49,7 +49,7 @@
                 <ul>
                     <li class="clearfix" v-for="item in articles">
                         <div class="fl img">
-                            <a href="javascript:;"><img v-bind:src="item.first_picture.url"></a>
+                            <a href="javascript:;"><img v-bind:src="item.img_paths.url_400_267"></a>
                             <span class="tag red">活动</span>
                         </div>
                         <div class="fr text">
@@ -90,7 +90,7 @@
                 <ul>
                     <li class="clearfix" v-for="item in hotArticle">
                         <div class="fl img">
-                            <a target="_blank" :href="'/article/'+item.id"><img v-bind:src="item.first_picture.url"></a>
+                            <a target="_blank" :href="'/article/'+item.id"><img v-bind:src="item.img_paths.url_400_267"></a>
                         </div>
                         <div class="fr text">
                             <a class="title" target="_blank" :href="'/article/'+item.id">{{item.title}}</a>
@@ -136,6 +136,9 @@
 
         mounted(){
             var self= this;
+
+            self.$store.commit('loading',true);
+
             $.ajax({
                 url: window.YUNAPI.articleTags,
                 success: function (data) {
@@ -147,6 +150,8 @@
 //                    self.guideType = 23;
 //                    self.caseType = 6;
                     self.selectType = '';
+
+                    self.$store.commit('loading',false);
                 },
                 error : function () {
                     console.log('error'.window.YUNAPI.articleTags)
@@ -156,6 +161,7 @@
             $.ajax({
                 url: window.YUNAPI.articleHot,
                 success: function (data) {
+                    console.log(data)
                     self.hotArticle = data.hot_recommend;
                 },
                 error : function () {
@@ -218,10 +224,11 @@
                     data : urlData,
                     success: function (data) {
 //                    self.cities = data.cities;
+//                        console.log(data)
                         if(method == 'more'){
-                            self.articles = self.articles.concat(data.information);
+                            self.articles = self.articles.concat(data.informations);
                         }else{
-                            self.articles = data.information;
+                            self.articles = data.informations;
                         }
 
                         self.$parent.loading = false;

@@ -17,17 +17,17 @@
                             <div class="swiper-container banner-swiper">
                                 <div class="swiper-wrapper">
 
-                                    <div class="swiper-slide">
-                                        <img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
 
+                                    <div class="swiper-slide" v-for="item in spaceDtl.img_paths">
+                                        <img class="imgload" :src="item.url_790_526" alt="首页banner图片01">
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">
+                                    <!--<div class="swiper-slide">-->
+                                        <!--<img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">-->
 
-                                    </div>
+                                    <!--</div>-->
+                                    <!--<div class="swiper-slide">-->
+                                        <!--<img class="imgload" src="http://www.atool.org/placeholder.png?size=790x526&text=图片&&bg=836&fg=fff" alt="首页banner图片01">-->
+                                    <!--</div>-->
                                 </div>
                                 <!-- 如果需要分页器 -->
                                 <div class="swiper-pagination"></div>
@@ -76,7 +76,7 @@
                                                 <p>¥ 9888元／天 起</p>
                                             </div>
                                             <div class="price-op fr">
-                                                <a class="btn-dark btn-now">立即预定</a>
+                                                <router-link :to=" '/booking/' + spaceDtl.id" class="btn-dark btn-now">立即预定</router-link>
                                                 <button class="btn-schedule btn-dark">档期日历 <i class="icon-arrowbottom"></i></button>
                                                 <button @click="addInquiry(spaceDtl.id,spaceDtl.name)" class="btn-add btn-dark"
                                                         v-text="inquiryList.hasOwnProperty(spaceDtl.id) ? '已加入询价' : '加入询价' ">加入批量询价</button>
@@ -181,7 +181,7 @@
                 <div class="fr right">
                     <div class="evdtllist bgwhite">
                         <div class="title  clearfix">
-                            <img src="http://placehold.it/120x120" alt="">
+                            <img :src="spaceDtl.logo.logo.url" alt="">
                             <div class="title-dtl">
                                 <h2>{{spaceDtl.site_name}}</h2>
                                 <dl><dt>场地类型 : </dt><dd>{{spaceDtl.site_type}}</dd></dl>
@@ -195,13 +195,15 @@
                             </dl>
                             <dl><i class="icons icon-assort"></i>
                                 <dt>场地配套 : </dt>
-                                <dd><span>洗手间</span>｜
-                                    <span>化妆间</span>｜
-                                    <span>空调暖气</span>｜
-                                    <span>网络WIFI</span> ｜
-                                    <span>货运电梯</span>｜
-                                    <span>灯光音响</span>｜
-                                    <span>投影LED</span>
+                                <dd>
+                                    <!--<span>洗手间</span>｜-->
+                                    <!--<span>化妆间</span>｜-->
+                                    <!--<span>空调暖气</span>｜-->
+                                    <!--<span>网络WIFI</span> ｜-->
+                                    <!--<span>货运电梯</span>｜-->
+                                    <!--<span>灯光音响</span>｜-->
+                                    <!--<span>投影LED</span>-->
+                                    {{spaceDtl.supporting_facilities}}
                                 </dd>
                             </dl>
                             <dl><i class="icons icon-busintype"></i>
@@ -334,14 +336,14 @@
             },
             getData(){
                 var self = this;
-                self.$parent.loading = true;
+                self.$store.commit('loading',true);
                 $.get({
                     url: window.YUNAPI.SpaceDtl +'/'+ this.$route.params.id,
                     data : {},
                     success: function (data) {
                         self.spaceDtl = data.space;
                         self.otherSpace = data.other_spaces
-                        self.$parent.loading = false;
+                        self.$store.commit('loading',false);
                         console.log(data)
                     },
                     error : function () {

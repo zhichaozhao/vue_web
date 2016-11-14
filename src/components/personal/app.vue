@@ -4,15 +4,17 @@
         <div class="per-left">
             <div class="per-left-top">
                 <div class="head-img">
-                    <img src="/static/images/personal/head.png" alt="">
+                    <img width="100" height="100" :src="personalData.head_portrait.url" alt="">
+                    <!--<img :src="personalData.head_portrait.url" alt="">-->
+
                 </div>
                 <div class="p-text">
-                    微笑百合~上午好
+                    {{personalData.surname}}{{personalData.name}}
                 </div>
                 <div class="p-text">
-                    15012345678
+                    {{personalData.mobile}}
                 </div>
-                <a href="" class="fr log-out">
+                <a href="javascript:;" class="fr log-out" @click="logout">
                     退出
                 </a>
             </div>
@@ -153,12 +155,19 @@
                 subPage: '',
                 page: 1,
                 recordCount: 205,
-                showstate: 0
+                showstate: 0,
+                authorize:{}
             }
         },
         components: {},
+        computed: {
+            personalData (){
+                return this.$store.state.personalData
+            }
+        },
         mounted(){
-
+//            this.authorize.uid = personalData.uid
+//            this.authorize.access_token = personalData.access_token
         },
         methods: {
             navClick(event){
@@ -167,6 +176,10 @@
             xjContent(){
                 this.subPage = '询价详情';
                 this.activeNav = '询价详情'
+            },
+            logout(){
+                this.$store.commit('personalDataChange',{});//保存个人信息
+                router.replace('/')
             }
         }
     }

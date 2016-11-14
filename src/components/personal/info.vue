@@ -36,3 +36,23 @@
         </div>
     </div>
 </template>
+<script>
+    export default {
+        data() {
+            return {}
+
+        },
+        components: {},
+        computed: {
+            personalData (){
+                return this.$store.state.personalData
+            }
+        },
+        mounted(){
+            this.$store.commit('loading',false);
+        },
+        methods: {
+
+        }
+    }
+</script>

@@ -444,11 +444,11 @@
         components: {},
         mounted () {
             var self = this;
-            self.$parent.loading = true; //显示loading 状态
+            self.$store.commit('loading',true); //显示loading 状态
             $.ajax({
                 url: window.YUNAPI.home, context: document.body, success: function (data) {
 
-                    self.$parent.loading = false;
+                    self.$store.commit('loading',false);
 
                     self.topicOfCity = data.home_city_special;
                     self.newFindTop = data.home_new_find_top;

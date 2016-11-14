@@ -191,11 +191,14 @@
         },
         mounted () {
             var self = this;
-            self.$parent.loading = true;
+            self.$store.commit('loading',true);
             $.ajax({
 
                 url: window.YUNAPI.findIp,
                 success: function (data) {
+
+                    self.$store.commit('loading',false);
+
                     self.ipCase = data.ip_case
                     self.ipProject = data.ip_project
                     self.ipRecommend = data.ip_recommend
@@ -255,7 +258,6 @@
 
         methods: {
             init : function () {
-                this.$parent.loading = false;
                 var swiper2 = new Swiper('.relative-topic-swiper', {
                     pagination: '.swiper-pagination',
                     nextButton: '.yun-swiper-next',

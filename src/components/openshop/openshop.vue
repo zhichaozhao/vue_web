@@ -288,7 +288,7 @@
 
             var self = this;
 
-            self.$parent.loading = true;
+            self.$store.commit('loading',true);
 
             $.ajax({
                 url: window.YUNAPI.openShop,
@@ -299,7 +299,7 @@
                     self.recommendSpace=data.retail_recommend_space;
                     self.selectedCase=data.retail_selected_case;
 
-                    self.$parent.loading = false;
+                    self.$store.commit('loading',false);
                 }
             });
 

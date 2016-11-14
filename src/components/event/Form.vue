@@ -198,9 +198,10 @@
             }
         },
         mounted () {
-
-            this.$root.loading = false;
-            this.$parent.loading = false;
+            var self = this;
+            setTimeout(function () {
+                self.$parent.loading = false;
+            },300)
 
             $(function() {
 

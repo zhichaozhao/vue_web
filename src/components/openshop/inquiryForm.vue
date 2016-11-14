@@ -15,7 +15,7 @@
             </div>
 
             <!--预定信息填写-->
-            <form action="" id="inquiryForm">
+            <form action="" class="clearfix" id="inquiryForm">
                 <div class="fr booking-right ">
                     <h2>基本信息</h2>
                     <div class="evformbox">
@@ -221,10 +221,11 @@
             }
         },
         mounted () {
-
+            var self = this;
             setTimeout(function () {
                 GlobleFun.validate("#inquiryForm");
             },300)
+            this.$store.commit('loading',false)
 
             //获取 询价 列表
             var e = {}
@@ -232,11 +233,6 @@
                 e[i] = true
             }
             this.inquiryListChange = e;
-
-            this.$parent.loading = false
-        },
-        activated(){
-
         },
         methods: {
             sendPhoneCode : function (e) {
@@ -290,7 +286,6 @@
 
                         GlobleFun.httpMessage(data);
 
-                        self.$parent.loading = false;
                     }
                 });
 

@@ -362,6 +362,8 @@
         mounted () {
 
             var self=this;
+            this.$store.commit('loading',true);
+
             $.ajax({
                 url: window.YUNAPI.active,
                 success : function (data) {
@@ -388,7 +390,7 @@
                     //TOP榜
                     self.toplists=data.activity_top;
                     self.getBanner();
-                    self.$parent.loading = false;
+                    self.$store.commit('loading',false);
                 }
             });
 

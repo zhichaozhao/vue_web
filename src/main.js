@@ -35,7 +35,7 @@ window.router = new VueRouter({
             component: (resolve) => require(['./components/event/SpaceList.vue'], resolve)
         },
         {
-            path: '/booking',
+            path: '/booking/:id',
             component: (resolve) => require(['./components/booking/app.vue'], resolve)
         },
         {
@@ -54,7 +54,7 @@ window.router = new VueRouter({
                 },
                 {
                     path: 'enquiry',
-                    component: (resolve) => require(['./components/personal/enquiry/MineEnquiry.vue'], resolve),
+                    component: (resolve) => require(['./components/personal/Enquiry/list.vue'], resolve),
                     name: '我的询价'
                 },
                 {
@@ -210,6 +210,7 @@ window.store = new Vuex.Store({
         searchCondition : {
             space_type : ''
         },
+        loading : false,
         elDialog : {
             cdVisible : false,
             loginForm : false,
@@ -241,6 +242,16 @@ window.store = new Vuex.Store({
         },
         inquiryList : () => {
             return LS.get('inquiry');
+        },
+        validationData(state){
+            if(typeof state.personalData.client == 'undefined'){
+                return {}
+            }
+            var e = {}
+            e.uid = state.personalData.uid
+            e['access-token'] = state.personalData.access_token
+            e.client = state.personalData.client
+            return e
         }
     },
     mutations : {
@@ -306,6 +317,9 @@ window.store = new Vuex.Store({
             if(user){
                 state.personalData = user
             }
+        },
+        loading(state,value){
+            state.loading = value
         }
     },
     actions : {

@@ -6,7 +6,6 @@
         <div v-loading="loading" class="el-loading-yun"></div>
         <div v-if="loading" class="loading-bg"></div>
 
-
         <router-view  class="child-view"></router-view>
 
         <module-footer ref="test" v-if="!loading"></module-footer>
@@ -129,6 +128,7 @@
     const host = "http://172.16.0.76:3000/";
 
     window.YUNAPI = {
+        host: host,
         cities : host + 'api/cities',
         homeIpProject : host + 'api/projects/get_home_list',
         home : host + 'api/index',
@@ -152,7 +152,8 @@
         login : host + 'api/auth/sign_in',
         register : host + 'api/auth',
         tags : host + 'api/tags/all_tags',
-        createInquiry : host + 'api/orders/create_inquiry'
+        createInquiry : host + 'api/orders/create_inquiry',
+        createBooking : host + 'api/orders/create_booking'
     };
     export default {
         name: 'app',
@@ -217,10 +218,10 @@
             },
             personalData (){
                 return this.$store.state.personalData
+            },
+            loading(){
+                return this.$store.state.loading
             }
-//            get () {
-//                return this.$store.state.cities
-//            },
         },
         components: {
             Hello, ModuleFooter, ModuleHeader
