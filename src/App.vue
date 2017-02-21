@@ -125,7 +125,7 @@
     import 'assets/css/logreg.css';
 
 //    const host = "http://106.14.38.81/";
-    const host = "http://172.16.0.76:3000/";
+    const host = "http://localhost:3000/";
 
     window.YUNAPI = {
         host: host,
